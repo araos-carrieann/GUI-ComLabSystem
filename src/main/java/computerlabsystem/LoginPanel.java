@@ -17,11 +17,13 @@ public class LoginPanel extends javax.swing.JPanel {
      */
     public LoginPanel() {
         initComponents();
+        lblWarningMsg.setVisible(false);
     }
 
     public void addEventRegister(ActionListener event) {
         btnGoToSignUp.addActionListener(event);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,6 +71,8 @@ public class LoginPanel extends javax.swing.JPanel {
 
         btnGoToSignUp.setText("GO TO SIGN UP");
 
+        lblWarningMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWarningMsg.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-box-important-20.png")); // NOI18N
         lblWarningMsg.setText("jLabel3");
 
         chckbxShowPass.setText("show");
@@ -88,30 +92,31 @@ public class LoginPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(154, 154, 154)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAttemptsLeft)
-                            .addComponent(lblWarningMsg)))
+                        .addComponent(lblAttemptsLeft))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblPass)
                             .addComponent(lblEmail))
                         .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(fieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chckbxShowPass))
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(fieldPass))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chckbxShowPass))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
+                        .addGap(55, 55, 55)
+                        .addComponent(lblWarningMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
                         .addComponent(btnClear)
-                        .addGap(40, 40, 40)
-                        .addComponent(btnLogin))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(btnGoToSignUp)))
-                .addContainerGap(96, Short.MAX_VALUE))
+                        .addGap(55, 55, 55)
+                        .addComponent(btnLogin)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnGoToSignUp)
+                .addGap(136, 136, 136))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,17 +130,17 @@ public class LoginPanel extends javax.swing.JPanel {
                     .addComponent(lblPass)
                     .addComponent(fieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chckbxShowPass))
-                .addGap(56, 56, 56)
+                .addGap(74, 74, 74)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnClear)
-                    .addComponent(btnLogin))
-                .addGap(36, 36, 36)
-                .addComponent(btnGoToSignUp)
+                    .addComponent(btnLogin)
+                    .addComponent(btnClear))
                 .addGap(18, 18, 18)
+                .addComponent(btnGoToSignUp)
+                .addGap(26, 26, 26)
                 .addComponent(lblWarningMsg)
-                .addGap(35, 35, 35)
+                .addGap(27, 27, 27)
                 .addComponent(lblAttemptsLeft)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -148,14 +153,40 @@ public class LoginPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_chckbxShowPassActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
+        email = txtEmail.getText();
+        pass = String.valueOf(fieldPass.getPassword());
+        
+         lblWarningMsg.setVisible(true);
+        if (email.isEmpty() && pass.isEmpty()) {
+            lblWarningMsg.setText("Please input in the space provided");
+        } else if (email.isEmpty()) {
+            lblWarningMsg.setText("Please input your email");
+        } else if (pass.isEmpty()) {
+            lblWarningMsg.setText("Please input your password");
+        } else {
+            String userDetails = ComLabMethods.getUserDetails(email, pass);
+            if (!userDetails.equals("false")) {
+                String[] parts = userDetails.split(",");
+                String fname = parts[0];
+                String userRole = parts[1];
+                if (userRole.equals("ADMIN")) {
+                   AdminDashboard admn = new AdminDashboard(fname);
+                   admn.setVisible(true);
+                } else if (userRole.equals("STUDENT")) {
+
+                }
+            } else {
+                lblWarningMsg.setText("Invalid Credentials");
+            }
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        // TODO add your handling code here:
+        txtEmail.setText("");
+        fieldPass.setText("");
     }//GEN-LAST:event_btnClearActionPerformed
 
-
+    private String email, pass;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnGoToSignUp;

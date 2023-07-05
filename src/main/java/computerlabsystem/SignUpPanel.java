@@ -17,7 +17,11 @@ public class SignUpPanel extends javax.swing.JPanel {
      */
     public SignUpPanel() {
         initComponents();
+        lblWarningMsg.setVisible(false);
+        comboProgram.setVisible(false);
+        comboYrLvl.setVisible(false);
     }
+
     public void addEventBackLogin(ActionListener event) {
         btnBackToLogin.addActionListener(event);
     }
@@ -31,7 +35,7 @@ public class SignUpPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        btnGrp = new javax.swing.ButtonGroup();
         lblUsername = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
         lblPass = new javax.swing.JLabel();
@@ -100,6 +104,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         fieldConfirmPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fieldConfirmPass.setText("jPasswordField2");
 
+        btnGrp.add(rbtnStudent);
         rbtnStudent.setText("STUDENT");
         rbtnStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +112,7 @@ public class SignUpPanel extends javax.swing.JPanel {
             }
         });
 
+        btnGrp.add(rbtnFaculty);
         rbtnFaculty.setText("FACULTY");
 
         comboProgram.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -127,6 +133,8 @@ public class SignUpPanel extends javax.swing.JPanel {
             }
         });
 
+        lblWarningMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWarningMsg.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-box-important-20.png")); // NOI18N
         lblWarningMsg.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -134,56 +142,55 @@ public class SignUpPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(btnBackToLogin))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblConfirmPass)
-                            .addComponent(lblPass)
-                            .addComponent(lblEmail)
-                            .addComponent(lblUsername))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
-                                .addComponent(txtLname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(66, 66, 66)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(fieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fieldConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(checkbxShowPass, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(chckbxShowConfirm, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(107, 107, 107)
-                                .addComponent(btnClear)
-                                .addGap(46, 46, 46))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rbtnStudent)
-                                    .addComponent(comboProgram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(28, 28, 28)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSignIn)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rbtnFaculty)
-                                    .addComponent(comboYrLvl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(187, 187, 187)
-                        .addComponent(lblWarningMsg)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblWarningMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(162, 162, 162)
+                            .addComponent(btnBackToLogin))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(85, 85, 85)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblConfirmPass)
+                                .addComponent(lblPass)
+                                .addComponent(lblEmail)
+                                .addComponent(lblUsername))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(39, 39, 39)
+                                    .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(39, 39, 39)
+                                    .addComponent(txtLname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(31, 31, 31))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(66, 66, 66)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(fieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(fieldConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(checkbxShowPass, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(chckbxShowConfirm, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(107, 107, 107)
+                                    .addComponent(btnClear)
+                                    .addGap(46, 46, 46))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(rbtnStudent)
+                                        .addComponent(comboProgram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(28, 28, 28)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnSignIn)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(26, 26, 26)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(rbtnFaculty)
+                                        .addComponent(comboYrLvl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -216,7 +223,7 @@ public class SignUpPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboProgram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboYrLvl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClear)
                     .addComponent(btnSignIn))
@@ -233,7 +240,8 @@ public class SignUpPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtLnameActionPerformed
 
     private void rbtnStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnStudentActionPerformed
-        // TODO add your handling code here:
+        comboProgram.setVisible(true);
+        comboYrLvl.setVisible(true);
     }//GEN-LAST:event_rbtnStudentActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -272,7 +280,8 @@ public class SignUpPanel extends javax.swing.JPanel {
         confirmPass = String.valueOf(fieldPassword.getPassword());
         program = (String) comboProgram.getSelectedItem();
         yrLvl = (String) comboYrLvl.getSelectedItem();
-        
+
+        lblWarningMsg.setVisible(true);
         if (fname.isEmpty() && lname.isEmpty() && email.isEmpty() && pass.isEmpty() && confirmPass.isEmpty() && !rbtnStudent.isSelected() && !rbtnFaculty.isSelected()) {
             lblWarningMsg.setText("Please input all required fields.");
         } else if (fname.isEmpty() || lname.isEmpty()) {
@@ -282,23 +291,23 @@ public class SignUpPanel extends javax.swing.JPanel {
         } else if (pass.isEmpty()) {
             lblWarningMsg.setText("Please input your password.");
         } else if (confirmPass.isEmpty()) {
-           lblWarningMsg.setText("Please input the confirmation password.");
+            lblWarningMsg.setText("Please input the confirmation password.");
         } else if (!pass.equals(confirmPass)) {
-           lblWarningMsg.setText("Your password and confirmation password don't match.");
+            lblWarningMsg.setText("Your password and confirmation password don't match.");
         } else if (pass.length() < 8) {
-           lblWarningMsg.setText("Password should be at least 8 characters long.");
+            lblWarningMsg.setText("Password should be at least 8 characters long.");
         } else if (!fname.matches("[A-Za-z0-9\\-.]+") || !lname.matches("[A-Za-z0-9\\-.]+")) {
-           lblWarningMsg.setText("Name should only consist of letters, numbers, dashes, or dots.");
+            lblWarningMsg.setText("Name should only consist of letters, numbers, dashes, or dots.");
         } else if (!email.matches("[\\w.-]+@[a-zA-Z0-9-]+\\.[a-zA-Z]{2,}")) {
-           lblWarningMsg.setText("Invalid email address format.");
+            lblWarningMsg.setText("Invalid email address format.");
         } else if (program.equals("DEFAULT") || yrLvl.equals("DEFAULT")) {
-           lblWarningMsg.setText("Please specify your program/year level.");
+            lblWarningMsg.setText("Please specify your program/year level.");
         } else {
-            if(rbtnStudent.isSelected()){
+            if (rbtnStudent.isSelected()) {
                 role = rbtnStudent.getText();
-            }else{
+            } else {
                 role = rbtnFaculty.getText();
-            }            
+            }
             status = "ACTIVE";
             String hashedPassword = ComLabMethods.hashPassword(pass);
             String msg = ComLabMethods.registerUser(status, role, fname, lname, email, hashedPassword, program, yrLvl);
@@ -306,13 +315,12 @@ public class SignUpPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnSignInActionPerformed
 
-
     private String status, fname, lname, role, email, pass, confirmPass, program, yrLvl;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBackToLogin;
     private javax.swing.JButton btnClear;
+    private javax.swing.ButtonGroup btnGrp;
     private javax.swing.JButton btnSignIn;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chckbxShowConfirm;
     private javax.swing.JCheckBox checkbxShowPass;
     private javax.swing.JComboBox<String> comboProgram;

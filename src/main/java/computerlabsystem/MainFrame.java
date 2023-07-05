@@ -20,7 +20,7 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         LoginPanel login = new LoginPanel();
         SignUpPanel signUp = new SignUpPanel();
-        panelSlide.setAnimate(5);
+        panelSlide.setAnimate(20);
         panelSlide.init(login, signUp);
         login.addEventRegister(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
