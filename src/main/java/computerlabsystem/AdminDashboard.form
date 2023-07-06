@@ -3,10 +3,11 @@
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="undecorated" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -33,7 +34,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="computerlabsystem.PanelGradient" name="panelGradient1">
+    <Container class="computerlabsystem.Design.PanelGradient" name="panelGradient1">
       <Properties>
         <Property name="colorPrimary" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -45,7 +46,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
       <SubComponents>
-        <Container class="computerlabsystem.PanelGradient" name="headerPanel">
+        <Container class="computerlabsystem.Design.PanelGradient" name="headerPanel">
           <Properties>
             <Property name="colorPrimary" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="9d" green="c4" red="a0" type="rgb"/>
@@ -107,7 +108,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="computerlabsystem.PanelGradient" name="cardPanel">
+        <Container class="computerlabsystem.Design.PanelGradient" name="cardPanel">
           <Properties>
             <Property name="colorPrimary" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -124,7 +125,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
           <SubComponents>
-            <Container class="computerlabsystem.PanelGradient" name="homePage">
+            <Container class="computerlabsystem.Design.PanelGradient" name="homePage">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
                   <CardConstraints cardName="card6"/>
@@ -135,7 +136,7 @@
                 <Property name="useNullLayout" type="boolean" value="true"/>
               </Layout>
             </Container>
-            <Container class="computerlabsystem.PanelGradient" name="studentPage">
+            <Container class="computerlabsystem.Design.PanelGradient" name="studentPage">
               <Properties>
                 <Property name="colorPrimary" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -258,7 +259,7 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Container class="computerlabsystem.PanelGradient" name="facultyPage">
+            <Container class="computerlabsystem.Design.PanelGradient" name="facultyPage">
               <Properties>
                 <Property name="colorPrimary" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="0" red="0" type="rgb"/>
@@ -338,7 +339,7 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Container class="computerlabsystem.PanelGradient" name="logsPage">
+            <Container class="computerlabsystem.Design.PanelGradient" name="logsPage">
               <Properties>
                 <Property name="colorPrimary" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="0" red="99" type="rgb"/>
@@ -363,7 +364,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="computerlabsystem.PanelGradient" name="visitorPage">
+            <Container class="computerlabsystem.Design.PanelGradient" name="visitorPage">
               <Properties>
                 <Property name="colorPrimary" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="ff" red="ff" type="rgb"/>
@@ -390,7 +391,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="computerlabsystem.PanelGradient" name="menuPanel">
+        <Container class="computerlabsystem.Design.PanelGradient" name="menuPanel">
           <Properties>
             <Property name="colorPrimary" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="c8" green="ec" red="e1" type="rgb"/>

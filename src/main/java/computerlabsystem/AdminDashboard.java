@@ -27,26 +27,26 @@ public class AdminDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelGradient1 = new computerlabsystem.PanelGradient();
-        headerPanel = new computerlabsystem.PanelGradient();
+        panelGradient1 = new computerlabsystem.Design.PanelGradient();
+        headerPanel = new computerlabsystem.Design.PanelGradient();
         lblBurgerMenu = new javax.swing.JLabel();
         lblAdminName = new javax.swing.JLabel();
         lblAdmin = new javax.swing.JLabel();
-        cardPanel = new computerlabsystem.PanelGradient();
-        homePage = new computerlabsystem.PanelGradient();
-        studentPage = new computerlabsystem.PanelGradient();
+        cardPanel = new computerlabsystem.Design.PanelGradient();
+        homePage = new computerlabsystem.Design.PanelGradient();
+        studentPage = new computerlabsystem.Design.PanelGradient();
         studentTabPane = new javax.swing.JTabbedPane();
         studentAcct = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         studentLogs = new javax.swing.JPanel();
-        facultyPage = new computerlabsystem.PanelGradient();
+        facultyPage = new computerlabsystem.Design.PanelGradient();
         facultyTabPane = new javax.swing.JTabbedPane();
         facultyAcct = new javax.swing.JPanel();
         facultyLogs = new javax.swing.JPanel();
-        logsPage = new computerlabsystem.PanelGradient();
-        visitorPage = new computerlabsystem.PanelGradient();
-        menuPanel = new computerlabsystem.PanelGradient();
+        logsPage = new computerlabsystem.Design.PanelGradient();
+        visitorPage = new computerlabsystem.Design.PanelGradient();
+        menuPanel = new computerlabsystem.Design.PanelGradient();
         lblHome = new javax.swing.JLabel();
         lblStudent = new javax.swing.JLabel();
         lblFaculty = new javax.swing.JLabel();
@@ -54,6 +54,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblVisitor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         panelGradient1.setColorPrimary(new java.awt.Color(204, 204, 204));
         panelGradient1.setColorSecondary(new java.awt.Color(153, 153, 153));
@@ -329,6 +330,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseClicked
@@ -367,13 +369,13 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_lblVisitorMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private computerlabsystem.PanelGradient cardPanel;
+    private computerlabsystem.Design.PanelGradient cardPanel;
     private javax.swing.JPanel facultyAcct;
     private javax.swing.JPanel facultyLogs;
-    private computerlabsystem.PanelGradient facultyPage;
+    private computerlabsystem.Design.PanelGradient facultyPage;
     private javax.swing.JTabbedPane facultyTabPane;
-    private computerlabsystem.PanelGradient headerPanel;
-    private computerlabsystem.PanelGradient homePage;
+    private computerlabsystem.Design.PanelGradient headerPanel;
+    private computerlabsystem.Design.PanelGradient homePage;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblAdmin;
@@ -384,13 +386,13 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel lblHome;
     private javax.swing.JLabel lblStudent;
     private javax.swing.JLabel lblVisitor;
-    private computerlabsystem.PanelGradient logsPage;
-    private computerlabsystem.PanelGradient menuPanel;
-    private computerlabsystem.PanelGradient panelGradient1;
+    private computerlabsystem.Design.PanelGradient logsPage;
+    private computerlabsystem.Design.PanelGradient menuPanel;
+    private computerlabsystem.Design.PanelGradient panelGradient1;
     private javax.swing.JPanel studentAcct;
     private javax.swing.JPanel studentLogs;
-    private computerlabsystem.PanelGradient studentPage;
+    private computerlabsystem.Design.PanelGradient studentPage;
     private javax.swing.JTabbedPane studentTabPane;
-    private computerlabsystem.PanelGradient visitorPage;
+    private computerlabsystem.Design.PanelGradient visitorPage;
     // End of variables declaration//GEN-END:variables
 }

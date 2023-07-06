@@ -44,9 +44,9 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelGradient1 = new computerlabsystem.PanelGradient();
-        panelBorder1 = new computerlabsystem.PanelBorder();
-        panelSlide = new computerlabsystem.PanelSlide();
+        panelGradient1 = new computerlabsystem.Design.PanelGradient();
+        panelBorder1 = new computerlabsystem.Design.PanelBorder();
+        panelSlide = new computerlabsystem.Design.PanelSlide();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,8 +121,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private computerlabsystem.PanelBorder panelBorder1;
-    private computerlabsystem.PanelGradient panelGradient1;
-    private computerlabsystem.PanelSlide panelSlide;
+    private computerlabsystem.Design.PanelBorder panelBorder1;
+    private computerlabsystem.Design.PanelGradient panelGradient1;
+    private computerlabsystem.Design.PanelSlide panelSlide;
     // End of variables declaration//GEN-END:variables
 }
