@@ -28,6 +28,12 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         panelGradient1 = new computerlabsystem.Design.PanelGradient();
+        menuPanel = new computerlabsystem.Design.PanelGradient();
+        lblHome = new javax.swing.JLabel();
+        lblStudent = new javax.swing.JLabel();
+        lblFaculty = new javax.swing.JLabel();
+        lblAllLogs = new javax.swing.JLabel();
+        lblVisitor = new javax.swing.JLabel();
         headerPanel = new computerlabsystem.Design.PanelGradient();
         lblBurgerMenu = new javax.swing.JLabel();
         lblAdminName = new javax.swing.JLabel();
@@ -37,21 +43,30 @@ public class AdminDashboard extends javax.swing.JFrame {
         studentPage = new computerlabsystem.Design.PanelGradient();
         studentTabPane = new javax.swing.JTabbedPane();
         studentAcct = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        btnDeleteStuAcct = new javax.swing.JButton();
+        btnAddStuAcct = new javax.swing.JButton();
+        lblSearch = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
+        studentLogs = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        studentLogs = new javax.swing.JPanel();
+        btnDeleteSlogs = new javax.swing.JButton();
+        btnAddSlogs = new javax.swing.JButton();
+        btnUpdateSlogs = new javax.swing.JButton();
         facultyPage = new computerlabsystem.Design.PanelGradient();
         facultyTabPane = new javax.swing.JTabbedPane();
         facultyAcct = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
         facultyLogs = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
         logsPage = new computerlabsystem.Design.PanelGradient();
         visitorPage = new computerlabsystem.Design.PanelGradient();
-        menuPanel = new computerlabsystem.Design.PanelGradient();
-        lblHome = new javax.swing.JLabel();
-        lblStudent = new javax.swing.JLabel();
-        lblFaculty = new javax.swing.JLabel();
-        lblAllLogs = new javax.swing.JLabel();
-        lblVisitor = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -59,178 +74,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         panelGradient1.setColorPrimary(new java.awt.Color(204, 204, 204));
         panelGradient1.setColorSecondary(new java.awt.Color(153, 153, 153));
         panelGradient1.setLayout(new java.awt.BorderLayout());
-
-        headerPanel.setColorPrimary(new java.awt.Color(160, 196, 157));
-        headerPanel.setColorSecondary(new java.awt.Color(196, 215, 178));
-        headerPanel.setPreferredSize(new java.awt.Dimension(100, 60));
-
-        lblBurgerMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBurgerMenu.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-menu-rounded-50.png")); // NOI18N
-        lblBurgerMenu.setText("jLabel2");
-        headerPanel.add(lblBurgerMenu);
-        lblBurgerMenu.setBounds(30, 10, 50, 40);
-
-        lblAdminName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAdminName.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-male-user-24.png")); // NOI18N
-        lblAdminName.setText("jLabel2");
-        headerPanel.add(lblAdminName);
-        lblAdminName.setBounds(590, 10, 100, 30);
-
-        lblAdmin.setText("ADMIN");
-        headerPanel.add(lblAdmin);
-        lblAdmin.setBounds(630, 40, 60, 16);
-
-        panelGradient1.add(headerPanel, java.awt.BorderLayout.PAGE_START);
-
-        cardPanel.setColorPrimary(new java.awt.Color(0, 0, 0));
-        cardPanel.setColorSecondary(new java.awt.Color(51, 51, 51));
-        cardPanel.setLayout(new java.awt.CardLayout());
-        cardPanel.add(homePage, "card6");
-
-        studentPage.setColorPrimary(new java.awt.Color(255, 0, 0));
-
-        studentTabPane.setBackground(new java.awt.Color(51, 51, 51));
-
-        studentAcct.setBackground(new java.awt.Color(0, 0, 204));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        javax.swing.GroupLayout studentAcctLayout = new javax.swing.GroupLayout(studentAcct);
-        studentAcct.setLayout(studentAcctLayout);
-        studentAcctLayout.setHorizontalGroup(
-            studentAcctLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(studentAcctLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(143, Short.MAX_VALUE))
-        );
-        studentAcctLayout.setVerticalGroup(
-            studentAcctLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, studentAcctLayout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
-        );
-
-        studentTabPane.addTab("ACCOUNTS", studentAcct);
-
-        studentLogs.setBackground(new java.awt.Color(255, 204, 0));
-
-        javax.swing.GroupLayout studentLogsLayout = new javax.swing.GroupLayout(studentLogs);
-        studentLogs.setLayout(studentLogsLayout);
-        studentLogsLayout.setHorizontalGroup(
-            studentLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 637, Short.MAX_VALUE)
-        );
-        studentLogsLayout.setVerticalGroup(
-            studentLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
-        );
-
-        studentTabPane.addTab("LOGS", studentLogs);
-
-        studentPage.setLayer(studentTabPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout studentPageLayout = new javax.swing.GroupLayout(studentPage);
-        studentPage.setLayout(studentPageLayout);
-        studentPageLayout.setHorizontalGroup(
-            studentPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(studentTabPane)
-        );
-        studentPageLayout.setVerticalGroup(
-            studentPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(studentTabPane)
-        );
-
-        cardPanel.add(studentPage, "card2");
-
-        facultyPage.setColorPrimary(new java.awt.Color(0, 0, 255));
-
-        javax.swing.GroupLayout facultyAcctLayout = new javax.swing.GroupLayout(facultyAcct);
-        facultyAcct.setLayout(facultyAcctLayout);
-        facultyAcctLayout.setHorizontalGroup(
-            facultyAcctLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 629, Short.MAX_VALUE)
-        );
-        facultyAcctLayout.setVerticalGroup(
-            facultyAcctLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
-        );
-
-        facultyTabPane.addTab("Accounts", facultyAcct);
-
-        javax.swing.GroupLayout facultyLogsLayout = new javax.swing.GroupLayout(facultyLogs);
-        facultyLogs.setLayout(facultyLogsLayout);
-        facultyLogsLayout.setHorizontalGroup(
-            facultyLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 629, Short.MAX_VALUE)
-        );
-        facultyLogsLayout.setVerticalGroup(
-            facultyLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
-        );
-
-        facultyTabPane.addTab("Logs", facultyLogs);
-
-        facultyPage.setLayer(facultyTabPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout facultyPageLayout = new javax.swing.GroupLayout(facultyPage);
-        facultyPage.setLayout(facultyPageLayout);
-        facultyPageLayout.setHorizontalGroup(
-            facultyPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, facultyPageLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(facultyTabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        facultyPageLayout.setVerticalGroup(
-            facultyPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(facultyTabPane)
-        );
-
-        cardPanel.add(facultyPage, "card3");
-
-        logsPage.setColorPrimary(new java.awt.Color(153, 0, 153));
-
-        javax.swing.GroupLayout logsPageLayout = new javax.swing.GroupLayout(logsPage);
-        logsPage.setLayout(logsPageLayout);
-        logsPageLayout.setHorizontalGroup(
-            logsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 637, Short.MAX_VALUE)
-        );
-        logsPageLayout.setVerticalGroup(
-            logsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 459, Short.MAX_VALUE)
-        );
-
-        cardPanel.add(logsPage, "card4");
-
-        visitorPage.setColorPrimary(new java.awt.Color(255, 255, 0));
-
-        javax.swing.GroupLayout visitorPageLayout = new javax.swing.GroupLayout(visitorPage);
-        visitorPage.setLayout(visitorPageLayout);
-        visitorPageLayout.setHorizontalGroup(
-            visitorPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 637, Short.MAX_VALUE)
-        );
-        visitorPageLayout.setVerticalGroup(
-            visitorPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 459, Short.MAX_VALUE)
-        );
-
-        cardPanel.add(visitorPage, "card5");
-
-        panelGradient1.add(cardPanel, java.awt.BorderLayout.CENTER);
 
         menuPanel.setColorPrimary(new java.awt.Color(225, 236, 200));
         menuPanel.setColorSecondary(new java.awt.Color(153, 169, 143));
@@ -318,6 +161,366 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         panelGradient1.add(menuPanel, java.awt.BorderLayout.LINE_START);
 
+        headerPanel.setColorPrimary(new java.awt.Color(160, 196, 157));
+        headerPanel.setColorSecondary(new java.awt.Color(196, 215, 178));
+        headerPanel.setPreferredSize(new java.awt.Dimension(100, 60));
+
+        lblBurgerMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBurgerMenu.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-menu-rounded-50.png")); // NOI18N
+        lblBurgerMenu.setText("jLabel2");
+        headerPanel.add(lblBurgerMenu);
+        lblBurgerMenu.setBounds(30, 10, 50, 40);
+
+        lblAdminName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAdminName.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-male-user-24.png")); // NOI18N
+        lblAdminName.setText("jLabel2");
+        headerPanel.add(lblAdminName);
+        lblAdminName.setBounds(590, 10, 100, 30);
+
+        lblAdmin.setText("ADMIN");
+        headerPanel.add(lblAdmin);
+        lblAdmin.setBounds(630, 40, 60, 16);
+
+        panelGradient1.add(headerPanel, java.awt.BorderLayout.PAGE_START);
+
+        cardPanel.setColorPrimary(new java.awt.Color(0, 0, 0));
+        cardPanel.setColorSecondary(new java.awt.Color(51, 51, 51));
+        cardPanel.setLayout(new java.awt.CardLayout());
+
+        javax.swing.GroupLayout homePageLayout = new javax.swing.GroupLayout(homePage);
+        homePage.setLayout(homePageLayout);
+        homePageLayout.setHorizontalGroup(
+            homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 904, Short.MAX_VALUE)
+        );
+        homePageLayout.setVerticalGroup(
+            homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 571, Short.MAX_VALUE)
+        );
+
+        cardPanel.add(homePage, "card6");
+
+        studentPage.setColorPrimary(new java.awt.Color(255, 0, 0));
+
+        studentTabPane.setBackground(new java.awt.Color(51, 51, 51));
+
+        studentAcct.setBackground(new java.awt.Color(0, 0, 204));
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        btnDeleteStuAcct.setText("DELETE");
+
+        btnAddStuAcct.setText("ADD USER");
+
+        lblSearch.setText("jLabel1");
+
+        txtSearch.setText("jTextField1");
+
+        javax.swing.GroupLayout studentAcctLayout = new javax.swing.GroupLayout(studentAcct);
+        studentAcct.setLayout(studentAcctLayout);
+        studentAcctLayout.setHorizontalGroup(
+            studentAcctLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(studentAcctLayout.createSequentialGroup()
+                .addGroup(studentAcctLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(studentAcctLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(studentAcctLayout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(btnAddStuAcct)
+                        .addGap(51, 51, 51)
+                        .addComponent(btnDeleteStuAcct))
+                    .addGroup(studentAcctLayout.createSequentialGroup()
+                        .addGap(206, 206, 206)
+                        .addComponent(lblSearch)
+                        .addGap(33, 33, 33)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(117, Short.MAX_VALUE))
+        );
+        studentAcctLayout.setVerticalGroup(
+            studentAcctLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, studentAcctLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(studentAcctLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSearch)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addGroup(studentAcctLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDeleteStuAcct)
+                    .addComponent(btnAddStuAcct))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+        );
+
+        studentTabPane.addTab("ACCOUNTS", studentAcct);
+
+        studentLogs.setBackground(new java.awt.Color(255, 204, 0));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        btnDeleteSlogs.setText("jButton1");
+
+        btnAddSlogs.setText("jButton2");
+
+        btnUpdateSlogs.setText("jButton3");
+
+        javax.swing.GroupLayout studentLogsLayout = new javax.swing.GroupLayout(studentLogs);
+        studentLogs.setLayout(studentLogsLayout);
+        studentLogsLayout.setHorizontalGroup(
+            studentLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(studentLogsLayout.createSequentialGroup()
+                .addGroup(studentLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(studentLogsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(studentLogsLayout.createSequentialGroup()
+                        .addGap(192, 192, 192)
+                        .addComponent(btnDeleteSlogs)
+                        .addGap(84, 84, 84)
+                        .addComponent(btnAddSlogs)
+                        .addGap(97, 97, 97)
+                        .addComponent(btnUpdateSlogs)))
+                .addContainerGap(113, Short.MAX_VALUE))
+        );
+        studentLogsLayout.setVerticalGroup(
+            studentLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, studentLogsLayout.createSequentialGroup()
+                .addContainerGap(82, Short.MAX_VALUE)
+                .addGroup(studentLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDeleteSlogs)
+                    .addComponent(btnAddSlogs)
+                    .addComponent(btnUpdateSlogs))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+
+        studentTabPane.addTab("LOGS", studentLogs);
+
+        studentPage.setLayer(studentTabPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout studentPageLayout = new javax.swing.GroupLayout(studentPage);
+        studentPage.setLayout(studentPageLayout);
+        studentPageLayout.setHorizontalGroup(
+            studentPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(studentTabPane)
+        );
+        studentPageLayout.setVerticalGroup(
+            studentPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(studentTabPane)
+        );
+
+        cardPanel.add(studentPage, "card2");
+
+        facultyPage.setColorPrimary(new java.awt.Color(0, 0, 255));
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable3);
+
+        javax.swing.GroupLayout facultyAcctLayout = new javax.swing.GroupLayout(facultyAcct);
+        facultyAcct.setLayout(facultyAcctLayout);
+        facultyAcctLayout.setHorizontalGroup(
+            facultyAcctLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(facultyAcctLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(113, Short.MAX_VALUE))
+        );
+        facultyAcctLayout.setVerticalGroup(
+            facultyAcctLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(facultyAcctLayout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+
+        facultyTabPane.addTab("ACCOUNTS", facultyAcct);
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable4);
+
+        javax.swing.GroupLayout facultyLogsLayout = new javax.swing.GroupLayout(facultyLogs);
+        facultyLogs.setLayout(facultyLogsLayout);
+        facultyLogsLayout.setHorizontalGroup(
+            facultyLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(facultyLogsLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(152, Short.MAX_VALUE))
+        );
+        facultyLogsLayout.setVerticalGroup(
+            facultyLogsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(facultyLogsLayout.createSequentialGroup()
+                .addGap(143, 143, 143)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(101, Short.MAX_VALUE))
+        );
+
+        facultyTabPane.addTab("LOGS", facultyLogs);
+
+        facultyPage.setLayer(facultyTabPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout facultyPageLayout = new javax.swing.GroupLayout(facultyPage);
+        facultyPage.setLayout(facultyPageLayout);
+        facultyPageLayout.setHorizontalGroup(
+            facultyPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(facultyPageLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(facultyTabPane)
+                .addContainerGap())
+        );
+        facultyPageLayout.setVerticalGroup(
+            facultyPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, facultyPageLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(facultyTabPane)
+                .addContainerGap())
+        );
+
+        cardPanel.add(facultyPage, "card3");
+
+        logsPage.setColorPrimary(new java.awt.Color(153, 0, 153));
+
+        javax.swing.GroupLayout logsPageLayout = new javax.swing.GroupLayout(logsPage);
+        logsPage.setLayout(logsPageLayout);
+        logsPageLayout.setHorizontalGroup(
+            logsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 904, Short.MAX_VALUE)
+        );
+        logsPageLayout.setVerticalGroup(
+            logsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 571, Short.MAX_VALUE)
+        );
+
+        cardPanel.add(logsPage, "card4");
+
+        visitorPage.setColorPrimary(new java.awt.Color(255, 255, 0));
+
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(jTable5);
+
+        visitorPage.setLayer(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout visitorPageLayout = new javax.swing.GroupLayout(visitorPage);
+        visitorPage.setLayout(visitorPageLayout);
+        visitorPageLayout.setHorizontalGroup(
+            visitorPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(visitorPageLayout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(104, Short.MAX_VALUE))
+        );
+        visitorPageLayout.setVerticalGroup(
+            visitorPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(visitorPageLayout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+
+        cardPanel.add(visitorPage, "card5");
+
+        panelGradient1.add(cardPanel, java.awt.BorderLayout.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -369,6 +572,11 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_lblVisitorMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddSlogs;
+    private javax.swing.JButton btnAddStuAcct;
+    private javax.swing.JButton btnDeleteSlogs;
+    private javax.swing.JButton btnDeleteStuAcct;
+    private javax.swing.JButton btnUpdateSlogs;
     private computerlabsystem.Design.PanelGradient cardPanel;
     private javax.swing.JPanel facultyAcct;
     private javax.swing.JPanel facultyLogs;
@@ -377,13 +585,22 @@ public class AdminDashboard extends javax.swing.JFrame {
     private computerlabsystem.Design.PanelGradient headerPanel;
     private computerlabsystem.Design.PanelGradient homePage;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTable5;
     private javax.swing.JLabel lblAdmin;
     private javax.swing.JLabel lblAdminName;
     private javax.swing.JLabel lblAllLogs;
     private javax.swing.JLabel lblBurgerMenu;
     private javax.swing.JLabel lblFaculty;
     private javax.swing.JLabel lblHome;
+    private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblStudent;
     private javax.swing.JLabel lblVisitor;
     private computerlabsystem.Design.PanelGradient logsPage;
@@ -393,6 +610,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel studentLogs;
     private computerlabsystem.Design.PanelGradient studentPage;
     private javax.swing.JTabbedPane studentTabPane;
+    private javax.swing.JTextField txtSearch;
     private computerlabsystem.Design.PanelGradient visitorPage;
     // End of variables declaration//GEN-END:variables
 }

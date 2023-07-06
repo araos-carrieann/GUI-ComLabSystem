@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
  * @author araos
  */
 public class SignUpPanel extends javax.swing.JPanel {
-
     /**
      * Creates new form SignUpPanel
      */

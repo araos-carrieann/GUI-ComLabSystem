@@ -155,8 +155,8 @@ public class LoginPanel extends javax.swing.JPanel {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         email = txtEmail.getText();
         pass = String.valueOf(fieldPass.getPassword());
-        
-         lblWarningMsg.setVisible(true);
+
+        lblWarningMsg.setVisible(true);
         if (email.isEmpty() && pass.isEmpty()) {
             lblWarningMsg.setText("Please input in the space provided");
         } else if (email.isEmpty()) {
@@ -170,13 +170,21 @@ public class LoginPanel extends javax.swing.JPanel {
                 String fname = parts[0];
                 String userRole = parts[1];
                 if (userRole.equals("ADMIN")) {
-                   AdminDashboard admn = new AdminDashboard(fname);
-                   admn.setVisible(true);
+                    AdminDashboard admn = new AdminDashboard(fname);
+                    admn.setVisible(true);
                 } else if (userRole.equals("STUDENT")) {
 
                 }
             } else {
+                attempt--;
                 lblWarningMsg.setText("Invalid Credentials");
+                lblAttemptsLeft.setText(String.valueOf(attempt));
+                if (attempt <= 0) {
+                    InvalidInput dialog = new InvalidInput(new javax.swing.JFrame(), true);
+                    dialog.setVisible(true); // Show the dialog
+                    attempt = 3;
+                }
+
             }
         }
     }//GEN-LAST:event_btnLoginActionPerformed
@@ -186,6 +194,7 @@ public class LoginPanel extends javax.swing.JPanel {
         fieldPass.setText("");
     }//GEN-LAST:event_btnClearActionPerformed
 
+    private static int attempt = 3;
     private String email, pass;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
