@@ -167,13 +167,17 @@ public class LoginPanel extends javax.swing.JPanel {
             String userDetails = ComLabMethods.getUserDetails(email, pass);
             if (!userDetails.equals("false")) {
                 String[] parts = userDetails.split(",");
-                String fname = parts[0];
-                String userRole = parts[1];
+                String sfID = parts[0];
+                String fname = parts[1];
+                String lname = parts[2];
+                String userRole = parts[3];
+                String fullName = fname + " " + lname;
+                String hashedPassword = ComLabMethods.hashPassword(pass);
                 if (userRole.equals("ADMIN")) {
                     AdminDashboard admn = new AdminDashboard(fname);
                     admn.setVisible(true);
-                } else if (userRole.equals("STUDENT")) {
-
+                } else if (userRole.equals("STUDENT") || userRole.equals("FACULTY")) {
+                    ComLabMethods.logUserLogin(sfID, fullName, hashedPassword);
                 }
             } else {
                 attempt--;
