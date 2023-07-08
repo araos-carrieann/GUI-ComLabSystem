@@ -43,14 +43,14 @@ public class SignUpPanel extends javax.swing.JPanel {
     private void insertContentComboYearLvl() {
         List<Data> yrLvlList = ComLabMethods.yearlvlComboContent();
         if (!yrLvlList.isEmpty()) {
-            Data acct = yrLvlList.get(1);
+            Data acct = yrLvlList.get(0);
             comboYrLvl.addItem(acct.getYrlvl());
         }
     }
        private void insertContentComboDepartment() {
         List<Data> departmentList = ComLabMethods.departmentComboContent();
         if (!departmentList.isEmpty()) {
-            Data acct = departmentList.get(2);
+            Data acct = departmentList.get(0);
             comboDepartment.addItem(acct.getDepartment());
         }
     }

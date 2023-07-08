@@ -815,7 +815,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             String program = (String) model.getValueAt(selectedRow, 4);
             String yearLevel = (String) model.getValueAt(selectedRow, 5);
   
-             new UpdateAcct(studentID, email, firstName, lastName, program, yearLevel);
+            // new UpdateAcct(studentID, email, firstName, lastName, program, yearLevel);
 
         }
 
