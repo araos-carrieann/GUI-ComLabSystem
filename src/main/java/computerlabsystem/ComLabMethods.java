@@ -76,21 +76,22 @@ public class ComLabMethods {
         return BCrypt.checkpw(password, hashedPassword);
     }
 
-    public static String getUserDetails(String email, String password) {
+    public static String getUserDetails(String stuFaculID, String password) {
         String userRole = "";
         String studFaculID;
-        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE email = ?")) {
-            stmt.setString(1, email);
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE studentfacultyID = ?")) {
+            stmt.setString(1, stuFaculID);
             ResultSet rsltSet = stmt.executeQuery();
 
             if (rsltSet.next()) {
                 String storedHashedPassword = rsltSet.getString("password");
                 if (ComLabMethods.verifyPassword(password, storedHashedPassword)) {
-                    String fname = rsltSet.getString("firstName");
-                    String lname = rsltSet.getString("lastname");
-                    userRole = rsltSet.getString("role");
                     studFaculID = rsltSet.getString("studentfacultyID");
-                    return studFaculID + "," + fname + "," + lname  + "," + userRole;
+                    String fname = rsltSet.getString("firstName");
+                    String lname = rsltSet.getString("lastName");
+                    userRole = rsltSet.getString("role");
+
+                    return studFaculID + "," + fname + "," + lname + "," + userRole;
                 }
             }
         } catch (SQLException e) {
@@ -100,31 +101,52 @@ public class ComLabMethods {
         return "false";
     }
 
-public static void logUserLogin(String stuFaculID, String fullName, String pass) {
-    try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
-        String createTableQuery = "CREATE TABLE IF NOT EXISTS logs (logID SERIAL PRIMARY KEY, "
-                + "user_id INTEGER REFERENCES users(id), "
-                + "fullname VARCHAR(255), "
-                + "login_time TIMESTAMP DEFAULT (TO_TIMESTAMP(TO_CHAR(CURRENT_TIMESTAMP, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS')), "
-                + "logout_time TIMESTAMP DEFAULT (TO_TIMESTAMP(TO_CHAR(CURRENT_TIMESTAMP, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS')))";
+    public static void logUserLogin(String stuFaculID, String fullName, String pass) {
+        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+            String createTableQuery = "CREATE TABLE IF NOT EXISTS logs (logID SERIAL PRIMARY KEY, "
+                    + "user_id INTEGER REFERENCES users(id), "
+                    + "fullname VARCHAR(255), "
+                    + "login_time TIMESTAMP DEFAULT (TO_TIMESTAMP(TO_CHAR(CURRENT_TIMESTAMP, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS')), "
+                    + "logout_time TIMESTAMP, "
+                    + "FOREIGN KEY (user_id) REFERENCES users(id))";
 
-        try (PreparedStatement statement = conn.prepareStatement(createTableQuery)) {
-            statement.execute();
+            try (PreparedStatement statement = conn.prepareStatement(createTableQuery)) {
+                statement.execute();
+            }
+
+            // Retrieve the user ID from the users table
+            String selectUserIdQuery = "SELECT id, password FROM users WHERE studentFacultyID = ?";
+
+            try (PreparedStatement selectUserIdStatement = conn.prepareStatement(selectUserIdQuery)) {
+                // Set the value of the stuFaculID parameter in the query
+                selectUserIdStatement.setString(1, stuFaculID);
+
+                try (ResultSet rs = selectUserIdStatement.executeQuery()) {
+                    // Check if there is at least one row in the result set
+                    if (rs.next()) {
+                        // Retrieve the hashed password from the result set
+                        String hashedPassword = rs.getString("password");
+
+                        // Retrieve the user ID from the result set
+                        int userId = rs.getInt("id");
+
+                        // Verify the password
+                        if (verifyPassword(pass, hashedPassword)) {
+                            // Insert log entry
+                            String insertQuery = "INSERT INTO logs (user_id, fullname, login_time) VALUES (?, ?, DEFAULT)";
+                            try (PreparedStatement insertStatement = conn.prepareStatement(insertQuery)) {
+                                insertStatement.setInt(1, userId);
+                                insertStatement.setString(2, fullName);
+                                insertStatement.executeUpdate();
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        String insertQuery = "INSERT INTO logs (user_id, fullname) SELECT id, ? FROM users WHERE studentFacultyID = ? AND password = ?";
-
-        try (PreparedStatement statement = conn.prepareStatement(insertQuery)) {
-            statement.setString(1, fullName);
-            statement.setString(2, stuFaculID);
-            statement.setString(3, pass);
-            statement.executeUpdate();
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
     }
-}
-
 
     //ADMIN DASHBOARD
     //ACCOUNTS 
@@ -134,11 +156,11 @@ public static void logUserLogin(String stuFaculID, String fullName, String pass)
 
             while (rsltSet.next()) {
                 String studentID = rsltSet.getString("studentfacultyID");
-                String userEmail = rsltSet.getString("userEmail");
+                String userEmail = rsltSet.getString("email");
                 String userFname = rsltSet.getString("firstName");
                 String userLname = rsltSet.getString("lastName");
                 String userProgram = rsltSet.getString("program");
-                String userYrLvl = rsltSet.getString("yrLvl");
+                String userYrLvl = rsltSet.getString("yearLvl");
 
                 Data data = new Data(studentID, userEmail, userFname, userLname, userProgram, userYrLvl);
                 dataList.add(data);
@@ -157,7 +179,7 @@ public static void logUserLogin(String stuFaculID, String fullName, String pass)
             while (rsltSet.next()) {
                 String facultyID = rsltSet.getString("studentfacultyID");
                 String userDepartment = rsltSet.getString("department");
-                String userEmail = rsltSet.getString("userEmail");
+                String userEmail = rsltSet.getString("email");
                 String userFname = rsltSet.getString("firstName");
                 String userLname = rsltSet.getString("lastName");
 
@@ -173,22 +195,24 @@ public static void logUserLogin(String stuFaculID, String fullName, String pass)
 
     public static List<Data> getAllLogs() {
         List<Data> dataList = new ArrayList<>();
-        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(("SELECT logs.logID, logs.login, logs.logout, logs.fullname, users.studentfacultyID AS sfID, users.role AS role, users.program AS program, users.yrlvl AS yrlvl, users.department AS department\n"
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(("SELECT logs.logID, logs.fullname, logs.login_time, logs.logout_time,\n"
+                + "       users.studentfacultyID AS sfID, users.role AS userRole,\n"
+                + "       users.program AS program, users.yearlvl AS yrlvl, users.department AS facultyDepartment\n"
                 + "FROM users\n"
-                + "RIGHT JOIN logs ON users.userID = logs.userID;")); ResultSet rsltSet = stmt.executeQuery()) {
+                + "RIGHT JOIN logs ON logs.user_id = users.id;")); ResultSet rsltSet = stmt.executeQuery()) {
 
             while (rsltSet.next()) {
-                int userLogsID = rsltSet.getInt("log_id");
-                String studentfacultyID = rsltSet.getString("studentfacultyID");
-                String userRole = rsltSet.getString("role");
+                int userLogsID = rsltSet.getInt("logID");
+                String userRole = rsltSet.getString("userRole");
+                String userFullname = rsltSet.getString("fullname");
+                String studentfacultyID = rsltSet.getString("sfID");
                 String userProgram = rsltSet.getString("program");
                 String userYrlvl = rsltSet.getString("yrlvl");
-                String userDepartment = rsltSet.getString("department");
-                String userFullname = rsltSet.getString("fullname");
-                String userLogin = rsltSet.getString("login");
-                String userLogout = rsltSet.getString("logout");
+                String userDepartment = rsltSet.getString("facultyDepartment");
+                String userLogin = rsltSet.getString("login_time");
+                String userLogout = rsltSet.getString("logout_time");
 
-                Data data = new Data(userLogsID, studentfacultyID, userRole, userProgram, userYrlvl, userDepartment, userFullname, userLogin, userLogout);
+                Data data = new Data(userLogsID, userRole, studentfacultyID, userFullname, userProgram, userYrlvl, userDepartment, userLogin, userLogout);
                 dataList.add(data);
             }
         } catch (SQLException e) {
@@ -196,15 +220,14 @@ public static void logUserLogin(String stuFaculID, String fullName, String pass)
         }
 
         return dataList;
-    }
+    }//Delete
 
-    //Logout methods
-    public static void logUserLogout(int userId) {
+    public static void deleteAcct(String studentID) {
         try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
-            String updateQuery = "UPDATE logs SET time_out = NOW() WHERE user_id = ? AND time_out IS NULL";
+            String updateQuery = "UPDATE users SET status = 'DEACTIVATE' WHERE studentfacultyID = ?";
 
             try (PreparedStatement statement = conn.prepareStatement(updateQuery)) {
-                statement.setInt(1, userId);
+                statement.setString(1, studentID);
                 statement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -212,4 +235,149 @@ public static void logUserLogin(String stuFaculID, String fullName, String pass)
         }
     }
 
+    public static void deleteLogs(int logID) {
+        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+            String sql = "DELETE FROM logs WHERE logID = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, logID);
+            statement.executeUpdate();
+            System.out.println("Row deleted successfully.");
+        } catch (SQLException e) {
+            System.out.println("Error deleting row from database: " + e.getMessage());
+        }
+    }
+
+    //Comboxes
+    public static void programComboBox(String prog) {
+        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+            String createTableQuery = "CREATE TABLE IF NOT EXISTS program (program VARCHAR(100))";
+
+            try (PreparedStatement statement = conn.prepareStatement(createTableQuery)) {
+                statement.execute();
+            }
+
+            String insertProgramQuery = "INSERT INTO program (program) VALUES (?)";
+            try (PreparedStatement insertStatement = conn.prepareStatement(insertProgramQuery)) {
+                insertStatement.setString(1, prog);
+                insertStatement.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<Data> programComboContent() {
+        List<Data> programList = new ArrayList<>();
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM program"); ResultSet rsltSet = stmt.executeQuery()) {
+            while (rsltSet.next()) {
+                String program = rsltSet.getString("program");
+
+                Data data = new Data(program, "null", "null");
+                programList.add(data);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+        }
+
+        return programList;
+
+    }
+
+    public static void deleteProgram(String program) {
+        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+            String sql = "DELETE FROM program WHERE program = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, program);
+            statement.executeUpdate();
+            System.out.println("Row deleted successfully.");
+        } catch (SQLException e) {
+            System.out.println("Error deleting row from database: " + e.getMessage());
+        }
+    }
+
+    public static void yearLevelComboBox(String lvl) {
+        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+            String createTableQuery = "CREATE TABLE IF NOT EXISTS yearLevel (yearLevel VARCHAR(5))";
+            try (PreparedStatement statement = conn.prepareStatement(createTableQuery)) {
+                statement.execute();
+            }
+            String insertYrLvlQuery = "INSERT INTO yearLevel (yearLevel) VALUES (?)";
+            try (PreparedStatement insertStatement = conn.prepareStatement(insertYrLvlQuery)) {
+                insertStatement.setString(1, lvl);
+                insertStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<Data> yearlvlComboContent() {
+        List<Data> yearLevelList = new ArrayList<>();
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM yearLevel"); ResultSet rsltSet = stmt.executeQuery()) {
+            while (rsltSet.next()) {
+                String yrlvl = rsltSet.getString("yearLevel");
+                Data data = new Data("null", yrlvl, "null");
+                yearLevelList.add(data);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+        }
+        return yearLevelList;
+
+    }
+
+    public static void deleteYearLvl(String yrLvl) {
+        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+            String sql = "DELETE FROM yearLevel WHERE yearLevel = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, yrLvl);
+            statement.executeUpdate();
+            System.out.println("Row deleted successfully.");
+        } catch (SQLException e) {
+            System.out.println("Error deleting row from database: " + e.getMessage());
+        }
+    }
+
+    public static void departmentComboBox(String department) {
+        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+            String createTableQuery = "CREATE TABLE IF NOT EXISTS department (facultyDepartment VARCHAR(100))";
+            try (PreparedStatement statement = conn.prepareStatement(createTableQuery)) {
+                statement.execute();
+            }
+            String insertDepartmentQuery = "INSERT INTO department (facultyDepartment) VALUES (?)";
+            try (PreparedStatement insertStatement = conn.prepareStatement(insertDepartmentQuery)) {
+                insertStatement.setString(1, department);
+                insertStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<Data> departmentComboContent() {
+        List<Data> departmentList = new ArrayList<>();
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM department"); ResultSet rsltSet = stmt.executeQuery()) {
+            while (rsltSet.next()) {
+                String department = rsltSet.getString("facultyDepartment");
+                Data data = new Data(null, null, department);
+                departmentList.add(data);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+        }
+        return departmentList;
+    }
+
+    public static void deleteDepartment(String department) {
+        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+            String sql = "DELETE FROM yearLevel WHERE yearLevel = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, department);
+            statement.executeUpdate();
+            System.out.println("Row deleted successfully.");
+        } catch (SQLException e) {
+            System.out.println("Error deleting row from database: " + e.getMessage());
+        }
+    }
 }

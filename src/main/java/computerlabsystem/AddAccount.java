@@ -16,6 +16,10 @@ public class AddAccount extends javax.swing.JDialog {
     public AddAccount(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        lblWarningMsg.setVisible(false);
+        comboProgram.setVisible(false);
+        comboYrLvl.setVisible(false);
+        comboDepartment.setVisible(false);
     }
 
     /**
@@ -27,173 +31,409 @@ public class AddAccount extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelGradient1 = new computerlabsystem.Design.PanelGradient();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        btnGrp = new javax.swing.ButtonGroup();
+        panelGradient2 = new computerlabsystem.Design.PanelGradient();
+        txtFname = new javax.swing.JTextField();
+        lblWarningMsg = new javax.swing.JLabel();
+        txtLname = new javax.swing.JTextField();
+        comboDepartment = new javax.swing.JComboBox<>();
+        txtEmail = new javax.swing.JTextField();
+        lblStudentFacultyID = new javax.swing.JLabel();
+        fieldPassword = new javax.swing.JPasswordField();
+        txtStudentFacultyID = new javax.swing.JTextField();
+        lblUsername = new javax.swing.JLabel();
+        fieldConfirmPass = new javax.swing.JPasswordField();
+        lblEmail = new javax.swing.JLabel();
+        rbtnStudent = new javax.swing.JRadioButton();
+        lblPass = new javax.swing.JLabel();
+        rbtnFaculty = new javax.swing.JRadioButton();
+        lblConfirmPass = new javax.swing.JLabel();
+        comboProgram = new javax.swing.JComboBox<>();
+        btnClear = new javax.swing.JButton();
+        comboYrLvl = new javax.swing.JComboBox<>();
+        btnSignIn = new javax.swing.JButton();
+        checkbxShowPass = new javax.swing.JCheckBox();
+        chckbxShowConfirm = new javax.swing.JCheckBox();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("jLabel1");
+        txtFname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFname.setText("FIRST NAME");
 
-        jLabel2.setText("jLabel2");
+        lblWarningMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWarningMsg.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-box-important-20.png")); // NOI18N
+        lblWarningMsg.setText("jLabel1");
 
-        jTextField1.setText("jTextField1");
+        txtLname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtLname.setText("LAST NAME");
+        txtLname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLnameActionPerformed(evt);
+            }
+        });
 
-        jTextField2.setText("jTextField2");
+        comboDepartment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton1.setText("jButton1");
+        txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtEmail.setText("EMAIL");
 
-        jButton2.setText("jButton2");
+        lblStudentFacultyID.setText("Student/Faculty ID");
 
-        jButton3.setText("jButton3");
+        fieldPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fieldPassword.setText("jPasswordField1");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txtStudentFacultyID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtStudentFacultyID.setText("Student/Faculty ID");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        lblUsername.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUsername.setText("Username");
 
-        panelGradient1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        panelGradient1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        panelGradient1.setLayer(jTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        panelGradient1.setLayer(jTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        panelGradient1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        panelGradient1.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        panelGradient1.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        panelGradient1.setLayer(jComboBox1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        panelGradient1.setLayer(jComboBox2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        fieldConfirmPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fieldConfirmPass.setText("jPasswordField2");
 
-        javax.swing.GroupLayout panelGradient1Layout = new javax.swing.GroupLayout(panelGradient1);
-        panelGradient1.setLayout(panelGradient1Layout);
-        panelGradient1Layout.setHorizontalGroup(
-            panelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelGradient1Layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(33, 33, 33)
-                .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelGradient1Layout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addGroup(panelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(108, 108, 108)
-                .addGroup(panelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                    .addComponent(jTextField2))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(panelGradient1Layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEmail.setText("Email");
+
+        btnGrp.add(rbtnStudent);
+        rbtnStudent.setText("STUDENT");
+        rbtnStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnStudentActionPerformed(evt);
+            }
+        });
+
+        lblPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPass.setText("jLabel3");
+
+        btnGrp.add(rbtnFaculty);
+        rbtnFaculty.setText("FACULTY");
+        rbtnFaculty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnFacultyActionPerformed(evt);
+            }
+        });
+
+        lblConfirmPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblConfirmPass.setText("jLabel4");
+
+        comboProgram.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnClear.setText("CLEAR");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
+        comboYrLvl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboYrLvl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboYrLvlActionPerformed(evt);
+            }
+        });
+
+        btnSignIn.setText("SIGN IN");
+        btnSignIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignInActionPerformed(evt);
+            }
+        });
+
+        checkbxShowPass.setText("Show");
+        checkbxShowPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkbxShowPassActionPerformed(evt);
+            }
+        });
+
+        chckbxShowConfirm.setText("show");
+        chckbxShowConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chckbxShowConfirmActionPerformed(evt);
+            }
+        });
+
+        btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        panelGradient2.setLayer(txtFname, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(lblWarningMsg, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(txtLname, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(comboDepartment, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(txtEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(lblStudentFacultyID, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(fieldPassword, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(txtStudentFacultyID, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(lblUsername, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(fieldConfirmPass, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(lblEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(rbtnStudent, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(lblPass, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(rbtnFaculty, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(lblConfirmPass, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(comboProgram, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(btnClear, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(comboYrLvl, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(btnSignIn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(checkbxShowPass, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(chckbxShowConfirm, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelGradient2.setLayer(btnBack, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout panelGradient2Layout = new javax.swing.GroupLayout(panelGradient2);
+        panelGradient2.setLayout(panelGradient2Layout);
+        panelGradient2Layout.setHorizontalGroup(
+            panelGradient2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGradient2Layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(lblStudentFacultyID)
+                .addGap(52, 52, 52)
+                .addComponent(txtStudentFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelGradient2Layout.createSequentialGroup()
                 .addGap(120, 120, 120)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(172, Short.MAX_VALUE))
-        );
-        panelGradient1Layout.setVerticalGroup(
-            panelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelGradient1Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(panelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(panelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblUsername)
+                .addGap(47, 47, 47)
+                .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(txtLname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelGradient2Layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(lblEmail)
+                .addGap(91, 91, 91)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelGradient2Layout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addComponent(lblPass)
+                .addGap(83, 83, 83)
+                .addComponent(fieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(checkbxShowPass))
+            .addGroup(panelGradient2Layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(lblConfirmPass)
+                .addGap(73, 73, 73)
+                .addComponent(fieldConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(chckbxShowConfirm))
+            .addGroup(panelGradient2Layout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addComponent(rbtnStudent)
+                .addGap(48, 48, 48)
+                .addComponent(rbtnFaculty))
+            .addGroup(panelGradient2Layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(comboProgram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(78, 78, 78)
-                .addGroup(panelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                .addGroup(panelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addGap(75, 75, 75))
+                .addComponent(comboYrLvl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelGradient2Layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(btnClear)
+                .addGap(8, 8, 8)
+                .addComponent(comboDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSignIn))
+            .addGroup(panelGradient2Layout.createSequentialGroup()
+                .addGap(220, 220, 220)
+                .addComponent(lblWarningMsg)
+                .addGap(129, 129, 129)
+                .addComponent(btnBack))
+        );
+        panelGradient2Layout.setVerticalGroup(
+            panelGradient2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGradient2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(panelGradient2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStudentFacultyID)
+                    .addComponent(txtStudentFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelGradient2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelGradient2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblUsername))
+                    .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(panelGradient2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelGradient2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblEmail))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(panelGradient2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPass)
+                    .addComponent(fieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkbxShowPass))
+                .addGap(18, 18, 18)
+                .addGroup(panelGradient2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelGradient2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblConfirmPass))
+                    .addComponent(fieldConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chckbxShowConfirm))
+                .addGap(34, 34, 34)
+                .addGroup(panelGradient2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rbtnStudent)
+                    .addComponent(rbtnFaculty))
+                .addGap(39, 39, 39)
+                .addGroup(panelGradient2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboProgram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboYrLvl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addGroup(panelGradient2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelGradient2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(panelGradient2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnClear)
+                            .addComponent(btnSignIn))))
+                .addGap(47, 47, 47)
+                .addGroup(panelGradient2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblWarningMsg)
+                    .addComponent(btnBack)))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(panelGradient2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 531, 557));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+    private void txtLnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLnameActionPerformed
+
+    private void rbtnStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnStudentActionPerformed
+        comboProgram.setVisible(true);
+        comboYrLvl.setVisible(true);
+        comboDepartment.setVisible(false);
+    }//GEN-LAST:event_rbtnStudentActionPerformed
+
+    private void rbtnFacultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnFacultyActionPerformed
+        comboDepartment.setVisible(true);
+        comboProgram.setVisible(false);
+        comboYrLvl.setVisible(false);
+    }//GEN-LAST:event_rbtnFacultyActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        txtStudentFacultyID.setText("");
+        txtFname.setText("");
+        txtLname.setText("");
+        txtEmail.setText("");
+        fieldPassword.setText("");
+        fieldConfirmPass.setText("");
+        rbtnStudent.setSelected(false);
+        rbtnFaculty.setSelected(false);
+        //combo box set the selected in index zero
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
+        role = null;
+        stuFaculID = txtStudentFacultyID.getText();
+        fname = txtFname.getText();
+        lname = txtLname.getText();
+        email = txtEmail.getText();
+        pass = String.valueOf(fieldPassword.getPassword());
+        confirmPass = String.valueOf(fieldPassword.getPassword());
+        program = (String) comboProgram.getSelectedItem();
+        yrLvl = (String) comboYrLvl.getSelectedItem();
+        department = (String) comboDepartment.getSelectedItem();
+
+        lblWarningMsg.setVisible(true);
+        if (stuFaculID.isEmpty() && fname.isEmpty() && lname.isEmpty() && email.isEmpty() && pass.isEmpty() && confirmPass.isEmpty() && !rbtnStudent.isSelected() && !rbtnFaculty.isSelected()) {
+            lblWarningMsg.setText("Please input all required fields.");
+        } else if (stuFaculID.isEmpty()) {
+            lblWarningMsg.setText("Please Specify your ID");
+        } else if (fname.isEmpty() || lname.isEmpty()) {
+            lblWarningMsg.setText("Please specify your name.");
+        } else if (email.isEmpty()) {
+            lblWarningMsg.setText("Please input your email.");
+        } else if (pass.isEmpty()) {
+            lblWarningMsg.setText("Please input your password.");
+        } else if (confirmPass.isEmpty()) {
+            lblWarningMsg.setText("Please input the confirmation password.");
+        } else if (!pass.equals(confirmPass)) {
+            lblWarningMsg.setText("Your password and confirmation password don't match.");
+        } else if (pass.length() < 8) {
+            lblWarningMsg.setText("Password should be at least 8 characters long.");
+        } else if (!fname.matches("[A-Za-z0-9\\-.]+") || !lname.matches("[A-Za-z0-9\\-.]+")) {
+            lblWarningMsg.setText("Name should only consist of letters, numbers, dashes, or dots.");
+        } else if (!email.matches("[\\w.-]+@[a-zA-Z0-9-]+\\.[a-zA-Z]{2,}")) {
+            lblWarningMsg.setText("Invalid email address format.");
+        } else if (program.equals("DEFAULT") || yrLvl.equals("DEFAULT")) {
+            lblWarningMsg.setText("Please specify your program/year level.");
+        } else if (department.equals("DEFAULT")) {
+            lblWarningMsg.setText("Please specify your Department.");
+        } else {
+            if (rbtnStudent.isSelected()) {
+                role = rbtnStudent.getText();
+            } else {
+                role = rbtnFaculty.getText();
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            status = "ACTIVE";
+            String hashedPassword = ComLabMethods.hashPassword(pass);
+            String msg = ComLabMethods.registerUser(status, role, stuFaculID, fname, lname, email, hashedPassword, program, yrLvl, department);
+            lblWarningMsg.setText(msg);
+            System.out.println("pogiiiii");
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+    }//GEN-LAST:event_btnSignInActionPerformed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                AddAccount dialog = new AddAccount(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void checkbxShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkbxShowPassActionPerformed
+        if (checkbxShowPass.isSelected()) {
+            fieldPassword.setEchoChar((char) 0);
+        } else {
+            fieldPassword.setEchoChar('*');
+        }
+    }//GEN-LAST:event_checkbxShowPassActionPerformed
 
+    private void chckbxShowConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckbxShowConfirmActionPerformed
+        if (chckbxShowConfirm.isSelected()) {
+            fieldConfirmPass.setEchoChar((char) 0);
+        } else {
+            fieldConfirmPass.setEchoChar('*');
+        }
+    }//GEN-LAST:event_chckbxShowConfirmActionPerformed
+
+    private void comboYrLvlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboYrLvlActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboYrLvlActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+     dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
+
+
+     private String stuFaculID, status, fname, lname, role, email, pass, confirmPass, program, yrLvl, department;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private computerlabsystem.Design.PanelGradient panelGradient1;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnClear;
+    private javax.swing.ButtonGroup btnGrp;
+    private javax.swing.JButton btnSignIn;
+    private javax.swing.JCheckBox chckbxShowConfirm;
+    private javax.swing.JCheckBox checkbxShowPass;
+    private javax.swing.JComboBox<String> comboDepartment;
+    private javax.swing.JComboBox<String> comboProgram;
+    private javax.swing.JComboBox<String> comboYrLvl;
+    private javax.swing.JPasswordField fieldConfirmPass;
+    private javax.swing.JPasswordField fieldPassword;
+    private javax.swing.JLabel lblConfirmPass;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblPass;
+    private javax.swing.JLabel lblStudentFacultyID;
+    private javax.swing.JLabel lblUsername;
+    private javax.swing.JLabel lblWarningMsg;
+    private computerlabsystem.Design.PanelGradient panelGradient2;
+    private javax.swing.JRadioButton rbtnFaculty;
+    private javax.swing.JRadioButton rbtnStudent;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtFname;
+    private javax.swing.JTextField txtLname;
+    private javax.swing.JTextField txtStudentFacultyID;
     // End of variables declaration//GEN-END:variables
 }

@@ -174,7 +174,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="590" y="10" width="100" height="30"/>
+                  <AbsoluteConstraints x="1110" y="0" width="100" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -184,7 +184,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="630" y="40" width="60" height="-1"/>
+                  <AbsoluteConstraints x="1140" y="30" width="60" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -208,6 +208,11 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
           <SubComponents>
             <Container class="computerlabsystem.Design.PanelGradient" name="homePage">
+              <Properties>
+                <Property name="colorPrimary" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="0" red="33" type="rgb"/>
+                </Property>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
                   <CardConstraints cardName="card6"/>
@@ -217,15 +222,57 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="1107" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="610" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="393" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="571" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="191" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JButton" name="jButton1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="PROGRAM"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="YEAR LEVEL"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton3">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="DEPARTMENT"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+                  </Events>
+                </Component>
+              </SubComponents>
             </Container>
             <Container class="computerlabsystem.Design.PanelGradient" name="accountPage">
               <Properties>
@@ -278,17 +325,19 @@
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="200" pref="200" max="-2" attributes="0"/>
                                           <Component id="lblSearch" min="-2" pref="100" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="txtSearchAcct" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txtStudentSearchAcct" min="-2" pref="215" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="180" pref="180" max="-2" attributes="0"/>
                                           <Component id="btnDeleteStuAcct" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="58" pref="58" max="-2" attributes="0"/>
-                                          <Component id="btnAddStuAcct1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnAddStudentAcct" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                                          <Component id="btnUpdateAccount" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="375" max="32767" attributes="0"/>
+                                  <EmptySpace min="375" pref="566" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="studentAcctPane" max="32767" attributes="0"/>
@@ -302,12 +351,15 @@
                                   <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblSearch" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtSearchAcct" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtStudentSearchAcct" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="btnDeleteStuAcct" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnAddStuAcct1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="btnAddStudentAcct" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnUpdateAccount" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
                                   <Component id="studentAcctPane" min="-2" pref="402" max="-2" attributes="0"/>
@@ -320,12 +372,15 @@
                           <Properties>
                             <Property name="text" type="java.lang.String" value="DELETE"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteStuAcctActionPerformed"/>
+                          </Events>
                         </Component>
                         <Container class="javax.swing.JScrollPane" name="studentAcctPane">
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTable" name="acctTable">
+                            <Component class="javax.swing.JTable" name="studentAcctTable">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="6" rowCount="50">
@@ -380,18 +435,32 @@
                         </Container>
                         <Component class="javax.swing.JLabel" name="lblSearch">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="jLabel1"/>
+                            <Property name="text" type="java.lang.String" value="SEARCH"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnAddStuAcct1">
+                        <Component class="javax.swing.JButton" name="btnAddStudentAcct">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="ADD USER"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddStudentAcctActionPerformed"/>
+                          </Events>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtSearchAcct">
+                        <Component class="javax.swing.JTextField" name="txtStudentSearchAcct">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="jTextField1"/>
+                            <Property name="text" type="java.lang.String" value="Enter Search"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtStudentSearchAcctKeyReleased"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnUpdateAccount">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="UPDATE"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateAccountActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -418,7 +487,7 @@
                                           <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
                                           <Component id="lblSearch1" min="-2" pref="100" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                          <Component id="txtSearchAcct2" min="-2" pref="277" max="-2" attributes="0"/>
+                                          <Component id="txtFacultySearchAcct" min="-2" pref="277" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -429,9 +498,9 @@
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="btnDeleteStuAcct1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnDeleteFacultyAcct" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="btnAddStuAcct2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnAddFacultyAccount" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="283" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -441,13 +510,13 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txtSearchAcct2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtFacultySearchAcct" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblSearch1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="btnAddStuAcct2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnDeleteStuAcct1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnAddFacultyAccount" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnDeleteFacultyAcct" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="facultyAcctPane" min="-2" pref="321" max="-2" attributes="0"/>
@@ -462,20 +531,30 @@
                             <Property name="text" type="java.lang.String" value="jLabel1"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnDeleteStuAcct1">
+                        <Component class="javax.swing.JButton" name="btnDeleteFacultyAcct">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="DELETE"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteFacultyAcctActionPerformed"/>
+                          </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnAddStuAcct2">
+                        <Component class="javax.swing.JButton" name="btnAddFacultyAccount">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="ADD USER"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddFacultyAccountActionPerformed"/>
+                          </Events>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtSearchAcct2">
+                        <Component class="javax.swing.JTextField" name="txtFacultySearchAcct">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="jTextField1"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFacultySearchAcctActionPerformed"/>
+                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtFacultySearchAcctKeyReleased"/>
+                          </Events>
                         </Component>
                         <Container class="javax.swing.JScrollPane" name="facultyAcctPane">
 
@@ -549,63 +628,45 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="245" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="330" max="-2" attributes="0"/>
                                   <Component id="btnDeleteLogs" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                                  <Component id="btnAddSlogs" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                                   <Component id="btnUpdateLogs" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="258" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                          <Component id="lblSeachLogs" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                                          <Component id="txtSearchLogs" min="-2" pref="227" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="rbtnStudentLogs" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                          <Component id="rbtnFacultyLogs" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                                          <Component id="rbtnVisitorsLogs" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
+                                  <Component id="lblSeachLogs" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="txtSearchLogs" min="-2" pref="227" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="logsPane" alignment="0" min="-2" pref="947" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                  <Component id="logsPane" min="-2" pref="1064" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace pref="160" max="32767" attributes="0"/>
+                          <EmptySpace pref="26" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="rbtnStudentLogs" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rbtnFacultyLogs" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rbtnVisitorsLogs" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtSearchLogs" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblSeachLogs" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtSearchLogs" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="15" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnDeleteLogs" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnAddSlogs" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnUpdateLogs" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="34" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btnDeleteLogs" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnUpdateLogs" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="logsPane" min="-2" pref="399" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -618,16 +679,46 @@
                     <Component class="javax.swing.JTable" name="logsTable">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="4" rowCount="4">
-                            <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                            <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                            <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                            <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                          <Table columnCount="9" rowCount="4">
+                            <Column editable="false" title="LOGS ID" type="java.lang.Object"/>
+                            <Column editable="false" title="ROLE" type="java.lang.Object"/>
+                            <Column editable="false" title="STUDENT / FACULTY ID" type="java.lang.Object"/>
+                            <Column editable="false" title="FULL NAME" type="java.lang.Object"/>
+                            <Column editable="false" title="PROGRAM" type="java.lang.Object"/>
+                            <Column editable="false" title="YEAR LEVEL" type="java.lang.Object"/>
+                            <Column editable="false" title="DEPARTMENT" type="java.lang.Object"/>
+                            <Column editable="false" title="LOG IN TIME" type="java.lang.Object"/>
+                            <Column editable="false" title="LOG OUT TIME" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="20" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="30" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="100" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="false">
                               <Title/>
                               <Editor/>
                               <Renderer/>
@@ -642,7 +733,7 @@
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="100" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
@@ -660,40 +751,26 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="DELETE"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnAddSlogs">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="ADD LOGS"/>
-                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteLogsActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnUpdateLogs">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="UPDATE"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="rbtnStudentLogs">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="STUDENT"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JRadioButton" name="rbtnFacultyLogs">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="FACULTY"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JTextField" name="txtSearchLogs">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Enter Search"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSearchLogsKeyReleased"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblSeachLogs">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Search"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JRadioButton" name="rbtnVisitorsLogs">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="VISITORS"/>
                   </Properties>
                 </Component>
               </SubComponents>

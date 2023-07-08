@@ -25,6 +25,13 @@ public class Data {
     private String userLogin;
     private String userLogout;
 
+    public Data(String program, String yrlvl, String department) {
+        this.program = program;
+        this.yrlvl = yrlvl;
+        this.department = department;
+    }
+
+
     public Data(int logsID, String studentfacultyID, String role, String firstName, String lastName, String email, String program, String yrlvl, String department, String userTimeIn, String userTimeOut) {
         this.logsID = logsID;
         this.studentfacultyID = studentfacultyID;
@@ -39,7 +46,8 @@ public class Data {
         this.userLogout = userTimeOut;
     }
 
-    public Data(int logsID, String studentfacultyID, String role, String fullname, String program, String yrlvl, String department, String userTimeIn, String userTimeOut) {
+    
+    public Data(int logsID, String role, String studentfacultyID, String fullname, String program, String yrlvl, String department, String userTimeIn, String userTimeOut) {
         this.logsID = logsID;
         this.studentfacultyID = studentfacultyID;
         this.role = role;
@@ -64,13 +72,15 @@ public class Data {
     }
 
     //Faculty account
-    public Data(String studentfacultyID, String role, String firstName, String lastName, String email) {
+
+    public Data(String studentfacultyID, String department, String firstName, String lastName, String email) {
         this.studentfacultyID = studentfacultyID;
-        this.role = role;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.department = department;
     }
+   
 
     //Get Logs
     public int getUserID() {

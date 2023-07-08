@@ -33,10 +33,10 @@ public class LoginPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblEmail = new javax.swing.JLabel();
+        lbStudentFacultyID = new javax.swing.JLabel();
         lblPass = new javax.swing.JLabel();
         fieldPass = new javax.swing.JPasswordField();
-        txtEmail = new javax.swing.JTextField();
+        txtStudentFacultyID = new javax.swing.JTextField();
         btnClear = new javax.swing.JButton();
         btnLogin = new javax.swing.JButton();
         btnGoToSignUp = new javax.swing.JButton();
@@ -44,16 +44,16 @@ public class LoginPanel extends javax.swing.JPanel {
         chckbxShowPass = new javax.swing.JCheckBox();
         lblAttemptsLeft = new javax.swing.JLabel();
 
-        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEmail.setText("EMAIL");
+        lbStudentFacultyID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbStudentFacultyID.setText("Student/Faculty ID");
 
         lblPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPass.setText("jLabel2");
+        lblPass.setText("Password");
 
         fieldPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtEmail.setText("emial");
+        txtStudentFacultyID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtStudentFacultyID.setText("ID");
 
         btnClear.setText("CLEAR");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +82,7 @@ public class LoginPanel extends javax.swing.JPanel {
             }
         });
 
+        lblAttemptsLeft.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAttemptsLeft.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -91,41 +92,44 @@ public class LoginPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(lblAttemptsLeft))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblPass)
-                            .addComponent(lblEmail))
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(fieldPass))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chckbxShowPass))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(lblWarningMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(btnClear)
                         .addGap(55, 55, 55)
-                        .addComponent(btnLogin)))
+                        .addComponent(btnLogin))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(154, 154, 154)
+                        .addComponent(lblAttemptsLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(lblWarningMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(btnGoToSignUp)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnGoToSignUp)
-                .addGap(136, 136, 136))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(lbStudentFacultyID)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtStudentFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(lblPass)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addComponent(fieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chckbxShowPass)
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addGap(118, 118, 118)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEmail)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
+                    .addComponent(lbStudentFacultyID)
+                    .addComponent(txtStudentFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPass)
                     .addComponent(fieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -134,11 +138,11 @@ public class LoginPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogin)
                     .addComponent(btnClear))
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addComponent(btnGoToSignUp)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(lblWarningMsg)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(lblAttemptsLeft)
                 .addContainerGap(56, Short.MAX_VALUE))
         );
@@ -153,18 +157,18 @@ public class LoginPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_chckbxShowPassActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        email = txtEmail.getText();
+        stuFaculID = txtStudentFacultyID.getText();
         pass = String.valueOf(fieldPass.getPassword());
 
         lblWarningMsg.setVisible(true);
-        if (email.isEmpty() && pass.isEmpty()) {
+        if (stuFaculID.isEmpty() && pass.isEmpty()) {
             lblWarningMsg.setText("Please input in the space provided");
-        } else if (email.isEmpty()) {
+        } else if (stuFaculID.isEmpty()) {
             lblWarningMsg.setText("Please input your email");
         } else if (pass.isEmpty()) {
             lblWarningMsg.setText("Please input your password");
         } else {
-            String userDetails = ComLabMethods.getUserDetails(email, pass);
+            String userDetails = ComLabMethods.getUserDetails(stuFaculID, pass);
             if (!userDetails.equals("false")) {
                 String[] parts = userDetails.split(",");
                 String sfID = parts[0];
@@ -172,12 +176,13 @@ public class LoginPanel extends javax.swing.JPanel {
                 String lname = parts[2];
                 String userRole = parts[3];
                 String fullName = fname + " " + lname;
-                String hashedPassword = ComLabMethods.hashPassword(pass);
+              //  String hashedPassword = ComLabMethods.hashPassword(pass);
                 if (userRole.equals("ADMIN")) {
                     AdminDashboard admn = new AdminDashboard(fname);
                     admn.setVisible(true);
                 } else if (userRole.equals("STUDENT") || userRole.equals("FACULTY")) {
-                    ComLabMethods.logUserLogin(sfID, fullName, hashedPassword);
+                    ComLabMethods.logUserLogin(sfID, fullName, pass);
+                    System.out.println("anooonnaaaaa");
                 }
             } else {
                 attempt--;
@@ -194,22 +199,23 @@ public class LoginPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        txtEmail.setText("");
+        txtStudentFacultyID.setText("");
         fieldPass.setText("");
+        lblWarningMsg.setVisible(false);
     }//GEN-LAST:event_btnClearActionPerformed
 
     private static int attempt = 3;
-    private String email, pass;
+    private String stuFaculID, pass;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnGoToSignUp;
     private javax.swing.JButton btnLogin;
     private javax.swing.JCheckBox chckbxShowPass;
     private javax.swing.JPasswordField fieldPass;
+    private javax.swing.JLabel lbStudentFacultyID;
     private javax.swing.JLabel lblAttemptsLeft;
-    private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblPass;
     private javax.swing.JLabel lblWarningMsg;
-    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtStudentFacultyID;
     // End of variables declaration//GEN-END:variables
 }
