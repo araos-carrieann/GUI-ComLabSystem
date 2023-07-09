@@ -299,7 +299,7 @@ public class AddAccount extends javax.swing.JDialog {
                     .addComponent(btnBack)))
         );
 
-        getContentPane().add(panelGradient2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 531, 557));
+        getContentPane().add(panelGradient2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -7, 531, 570));
 
         pack();
         setLocationRelativeTo(null);

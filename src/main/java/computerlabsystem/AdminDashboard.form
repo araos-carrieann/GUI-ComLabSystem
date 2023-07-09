@@ -334,7 +334,7 @@
                                           <EmptySpace min="58" pref="58" max="-2" attributes="0"/>
                                           <Component id="btnAddStudentAcct" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                                          <Component id="btnUpdateAccount" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnUpdateStudentAccount" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="375" pref="566" max="32767" attributes="0"/>
@@ -358,7 +358,7 @@
                                       <Component id="btnDeleteStuAcct" min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="btnAddStudentAcct" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnUpdateAccount" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnUpdateStudentAccount" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
@@ -454,12 +454,12 @@
                             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtStudentSearchAcctKeyReleased"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnUpdateAccount">
+                        <Component class="javax.swing.JButton" name="btnUpdateStudentAccount">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="UPDATE"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateAccountActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateStudentAccountActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>
@@ -483,15 +483,18 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
-                                          <Component id="lblSearch1" min="-2" pref="100" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                          <Component id="txtFacultySearchAcct" min="-2" pref="277" max="-2" attributes="0"/>
-                                      </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                           <Component id="facultyAcctPane" min="-2" pref="697" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
+                                          <Component id="lblSearch1" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="btnUpdateFacultyAcct" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtFacultySearchAcct" min="-2" pref="277" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                                   <EmptySpace pref="373" max="32767" attributes="0"/>
@@ -513,12 +516,21 @@
                                       <Component id="txtFacultySearchAcct" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblSearch1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="btnAddFacultyAccount" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnDeleteFacultyAcct" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="btnAddFacultyAccount" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnDeleteFacultyAcct" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btnUpdateFacultyAcct" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="facultyAcctPane" min="-2" pref="321" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -607,6 +619,14 @@
                             </Component>
                           </SubComponents>
                         </Container>
+                        <Component class="javax.swing.JButton" name="btnUpdateFacultyAcct">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="UPDATE"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateFacultyAcctActionPerformed"/>
+                          </Events>
+                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>

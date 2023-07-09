@@ -28,7 +28,7 @@ public class ComLabMethods {
         String message = null;
         try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
             // Create the table if it doesn't exist
-            String createTableQuery = "CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, status VARCHAR(10) NOT NULL, studentFacultyID VARCHAR(10) NOT NULL, role VARCHAR(10) NOT NULL, firstName VARCHAR(50) NOT NULL, lastName VARCHAR(50) NOT NULL, email VARCHAR(50) NOT NULL, password VARCHAR(60) NOT NULL, program VARCHAR(30) DEFAULT 'NOT APPLICABLE', yearLvl VARCHAR(10) DEFAULT 'NOT APPLICABLE', department VARCHAR(30) DEFAULT 'NOT APPLICABLE')";
+            String createTableQuery = "CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, status VARCHAR(10) NOT NULL, studentFacultyID VARCHAR(10) NOT NULL, role VARCHAR(10) NOT NULL, firstName VARCHAR(50) NOT NULL, lastName VARCHAR(50) NOT NULL, email VARCHAR(50) NOT NULL, password VARCHAR(60) NOT NULL, program VARCHAR(30), yearLvl VARCHAR(10), department VARCHAR(30)')";
             stmt.executeUpdate(createTableQuery);
 
             // Prepare the SELECT query with parameters

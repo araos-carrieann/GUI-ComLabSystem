@@ -21,19 +21,46 @@ public class UpdateAcct extends javax.swing.JDialog {
         comboProgram.setVisible(false);
         comboYrLvl.setVisible(false);
         comboDepartment.setVisible(false);
+
     }
 
-    public void UpdateAcct(String studentID, String email, String firstName, String lastName, String program, String yearLevel) {
-        txtStudentFacultyID.setText(studentID);
+public void setStudentData(String stuFaculID, String email, String firstName, String lastName, String program, String yearLevel) {
+        this.stuFaculID = stuFaculID;
+        this.email = email;
+        this.fname = firstName;
+        this.lname = lastName;
+        this.program = program;
+        this.yearLevel = yearLevel;
+        
+        // Set the values to the corresponding text fields or combo boxes
+        txtStudentFacultyID.setText(stuFaculID);
         txtEmail.setText(email);
-        txtFname.setText(firstName);
-        txtLname.setText(lastName);
+        txtFname.setText(fname);
+        txtLname.setText(lname);
         rbtnStudent.setSelected(true);
+        comboProgram.setVisible(true);
+        comboYrLvl.setVisible(true);
         comboProgram.setSelectedItem(program);
         comboYrLvl.setSelectedItem(yearLevel);
-
     }
 
+public void setFacultyData(String stuFaculID, String department, String email, String firstName, String lastName) {
+        this.stuFaculID = stuFaculID;
+        this.department = department;
+        this.email = email;
+        this.fname = firstName;
+        this.lname = lastName;
+
+        
+        // Set the values to the corresponding text fields or combo boxes
+        rbtnFaculty.setSelected(true);
+        txtStudentFacultyID.setText(stuFaculID);
+        txtEmail.setText(email);
+        txtFname.setText(fname);
+        txtLname.setText(lname);
+        comboDepartment.setVisible(true);
+        comboDepartment.setSelectedItem(department);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -148,6 +175,7 @@ public class UpdateAcct extends javax.swing.JDialog {
         getContentPane().add(panelGradient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 430));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtLnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLnameActionPerformed
@@ -183,7 +211,7 @@ public class UpdateAcct extends javax.swing.JDialog {
         lname = txtLname.getText();
         email = txtEmail.getText();
         program = (String) comboProgram.getSelectedItem();
-        yrLvl = (String) comboYrLvl.getSelectedItem();
+        yearLevel = (String) comboYrLvl.getSelectedItem();
         department = (String) comboDepartment.getSelectedItem();
 
         lblWarningMsg.setVisible(true);
@@ -199,7 +227,7 @@ public class UpdateAcct extends javax.swing.JDialog {
             lblWarningMsg.setText("Name should only consist of letters, numbers, dashes, or dots.");
         } else if (!email.matches("[\\w.-]+@[a-zA-Z0-9-]+\\.[a-zA-Z]{2,}")) {
             lblWarningMsg.setText("Invalid email address format.");
-        } else if (program.equals("DEFAULT") || yrLvl.equals("DEFAULT")) {
+        } else if (program.equals("DEFAULT") || yearLevel.equals("DEFAULT")) {
             lblWarningMsg.setText("Please specify your program/year level.");
         } else if (department.equals("DEFAULT")) {
             lblWarningMsg.setText("Please specify your Department.");
@@ -209,7 +237,7 @@ public class UpdateAcct extends javax.swing.JDialog {
             } else {
                 role = rbtnFaculty.getText();
             }
-            //   String msg = ComLabMethods.registerUser(status, role, stuFaculID, fname, lname, email, program, yrLvl, department);
+            //   String msg = ComLabMethods.registerUser(status, role, stuFaculID, fname, lname, email, program, yearLevel, department);
             // lblWarningMsg.setText(msg);
             System.out.println("pogiiiii");
         }
@@ -260,7 +288,7 @@ public class UpdateAcct extends javax.swing.JDialog {
         });
     }
 
-    private String stuFaculID, status, fname, lname, role, email, pass, confirmPass, program, yrLvl, department;
+    private String stuFaculID, status, fname, lname, role, email, program, yearLevel, department;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> comboDepartment;

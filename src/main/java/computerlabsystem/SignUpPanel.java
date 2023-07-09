@@ -371,22 +371,22 @@ public class SignUpPanel extends javax.swing.JPanel {
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         role = null;
-        stuFaculID = txtStudentFacultyID.getText();
-        fname = txtFname.getText();
-        lname = txtLname.getText();
+        studentFacultyID = txtStudentFacultyID.getText();
+        firstName = txtFname.getText();
+        lastName = txtLname.getText();
         email = txtEmail.getText();
         pass = String.valueOf(fieldPassword.getPassword());
         confirmPass = String.valueOf(fieldPassword.getPassword());
         program = (String) comboProgram.getSelectedItem();
-        yrLvl = (String) comboYrLvl.getSelectedItem();
+        yearLevel = (String) comboYrLvl.getSelectedItem();
         department = (String) comboDepartment.getSelectedItem();
 
         lblWarningMsg.setVisible(true);
-        if (stuFaculID.isEmpty() && fname.isEmpty() && lname.isEmpty() && email.isEmpty() && pass.isEmpty() && confirmPass.isEmpty() && !rbtnStudent.isSelected() && !rbtnFaculty.isSelected()) {
+        if (studentFacultyID.isEmpty() && firstName.isEmpty() && lastName.isEmpty() && email.isEmpty() && pass.isEmpty() && confirmPass.isEmpty() && !rbtnStudent.isSelected() && !rbtnFaculty.isSelected()) {
             lblWarningMsg.setText("Please input all required fields.");
-        } else if (stuFaculID.isEmpty()) {
+        } else if (studentFacultyID.isEmpty()) {
             lblWarningMsg.setText("Please Specify your ID");
-        } else if (fname.isEmpty() || lname.isEmpty()) {
+        } else if (firstName.isEmpty() || lastName.isEmpty()) {
             lblWarningMsg.setText("Please specify your name.");
         } else if (email.isEmpty()) {
             lblWarningMsg.setText("Please input your email.");
@@ -398,23 +398,26 @@ public class SignUpPanel extends javax.swing.JPanel {
             lblWarningMsg.setText("Your password and confirmation password don't match.");
         } else if (pass.length() < 8) {
             lblWarningMsg.setText("Password should be at least 8 characters long.");
-        } else if (!fname.matches("[A-Za-z0-9\\-.]+") || !lname.matches("[A-Za-z0-9\\-.]+")) {
+        } else if (!firstName.matches("[A-Za-z0-9\\-.]+") || !lastName.matches("[A-Za-z0-9\\-.]+")) {
             lblWarningMsg.setText("Name should only consist of letters, numbers, dashes, or dots.");
         } else if (!email.matches("[\\w.-]+@[a-zA-Z0-9-]+\\.[a-zA-Z]{2,}")) {
             lblWarningMsg.setText("Invalid email address format.");
-        } else if (program.equals("DEFAULT") || yrLvl.equals("DEFAULT")) {
+        } else if (program.equals("DEFAULT") || yearLevel.equals("DEFAULT")) {
             lblWarningMsg.setText("Please specify your program/year level.");
         } else if (department.equals("DEFAULT")) {
             lblWarningMsg.setText("Please specify your Department.");
         } else {
             if (rbtnStudent.isSelected()) {
                 role = rbtnStudent.getText();
+                department = null;
             } else {
                 role = rbtnFaculty.getText();
+                program = null;
+                yearLevel = null;
             }
             status = "ACTIVE";
             String hashedPassword = ComLabMethods.hashPassword(pass);
-            String msg = ComLabMethods.registerUser(status, role, stuFaculID, fname, lname, email, hashedPassword, program, yrLvl, department);
+            String msg = ComLabMethods.registerUser(status, role, studentFacultyID, firstName, lastName, email, hashedPassword, program, yearLevel, department);
             lblWarningMsg.setText(msg);
             System.out.println("pogiiiii");
         }
@@ -450,7 +453,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboYrLvlActionPerformed
 
-    private String stuFaculID, status, fname, lname, role, email, pass, confirmPass, program, yrLvl, department;
+    private String studentFacultyID, status, firstName, lastName, role, email, pass, confirmPass, program, yearLevel, department;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBackToLogin;
     private javax.swing.JButton btnClear;
