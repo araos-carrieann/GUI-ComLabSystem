@@ -36,6 +36,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         displayStudentAccount();
         displayFacultyAccount();
         displayLogs();
+        displayAdminAccount();
 
     }
 
@@ -77,6 +78,26 @@ public class AdminDashboard extends javax.swing.JFrame {
             Object[] row = {acct.getStudentfacultyID(), acct.getDepartment(), acct.getFirstName(), acct.getLastName(), acct.getEmail()};
             facultyAccount.addRow(row);
         }
+    }
+    
+     private void displayAdminAccount() {
+        DefaultTableModel adminAccount = (DefaultTableModel) adminAccountTable.getModel();
+        adminAccount.setRowCount(0);
+
+        List<Data> acctList = ComLabMethods.getAllAdminDatas();
+
+        for (Data acct : acctList) {
+            Object[] row = {acct.getStudentfacultyID(), acct.getFirstName(), acct.getLastName(), acct.getEmail()};
+            adminAccount.addRow(row);
+        }
+    }
+     
+    public void searchAdminAcct(String search) {
+        DefaultTableModel adminyAccount = (DefaultTableModel) adminAccountTable.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(adminyAccount);
+        adminAccountTable.setRowSorter(trs);
+        trs.setRowFilter(RowFilter.regexFilter(search));
+
     }
 
     public void searchLogs(String search) {
@@ -190,23 +211,29 @@ public class AdminDashboard extends javax.swing.JFrame {
         btnDeleteStuAcct = new javax.swing.JButton();
         studentAcctPane = new javax.swing.JScrollPane();
         studentAcctTable = new javax.swing.JTable();
-        lblSearch = new javax.swing.JLabel();
+        lblSearchStudent = new javax.swing.JLabel();
         btnAddStudentAcct = new javax.swing.JButton();
         txtStudentSearchAcct = new javax.swing.JTextField();
         btnUpdateStudentAccount = new javax.swing.JButton();
         facultyAccountPanel = new computerlabsystem.Design.PanelGradient();
-        lblSearch1 = new javax.swing.JLabel();
+        lblSearchFaculty = new javax.swing.JLabel();
         btnDeleteFacultyAcct = new javax.swing.JButton();
         btnAddFacultyAccount = new javax.swing.JButton();
         txtFacultySearchAcct = new javax.swing.JTextField();
         facultyAcctPane = new javax.swing.JScrollPane();
         facultyAcctTable = new javax.swing.JTable();
         btnUpdateFacultyAcct = new javax.swing.JButton();
+        adminAccountPanel = new computerlabsystem.Design.PanelGradient();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        adminAccountTable = new javax.swing.JTable();
+        lblSearchAdmin = new javax.swing.JLabel();
+        btnDeleteAdminAcct = new javax.swing.JButton();
+        txtAdminSearchAcct = new javax.swing.JTextField();
+        btnUpdateAdminAcct = new javax.swing.JButton();
         logsPage = new computerlabsystem.Design.PanelGradient();
         logsPane = new javax.swing.JScrollPane();
         logsTable = new javax.swing.JTable();
         btnDeleteLogs = new javax.swing.JButton();
-        btnUpdateLogs = new javax.swing.JButton();
         txtSearchLogs = new javax.swing.JTextField();
         lblSeachLogs = new javax.swing.JLabel();
 
@@ -342,8 +369,6 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         ));
         mostLogsTable.setShowGrid(true);
-        mostLogsTable.setShowHorizontalLines(true);
-        mostLogsTable.setShowVerticalLines(true);
         jScrollPane1.setViewportView(mostLogsTable);
 
         longestTimeSpentTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -367,8 +392,6 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         longestTimeSpentTable.setShowGrid(true);
-        longestTimeSpentTable.setShowHorizontalLines(true);
-        longestTimeSpentTable.setShowVerticalLines(true);
         jScrollPane2.setViewportView(longestTimeSpentTable);
 
         homePage.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -488,7 +511,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         ));
         studentAcctPane.setViewportView(studentAcctTable);
 
-        lblSearch.setText("SEARCH");
+        lblSearchStudent.setText("SEARCH");
 
         btnAddStudentAcct.setText("ADD USER");
         btnAddStudentAcct.addActionListener(new java.awt.event.ActionListener() {
@@ -513,7 +536,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         studentAccountPanel.setLayer(btnDeleteStuAcct, javax.swing.JLayeredPane.DEFAULT_LAYER);
         studentAccountPanel.setLayer(studentAcctPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        studentAccountPanel.setLayer(lblSearch, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        studentAccountPanel.setLayer(lblSearchStudent, javax.swing.JLayeredPane.DEFAULT_LAYER);
         studentAccountPanel.setLayer(btnAddStudentAcct, javax.swing.JLayeredPane.DEFAULT_LAYER);
         studentAccountPanel.setLayer(txtStudentSearchAcct, javax.swing.JLayeredPane.DEFAULT_LAYER);
         studentAccountPanel.setLayer(btnUpdateStudentAccount, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -526,7 +549,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addGroup(studentAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(studentAccountPanelLayout.createSequentialGroup()
                         .addGap(200, 200, 200)
-                        .addComponent(lblSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblSearchStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtStudentSearchAcct, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(studentAccountPanelLayout.createSequentialGroup()
@@ -546,7 +569,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(studentAccountPanelLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(studentAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSearch)
+                    .addComponent(lblSearchStudent)
                     .addComponent(txtStudentSearchAcct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(studentAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -562,7 +585,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         facultyAccountPanel.setColorPrimary(new java.awt.Color(255, 255, 0));
 
-        lblSearch1.setText("jLabel1");
+        lblSearchFaculty.setText("jLabel1");
 
         btnDeleteFacultyAcct.setText("DELETE");
         btnDeleteFacultyAcct.addActionListener(new java.awt.event.ActionListener() {
@@ -610,7 +633,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        facultyAccountPanel.setLayer(lblSearch1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        facultyAccountPanel.setLayer(lblSearchFaculty, javax.swing.JLayeredPane.DEFAULT_LAYER);
         facultyAccountPanel.setLayer(btnDeleteFacultyAcct, javax.swing.JLayeredPane.DEFAULT_LAYER);
         facultyAccountPanel.setLayer(btnAddFacultyAccount, javax.swing.JLayeredPane.DEFAULT_LAYER);
         facultyAccountPanel.setLayer(txtFacultySearchAcct, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -621,25 +644,25 @@ public class AdminDashboard extends javax.swing.JFrame {
         facultyAccountPanel.setLayout(facultyAccountPanelLayout);
         facultyAccountPanelLayout.setHorizontalGroup(
             facultyAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(facultyAccountPanelLayout.createSequentialGroup()
-                .addGroup(facultyAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(facultyAccountPanelLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(facultyAcctPane, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(facultyAccountPanelLayout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(lblSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addGroup(facultyAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnUpdateFacultyAcct)
-                            .addComponent(txtFacultySearchAcct, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(373, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, facultyAccountPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnDeleteFacultyAcct)
                 .addGap(71, 71, 71)
                 .addComponent(btnAddFacultyAccount)
                 .addGap(283, 283, 283))
+            .addGroup(facultyAccountPanelLayout.createSequentialGroup()
+                .addGroup(facultyAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(facultyAccountPanelLayout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(lblSearchFaculty, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addGroup(facultyAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnUpdateFacultyAcct)
+                            .addComponent(txtFacultySearchAcct, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(facultyAccountPanelLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(facultyAcctPane, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(357, Short.MAX_VALUE))
         );
         facultyAccountPanelLayout.setVerticalGroup(
             facultyAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -647,7 +670,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(facultyAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFacultySearchAcct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSearch1))
+                    .addComponent(lblSearchFaculty))
                 .addGroup(facultyAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(facultyAccountPanelLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
@@ -664,6 +687,90 @@ public class AdminDashboard extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("FACULTY", facultyAccountPanel);
+
+        adminAccountPanel.setColorPrimary(new java.awt.Color(0, 204, 255));
+
+        adminAccountTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "NAME", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(adminAccountTable);
+
+        lblSearchAdmin.setText("jLabel1");
+
+        btnDeleteAdminAcct.setText("DELETE");
+        btnDeleteAdminAcct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteAdminAcctActionPerformed(evt);
+            }
+        });
+
+        txtAdminSearchAcct.setText("jTextField1");
+        txtAdminSearchAcct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAdminSearchAcctActionPerformed(evt);
+            }
+        });
+        txtAdminSearchAcct.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAdminSearchAcctKeyReleased(evt);
+            }
+        });
+
+        btnUpdateAdminAcct.setText("jButton4");
+        btnUpdateAdminAcct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateAdminAcctActionPerformed(evt);
+            }
+        });
+
+        adminAccountPanel.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        adminAccountPanel.setLayer(lblSearchAdmin, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        adminAccountPanel.setLayer(btnDeleteAdminAcct, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        adminAccountPanel.setLayer(txtAdminSearchAcct, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        adminAccountPanel.setLayer(btnUpdateAdminAcct, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout adminAccountPanelLayout = new javax.swing.GroupLayout(adminAccountPanel);
+        adminAccountPanel.setLayout(adminAccountPanelLayout);
+        adminAccountPanelLayout.setHorizontalGroup(
+            adminAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(adminAccountPanelLayout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(adminAccountPanelLayout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(lblSearchAdmin)
+                .addGap(33, 33, 33)
+                .addGroup(adminAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(adminAccountPanelLayout.createSequentialGroup()
+                        .addComponent(btnUpdateAdminAcct)
+                        .addGap(135, 135, 135)
+                        .addComponent(btnDeleteAdminAcct))
+                    .addComponent(txtAdminSearchAcct, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        adminAccountPanelLayout.setVerticalGroup(
+            adminAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(adminAccountPanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(adminAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSearchAdmin)
+                    .addComponent(txtAdminSearchAcct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58)
+                .addGroup(adminAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDeleteAdminAcct)
+                    .addComponent(btnUpdateAdminAcct))
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jTabbedPane1.addTab("ADMINS", adminAccountPanel);
 
         accountPage.setLayer(jTabbedPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -722,8 +829,6 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        btnUpdateLogs.setText("UPDATE");
-
         txtSearchLogs.setText("Enter Search");
         txtSearchLogs.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -735,7 +840,6 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         logsPage.setLayer(logsPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
         logsPage.setLayer(btnDeleteLogs, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        logsPage.setLayer(btnUpdateLogs, javax.swing.JLayeredPane.DEFAULT_LAYER);
         logsPage.setLayer(txtSearchLogs, javax.swing.JLayeredPane.DEFAULT_LAYER);
         logsPage.setLayer(lblSeachLogs, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -747,9 +851,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addGroup(logsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(logsPageLayout.createSequentialGroup()
                         .addGap(330, 330, 330)
-                        .addComponent(btnDeleteLogs)
-                        .addGap(88, 88, 88)
-                        .addComponent(btnUpdateLogs))
+                        .addComponent(btnDeleteLogs))
                     .addGroup(logsPageLayout.createSequentialGroup()
                         .addGap(244, 244, 244)
                         .addComponent(lblSeachLogs)
@@ -768,9 +870,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                     .addComponent(lblSeachLogs)
                     .addComponent(txtSearchLogs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(logsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDeleteLogs, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnUpdateLogs, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addComponent(btnDeleteLogs)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(logsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
@@ -984,15 +1084,58 @@ public class AdminDashboard extends javax.swing.JFrame {
         dialog.setVisible(true);
     }//GEN-LAST:event_lblAdminNameMouseClicked
 
+    private void btnDeleteAdminAcctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAdminAcctActionPerformed
+        DefaultTableModel model = (DefaultTableModel) adminAccountTable.getModel();
+        int selectedRow = adminAccountTable.getSelectedRow();
+        if (selectedRow != 1) {
+            String adminID = (String) model.getValueAt(selectedRow, 0);
+            model.removeRow(selectedRow);
+            ComLabMethods.deleteAcct(adminID);
+        }
+
+    }//GEN-LAST:event_btnDeleteAdminAcctActionPerformed
+
+    private void txtAdminSearchAcctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdminSearchAcctActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAdminSearchAcctActionPerformed
+
+    private void txtAdminSearchAcctKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAdminSearchAcctKeyReleased
+        String search = txtAdminSearchAcct.getText();
+        searchAdminAcct(search);
+    }//GEN-LAST:event_txtAdminSearchAcctKeyReleased
+
+    private void btnUpdateAdminAcctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateAdminAcctActionPerformed
+         DefaultTableModel model = (DefaultTableModel) adminAccountTable.getModel();
+        int selectedRow = adminAccountTable.getSelectedRow();
+
+        if (selectedRow != -1) {
+            // Get the values of each column in the selected row
+            String facultyAdminID = (String) model.getValueAt(selectedRow, 0);
+            String email = (String) model.getValueAt(selectedRow, 1);
+            String firstName = (String) model.getValueAt(selectedRow, 2);
+            String lastName = (String) model.getValueAt(selectedRow, 3);
+
+            int id = ComLabMethods.getIDforUpdate(facultyAdminID);
+            UpdateAcct updateDialog = new UpdateAcct(new javax.swing.JFrame(), true);
+            updateDialog.setAdminData(id, facultyAdminID, email, firstName, lastName);
+            updateDialog.setVisible(true);
+            displayFacultyAccount();
+
+        }
+    }//GEN-LAST:event_btnUpdateAdminAcctActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private computerlabsystem.Design.PanelGradient accountPage;
+    private computerlabsystem.Design.PanelGradient adminAccountPanel;
+    private javax.swing.JTable adminAccountTable;
     private javax.swing.JButton btnAddFacultyAccount;
     private javax.swing.JButton btnAddStudentAcct;
+    private javax.swing.JButton btnDeleteAdminAcct;
     private javax.swing.JButton btnDeleteFacultyAcct;
     private javax.swing.JButton btnDeleteLogs;
     private javax.swing.JButton btnDeleteStuAcct;
+    private javax.swing.JButton btnUpdateAdminAcct;
     private javax.swing.JButton btnUpdateFacultyAcct;
-    private javax.swing.JButton btnUpdateLogs;
     private javax.swing.JButton btnUpdateStudentAccount;
     private computerlabsystem.Design.PanelGradient cardPanel;
     private computerlabsystem.Design.PanelGradient facultyAccountPanel;
@@ -1005,6 +1148,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblAccounts;
     private javax.swing.JLabel lblAdmin;
@@ -1013,8 +1157,9 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel lblBurgerMenu;
     private javax.swing.JLabel lblHome;
     private javax.swing.JLabel lblSeachLogs;
-    private javax.swing.JLabel lblSearch;
-    private javax.swing.JLabel lblSearch1;
+    private javax.swing.JLabel lblSearchAdmin;
+    private javax.swing.JLabel lblSearchFaculty;
+    private javax.swing.JLabel lblSearchStudent;
     private computerlabsystem.Design.PanelGradient logsPage;
     private javax.swing.JScrollPane logsPane;
     private javax.swing.JTable logsTable;
@@ -1025,6 +1170,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private computerlabsystem.Design.PanelGradient studentAccountPanel;
     private javax.swing.JScrollPane studentAcctPane;
     private javax.swing.JTable studentAcctTable;
+    private javax.swing.JTextField txtAdminSearchAcct;
     private javax.swing.JTextField txtFacultySearchAcct;
     private javax.swing.JTextField txtSearchLogs;
     private javax.swing.JTextField txtStudentSearchAcct;

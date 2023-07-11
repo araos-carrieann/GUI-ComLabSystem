@@ -28,6 +28,7 @@ public class Data {
     private String userLogin;
     private String userLogout;
 
+    
     public Data(String program, String yrlvl, String department) {
         this.program = program;
         this.yrlvl = yrlvl;
@@ -39,6 +40,14 @@ public class Data {
         this.fullname = fullname;
         this.logsDuration = logsDuration;
         this.mostLogs = mostLogs;
+    }
+
+    public Data(int userID, String studentfacultyID, String firstName, String lastName, String email) {
+        this.userID = userID;
+        this.studentfacultyID = studentfacultyID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
     }
 
     

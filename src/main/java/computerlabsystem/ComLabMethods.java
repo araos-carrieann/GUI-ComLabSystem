@@ -260,6 +260,26 @@ public static String userChangePass(String stuFaculID, String password, String n
         return dataList;
     }
 
+        public static List<Data> getAllAdminDatas() {
+        List<Data> dataList = new ArrayList<>();
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE role = 'ADMIN' AND status = 'ACTIVE';"); ResultSet rsltSet = stmt.executeQuery()) {
+
+            while (rsltSet.next()) {
+                int id =  rsltSet.getInt("id");
+                String facultyID = rsltSet.getString("studentfacultyID");
+                String userEmail = rsltSet.getString("email");
+                String userFname = rsltSet.getString("firstName");
+                String userLname = rsltSet.getString("lastName");
+
+                Data data = new Data(id, facultyID, userFname, userLname, userEmail);
+                dataList.add(data);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+        }
+
+        return dataList;
+    }
     public static List<Data> getAllLogs() {
         List<Data> dataList = new ArrayList<>();
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(("SELECT logs.logID, logs.fullname, logs.login_time, logs.logout_time,\n"

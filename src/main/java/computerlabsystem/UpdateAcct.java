@@ -66,6 +66,21 @@ public class UpdateAcct extends javax.swing.JDialog {
         comboDepartment.setVisible(true);
         comboDepartment.setSelectedItem(department);
     }
+    
+     public void setAdminData(int id, String stuFaculID, String email, String firstName, String lastName) {
+        this.id = id;
+        this.stuFaculID = stuFaculID;
+        this.email = email;
+        this.fname = firstName;
+        this.lname = lastName;
+
+        // Set the values to the corresponding text fields or combo boxes
+        rbtnAdmin.setSelected(true);
+        txtStudentFacultyID.setText(stuFaculID);
+        txtEmail.setText(email);
+        txtFname.setText(fname);
+        txtLname.setText(lname);
+    }
 
     private void insertContentComboProgram() {
         List<Data> programList = ComLabMethods.programComboContent();
