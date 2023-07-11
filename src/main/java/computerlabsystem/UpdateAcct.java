@@ -4,6 +4,7 @@
  */
 package computerlabsystem;
 
+import java.util.List;
 import javax.swing.JRadioButton;
 
 /**
@@ -21,17 +22,21 @@ public class UpdateAcct extends javax.swing.JDialog {
         comboProgram.setVisible(false);
         comboYrLvl.setVisible(false);
         comboDepartment.setVisible(false);
+        insertContentComboProgram();
+        insertContentComboYearLvl();
+        insertContentComboDepartment();
 
     }
 
-public void setStudentData(String stuFaculID, String email, String firstName, String lastName, String program, String yearLevel) {
+    public void setStudentData(int id, String stuFaculID, String email, String firstName, String lastName, String program, String yearLevel) {
+        this.id = id;
         this.stuFaculID = stuFaculID;
         this.email = email;
         this.fname = firstName;
         this.lname = lastName;
         this.program = program;
         this.yearLevel = yearLevel;
-        
+
         // Set the values to the corresponding text fields or combo boxes
         txtStudentFacultyID.setText(stuFaculID);
         txtEmail.setText(email);
@@ -44,14 +49,14 @@ public void setStudentData(String stuFaculID, String email, String firstName, St
         comboYrLvl.setSelectedItem(yearLevel);
     }
 
-public void setFacultyData(String stuFaculID, String department, String email, String firstName, String lastName) {
+    public void setFacultyData(int id, String stuFaculID, String department, String email, String firstName, String lastName) {
+        this.id = id;
         this.stuFaculID = stuFaculID;
         this.department = department;
         this.email = email;
         this.fname = firstName;
         this.lname = lastName;
 
-        
         // Set the values to the corresponding text fields or combo boxes
         rbtnFaculty.setSelected(true);
         txtStudentFacultyID.setText(stuFaculID);
@@ -61,6 +66,34 @@ public void setFacultyData(String stuFaculID, String department, String email, S
         comboDepartment.setVisible(true);
         comboDepartment.setSelectedItem(department);
     }
+
+    private void insertContentComboProgram() {
+        List<Data> programList = ComLabMethods.programComboContent();
+        comboProgram.removeAllItems(); // Clear existing items
+
+        for (Data data : programList) {
+            comboProgram.addItem(data.getProgram());
+        }
+    }
+
+    private void insertContentComboYearLvl() {
+        List<Data> yrLvlList = ComLabMethods.yearlvlComboContent();
+        comboYrLvl.removeAllItems(); // Clear existing items
+
+        for (Data data : yrLvlList) {
+            comboYrLvl.addItem(data.getYrlvl());
+        }
+    }
+
+    private void insertContentComboDepartment() {
+        List<Data> departmentList = ComLabMethods.departmentComboContent();
+        comboDepartment.removeAllItems(); // Clear existing items
+
+        for (Data data : departmentList) {
+            comboDepartment.addItem(data.getDepartment());
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -82,6 +115,7 @@ public void setFacultyData(String stuFaculID, String department, String email, S
         comboYrLvl = new javax.swing.JComboBox<>();
         saveChanges = new javax.swing.JButton();
         lblWarningMsg = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -167,12 +201,21 @@ public void setFacultyData(String stuFaculID, String department, String email, S
                 saveChangesActionPerformed(evt);
             }
         });
-        panelGradient1.add(saveChanges, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, -1, -1));
+        panelGradient1.add(saveChanges, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, -1, -1));
 
+        lblWarningMsg.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-error-24.png")); // NOI18N
         lblWarningMsg.setText("jLabel1");
-        panelGradient1.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, -1, -1));
+        panelGradient1.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, -1, -1));
 
-        getContentPane().add(panelGradient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 430));
+        btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        panelGradient1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
+
+        getContentPane().add(panelGradient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 460));
 
         pack();
         setLocationRelativeTo(null);
@@ -234,14 +277,20 @@ public void setFacultyData(String stuFaculID, String department, String email, S
         } else {
             if (rbtnStudent.isSelected()) {
                 role = rbtnStudent.getText();
-            } else {
+            } else if (rbtnFaculty.isSelected()) {
                 role = rbtnFaculty.getText();
+            } else {
+                role = rbtnAdmin.getText();
             }
-            //   String msg = ComLabMethods.registerUser(status, role, stuFaculID, fname, lname, email, program, yearLevel, department);
-            // lblWarningMsg.setText(msg);
+            String msg = ComLabMethods.updateAccount(id, role, stuFaculID, fname, lname, email, program, yearLevel, department);
+            lblWarningMsg.setText(msg);
             System.out.println("pogiiiii");
         }
     }//GEN-LAST:event_saveChangesActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,8 +337,10 @@ public void setFacultyData(String stuFaculID, String department, String email, S
         });
     }
 
-    private String stuFaculID, status, fname, lname, role, email, program, yearLevel, department;
+    int id;
+    private String stuFaculID, fname, lname, role, email, program, yearLevel, department;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> comboDepartment;
     private javax.swing.JComboBox<String> comboProgram;

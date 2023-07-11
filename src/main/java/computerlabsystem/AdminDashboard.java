@@ -16,12 +16,23 @@ import javax.swing.table.TableRowSorter;
  */
 public class AdminDashboard extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AdminDashboard
-     */
-    public AdminDashboard(String fname) {
+    private String sfID;
+
+    // Other class members and methods
+    public String getSfID() {
+        return sfID;
+    }
+
+    public void setSfID(String sfID) {
+        this.sfID = sfID;
+    }
+
+    public AdminDashboard(String fname, String sfID) {
+        this.sfID = sfID;
         initComponents();
         lblAdminName.setText(fname);
+        displayLongestSpent();
+        displayMostLogs();
         displayStudentAccount();
         displayFacultyAccount();
         displayLogs();
@@ -127,6 +138,30 @@ public class AdminDashboard extends javax.swing.JFrame {
         }
     }
 
+    private void displayMostLogs() {
+        DefaultTableModel mostLogs = (DefaultTableModel) mostLogsTable.getModel();
+        mostLogs.setRowCount(0);
+
+        List<Data> mostLogsList = ComLabMethods.mostLogs();
+
+        for (Data acct : mostLogsList) {
+            Object[] mLogs = {acct.getRole(), acct.getFullname(), acct.getMostLogs()};
+            mostLogs.addRow(mLogs);
+        }
+    }
+
+    private void displayLongestSpent() {
+        DefaultTableModel longestSpent = (DefaultTableModel) longestTimeSpentTable.getModel();
+        longestSpent.setRowCount(0);
+
+        List<Data> longestTimeSpent = ComLabMethods.longestTimeSpent();
+
+        for (Data acct : longestTimeSpent) {
+            Object[] longestTimeS = {acct.getRole(), acct.getFullname(), acct.getLogsDuration()};
+            longestSpent.addRow(longestTimeS);
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -145,6 +180,10 @@ public class AdminDashboard extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        mostLogsTable = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        longestTimeSpentTable = new javax.swing.JTable();
         accountPage = new computerlabsystem.Design.PanelGradient();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         studentAccountPanel = new computerlabsystem.Design.PanelGradient();
@@ -249,8 +288,13 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblAdminName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAdminName.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-male-user-24.png")); // NOI18N
         lblAdminName.setText("jLabel2");
+        lblAdminName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAdminNameMouseClicked(evt);
+            }
+        });
         headerPanel.add(lblAdminName);
-        lblAdminName.setBounds(1110, 0, 100, 30);
+        lblAdminName.setBounds(1020, 10, 100, 50);
 
         lblAdmin.setText("ADMIN");
         headerPanel.add(lblAdmin);
@@ -285,32 +329,91 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
 
+        mostLogsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ROLE", "NAME", "NUMBER OF LOGS"
+            }
+        ));
+        mostLogsTable.setShowGrid(true);
+        mostLogsTable.setShowHorizontalLines(true);
+        mostLogsTable.setShowVerticalLines(true);
+        jScrollPane1.setViewportView(mostLogsTable);
+
+        longestTimeSpentTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ROLE", "NAME", "TIME DURATION"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        longestTimeSpentTable.setShowGrid(true);
+        longestTimeSpentTable.setShowHorizontalLines(true);
+        longestTimeSpentTable.setShowVerticalLines(true);
+        jScrollPane2.setViewportView(longestTimeSpentTable);
+
         homePage.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         homePage.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         homePage.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        homePage.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        homePage.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout homePageLayout = new javax.swing.GroupLayout(homePage);
         homePage.setLayout(homePageLayout);
         homePageLayout.setHorizontalGroup(
             homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePageLayout.createSequentialGroup()
-                .addContainerGap(610, Short.MAX_VALUE)
-                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addGap(393, 393, 393))
+            .addGroup(homePageLayout.createSequentialGroup()
+                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addGap(640, 640, 640)
+                        .addComponent(jButton3)
+                        .addGap(103, 103, 103)
+                        .addComponent(jButton1))
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addGap(542, 542, 542)
+                        .addComponent(jButton2)))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
         homePageLayout.setVerticalGroup(
             homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(homePageLayout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(jButton1)
-                .addGap(78, 78, 78)
-                .addComponent(jButton2)
-                .addGap(87, 87, 87)
-                .addComponent(jButton3)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePageLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3)
+                    .addComponent(jButton1))
+                .addGap(40, 40, 40)
+                .addComponent(jButton2))
         );
 
         cardPanel.add(homePage, "card6");
@@ -832,10 +935,12 @@ public class AdminDashboard extends javax.swing.JFrame {
             String program = (String) model.getValueAt(selectedRow, 4);
             String yearLevel = (String) model.getValueAt(selectedRow, 5);
 
+            int id = ComLabMethods.getIDforUpdate(studentID);
             UpdateAcct updateDialog = new UpdateAcct(new javax.swing.JFrame(), true);
-            updateDialog.setStudentData(studentID, email, firstName, lastName, program, yearLevel);
+            updateDialog.setStudentData(id, studentID, email, firstName, lastName, program, yearLevel);
             updateDialog.setVisible(true);
-
+            displayStudentAccount();
+            System.out.println("bakit ayaw?");
         }
     }//GEN-LAST:event_btnUpdateStudentAccountActionPerformed
 
@@ -845,18 +950,39 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         if (selectedRow != -1) {
             // Get the values of each column in the selected row
-            String studentID = (String) model.getValueAt(selectedRow, 0);
+            String facultyAdminID = (String) model.getValueAt(selectedRow, 0);
             String department = (String) model.getValueAt(selectedRow, 1);
             String email = (String) model.getValueAt(selectedRow, 2);
             String firstName = (String) model.getValueAt(selectedRow, 3);
             String lastName = (String) model.getValueAt(selectedRow, 4);
 
+            int id = ComLabMethods.getIDforUpdate(facultyAdminID);
             UpdateAcct updateDialog = new UpdateAcct(new javax.swing.JFrame(), true);
-            updateDialog.setFacultyData(studentID, department, email, firstName, lastName);
+            updateDialog.setFacultyData(id, facultyAdminID, department, email, firstName, lastName);
             updateDialog.setVisible(true);
+            displayFacultyAccount();
 
         }
     }//GEN-LAST:event_btnUpdateFacultyAcctActionPerformed
+
+    private void lblAdminNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAdminNameMouseClicked
+        UserProfile dialog = new UserProfile(new javax.swing.JFrame(), true);
+        String studentfacultyID = getSfID();
+        System.out.println(studentfacultyID);
+        String userInfo = ComLabMethods.getInfo(studentfacultyID);
+        String[] parts = userInfo.split(",");
+        int id = Integer.parseInt(parts[0]);
+        String studFaculID = parts[1];
+        String fname = parts[2];
+        String lname = parts[3];
+        String email = parts[4];
+        String program = parts[5];
+        String yearLevel = parts[6];
+        String department = parts[7];
+        
+        dialog.setAdminInfo(id, studFaculID, email, fname, lname, program, yearLevel, department);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_lblAdminNameMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private computerlabsystem.Design.PanelGradient accountPage;
@@ -877,6 +1003,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblAccounts;
     private javax.swing.JLabel lblAdmin;
@@ -890,7 +1018,9 @@ public class AdminDashboard extends javax.swing.JFrame {
     private computerlabsystem.Design.PanelGradient logsPage;
     private javax.swing.JScrollPane logsPane;
     private javax.swing.JTable logsTable;
+    private javax.swing.JTable longestTimeSpentTable;
     private computerlabsystem.Design.PanelGradient menuPanel;
+    private javax.swing.JTable mostLogsTable;
     private computerlabsystem.Design.PanelGradient panelGradient1;
     private computerlabsystem.Design.PanelGradient studentAccountPanel;
     private javax.swing.JScrollPane studentAcctPane;

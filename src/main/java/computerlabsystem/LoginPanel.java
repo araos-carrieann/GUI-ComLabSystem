@@ -4,7 +4,9 @@
  */
 package computerlabsystem;
 
+import java.awt.Component;
 import java.awt.event.ActionListener;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -44,16 +46,22 @@ public class LoginPanel extends javax.swing.JPanel {
         chckbxShowPass = new javax.swing.JCheckBox();
         lblAttemptsLeft = new javax.swing.JLabel();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         lbStudentFacultyID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbStudentFacultyID.setText("Student/Faculty ID");
+        add(lbStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 121, -1, -1));
 
         lblPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPass.setText("Password");
+        add(lblPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 174, -1, -1));
 
         fieldPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        add(fieldPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 171, 150, -1));
 
         txtStudentFacultyID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtStudentFacultyID.setText("ID");
+        add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 118, 150, -1));
 
         btnClear.setText("CLEAR");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
@@ -61,6 +69,7 @@ public class LoginPanel extends javax.swing.JPanel {
                 btnClearActionPerformed(evt);
             }
         });
+        add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 267, -1, -1));
 
         btnLogin.setText("LOGIN");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -68,12 +77,15 @@ public class LoginPanel extends javax.swing.JPanel {
                 btnLoginActionPerformed(evt);
             }
         });
+        add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 267, -1, -1));
 
         btnGoToSignUp.setText("GO TO SIGN UP");
+        add(btnGoToSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 325, -1, -1));
 
         lblWarningMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblWarningMsg.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-box-important-20.png")); // NOI18N
+        lblWarningMsg.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-error-24.png")); // NOI18N
         lblWarningMsg.setText("jLabel3");
+        add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 366, 235, -1));
 
         chckbxShowPass.setText("show");
         chckbxShowPass.addActionListener(new java.awt.event.ActionListener() {
@@ -81,71 +93,11 @@ public class LoginPanel extends javax.swing.JPanel {
                 chckbxShowPassActionPerformed(evt);
             }
         });
+        add(chckbxShowPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 172, -1, -1));
 
         lblAttemptsLeft.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAttemptsLeft.setText("jLabel1");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(btnClear)
-                        .addGap(55, 55, 55)
-                        .addComponent(btnLogin))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(lblAttemptsLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(lblWarningMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(btnGoToSignUp)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(lbStudentFacultyID)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtStudentFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(lblPass)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                        .addComponent(fieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chckbxShowPass)
-                .addGap(41, 41, 41))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbStudentFacultyID)
-                    .addComponent(txtStudentFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPass)
-                    .addComponent(fieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chckbxShowPass))
-                .addGap(74, 74, 74)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLogin)
-                    .addComponent(btnClear))
-                .addGap(35, 35, 35)
-                .addComponent(btnGoToSignUp)
-                .addGap(18, 18, 18)
-                .addComponent(lblWarningMsg)
-                .addGap(18, 18, 18)
-                .addComponent(lblAttemptsLeft)
-                .addContainerGap(56, Short.MAX_VALUE))
-        );
+        add(lblAttemptsLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 408, 92, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void chckbxShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckbxShowPassActionPerformed
@@ -171,18 +123,21 @@ public class LoginPanel extends javax.swing.JPanel {
             String userDetails = ComLabMethods.getUserDetails(stuFaculID, pass);
             if (!userDetails.equals("false")) {
                 String[] parts = userDetails.split(",");
-                String sfID = parts[0];
-                String fname = parts[1];
-                String lname = parts[2];
-                String userRole = parts[3];
+                String userRole = parts[0];
+                String sfID = parts[1];
+                String fname = parts[2];
+                String lname = parts[3];
+                
                 String fullName = fname + " " + lname;
-              //  String hashedPassword = ComLabMethods.hashPassword(pass);
+                //  String hashedPassword = ComLabMethods.hashPassword(pass);
                 if (userRole.equals("ADMIN")) {
-                    AdminDashboard admn = new AdminDashboard(fname);
+                    AdminDashboard admn = new AdminDashboard(fname, sfID);
                     admn.setVisible(true);
+                    SwingUtilities.getWindowAncestor((Component) evt.getSource()).dispose();
                 } else if (userRole.equals("STUDENT") || userRole.equals("FACULTY")) {
                     ComLabMethods.logUserLogin(sfID, fullName, pass);
                     System.out.println("anooonnaaaaa");
+                     SwingUtilities.getWindowAncestor((Component) evt.getSource()).dispose();
                 }
             } else {
                 attempt--;

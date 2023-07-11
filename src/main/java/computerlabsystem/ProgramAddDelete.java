@@ -45,8 +45,11 @@ public class ProgramAddDelete extends javax.swing.JDialog {
         btnAddProgram = new javax.swing.JButton();
         btnDeleteProgram = new javax.swing.JButton();
         btnClearProgram = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setModal(true);
+        setUndecorated(true);
 
         panelGradient2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -63,7 +66,7 @@ public class ProgramAddDelete extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(programTable);
 
-        panelGradient2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 330, 200));
+        panelGradient2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 360, 200));
 
         lblAddPRogram.setText("PROGRAM");
         panelGradient2.add(lblAddPRogram, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
@@ -96,6 +99,14 @@ public class ProgramAddDelete extends javax.swing.JDialog {
         });
         panelGradient2.add(btnClearProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
 
+        btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        panelGradient2.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -110,11 +121,14 @@ public class ProgramAddDelete extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProgramActionPerformed
         String addProgram = txtAddProgram.getText();
         ComLabMethods.programComboBox(addProgram);
+        displayProgram();
+        txtAddProgram.setText("");
     }//GEN-LAST:event_btnAddProgramActionPerformed
 
     private void btnDeleteProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteProgramActionPerformed
@@ -124,12 +138,17 @@ public class ProgramAddDelete extends javax.swing.JDialog {
             String program = (String) model.getValueAt(selectedRow, 0);
             model.removeRow(selectedRow);
             ComLabMethods.deleteProgram(program);
+            displayProgram();
         }
     }//GEN-LAST:event_btnDeleteProgramActionPerformed
 
     private void btnClearProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearProgramActionPerformed
          txtAddProgram.setText("");
     }//GEN-LAST:event_btnClearProgramActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,6 +197,7 @@ public class ProgramAddDelete extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddProgram;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnClearProgram;
     private javax.swing.JButton btnDeleteProgram;
     private javax.swing.JScrollPane jScrollPane1;

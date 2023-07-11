@@ -10,8 +10,11 @@ package computerlabsystem;
  */
 public class Data {
 
+    
     private int userID;
     private int logsID;
+    private String logsDuration;
+    private String mostLogs;
     private String studentfacultyID;
     private String status;
     private String role;
@@ -31,7 +34,15 @@ public class Data {
         this.department = department;
     }
 
+    public Data(String role, String fullname, String logsDuration, String mostLogs) {
+        this.role = role;
+        this.fullname = fullname;
+        this.logsDuration = logsDuration;
+        this.mostLogs = mostLogs;
+    }
 
+    
+    
     public Data(int logsID, String studentfacultyID, String role, String firstName, String lastName, String email, String program, String yrlvl, String department, String userTimeIn, String userTimeOut) {
         this.logsID = logsID;
         this.studentfacultyID = studentfacultyID;
@@ -193,6 +204,22 @@ public class Data {
 
     public void setUserLogout(String userLogout) {
         this.userLogout = userLogout;
+    }
+
+    public String getLogsDuration() {
+        return logsDuration;
+    }
+
+    public void setLogsDuration(String logsDuration) {
+        this.logsDuration = logsDuration;
+    }
+
+    public String getMostLogs() {
+        return mostLogs;
+    }
+
+    public void setMostLogs(String mostLogs) {
+        this.mostLogs = mostLogs;
     }
 
 }

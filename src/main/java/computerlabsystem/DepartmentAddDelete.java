@@ -46,8 +46,11 @@ public class DepartmentAddDelete extends javax.swing.JDialog {
         btnAddDepartment = new javax.swing.JButton();
         btnDeleteDepartment = new javax.swing.JButton();
         btnClearDepartment = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setModal(true);
+        setUndecorated(true);
 
         panelGradient4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -97,6 +100,14 @@ public class DepartmentAddDelete extends javax.swing.JDialog {
         });
         panelGradient4.add(btnClearDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
+        btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        panelGradient4.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,11 +122,14 @@ public class DepartmentAddDelete extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDepartmentActionPerformed
         String addDepartment = txtAddDepartment.getText();
         ComLabMethods.departmentComboBox(addDepartment);
+        displayDepartment();
+        txtAddDepartment.setText("");
     }//GEN-LAST:event_btnAddDepartmentActionPerformed
 
     private void btnDeleteDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteDepartmentActionPerformed
@@ -125,12 +139,17 @@ public class DepartmentAddDelete extends javax.swing.JDialog {
             String department = (String) model.getValueAt(selectedRow, 0);
             model.removeRow(selectedRow);
             ComLabMethods.deleteProgram(department);
+            displayDepartment();
         }
     }//GEN-LAST:event_btnDeleteDepartmentActionPerformed
 
     private void btnClearDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearDepartmentActionPerformed
         txtAddDepartment.setText("");
     }//GEN-LAST:event_btnClearDepartmentActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,6 +198,7 @@ public class DepartmentAddDelete extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddDepartment;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnClearDepartment;
     private javax.swing.JButton btnDeleteDepartment;
     private javax.swing.JTable departmentTable;

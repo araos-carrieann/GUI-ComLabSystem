@@ -45,6 +45,7 @@ public class YearLevelAddDelete extends javax.swing.JDialog {
         btnAddYrLvl = new javax.swing.JButton();
         btnDeleteYrLvl = new javax.swing.JButton();
         btnClearYearLevel = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -96,6 +97,14 @@ public class YearLevelAddDelete extends javax.swing.JDialog {
         });
         panelGradient3.add(btnClearYearLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
 
+        btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        panelGradient3.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -110,11 +119,14 @@ public class YearLevelAddDelete extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddYrLvlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddYrLvlActionPerformed
         String addYrLvl = txtAddYrLvl.getText();
         ComLabMethods.yearLevelComboBox(addYrLvl);
+        displayYearLvl();
+        txtAddYrLvl.setText("");
     }//GEN-LAST:event_btnAddYrLvlActionPerformed
 
     private void btnDeleteYrLvlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteYrLvlActionPerformed
@@ -124,12 +136,17 @@ public class YearLevelAddDelete extends javax.swing.JDialog {
             String yrLvl = (String) model.getValueAt(selectedRow, 0);
             model.removeRow(selectedRow);
             ComLabMethods.deleteYearLvl(yrLvl);
+            displayYearLvl();
         }
     }//GEN-LAST:event_btnDeleteYrLvlActionPerformed
 
     private void btnClearYearLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearYearLevelActionPerformed
         txtAddYrLvl.setText("");
     }//GEN-LAST:event_btnClearYearLevelActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,6 +193,7 @@ public class YearLevelAddDelete extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddYrLvl;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnClearYearLevel;
     private javax.swing.JButton btnDeleteYrLvl;
     private javax.swing.JScrollPane jScrollPane2;
