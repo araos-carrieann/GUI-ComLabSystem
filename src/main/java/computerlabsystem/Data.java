@@ -28,7 +28,13 @@ public class Data {
     private String userLogin;
     private String userLogout;
 
-    
+    public Data(int logsID, String fullname, String userLogin, String userLogout) {
+        this.logsID = logsID;
+        this.fullname = fullname;
+        this.userLogin = userLogin;
+        this.userLogout = userLogout;
+    }
+
     public Data(String program, String yrlvl, String department) {
         this.program = program;
         this.yrlvl = yrlvl;

@@ -78,13 +78,22 @@ public class UserProfile extends javax.swing.JDialog {
         lblUserEmail.setText(email);
         lblUserFirstName.setText(fname);
         lblUserLastName.setText(lname);
-        lblYearLevel.setVisible(true);
-        lblProgram.setVisible(true);
-        lblUserYearLevel.setVisible(true);
-        lblUserProgram.setVisible(true);
-        lblDepartment.setVisible(true);
-        lblUserDepartment.setVisible(true);
-        lblUserDepartment.setText(department);
+        if (!program.equals("null")) {
+            lblProgram.setVisible(true);
+            lblUserProgram.setVisible(true);
+            lblUserProgram.setText(program);
+        }
+        if (!yearLevel.equals("null")) {
+            lblYearLevel.setVisible(true);
+            lblUserYearLevel.setVisible(true);
+            lblUserYearLevel.setText(yearLevel);
+        }
+
+        if (!department.equals("null")) {
+            lblDepartment.setVisible(true);
+            lblUserDepartment.setVisible(true);
+            lblUserDepartment.setText(department);
+        }
 
     }
 
@@ -140,7 +149,7 @@ public class UserProfile extends javax.swing.JDialog {
             }
         });
         headerPanel.add(btnUserInfo);
-        btnUserInfo.setBounds(50, 10, 80, 16);
+        btnUserInfo.setBounds(20, 10, 80, 16);
 
         btnSettings.setText("Change Pass");
         btnSettings.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -158,7 +167,7 @@ public class UserProfile extends javax.swing.JDialog {
             }
         });
         headerPanel.add(jLabel1);
-        jLabel1.setBounds(320, 20, 25, 16);
+        jLabel1.setBounds(315, 10, 40, 16);
 
         panelGradient1.add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
@@ -214,44 +223,40 @@ public class UserProfile extends javax.swing.JDialog {
         userInfoPanelLayout.setHorizontalGroup(
             userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(userInfoPanelLayout.createSequentialGroup()
-                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(39, 39, 39)
+                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(userInfoPanelLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
                         .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblUserID)
-                            .addGroup(userInfoPanelLayout.createSequentialGroup()
-                                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblFirstname)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblYearLevel)
+                            .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblYearLevel)
+                                    .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblEmail)
                                         .addComponent(lblLastname)))
-                                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(userInfoPanelLayout.createSequentialGroup()
-                                        .addGap(76, 76, 76)
-                                        .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblUserFirstName)
-                                            .addComponent(lblUserLastName)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userInfoPanelLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lblUserYearLevel))))))
-                    .addGroup(userInfoPanelLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
+                                .addComponent(lblProgram))
+                            .addComponent(lblFirstname))
+                        .addGap(5, 5, 5)
                         .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(userInfoPanelLayout.createSequentialGroup()
-                                .addComponent(lblEmail)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblUserEmail))
-                            .addGroup(userInfoPanelLayout.createSequentialGroup()
+                                .addGap(74, 74, 74)
                                 .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblProgram)
-                                    .addComponent(lblDepartment))
-                                .addGap(77, 77, 77)
-                                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblUserEmail)
                                     .addComponent(lblUserDepartment)
-                                    .addComponent(lblUserProgram))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(141, Short.MAX_VALUE))
+                                    .addComponent(lblUserProgram)))
+                            .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(userInfoPanelLayout.createSequentialGroup()
+                                        .addGap(74, 74, 74)
+                                        .addComponent(lblUserLastName))
+                                    .addComponent(lblUserYearLevel, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(lblUserFirstName)
+                                .addComponent(lblUserID))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, userInfoPanelLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDepartment, javax.swing.GroupLayout.Alignment.LEADING))))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
         userInfoPanelLayout.setVerticalGroup(
             userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,37 +265,34 @@ public class UserProfile extends javax.swing.JDialog {
                 .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblID)
                     .addComponent(lblUserID))
-                .addGap(29, 29, 29)
-                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFirstname)
-                    .addComponent(lblUserFirstName))
                 .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(userInfoPanelLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblFirstname)
+                            .addComponent(lblUserFirstName))
                         .addGap(18, 18, 18)
                         .addComponent(lblLastname))
                     .addGroup(userInfoPanelLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(71, 71, 71)
                         .addComponent(lblUserLastName)))
                 .addGap(18, 18, 18)
                 .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEmail)
-                    .addComponent(lblUserEmail))
+                    .addComponent(lblUserEmail)
+                    .addComponent(lblEmail))
                 .addGap(18, 18, 18)
-                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblProgram)
-                    .addComponent(lblUserProgram))
+                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUserProgram)
+                    .addComponent(lblProgram))
                 .addGap(18, 18, 18)
                 .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblYearLevel)
                     .addComponent(lblUserYearLevel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(userInfoPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblDepartment))
-                    .addGroup(userInfoPanelLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(lblUserDepartment)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(lblDepartment)
+                    .addComponent(lblUserDepartment))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         cardPanel.add(userInfoPanel, "card2");

@@ -4,8 +4,12 @@
  */
 package computerlabsystem;
 
+import computerlabsystem.Design.PanelBorder;
+import java.awt.Color;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -79,8 +83,8 @@ public class AdminDashboard extends javax.swing.JFrame {
             facultyAccount.addRow(row);
         }
     }
-    
-     private void displayAdminAccount() {
+
+    private void displayAdminAccount() {
         DefaultTableModel adminAccount = (DefaultTableModel) adminAccountTable.getModel();
         adminAccount.setRowCount(0);
 
@@ -91,7 +95,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             adminAccount.addRow(row);
         }
     }
-     
+
     public void searchAdminAcct(String search) {
         DefaultTableModel adminyAccount = (DefaultTableModel) adminAccountTable.getModel();
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(adminyAccount);
@@ -189,12 +193,15 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         panelGradient1 = new computerlabsystem.Design.PanelGradient();
         menuPanel = new computerlabsystem.Design.PanelGradient();
+        panelHome = new computerlabsystem.Design.PanelBorder();
         lblHome = new javax.swing.JLabel();
+        panelAccounts = new computerlabsystem.Design.PanelBorder();
         lblAccounts = new javax.swing.JLabel();
+        panelLogs = new computerlabsystem.Design.PanelBorder();
         lblAllLogs = new javax.swing.JLabel();
         headerPanel = new computerlabsystem.Design.PanelGradient();
-        lblBurgerMenu = new javax.swing.JLabel();
         lblAdminName = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         lblAdmin = new javax.swing.JLabel();
         cardPanel = new computerlabsystem.Design.PanelGradient();
         homePage = new computerlabsystem.Design.PanelGradient();
@@ -205,16 +212,10 @@ public class AdminDashboard extends javax.swing.JFrame {
         mostLogsTable = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         longestTimeSpentTable = new javax.swing.JTable();
+        panelBorder1 = new computerlabsystem.Design.PanelBorder();
+        jLabel1 = new javax.swing.JLabel();
         accountPage = new computerlabsystem.Design.PanelGradient();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        studentAccountPanel = new computerlabsystem.Design.PanelGradient();
-        btnDeleteStuAcct = new javax.swing.JButton();
-        studentAcctPane = new javax.swing.JScrollPane();
-        studentAcctTable = new javax.swing.JTable();
-        lblSearchStudent = new javax.swing.JLabel();
-        btnAddStudentAcct = new javax.swing.JButton();
-        txtStudentSearchAcct = new javax.swing.JTextField();
-        btnUpdateStudentAccount = new javax.swing.JButton();
         facultyAccountPanel = new computerlabsystem.Design.PanelGradient();
         lblSearchFaculty = new javax.swing.JLabel();
         btnDeleteFacultyAcct = new javax.swing.JButton();
@@ -223,6 +224,14 @@ public class AdminDashboard extends javax.swing.JFrame {
         facultyAcctPane = new javax.swing.JScrollPane();
         facultyAcctTable = new javax.swing.JTable();
         btnUpdateFacultyAcct = new javax.swing.JButton();
+        studentAccountPanel = new computerlabsystem.Design.PanelGradient();
+        btnDeleteStuAcct = new javax.swing.JButton();
+        studentAcctPane = new javax.swing.JScrollPane();
+        studentAcctTable = new javax.swing.JTable();
+        lblSearchStudent = new javax.swing.JLabel();
+        btnAddStudentAcct = new javax.swing.JButton();
+        txtStudentSearchAcct = new javax.swing.JTextField();
+        btnUpdateStudentAccount = new javax.swing.JButton();
         adminAccountPanel = new computerlabsystem.Design.PanelGradient();
         jScrollPane3 = new javax.swing.JScrollPane();
         adminAccountTable = new javax.swing.JTable();
@@ -233,87 +242,100 @@ public class AdminDashboard extends javax.swing.JFrame {
         logsPage = new computerlabsystem.Design.PanelGradient();
         logsPane = new javax.swing.JScrollPane();
         logsTable = new javax.swing.JTable();
-        btnDeleteLogs = new javax.swing.JButton();
-        txtSearchLogs = new javax.swing.JTextField();
         lblSeachLogs = new javax.swing.JLabel();
+        txtSearchLogs = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1200, 600));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelGradient1.setColorPrimary(new java.awt.Color(204, 204, 204));
         panelGradient1.setColorSecondary(new java.awt.Color(153, 153, 153));
         panelGradient1.setLayout(new java.awt.BorderLayout());
 
-        menuPanel.setColorPrimary(new java.awt.Color(225, 236, 200));
-        menuPanel.setColorSecondary(new java.awt.Color(153, 169, 143));
-        menuPanel.setPreferredSize(new java.awt.Dimension(150, 100));
+        menuPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 3, new java.awt.Color(101, 100, 124)));
+        menuPanel.setColorPrimary(new java.awt.Color(101, 100, 124));
+        menuPanel.setColorSecondary(new java.awt.Color(199, 188, 161));
+        menuPanel.setPreferredSize(new java.awt.Dimension(150, 150));
+        menuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        panelHome.setBackground((new Color(0, 0, 0, 0)));
+        panelHome.setLayout(new java.awt.GridLayout());
+
+        lblHome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblHome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHome.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-home-40.png")); // NOI18N
+        lblHome.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-home-50.png")); // NOI18N
+        lblHome.setText("Home");
         lblHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblHomeMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblHomeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblHomeMouseExited(evt);
+            }
         });
+        panelHome.add(lblHome);
 
+        menuPanel.add(panelHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 130, 80));
+
+        panelAccounts.setBackground((new Color(0, 0, 0, 0)));
+        panelAccounts.setLayout(new java.awt.GridLayout());
+
+        lblAccounts.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblAccounts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAccounts.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-college-40.png")); // NOI18N
+        lblAccounts.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-account-50.png")); // NOI18N
+        lblAccounts.setText("Accounts");
         lblAccounts.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblAccountsMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblAccountsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblAccountsMouseExited(evt);
+            }
         });
+        panelAccounts.add(lblAccounts);
 
+        menuPanel.add(panelAccounts, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 130, 80));
+
+        panelLogs.setBackground((new Color(0, 0, 0, 0)));
+        panelLogs.setLayout(new java.awt.GridLayout());
+
+        lblAllLogs.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblAllLogs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAllLogs.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-moleskine-40.png")); // NOI18N
+        lblAllLogs.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-logs-60.png")); // NOI18N
+        lblAllLogs.setText("Logs");
         lblAllLogs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblAllLogsMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblAllLogsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblAllLogsMouseExited(evt);
+            }
         });
+        panelLogs.add(lblAllLogs);
 
-        menuPanel.setLayer(lblHome, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        menuPanel.setLayer(lblAccounts, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        menuPanel.setLayer(lblAllLogs, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
-        menuPanel.setLayout(menuPanelLayout);
-        menuPanelLayout.setHorizontalGroup(
-            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuPanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblHome, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAccounts, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAllLogs, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39))
-        );
-        menuPanelLayout.setVerticalGroup(
-            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuPanelLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(lblHome)
-                .addGap(35, 35, 35)
-                .addComponent(lblAccounts, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97)
-                .addComponent(lblAllLogs, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(247, 247, 247))
-        );
+        menuPanel.add(panelLogs, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 130, 80));
 
         panelGradient1.add(menuPanel, java.awt.BorderLayout.LINE_START);
 
-        headerPanel.setColorPrimary(new java.awt.Color(160, 196, 157));
-        headerPanel.setColorSecondary(new java.awt.Color(196, 215, 178));
-        headerPanel.setPreferredSize(new java.awt.Dimension(100, 60));
+        headerPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(101, 100, 124)));
+        headerPanel.setColorPrimary(new java.awt.Color(101, 100, 124));
+        headerPanel.setColorSecondary(new java.awt.Color(101, 100, 124));
+        headerPanel.setPreferredSize(new java.awt.Dimension(80, 100));
 
-        lblBurgerMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBurgerMenu.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-menu-rounded-50.png")); // NOI18N
-        lblBurgerMenu.setText("jLabel2");
-        headerPanel.add(lblBurgerMenu);
-        lblBurgerMenu.setBounds(30, 10, 50, 40);
-
+        lblAdminName.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblAdminName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAdminName.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-male-user-24.png")); // NOI18N
+        lblAdminName.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-user-55.png")); // NOI18N
         lblAdminName.setText("jLabel2");
         lblAdminName.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -321,11 +343,18 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         headerPanel.add(lblAdminName);
-        lblAdminName.setBounds(1020, 10, 100, 50);
+        lblAdminName.setBounds(1000, 10, 150, 60);
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("LOGO");
+        headerPanel.add(jLabel2);
+        jLabel2.setBounds(20, 30, 96, 48);
+
+        lblAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAdmin.setText("ADMIN");
         headerPanel.add(lblAdmin);
-        lblAdmin.setBounds(1140, 30, 60, 16);
+        lblAdmin.setBounds(1070, 60, 60, 30);
 
         panelGradient1.add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
@@ -333,7 +362,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         cardPanel.setColorSecondary(new java.awt.Color(51, 51, 51));
         cardPanel.setLayout(new java.awt.CardLayout());
 
-        homePage.setColorPrimary(new java.awt.Color(51, 0, 255));
+        homePage.setColorPrimary(new java.awt.Color(199, 188, 161));
+        homePage.setPreferredSize(new java.awt.Dimension(900, 800));
 
         jButton1.setText("PROGRAM");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -368,7 +398,13 @@ public class AdminDashboard extends javax.swing.JFrame {
                 "ROLE", "NAME", "NUMBER OF LOGS"
             }
         ));
+        mostLogsTable.setEnabled(false);
+        mostLogsTable.setGridColor(new java.awt.Color(0, 0, 0));
+        mostLogsTable.setOpaque(false);
+        mostLogsTable.setRowHeight(30);
+        mostLogsTable.setSelectionForeground(new java.awt.Color(101, 100, 124));
         mostLogsTable.setShowGrid(true);
+        mostLogsTable.setShowHorizontalLines(false);
         jScrollPane1.setViewportView(mostLogsTable);
 
         longestTimeSpentTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -391,14 +427,40 @@ public class AdminDashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        longestTimeSpentTable.setEnabled(false);
         longestTimeSpentTable.setShowGrid(true);
         jScrollPane2.setViewportView(longestTimeSpentTable);
+
+        panelBorder1.setBackground(new java.awt.Color(221, 230, 237));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
+        jLabel1.setText("WELCOME ADMIN!");
+
+        panelBorder1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
+        panelBorder1.setLayout(panelBorder1Layout);
+        panelBorder1Layout.setHorizontalGroup(
+            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBorder1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel1)
+                .addContainerGap(965, Short.MAX_VALUE))
+        );
+        panelBorder1Layout.setVerticalGroup(
+            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBorder1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
 
         homePage.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         homePage.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         homePage.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         homePage.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         homePage.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        homePage.setLayer(panelBorder1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout homePageLayout = new javax.swing.GroupLayout(homePage);
         homePage.setLayout(homePageLayout);
@@ -407,50 +469,135 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(homePageLayout.createSequentialGroup()
                 .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(homePageLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(homePageLayout.createSequentialGroup()
+                                .addGap(291, 291, 291)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(homePageLayout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(homePageLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(homePageLayout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(jButton3))))
                     .addGroup(homePageLayout.createSequentialGroup()
-                        .addGap(640, 640, 640)
-                        .addComponent(jButton3)
-                        .addGap(103, 103, 103)
-                        .addComponent(jButton1))
-                    .addGroup(homePageLayout.createSequentialGroup()
-                        .addGap(542, 542, 542)
-                        .addComponent(jButton2)))
-                .addContainerGap(173, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         homePageLayout.setVerticalGroup(
             homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(homePageLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(116, 116, 116)
+                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(homePageLayout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePageLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addComponent(jButton1))
-                .addGap(40, 40, 40)
-                .addComponent(jButton2))
+                        .addGap(75, 75, 75)
+                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(jButton3)))
+                    .addGroup(homePageLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(jButton1)))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         cardPanel.add(homePage, "card6");
 
-        accountPage.setColorPrimary(new java.awt.Color(255, 0, 0));
+        accountPage.setColorPrimary(new java.awt.Color(255, 255, 204));
 
-        studentAccountPanel.setColorPrimary(new java.awt.Color(255, 0, 153));
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 204));
+        jTabbedPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jTabbedPane1.setName(""); // NOI18N
 
+        facultyAccountPanel.setBackground(new java.awt.Color(255, 255, 255));
+        facultyAccountPanel.setColorPrimary(new java.awt.Color(255, 255, 204));
+        facultyAccountPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblSearchFaculty.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblSearchFaculty.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSearchFaculty.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-search-35.png")); // NOI18N
+        facultyAccountPanel.add(lblSearchFaculty, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 20, 40, 40));
+
+        btnDeleteFacultyAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDeleteFacultyAcct.setText("DELETE");
+        btnDeleteFacultyAcct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteFacultyAcctActionPerformed(evt);
+            }
+        });
+        facultyAccountPanel.add(btnDeleteFacultyAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 79, -1, -1));
+
+        btnAddFacultyAccount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAddFacultyAccount.setText("ADD USER");
+        btnAddFacultyAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddFacultyAccountActionPerformed(evt);
+            }
+        });
+        facultyAccountPanel.add(btnAddFacultyAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 79, -1, -1));
+
+        txtFacultySearchAcct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFacultySearchAcctActionPerformed(evt);
+            }
+        });
+        txtFacultySearchAcct.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFacultySearchAcctKeyReleased(evt);
+            }
+        });
+        facultyAccountPanel.add(txtFacultySearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 340, 40));
+
+        facultyAcctTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "FACULTY ID", "DEPARTMENT", "EMAIL", "FIRST NAME", "LASTNAME"
+            }
+        ));
+        facultyAcctTable.setEnabled(false);
+        facultyAcctPane.setViewportView(facultyAcctTable);
+
+        facultyAccountPanel.add(facultyAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 120, 970, 368));
+
+        btnUpdateFacultyAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnUpdateFacultyAcct.setText("UPDATE");
+        btnUpdateFacultyAcct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateFacultyAcctActionPerformed(evt);
+            }
+        });
+        facultyAccountPanel.add(btnUpdateFacultyAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 79, -1, -1));
+
+        jTabbedPane1.addTab("FACULTY", facultyAccountPanel);
+
+        studentAccountPanel.setBackground(new java.awt.Color(0, 102, 255));
+        studentAccountPanel.setColorPrimary(new java.awt.Color(255, 255, 204));
+        studentAccountPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnDeleteStuAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDeleteStuAcct.setText("DELETE");
         btnDeleteStuAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteStuAcctActionPerformed(evt);
             }
         });
+        studentAccountPanel.add(btnDeleteStuAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(298, 88, -1, -1));
 
         studentAcctTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -509,16 +656,24 @@ public class AdminDashboard extends javax.swing.JFrame {
                 "STUDENT ID", "EMAIL", "FIRST NAME", "LAST NAME", "PROGRAM", "YEAR LEVEL"
             }
         ));
+        studentAcctTable.setEnabled(false);
         studentAcctPane.setViewportView(studentAcctTable);
 
-        lblSearchStudent.setText("SEARCH");
+        studentAccountPanel.add(studentAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 1000, 320));
 
+        lblSearchStudent.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblSearchStudent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSearchStudent.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-search-35.png")); // NOI18N
+        studentAccountPanel.add(lblSearchStudent, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 20, 40, 40));
+
+        btnAddStudentAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAddStudentAcct.setText("ADD USER");
         btnAddStudentAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddStudentAcctActionPerformed(evt);
             }
         });
+        studentAccountPanel.add(btnAddStudentAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(479, 88, -1, -1));
 
         txtStudentSearchAcct.setText("Enter Search");
         txtStudentSearchAcct.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -526,169 +681,22 @@ public class AdminDashboard extends javax.swing.JFrame {
                 txtStudentSearchAcctKeyReleased(evt);
             }
         });
+        studentAccountPanel.add(txtStudentSearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 310, 40));
 
+        btnUpdateStudentAccount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnUpdateStudentAccount.setText("UPDATE");
         btnUpdateStudentAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateStudentAccountActionPerformed(evt);
             }
         });
-
-        studentAccountPanel.setLayer(btnDeleteStuAcct, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        studentAccountPanel.setLayer(studentAcctPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        studentAccountPanel.setLayer(lblSearchStudent, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        studentAccountPanel.setLayer(btnAddStudentAcct, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        studentAccountPanel.setLayer(txtStudentSearchAcct, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        studentAccountPanel.setLayer(btnUpdateStudentAccount, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout studentAccountPanelLayout = new javax.swing.GroupLayout(studentAccountPanel);
-        studentAccountPanel.setLayout(studentAccountPanelLayout);
-        studentAccountPanelLayout.setHorizontalGroup(
-            studentAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(studentAccountPanelLayout.createSequentialGroup()
-                .addGroup(studentAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(studentAccountPanelLayout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(lblSearchStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtStudentSearchAcct, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(studentAccountPanelLayout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(btnDeleteStuAcct)
-                        .addGap(58, 58, 58)
-                        .addComponent(btnAddStudentAcct)
-                        .addGap(74, 74, 74)
-                        .addComponent(btnUpdateStudentAccount)))
-                .addGap(375, 566, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, studentAccountPanelLayout.createSequentialGroup()
-                .addComponent(studentAcctPane)
-                .addContainerGap())
-        );
-        studentAccountPanelLayout.setVerticalGroup(
-            studentAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(studentAccountPanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(studentAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSearchStudent)
-                    .addComponent(txtStudentSearchAcct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(studentAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDeleteStuAcct)
-                    .addGroup(studentAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnAddStudentAcct)
-                        .addComponent(btnUpdateStudentAccount)))
-                .addGap(17, 17, 17)
-                .addComponent(studentAcctPane, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        studentAccountPanel.add(btnUpdateStudentAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 88, -1, -1));
 
         jTabbedPane1.addTab("STUDENT", studentAccountPanel);
 
-        facultyAccountPanel.setColorPrimary(new java.awt.Color(255, 255, 0));
-
-        lblSearchFaculty.setText("jLabel1");
-
-        btnDeleteFacultyAcct.setText("DELETE");
-        btnDeleteFacultyAcct.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteFacultyAcctActionPerformed(evt);
-            }
-        });
-
-        btnAddFacultyAccount.setText("ADD USER");
-        btnAddFacultyAccount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddFacultyAccountActionPerformed(evt);
-            }
-        });
-
-        txtFacultySearchAcct.setText("jTextField1");
-        txtFacultySearchAcct.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFacultySearchAcctActionPerformed(evt);
-            }
-        });
-        txtFacultySearchAcct.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtFacultySearchAcctKeyReleased(evt);
-            }
-        });
-
-        facultyAcctTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "FACULTY ID", "DEPARTMENT", "EMAIL", "FIRST NAME", "LASTNAME"
-            }
-        ));
-        facultyAcctPane.setViewportView(facultyAcctTable);
-
-        btnUpdateFacultyAcct.setText("UPDATE");
-        btnUpdateFacultyAcct.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateFacultyAcctActionPerformed(evt);
-            }
-        });
-
-        facultyAccountPanel.setLayer(lblSearchFaculty, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        facultyAccountPanel.setLayer(btnDeleteFacultyAcct, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        facultyAccountPanel.setLayer(btnAddFacultyAccount, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        facultyAccountPanel.setLayer(txtFacultySearchAcct, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        facultyAccountPanel.setLayer(facultyAcctPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        facultyAccountPanel.setLayer(btnUpdateFacultyAcct, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout facultyAccountPanelLayout = new javax.swing.GroupLayout(facultyAccountPanel);
-        facultyAccountPanel.setLayout(facultyAccountPanelLayout);
-        facultyAccountPanelLayout.setHorizontalGroup(
-            facultyAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, facultyAccountPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnDeleteFacultyAcct)
-                .addGap(71, 71, 71)
-                .addComponent(btnAddFacultyAccount)
-                .addGap(283, 283, 283))
-            .addGroup(facultyAccountPanelLayout.createSequentialGroup()
-                .addGroup(facultyAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(facultyAccountPanelLayout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(lblSearchFaculty, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addGroup(facultyAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnUpdateFacultyAcct)
-                            .addComponent(txtFacultySearchAcct, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(facultyAccountPanelLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(facultyAcctPane, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(357, Short.MAX_VALUE))
-        );
-        facultyAccountPanelLayout.setVerticalGroup(
-            facultyAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(facultyAccountPanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(facultyAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFacultySearchAcct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSearchFaculty))
-                .addGroup(facultyAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(facultyAccountPanelLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(facultyAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAddFacultyAccount)
-                            .addComponent(btnDeleteFacultyAcct))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, facultyAccountPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnUpdateFacultyAcct)
-                        .addGap(26, 26, 26)))
-                .addComponent(facultyAcctPane, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("FACULTY", facultyAccountPanel);
-
-        adminAccountPanel.setColorPrimary(new java.awt.Color(0, 204, 255));
+        adminAccountPanel.setBackground(new java.awt.Color(255, 255, 204));
+        adminAccountPanel.setColorPrimary(new java.awt.Color(255, 255, 204));
+        adminAccountPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         adminAccountTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -701,18 +709,26 @@ public class AdminDashboard extends javax.swing.JFrame {
                 "ID", "NAME", "Title 3", "Title 4"
             }
         ));
+        adminAccountTable.setEnabled(false);
         jScrollPane3.setViewportView(adminAccountTable);
 
-        lblSearchAdmin.setText("jLabel1");
+        adminAccountPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 990, 280));
 
+        lblSearchAdmin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblSearchAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSearchAdmin.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-search-35.png")); // NOI18N
+        adminAccountPanel.add(lblSearchAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, -1, 40));
+
+        btnDeleteAdminAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDeleteAdminAcct.setText("DELETE");
         btnDeleteAdminAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteAdminAcctActionPerformed(evt);
             }
         });
+        adminAccountPanel.add(btnDeleteAdminAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, -1, -1));
 
-        txtAdminSearchAcct.setText("jTextField1");
+        txtAdminSearchAcct.setText("Enter Search");
         txtAdminSearchAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAdminSearchAcctActionPerformed(evt);
@@ -723,52 +739,16 @@ public class AdminDashboard extends javax.swing.JFrame {
                 txtAdminSearchAcctKeyReleased(evt);
             }
         });
+        adminAccountPanel.add(txtAdminSearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, 290, 40));
 
-        btnUpdateAdminAcct.setText("jButton4");
+        btnUpdateAdminAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnUpdateAdminAcct.setText("UPDATE");
         btnUpdateAdminAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateAdminAcctActionPerformed(evt);
             }
         });
-
-        adminAccountPanel.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        adminAccountPanel.setLayer(lblSearchAdmin, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        adminAccountPanel.setLayer(btnDeleteAdminAcct, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        adminAccountPanel.setLayer(txtAdminSearchAcct, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        adminAccountPanel.setLayer(btnUpdateAdminAcct, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout adminAccountPanelLayout = new javax.swing.GroupLayout(adminAccountPanel);
-        adminAccountPanel.setLayout(adminAccountPanelLayout);
-        adminAccountPanelLayout.setHorizontalGroup(
-            adminAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adminAccountPanelLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(adminAccountPanelLayout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(lblSearchAdmin)
-                .addGap(33, 33, 33)
-                .addGroup(adminAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(adminAccountPanelLayout.createSequentialGroup()
-                        .addComponent(btnUpdateAdminAcct)
-                        .addGap(135, 135, 135)
-                        .addComponent(btnDeleteAdminAcct))
-                    .addComponent(txtAdminSearchAcct, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-        adminAccountPanelLayout.setVerticalGroup(
-            adminAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adminAccountPanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(adminAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSearchAdmin)
-                    .addComponent(txtAdminSearchAcct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
-                .addGroup(adminAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDeleteAdminAcct)
-                    .addComponent(btnUpdateAdminAcct))
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        adminAccountPanel.add(btnUpdateAdminAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, -1, -1));
 
         jTabbedPane1.addTab("ADMINS", adminAccountPanel);
 
@@ -782,12 +762,14 @@ public class AdminDashboard extends javax.swing.JFrame {
         );
         accountPageLayout.setVerticalGroup(
             accountPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         cardPanel.add(accountPage, "card2");
 
-        logsPage.setColorPrimary(new java.awt.Color(153, 0, 153));
+        logsPage.setColorPrimary(new java.awt.Color(255, 255, 204));
+        logsPage.setColorSecondary(new java.awt.Color(255, 255, 204));
+        logsPage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -808,26 +790,32 @@ public class AdminDashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        logsTable.setEnabled(false);
         logsPane.setViewportView(logsTable);
         if (logsTable.getColumnModel().getColumnCount() > 0) {
             logsTable.getColumnModel().getColumn(0).setResizable(false);
-            logsTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+            logsTable.getColumnModel().getColumn(0).setPreferredWidth(50);
             logsTable.getColumnModel().getColumn(1).setResizable(false);
-            logsTable.getColumnModel().getColumn(1).setPreferredWidth(30);
-            logsTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+            logsTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+            logsTable.getColumnModel().getColumn(2).setResizable(false);
+            logsTable.getColumnModel().getColumn(2).setPreferredWidth(150);
+            logsTable.getColumnModel().getColumn(3).setResizable(false);
             logsTable.getColumnModel().getColumn(4).setResizable(false);
-            logsTable.getColumnModel().getColumn(4).setPreferredWidth(10);
+            logsTable.getColumnModel().getColumn(4).setPreferredWidth(100);
             logsTable.getColumnModel().getColumn(5).setResizable(false);
-            logsTable.getColumnModel().getColumn(5).setPreferredWidth(10);
-            logsTable.getColumnModel().getColumn(8).setPreferredWidth(100);
+            logsTable.getColumnModel().getColumn(5).setPreferredWidth(100);
+            logsTable.getColumnModel().getColumn(6).setResizable(false);
+            logsTable.getColumnModel().getColumn(6).setPreferredWidth(100);
+            logsTable.getColumnModel().getColumn(7).setResizable(false);
+            logsTable.getColumnModel().getColumn(7).setPreferredWidth(150);
+            logsTable.getColumnModel().getColumn(8).setResizable(false);
+            logsTable.getColumnModel().getColumn(8).setPreferredWidth(150);
         }
 
-        btnDeleteLogs.setText("DELETE");
-        btnDeleteLogs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteLogsActionPerformed(evt);
-            }
-        });
+        logsPage.add(logsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 118, 1070, 399));
+
+        lblSeachLogs.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-search (1).gif")); // NOI18N
+        logsPage.add(lblSeachLogs, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 30, 32));
 
         txtSearchLogs.setText("Enter Search");
         txtSearchLogs.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -835,61 +823,13 @@ public class AdminDashboard extends javax.swing.JFrame {
                 txtSearchLogsKeyReleased(evt);
             }
         });
-
-        lblSeachLogs.setText("Search");
-
-        logsPage.setLayer(logsPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        logsPage.setLayer(btnDeleteLogs, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        logsPage.setLayer(txtSearchLogs, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        logsPage.setLayer(lblSeachLogs, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout logsPageLayout = new javax.swing.GroupLayout(logsPage);
-        logsPage.setLayout(logsPageLayout);
-        logsPageLayout.setHorizontalGroup(
-            logsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logsPageLayout.createSequentialGroup()
-                .addGroup(logsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(logsPageLayout.createSequentialGroup()
-                        .addGap(330, 330, 330)
-                        .addComponent(btnDeleteLogs))
-                    .addGroup(logsPageLayout.createSequentialGroup()
-                        .addGap(244, 244, 244)
-                        .addComponent(lblSeachLogs)
-                        .addGap(75, 75, 75)
-                        .addComponent(txtSearchLogs, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(logsPageLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(logsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1064, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-        logsPageLayout.setVerticalGroup(
-            logsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logsPageLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(logsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSeachLogs)
-                    .addComponent(txtSearchLogs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(btnDeleteLogs)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(logsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
-        );
+        logsPage.add(txtSearchLogs, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 16, 420, 40));
 
         cardPanel.add(logsPage, "card4");
 
         panelGradient1.add(cardPanel, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(panelGradient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1552, 623));
 
         pack();
         setLocationRelativeTo(null);
@@ -979,16 +919,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         searchLogs(search);
     }//GEN-LAST:event_txtSearchLogsKeyReleased
 
-    private void btnDeleteLogsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteLogsActionPerformed
-        DefaultTableModel model = (DefaultTableModel) logsTable.getModel();
-        int selectedRow = logsTable.getSelectedRow();
-        if (selectedRow != 1) {
-            int logID = (Integer) model.getValueAt(selectedRow, 0);
-            model.removeRow(selectedRow);
-            ComLabMethods.deleteLogs(logID);
-        }
-    }//GEN-LAST:event_btnDeleteLogsActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ProgramAddDelete dialog = new ProgramAddDelete(new javax.swing.JFrame(), true);
         dialog.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -1035,7 +965,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             String program = (String) model.getValueAt(selectedRow, 4);
             String yearLevel = (String) model.getValueAt(selectedRow, 5);
 
-            int id = ComLabMethods.getIDforUpdate(studentID);
+            int id = ComLabMethods.getUserID(studentID);
             UpdateAcct updateDialog = new UpdateAcct(new javax.swing.JFrame(), true);
             updateDialog.setStudentData(id, studentID, email, firstName, lastName, program, yearLevel);
             updateDialog.setVisible(true);
@@ -1056,7 +986,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             String firstName = (String) model.getValueAt(selectedRow, 3);
             String lastName = (String) model.getValueAt(selectedRow, 4);
 
-            int id = ComLabMethods.getIDforUpdate(facultyAdminID);
+            int id = ComLabMethods.getUserID(facultyAdminID);
             UpdateAcct updateDialog = new UpdateAcct(new javax.swing.JFrame(), true);
             updateDialog.setFacultyData(id, facultyAdminID, department, email, firstName, lastName);
             updateDialog.setVisible(true);
@@ -1079,7 +1009,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         String program = parts[5];
         String yearLevel = parts[6];
         String department = parts[7];
-        
+
         dialog.setAdminInfo(id, studFaculID, email, fname, lname, program, yearLevel, department);
         dialog.setVisible(true);
     }//GEN-LAST:event_lblAdminNameMouseClicked
@@ -1105,7 +1035,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAdminSearchAcctKeyReleased
 
     private void btnUpdateAdminAcctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateAdminAcctActionPerformed
-         DefaultTableModel model = (DefaultTableModel) adminAccountTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) adminAccountTable.getModel();
         int selectedRow = adminAccountTable.getSelectedRow();
 
         if (selectedRow != -1) {
@@ -1115,7 +1045,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             String firstName = (String) model.getValueAt(selectedRow, 2);
             String lastName = (String) model.getValueAt(selectedRow, 3);
 
-            int id = ComLabMethods.getIDforUpdate(facultyAdminID);
+            int id = ComLabMethods.getUserID(facultyAdminID);
             UpdateAcct updateDialog = new UpdateAcct(new javax.swing.JFrame(), true);
             updateDialog.setAdminData(id, facultyAdminID, email, firstName, lastName);
             updateDialog.setVisible(true);
@@ -1123,6 +1053,30 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btnUpdateAdminAcctActionPerformed
+
+    private void lblHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseEntered
+        panelHome.setBackground(Color.RED);
+    }//GEN-LAST:event_lblHomeMouseEntered
+
+    private void lblHomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseExited
+        panelHome.setBackground(new Color(0, 0, 0, 0));
+    }//GEN-LAST:event_lblHomeMouseExited
+
+    private void lblAccountsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccountsMouseEntered
+        panelAccounts.setBackground(Color.RED);
+    }//GEN-LAST:event_lblAccountsMouseEntered
+
+    private void lblAccountsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccountsMouseExited
+        panelAccounts.setBackground(new Color(0, 0, 0, 0));
+    }//GEN-LAST:event_lblAccountsMouseExited
+
+    private void lblAllLogsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAllLogsMouseEntered
+        panelLogs.setBackground(Color.RED);
+    }//GEN-LAST:event_lblAllLogsMouseEntered
+
+    private void lblAllLogsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAllLogsMouseExited
+        panelLogs.setBackground(new Color(0, 0, 0, 0));
+    }//GEN-LAST:event_lblAllLogsMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private computerlabsystem.Design.PanelGradient accountPage;
@@ -1132,7 +1086,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnAddStudentAcct;
     private javax.swing.JButton btnDeleteAdminAcct;
     private javax.swing.JButton btnDeleteFacultyAcct;
-    private javax.swing.JButton btnDeleteLogs;
     private javax.swing.JButton btnDeleteStuAcct;
     private javax.swing.JButton btnUpdateAdminAcct;
     private javax.swing.JButton btnUpdateFacultyAcct;
@@ -1146,6 +1099,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1154,7 +1109,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel lblAdmin;
     private javax.swing.JLabel lblAdminName;
     private javax.swing.JLabel lblAllLogs;
-    private javax.swing.JLabel lblBurgerMenu;
     private javax.swing.JLabel lblHome;
     private javax.swing.JLabel lblSeachLogs;
     private javax.swing.JLabel lblSearchAdmin;
@@ -1166,7 +1120,11 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTable longestTimeSpentTable;
     private computerlabsystem.Design.PanelGradient menuPanel;
     private javax.swing.JTable mostLogsTable;
+    private computerlabsystem.Design.PanelBorder panelAccounts;
+    private computerlabsystem.Design.PanelBorder panelBorder1;
     private computerlabsystem.Design.PanelGradient panelGradient1;
+    private computerlabsystem.Design.PanelBorder panelHome;
+    private computerlabsystem.Design.PanelBorder panelLogs;
     private computerlabsystem.Design.PanelGradient studentAccountPanel;
     private javax.swing.JScrollPane studentAcctPane;
     private javax.swing.JTable studentAcctTable;

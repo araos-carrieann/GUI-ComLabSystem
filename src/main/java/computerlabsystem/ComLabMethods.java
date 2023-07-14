@@ -4,11 +4,13 @@
  */
 package computerlabsystem;
 
+import static computerlabsystem.UserDashboardMethods.formatDuration;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
@@ -76,39 +78,38 @@ public class ComLabMethods {
         return BCrypt.checkpw(password, hashedPassword);
     }
 
-public static String getInfo(String stuFaculID) {
-    String id = "";
-    String userRole = "";
-    String studFaculID = "";
-    String program = "";
-    String yearLevel = "";
-    String department = "";
+    public static String getInfo(String stuFaculID) {
+        String id = "";
+        String userRole = "";
+        String studFaculID = "";
+        String program = "";
+        String yearLevel = "";
+        String department = "";
 
-    try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE studentfacultyID = ?")) {
-        stmt.setString(1, stuFaculID);
-        ResultSet rsltSet = stmt.executeQuery();
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE studentfacultyID = ?")) {
+            stmt.setString(1, stuFaculID);
+            ResultSet rsltSet = stmt.executeQuery();
 
-        if (rsltSet.next()) {
-            id = rsltSet.getString("id");
-            studFaculID = rsltSet.getString("studentfacultyID");
-            String fname = rsltSet.getString("firstName");
-            String lname = rsltSet.getString("lastName");
-            String email = rsltSet.getString("email");
-            program = rsltSet.getString("program");
-            yearLevel = rsltSet.getString("yearLvl");
-            department = rsltSet.getString("department");
+            if (rsltSet.next()) {
+                id = rsltSet.getString("id");
+                studFaculID = rsltSet.getString("studentfacultyID");
+                String fname = rsltSet.getString("firstName");
+                String lname = rsltSet.getString("lastName");
+                String email = rsltSet.getString("email");
+                program = rsltSet.getString("program");
+                yearLevel = rsltSet.getString("yearLvl");
+                department = rsltSet.getString("department");
 
-            return id + "," + studFaculID + "," + fname + "," + lname + "," + email + "," + program + "," + yearLevel + "," + department;
+                return id + "," + studFaculID + "," + fname + "," + lname + "," + email + "," + program + "," + yearLevel + "," + department;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
         }
-    } catch (SQLException e) {
-        e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+
+        return "";
     }
 
-    return "";
-}
-
     public static String getUserDetails(String stuFaculID, String password) {
-        
 
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE studentfacultyID = ?")) {
             stmt.setString(1, stuFaculID);
@@ -132,42 +133,40 @@ public static String getInfo(String stuFaculID) {
         return "false";
     }
 
-public static String userChangePass(String stuFaculID, String password, String newPassword) {
-    String msg = "";
-    try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT id, password FROM users WHERE studentFacultyID = ?")) {
-        
-        stmt.setString(1, stuFaculID);
-        ResultSet rs = stmt.executeQuery();
+    public static String userChangePass(String stuFaculID, String password, String newPassword) {
+        String msg = "";
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT id, password FROM users WHERE studentFacultyID = ?")) {
 
-        if (rs.next()) {
-            String hashedPassword = rs.getString("password");
-            int userId = rs.getInt("id");
+            stmt.setString(1, stuFaculID);
+            ResultSet rs = stmt.executeQuery();
 
-            // Verify the password
-            if (verifyPassword(password, hashedPassword)) {
-                // Update the user's password
-                String updateQuery = "UPDATE users SET password = ? WHERE id = ?";
-                try (PreparedStatement updateStmt = conn.prepareStatement(updateQuery)) {
-                    String hashedNewPassword = hashPassword(newPassword);
-                    updateStmt.setString(1, hashedNewPassword);
-                    updateStmt.setInt(2, userId);
-                    updateStmt.executeUpdate();
-                    msg = "Password Changed Successfully";
+            if (rs.next()) {
+                String hashedPassword = rs.getString("password");
+                int userId = rs.getInt("id");
+
+                // Verify the password
+                if (verifyPassword(password, hashedPassword)) {
+                    // Update the user's password
+                    String updateQuery = "UPDATE users SET password = ? WHERE id = ?";
+                    try (PreparedStatement updateStmt = conn.prepareStatement(updateQuery)) {
+                        String hashedNewPassword = hashPassword(newPassword);
+                        updateStmt.setString(1, hashedNewPassword);
+                        updateStmt.setInt(2, userId);
+                        updateStmt.executeUpdate();
+                        msg = "Password Changed Successfully";
+                    }
+                } else {
+                    msg = "Password Didn't match";
                 }
             } else {
-                msg = "Password Didn't match";
+                msg = "User not found";
             }
-        } else {
-            msg = "User not found";
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-    } catch (SQLException e) {
-        e.printStackTrace();
+        return msg;
     }
-     return msg;
-}
 
-
-    
     public static void logUserLogin(String stuFaculID, String fullName, String pass) {
         try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
             String createTableQuery = "CREATE TABLE IF NOT EXISTS logs (logID SERIAL PRIMARY KEY, "
@@ -260,12 +259,12 @@ public static String userChangePass(String stuFaculID, String password, String n
         return dataList;
     }
 
-        public static List<Data> getAllAdminDatas() {
+    public static List<Data> getAllAdminDatas() {
         List<Data> dataList = new ArrayList<>();
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE role = 'ADMIN' AND status = 'ACTIVE';"); ResultSet rsltSet = stmt.executeQuery()) {
 
             while (rsltSet.next()) {
-                int id =  rsltSet.getInt("id");
+                int id = rsltSet.getInt("id");
                 String facultyID = rsltSet.getString("studentfacultyID");
                 String userEmail = rsltSet.getString("email");
                 String userFname = rsltSet.getString("firstName");
@@ -280,6 +279,7 @@ public static String userChangePass(String stuFaculID, String password, String n
 
         return dataList;
     }
+
     public static List<Data> getAllLogs() {
         List<Data> dataList = new ArrayList<>();
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(("SELECT logs.logID, logs.fullname, logs.login_time, logs.logout_time,\n"
@@ -307,7 +307,8 @@ public static String userChangePass(String stuFaculID, String password, String n
         }
 
         return dataList;
-    }//Delete
+    }
+//Delete
 
     public static void deleteAcct(String studentID) {
         try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
@@ -506,7 +507,7 @@ public static String userChangePass(String stuFaculID, String password, String n
         return message;
     }
 
-    public static int getIDforUpdate(String studentFacultyID) {
+    public static int getUserID(String studentFacultyID) {
         int id = 0;
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT id FROM users WHERE studentFacultyID = '" + studentFacultyID + "'"); ResultSet rsltSet = stmt.executeQuery()) {
 
@@ -563,8 +564,11 @@ public static String userChangePass(String stuFaculID, String password, String n
                 String userFullname = resultSet.getString("fullname");
                 double sessionDuration = resultSet.getDouble("session_duration");
 
+                // Format the duration using the formatDuration() method
+                String formattedDuration = formatDuration(Duration.ofHours((long) sessionDuration));
+
                 // Create a new instance of Data and add it to the userSessions list
-                Data data = new Data(userRole, userFullname, String.valueOf(sessionDuration), null);
+                Data data = new Data(userRole, userFullname, formattedDuration);
                 userSessions.add(data);
             }
         } catch (SQLException e) {
@@ -574,4 +578,36 @@ public static String userChangePass(String stuFaculID, String password, String n
         return userSessions;
     }
 
+    public static List<Data> getUserLogs(int id) {
+        List<Data> dataList = new ArrayList<>();
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM logs WHERE user_id = '" + id + "'"); ResultSet rsltSet = stmt.executeQuery()) {
+
+            while (rsltSet.next()) {
+                String userLogin = rsltSet.getString("login_time");
+                String userLogout = rsltSet.getString("logout_time");
+
+                Data data = new Data(0, null, null, null, null, null, null, userLogin, userLogout);
+                dataList.add(data);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+        }
+
+        return dataList;
+    }
+
+//    private static void insertRecoveryToken(Connection connection, int userId, String recoveryToken, LocalDateTime expirationTime) throws SQLException {
+//        String query = "INSERT INTO passwordrecovery (user_id, recovery_token, expiration_time, is_used)\n"
+//                + "VALUES (?,\n"
+//                + "        ?,\n"
+//                + "        ?,\n"
+//                + "        false)\n"
+//                + "FOREIGN KEY (user_id) REFERENCES users (id))";
+//        try (PreparedStatement statement = connection.prepareStatement(query)) {
+//            statement.setInt(1, userId);
+//            statement.setString(2, recoveryToken);
+//            statement.setObject(3, expirationTime);
+//            statement.executeUpdate();
+//        }
+//    }
 }

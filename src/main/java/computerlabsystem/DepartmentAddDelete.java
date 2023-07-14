@@ -76,30 +76,41 @@ public class DepartmentAddDelete extends javax.swing.JDialog {
         txtAddDepartment.setText("Enter Department");
         panelGradient4.add(txtAddDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 120, -1));
 
+        btnAddDepartment.setBackground(new java.awt.Color(51, 102, 255));
+        btnAddDepartment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAddDepartment.setText("ADD");
+        btnAddDepartment.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnAddDepartment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddDepartmentActionPerformed(evt);
             }
         });
-        panelGradient4.add(btnAddDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, -1, -1));
+        panelGradient4.add(btnAddDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 50, -1));
 
+        btnDeleteDepartment.setBackground(new java.awt.Color(51, 102, 255));
+        btnDeleteDepartment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDeleteDepartment.setText("DELETE");
+        btnDeleteDepartment.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnDeleteDepartment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteDepartmentActionPerformed(evt);
             }
         });
-        panelGradient4.add(btnDeleteDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, -1, -1));
+        panelGradient4.add(btnDeleteDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 50, -1));
 
+        btnClearDepartment.setBackground(new java.awt.Color(0, 102, 255));
+        btnClearDepartment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnClearDepartment.setText("CLEAR");
+        btnClearDepartment.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnClearDepartment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearDepartmentActionPerformed(evt);
             }
         });
-        panelGradient4.add(btnClearDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+        panelGradient4.add(btnClearDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 50, -1));
 
+        btnBack.setBackground(new java.awt.Color(102, 153, 255));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -4,6 +4,7 @@
  */
 package computerlabsystem;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,19 +19,20 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        Transparent();
         LoginPanel login = new LoginPanel();
         SignUpPanel signUp = new SignUpPanel();
-        panelSlide.setAnimate(20);
-        panelSlide.init(login, signUp);
+        mainSlide.setAnimate(20);
+        mainSlide.init(login, signUp);
         login.addEventRegister(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 //  Show register form
-                panelSlide.show(1);
+                mainSlide.show(1);
             }
         });
         signUp.addEventBackLogin(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                panelSlide.show(0);
+                mainSlide.show(0);
             }
         });
     }
@@ -39,64 +41,66 @@ public class MainFrame extends javax.swing.JFrame {
         dispose();
     }
 
+    public void Transparent(){
+    mainBorder.setBackground(new Color(255,255,255,200));
+    mainSlide.setBackground(new Color(255,255,255,200));
+}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         panelGradient1 = new computerlabsystem.Design.PanelGradient();
-        panelBorder1 = new computerlabsystem.Design.PanelBorder();
-        panelSlide = new computerlabsystem.Design.PanelSlide();
+        mainBorder = new computerlabsystem.Design.PanelBorder();
+        mainSlide = new computerlabsystem.Design.PanelSlide();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelGradient1.setColorPrimary(new java.awt.Color(0, 255, 102));
-        panelGradient1.setColorSecondary(new java.awt.Color(0, 255, 204));
+        panelGradient1.setColorPrimary(new java.awt.Color(14, 41, 84));
+        panelGradient1.setColorSecondary(new java.awt.Color(82, 109, 130));
 
-        javax.swing.GroupLayout panelSlideLayout = new javax.swing.GroupLayout(panelSlide);
-        panelSlide.setLayout(panelSlideLayout);
-        panelSlideLayout.setHorizontalGroup(
-            panelSlideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 444, Short.MAX_VALUE)
+        mainBorder.setBackground(new java.awt.Color(204, 255, 204));
+
+        mainSlide.setBackground(new java.awt.Color(255, 255, 255));
+        mainSlide.setOpaque(false);
+
+        javax.swing.GroupLayout mainSlideLayout = new javax.swing.GroupLayout(mainSlide);
+        mainSlide.setLayout(mainSlideLayout);
+        mainSlideLayout.setHorizontalGroup(
+            mainSlideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 474, Short.MAX_VALUE)
         );
-        panelSlideLayout.setVerticalGroup(
-            panelSlideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 551, Short.MAX_VALUE)
+        mainSlideLayout.setVerticalGroup(
+            mainSlideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 544, Short.MAX_VALUE)
         );
 
-        panelBorder1.setLayer(panelSlide, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        mainBorder.setLayer(mainSlide, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
-        panelBorder1.setLayout(panelBorder1Layout);
-        panelBorder1Layout.setHorizontalGroup(
-            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(panelSlide, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout mainBorderLayout = new javax.swing.GroupLayout(mainBorder);
+        mainBorder.setLayout(mainBorderLayout);
+        mainBorderLayout.setHorizontalGroup(
+            mainBorderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainBorderLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(mainSlide, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        mainBorderLayout.setVerticalGroup(
+            mainBorderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainBorderLayout.createSequentialGroup()
+                .addComponent(mainSlide, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        panelBorder1Layout.setVerticalGroup(
-            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(panelSlide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
 
-        panelGradient1.add(panelBorder1);
-        panelBorder1.setBounds(330, 10, 460, 580);
+        panelGradient1.add(mainBorder);
+        mainBorder.setBounds(220, 100, 480, 550);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, 856, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelGradient1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        getContentPane().add(panelGradient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 856, 684));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\20230711_154133_0000-removebg-preview.png")); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 247, 550, 190));
 
         pack();
         setLocationRelativeTo(null);
@@ -139,8 +143,9 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private computerlabsystem.Design.PanelBorder panelBorder1;
+    private javax.swing.JLabel jLabel1;
+    private computerlabsystem.Design.PanelBorder mainBorder;
+    private computerlabsystem.Design.PanelSlide mainSlide;
     private computerlabsystem.Design.PanelGradient panelGradient1;
-    private computerlabsystem.Design.PanelSlide panelSlide;
     // End of variables declaration//GEN-END:variables
 }

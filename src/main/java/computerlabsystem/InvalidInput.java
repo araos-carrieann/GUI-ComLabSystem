@@ -54,7 +54,7 @@ public class InvalidInput extends javax.swing.JDialog {
         lblRemainingTime.setText("jLabel2");
 
         lblGIF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblGIF.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\output-onlinegiftools.gif")); // NOI18N
+        lblGIF.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\iconnn\\ezgif.com-crop.gif")); // NOI18N
 
         panelGradient1.setLayer(lblPleaseWait, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradient1.setLayer(lblRemainingTime, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -65,27 +65,25 @@ public class InvalidInput extends javax.swing.JDialog {
         panelGradient1Layout.setHorizontalGroup(
             panelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelGradient1Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
                 .addGroup(panelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelGradient1Layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addGroup(panelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPleaseWait, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblGIF)))
-                    .addGroup(panelGradient1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblRemainingTime, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                    .addComponent(lblGIF, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPleaseWait, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelGradient1Layout.createSequentialGroup()
+                .addComponent(lblRemainingTime, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 23, Short.MAX_VALUE))
         );
         panelGradient1Layout.setVerticalGroup(
             panelGradient1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelGradient1Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(lblPleaseWait, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(lblGIF, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
+                .addGap(38, 38, 38)
+                .addComponent(lblGIF, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
                 .addComponent(lblRemainingTime)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -100,6 +98,7 @@ public class InvalidInput extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public void countDown() {

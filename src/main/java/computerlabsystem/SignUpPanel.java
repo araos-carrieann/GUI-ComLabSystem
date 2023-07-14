@@ -4,6 +4,7 @@
  */
 package computerlabsystem;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JComboBox;
@@ -20,6 +21,7 @@ public class SignUpPanel extends javax.swing.JPanel {
     public SignUpPanel() {
         initComponents();
         lblWarningMsg.setVisible(false);
+        lblUserAddedSuccessfully.setVisible(false);
         comboProgram.setVisible(false);
         comboYrLvl.setVisible(false);
         comboDepartment.setVisible(false);
@@ -65,15 +67,15 @@ public class SignUpPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         btnGrp = new javax.swing.ButtonGroup();
+        signUpPanel = new javax.swing.JPanel();
         lblUsername = new javax.swing.JLabel();
-        lblEmail = new javax.swing.JLabel();
-        lblPass = new javax.swing.JLabel();
-        lblConfirmPass = new javax.swing.JLabel();
         btnClear = new javax.swing.JButton();
         btnSignIn = new javax.swing.JButton();
         btnBackToLogin = new javax.swing.JButton();
         txtFname = new javax.swing.JTextField();
         txtLname = new javax.swing.JTextField();
+        checkbxShowPass = new javax.swing.JCheckBox();
+        chckbxShowConfirm = new javax.swing.JCheckBox();
         txtEmail = new javax.swing.JTextField();
         fieldPassword = new javax.swing.JPasswordField();
         fieldConfirmPass = new javax.swing.JPasswordField();
@@ -81,265 +83,215 @@ public class SignUpPanel extends javax.swing.JPanel {
         rbtnFaculty = new javax.swing.JRadioButton();
         comboProgram = new javax.swing.JComboBox<>();
         comboYrLvl = new javax.swing.JComboBox<>();
-        checkbxShowPass = new javax.swing.JCheckBox();
-        chckbxShowConfirm = new javax.swing.JCheckBox();
         lblWarningMsg = new javax.swing.JLabel();
         comboDepartment = new javax.swing.JComboBox<>();
-        lblStudentFacultyID = new javax.swing.JLabel();
         txtStudentFacultyID = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lblUserAddedSuccessfully = new javax.swing.JLabel();
 
+        setOpaque(false);
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        signUpPanel.setBackground((new Color(0, 0, 0, 0)));
+        signUpPanel.setOpaque(false);
+        signUpPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblUsername.setBackground((new Color(0, 0, 0, 0)));
         lblUsername.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUsername.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-user-30.png")); // NOI18N
+        lblUsername.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        signUpPanel.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 50, 30));
 
-        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEmail.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-email-48.png")); // NOI18N
-
-        lblPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        lblConfirmPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblConfirmPass.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-good-pincode-50.png")); // NOI18N
-
+        btnClear.setBackground(new java.awt.Color(51, 102, 255));
+        btnClear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnClear.setText("CLEAR");
+        btnClear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearActionPerformed(evt);
             }
         });
+        signUpPanel.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 80, -1));
 
+        btnSignIn.setBackground(new java.awt.Color(51, 102, 255));
+        btnSignIn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSignIn.setText("SIGN IN");
+        btnSignIn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignInActionPerformed(evt);
             }
         });
+        signUpPanel.add(btnSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 190, -1));
 
+        btnBackToLogin.setBackground(new java.awt.Color(51, 102, 255));
+        btnBackToLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnBackToLogin.setText("BACK TO LOGIN");
+        btnBackToLogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        signUpPanel.add(btnBackToLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 279, -1));
 
+        txtFname.setBackground((new Color(0, 0, 0, 0)));
+        txtFname.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         txtFname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtFname.setText("First Name");
+        txtFname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "FIRST NAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        txtFname.setPreferredSize(new java.awt.Dimension(90, 22));
         txtFname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFnameActionPerformed(evt);
             }
         });
+        signUpPanel.add(txtFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 140, 40));
 
+        txtLname.setBackground((new Color(0, 0, 0, 0)));
+        txtLname.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         txtLname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtLname.setText("Last Name");
+        txtLname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "LAST NAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        txtLname.setPreferredSize(new java.awt.Dimension(90, 22));
         txtLname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLnameActionPerformed(evt);
             }
         });
+        signUpPanel.add(txtLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 112, 130, 40));
 
+        checkbxShowPass.setBackground((new Color(0, 0, 0, 0)));
+        checkbxShowPass.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        checkbxShowPass.setBorderPainted(true);
+        checkbxShowPass.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-eye-20.png")); // NOI18N
+        checkbxShowPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkbxShowPassActionPerformed(evt);
+            }
+        });
+        signUpPanel.add(checkbxShowPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 214, -1, 30));
+
+        chckbxShowConfirm.setBackground((new Color(0, 0, 0, 0)));
+        chckbxShowConfirm.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        chckbxShowConfirm.setBorderPainted(true);
+        chckbxShowConfirm.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-eye-20.png")); // NOI18N
+        chckbxShowConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chckbxShowConfirmActionPerformed(evt);
+            }
+        });
+        signUpPanel.add(chckbxShowConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, -1, 30));
+
+        txtEmail.setBackground((new Color(0, 0, 0, 0)));
+        txtEmail.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtEmail.setText("EMAIL");
+        txtEmail.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "EMAIL", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        txtEmail.setPreferredSize(new java.awt.Dimension(90, 22));
+        signUpPanel.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 290, 40));
 
+        fieldPassword.setBackground((new Color(0, 0, 0, 0)));
+        fieldPassword.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         fieldPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fieldPassword.setText("jPasswordField1");
+        fieldPassword.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "PASSWORD", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        fieldPassword.setPreferredSize(new java.awt.Dimension(90, 22));
         fieldPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldPasswordActionPerformed(evt);
             }
         });
+        signUpPanel.add(fieldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 290, 40));
 
+        fieldConfirmPass.setBackground((new Color(0, 0, 0, 0)));
+        fieldConfirmPass.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         fieldConfirmPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fieldConfirmPass.setText("jPasswordField2");
+        fieldConfirmPass.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "CONFIRM PASSWORD", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        fieldConfirmPass.setPreferredSize(new java.awt.Dimension(90, 22));
         fieldConfirmPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldConfirmPassActionPerformed(evt);
             }
         });
+        signUpPanel.add(fieldConfirmPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 290, 40));
 
+        rbtnStudent.setBackground((new Color(0, 0, 0, 0)));
         btnGrp.add(rbtnStudent);
+        rbtnStudent.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rbtnStudent.setText("STUDENT");
         rbtnStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtnStudentActionPerformed(evt);
             }
         });
+        signUpPanel.add(rbtnStudent, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, -1, -1));
 
+        rbtnFaculty.setBackground((new Color(0, 0, 0, 0)));
         btnGrp.add(rbtnFaculty);
+        rbtnFaculty.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rbtnFaculty.setText("FACULTY");
         rbtnFaculty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtnFacultyActionPerformed(evt);
             }
         });
+        signUpPanel.add(rbtnFaculty, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, -1, -1));
 
+        comboProgram.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         comboProgram.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboProgramActionPerformed(evt);
             }
         });
+        signUpPanel.add(comboProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 130, -1));
 
+        comboYrLvl.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         comboYrLvl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboYrLvlActionPerformed(evt);
             }
         });
+        signUpPanel.add(comboYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 120, -1));
 
-        checkbxShowPass.setText("Show");
-        checkbxShowPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkbxShowPassActionPerformed(evt);
-            }
-        });
-
-        chckbxShowConfirm.setText("Show");
-        chckbxShowConfirm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chckbxShowConfirmActionPerformed(evt);
-            }
-        });
-
+        lblWarningMsg.setBackground((new Color(0, 0, 0, 0)));
         lblWarningMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWarningMsg.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-error-24.png")); // NOI18N
         lblWarningMsg.setText("jLabel1");
+        signUpPanel.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 366, -1));
 
-        lblStudentFacultyID.setText("Student/Faculty ID");
+        comboDepartment.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        signUpPanel.add(comboDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 190, -1));
 
+        txtStudentFacultyID.setBackground((new Color(0, 0, 0, 0)));
+        txtStudentFacultyID.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         txtStudentFacultyID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtStudentFacultyID.setText("Student/Faculty ID");
+        txtStudentFacultyID.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "STUDENT / FACULTY ID", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        txtStudentFacultyID.setPreferredSize(new java.awt.Dimension(90, 22));
         txtStudentFacultyID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtStudentFacultyIDActionPerformed(evt);
             }
         });
+        signUpPanel.add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 290, 40));
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-id-30.png")); // NOI18N
+        signUpPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPass, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(lblConfirmPass)))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fieldConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(checkbxShowPass)
-                            .addComponent(chckbxShowConfirm)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(rbtnStudent)
-                        .addGap(98, 98, 98)
-                        .addComponent(rbtnFaculty))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(comboProgram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108)
-                        .addComponent(comboYrLvl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(230, 230, 230)
-                        .addComponent(comboDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(btnBackToLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(lblWarningMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblStudentFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(41, 41, 41)
-                                                .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(51, 51, 51)
-                                        .addComponent(txtLname, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(txtStudentFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(115, 115, 115))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtStudentFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblStudentFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtLname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPass, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(lblConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(fieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(fieldConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(checkbxShowPass)
-                        .addGap(30, 30, 30)
-                        .addComponent(chckbxShowConfirm)))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbtnStudent)
-                    .addComponent(rbtnFaculty))
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboProgram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboYrLvl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(comboDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addComponent(btnSignIn)
-                .addGap(7, 7, 7)
-                .addComponent(btnClear)
-                .addGap(7, 7, 7)
-                .addComponent(btnBackToLogin)
-                .addGap(7, 7, 7)
-                .addComponent(lblWarningMsg))
-        );
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-email-30.png")); // NOI18N
+        signUpPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-check-lock-30.png")); // NOI18N
+        signUpPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-password-30.png")); // NOI18N
+        signUpPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
+
+        lblUserAddedSuccessfully.setBackground((new Color(0, 0, 0, 0)));
+        lblUserAddedSuccessfully.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUserAddedSuccessfully.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-verified-24.png")); // NOI18N
+        lblUserAddedSuccessfully.setText("jLabel1");
+        signUpPanel.add(lblUserAddedSuccessfully, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 366, -1));
+
+        add(signUpPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 590));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtLnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLnameActionPerformed
@@ -387,9 +339,6 @@ public class SignUpPanel extends javax.swing.JPanel {
         email = txtEmail.getText();
         pass = String.valueOf(fieldPassword.getPassword());
         confirmPass = String.valueOf(fieldPassword.getPassword());
-        program = (String) comboProgram.getSelectedItem();
-        yearLevel = (String) comboYrLvl.getSelectedItem();
-        department = (String) comboDepartment.getSelectedItem();
 
         lblWarningMsg.setVisible(true);
         if (studentFacultyID.isEmpty() && firstName.isEmpty() && lastName.isEmpty() && email.isEmpty() && pass.isEmpty() && confirmPass.isEmpty() && !rbtnStudent.isSelected() && !rbtnFaculty.isSelected()) {
@@ -412,23 +361,32 @@ public class SignUpPanel extends javax.swing.JPanel {
             lblWarningMsg.setText("Name should only consist of letters, numbers, dashes, or dots.");
         } else if (!email.matches("[\\w.-]+@[a-zA-Z0-9-]+\\.[a-zA-Z]{2,}")) {
             lblWarningMsg.setText("Invalid email address format.");
-        } else if (program.equals("DEFAULT") || yearLevel.equals("DEFAULT")) {
-            lblWarningMsg.setText("Please specify your program/year level.");
-        } else if (department.equals("DEFAULT")) {
-            lblWarningMsg.setText("Please specify your Department.");
         } else {
             if (rbtnStudent.isSelected()) {
+                program = (String) comboProgram.getSelectedItem();
+                yearLevel = (String) comboYrLvl.getSelectedItem();
+                if (program.equals("DEFAULT") || yearLevel.equals("DEFAULT")) {
+                    lblWarningMsg.setText("Please specify your program/year level.");
+                }
                 role = rbtnStudent.getText();
                 department = null;
             } else {
                 role = rbtnFaculty.getText();
+                department = (String) comboDepartment.getSelectedItem();
+                if (department.equals("DEFAULT")) {
+                    lblWarningMsg.setText("Please specify your Department.");
+                }
                 program = null;
                 yearLevel = null;
             }
             status = "ACTIVE";
             String hashedPassword = ComLabMethods.hashPassword(pass);
             String msg = ComLabMethods.registerUser(status, role, studentFacultyID, firstName, lastName, email, hashedPassword, program, yearLevel, department);
-            lblWarningMsg.setText(msg);
+            btnSignIn.setEnabled(false);
+            btnClear.setEnabled(false);
+            lblWarningMsg.setVisible(false);
+            lblUserAddedSuccessfully.setVisible(true);
+            lblUserAddedSuccessfully.setText(msg);
             System.out.println("pogiiiii");
         }
     }//GEN-LAST:event_btnSignInActionPerformed
@@ -477,14 +435,15 @@ public class SignUpPanel extends javax.swing.JPanel {
     private javax.swing.JPasswordField fieldConfirmPass;
     private javax.swing.JPasswordField fieldPassword;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblConfirmPass;
-    private javax.swing.JLabel lblEmail;
-    private javax.swing.JLabel lblPass;
-    private javax.swing.JLabel lblStudentFacultyID;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblUserAddedSuccessfully;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JLabel lblWarningMsg;
     private javax.swing.JRadioButton rbtnFaculty;
     private javax.swing.JRadioButton rbtnStudent;
+    private javax.swing.JPanel signUpPanel;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFname;
     private javax.swing.JTextField txtLname;
