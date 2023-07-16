@@ -52,6 +52,8 @@ public class DepartmentAddDelete extends javax.swing.JDialog {
         setModal(true);
         setUndecorated(true);
 
+        panelGradient4.setBackground(new java.awt.Color(255, 0, 51));
+        panelGradient4.setColorPrimary(new java.awt.Color(14, 41, 84));
         panelGradient4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         departmentTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -69,12 +71,13 @@ public class DepartmentAddDelete extends javax.swing.JDialog {
 
         panelGradient4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 330, 200));
 
+        lblAddDepartment.setBackground(new java.awt.Color(0, 102, 255));
         lblAddDepartment.setText("DEPARTMENT");
-        panelGradient4.add(lblAddDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+        panelGradient4.add(lblAddDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         txtAddDepartment.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtAddDepartment.setText("Enter Department");
-        panelGradient4.add(txtAddDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 120, -1));
+        panelGradient4.add(txtAddDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 120, -1));
 
         btnAddDepartment.setBackground(new java.awt.Color(51, 102, 255));
         btnAddDepartment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -85,7 +88,7 @@ public class DepartmentAddDelete extends javax.swing.JDialog {
                 btnAddDepartmentActionPerformed(evt);
             }
         });
-        panelGradient4.add(btnAddDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 50, -1));
+        panelGradient4.add(btnAddDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 50, -1));
 
         btnDeleteDepartment.setBackground(new java.awt.Color(51, 102, 255));
         btnDeleteDepartment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -96,7 +99,7 @@ public class DepartmentAddDelete extends javax.swing.JDialog {
                 btnDeleteDepartmentActionPerformed(evt);
             }
         });
-        panelGradient4.add(btnDeleteDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 50, -1));
+        panelGradient4.add(btnDeleteDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 50, -1));
 
         btnClearDepartment.setBackground(new java.awt.Color(0, 102, 255));
         btnClearDepartment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -107,7 +110,7 @@ public class DepartmentAddDelete extends javax.swing.JDialog {
                 btnClearDepartmentActionPerformed(evt);
             }
         });
-        panelGradient4.add(btnClearDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 50, -1));
+        panelGradient4.add(btnClearDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 50, -1));
 
         btnBack.setBackground(new java.awt.Color(102, 153, 255));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N

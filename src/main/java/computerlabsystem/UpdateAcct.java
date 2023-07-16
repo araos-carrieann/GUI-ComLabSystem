@@ -137,43 +137,41 @@ public class UpdateAcct extends javax.swing.JDialog {
 
         panelGradient1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblStudentFacultyID.setText("Student/Faculty ID");
+        lblStudentFacultyID.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-id-30.png")); // NOI18N
         panelGradient1.add(lblStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         txtStudentFacultyID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtStudentFacultyID.setText("Student/Faculty ID");
-        panelGradient1.add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 210, -1));
+        txtStudentFacultyID.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "STUDENT / FACULTY ID", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        panelGradient1.add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 310, -1));
 
         lblUsername.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblUsername.setText("Username");
-        panelGradient1.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+        lblUsername.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-user-30.png")); // NOI18N
+        panelGradient1.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         txtFname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtFname.setText("FIRST NAME");
-        panelGradient1.add(txtFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 100, -1));
+        txtFname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "FIRST NAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        panelGradient1.add(txtFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 150, -1));
 
         txtLname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtLname.setText("LAST NAME");
+        txtLname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "LAST NAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
         txtLname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLnameActionPerformed(evt);
             }
         });
-        panelGradient1.add(txtLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 90, -1));
+        panelGradient1.add(txtLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 150, 40));
 
         lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEmail.setText("Email");
-        panelGradient1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, -1));
+        lblEmail.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-email-30.png")); // NOI18N
+        panelGradient1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtEmail.setText("EMAIL");
-        panelGradient1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 220, -1));
+        txtEmail.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "EMAIL", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        panelGradient1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 310, -1));
 
-        comboProgram.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        panelGradient1.add(comboProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 110, -1));
+        panelGradient1.add(comboProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 130, -1));
 
-        comboDepartment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        panelGradient1.add(comboDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 120, -1));
+        panelGradient1.add(comboDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 170, -1));
 
         buttonGroup1.add(rbtnStudent);
         rbtnStudent.setText("STUDENT");
@@ -182,7 +180,7 @@ public class UpdateAcct extends javax.swing.JDialog {
                 rbtnStudentActionPerformed(evt);
             }
         });
-        panelGradient1.add(rbtnStudent, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
+        panelGradient1.add(rbtnStudent, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
 
         buttonGroup1.add(rbtnFaculty);
         rbtnFaculty.setText("FACULTY");
@@ -191,7 +189,7 @@ public class UpdateAcct extends javax.swing.JDialog {
                 rbtnFacultyActionPerformed(evt);
             }
         });
-        panelGradient1.add(rbtnFaculty, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, -1, -1));
+        panelGradient1.add(rbtnFaculty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
 
         buttonGroup1.add(rbtnAdmin);
         rbtnAdmin.setText("ADMIN");
@@ -200,35 +198,38 @@ public class UpdateAcct extends javax.swing.JDialog {
                 rbtnAdminActionPerformed(evt);
             }
         });
-        panelGradient1.add(rbtnAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
+        panelGradient1.add(rbtnAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, -1, -1));
 
-        comboYrLvl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboYrLvl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboYrLvlActionPerformed(evt);
             }
         });
-        panelGradient1.add(comboYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, -1, -1));
+        panelGradient1.add(comboYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 120, -1));
 
+        saveChanges.setBackground(new java.awt.Color(0, 102, 255));
+        saveChanges.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-save-20.png")); // NOI18N
         saveChanges.setText("SAVE");
         saveChanges.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveChangesActionPerformed(evt);
             }
         });
-        panelGradient1.add(saveChanges, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, -1, -1));
+        panelGradient1.add(saveChanges, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 110, -1));
 
         lblWarningMsg.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-error-24.png")); // NOI18N
         lblWarningMsg.setText("jLabel1");
         panelGradient1.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, -1, -1));
 
+        btnBack.setBackground(new java.awt.Color(0, 102, 255));
+        btnBack.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-go-back-20.png")); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        panelGradient1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
+        panelGradient1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 110, -1));
 
         getContentPane().add(panelGradient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 460));
 

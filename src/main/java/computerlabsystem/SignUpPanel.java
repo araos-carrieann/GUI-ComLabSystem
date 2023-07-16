@@ -91,6 +91,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblUserAddedSuccessfully = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -291,6 +292,10 @@ public class SignUpPanel extends javax.swing.JPanel {
         lblUserAddedSuccessfully.setText("jLabel1");
         signUpPanel.add(lblUserAddedSuccessfully, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 366, -1));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setText("Create an account");
+        signUpPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 160, 40));
+
         add(signUpPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 590));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -438,6 +443,7 @@ public class SignUpPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblUserAddedSuccessfully;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JLabel lblWarningMsg;

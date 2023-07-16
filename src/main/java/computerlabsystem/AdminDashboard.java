@@ -222,7 +222,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         btnAddFacultyAccount = new javax.swing.JButton();
         txtFacultySearchAcct = new javax.swing.JTextField();
         facultyAcctPane = new javax.swing.JScrollPane();
-        facultyAcctTable = new javax.swing.JTable();
         btnUpdateFacultyAcct = new javax.swing.JButton();
         studentAccountPanel = new computerlabsystem.Design.PanelGradient();
         btnDeleteStuAcct = new javax.swing.JButton();
@@ -261,7 +260,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         menuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelHome.setBackground((new Color(0, 0, 0, 0)));
-        panelHome.setLayout(new java.awt.GridLayout());
+        panelHome.setLayout(new java.awt.GridLayout(1, 0));
 
         lblHome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblHome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -283,7 +282,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         menuPanel.add(panelHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 130, 80));
 
         panelAccounts.setBackground((new Color(0, 0, 0, 0)));
-        panelAccounts.setLayout(new java.awt.GridLayout());
+        panelAccounts.setLayout(new java.awt.GridLayout(1, 0));
 
         lblAccounts.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblAccounts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -305,7 +304,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         menuPanel.add(panelAccounts, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 130, 80));
 
         panelLogs.setBackground((new Color(0, 0, 0, 0)));
-        panelLogs.setLayout(new java.awt.GridLayout());
+        panelLogs.setLayout(new java.awt.GridLayout(1, 0));
 
         lblAllLogs.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblAllLogs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -526,10 +525,11 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         lblSearchFaculty.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblSearchFaculty.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSearchFaculty.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-search-35.png")); // NOI18N
+        lblSearchFaculty.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-search-20.png")); // NOI18N
         facultyAccountPanel.add(lblSearchFaculty, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 20, 40, 40));
 
         btnDeleteFacultyAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDeleteFacultyAcct.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-delete-20.png")); // NOI18N
         btnDeleteFacultyAcct.setText("DELETE");
         btnDeleteFacultyAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -539,6 +539,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         facultyAccountPanel.add(btnDeleteFacultyAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 79, -1, -1));
 
         btnAddFacultyAccount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAddFacultyAccount.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-add-user-20.png")); // NOI18N
         btnAddFacultyAccount.setText("ADD USER");
         btnAddFacultyAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -570,12 +571,13 @@ public class AdminDashboard extends javax.swing.JFrame {
                 "FACULTY ID", "DEPARTMENT", "EMAIL", "FIRST NAME", "LASTNAME"
             }
         ));
-        facultyAcctTable.setEnabled(false);
+        facultyAcctTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         facultyAcctPane.setViewportView(facultyAcctTable);
 
         facultyAccountPanel.add(facultyAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 120, 970, 368));
 
         btnUpdateFacultyAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnUpdateFacultyAcct.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-update-20.png")); // NOI18N
         btnUpdateFacultyAcct.setText("UPDATE");
         btnUpdateFacultyAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -591,6 +593,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         studentAccountPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnDeleteStuAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDeleteStuAcct.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-delete-20.png")); // NOI18N
         btnDeleteStuAcct.setText("DELETE");
         btnDeleteStuAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -663,10 +666,11 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         lblSearchStudent.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblSearchStudent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSearchStudent.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-search-35.png")); // NOI18N
+        lblSearchStudent.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-search-20.png")); // NOI18N
         studentAccountPanel.add(lblSearchStudent, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 20, 40, 40));
 
         btnAddStudentAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAddStudentAcct.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-add-user-20.png")); // NOI18N
         btnAddStudentAcct.setText("ADD USER");
         btnAddStudentAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -684,6 +688,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         studentAccountPanel.add(txtStudentSearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 310, 40));
 
         btnUpdateStudentAccount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnUpdateStudentAccount.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-update-20.png")); // NOI18N
         btnUpdateStudentAccount.setText("UPDATE");
         btnUpdateStudentAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -716,10 +721,11 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         lblSearchAdmin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblSearchAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSearchAdmin.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-search-35.png")); // NOI18N
+        lblSearchAdmin.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-search-20.png")); // NOI18N
         adminAccountPanel.add(lblSearchAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, -1, 40));
 
         btnDeleteAdminAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDeleteAdminAcct.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-delete-20.png")); // NOI18N
         btnDeleteAdminAcct.setText("DELETE");
         btnDeleteAdminAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -742,6 +748,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         adminAccountPanel.add(txtAdminSearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, 290, 40));
 
         btnUpdateAdminAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnUpdateAdminAcct.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-update-20.png")); // NOI18N
         btnUpdateAdminAcct.setText("UPDATE");
         btnUpdateAdminAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -758,7 +765,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         accountPage.setLayout(accountPageLayout);
         accountPageLayout.setHorizontalGroup(
             accountPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(accountPageLayout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 189, Short.MAX_VALUE))
         );
         accountPageLayout.setVerticalGroup(
             accountPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -813,8 +822,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         }
 
         logsPage.add(logsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 118, 1070, 399));
-
-        lblSeachLogs.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-search (1).gif")); // NOI18N
         logsPage.add(lblSeachLogs, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 30, 32));
 
         txtSearchLogs.setText("Enter Search");
@@ -1010,7 +1017,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         String yearLevel = parts[6];
         String department = parts[7];
 
-        dialog.setAdminInfo(id, studFaculID, email, fname, lname, program, yearLevel, department);
+        dialog.setAdminInfo(id, studFaculID, fname, lname, email, program, yearLevel, department);
         dialog.setVisible(true);
     }//GEN-LAST:event_lblAdminNameMouseClicked
 
@@ -1093,7 +1100,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private computerlabsystem.Design.PanelGradient cardPanel;
     private computerlabsystem.Design.PanelGradient facultyAccountPanel;
     private javax.swing.JScrollPane facultyAcctPane;
-    private javax.swing.JTable facultyAcctTable;
+    private final javax.swing.JTable facultyAcctTable = new javax.swing.JTable();
     private computerlabsystem.Design.PanelGradient headerPanel;
     private computerlabsystem.Design.PanelGradient homePage;
     private javax.swing.JButton jButton1;

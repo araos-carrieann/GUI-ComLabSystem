@@ -49,6 +49,7 @@ public class YearLevelAddDelete extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        panelGradient3.setBackground(new java.awt.Color(14, 41, 84));
         panelGradient3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         yrLvlTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -64,8 +65,9 @@ public class YearLevelAddDelete extends javax.swing.JDialog {
         ));
         jScrollPane2.setViewportView(yrLvlTable);
 
-        panelGradient3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 330, 200));
+        panelGradient3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 340, 200));
 
+        lblAddYrLvl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblAddYrLvl.setText("YEAR LEVEL");
         panelGradient3.add(lblAddYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
 
@@ -73,30 +75,39 @@ public class YearLevelAddDelete extends javax.swing.JDialog {
         txtAddYrLvl.setText("Enter Level");
         panelGradient3.add(txtAddYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 120, -1));
 
+        btnAddYrLvl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAddYrLvl.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-add-user-20.png")); // NOI18N
         btnAddYrLvl.setText("ADD");
         btnAddYrLvl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddYrLvlActionPerformed(evt);
             }
         });
-        panelGradient3.add(btnAddYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
+        panelGradient3.add(btnAddYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, -1));
 
+        btnDeleteYrLvl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDeleteYrLvl.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-delete-20.png")); // NOI18N
         btnDeleteYrLvl.setText("DELETE");
         btnDeleteYrLvl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteYrLvlActionPerformed(evt);
             }
         });
-        panelGradient3.add(btnDeleteYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
+        panelGradient3.add(btnDeleteYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
 
+        btnClearYearLevel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnClearYearLevel.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-clear-symbol-20.png")); // NOI18N
         btnClearYearLevel.setText("CLEAR");
         btnClearYearLevel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearYearLevelActionPerformed(evt);
             }
         });
-        panelGradient3.add(btnClearYearLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
+        panelGradient3.add(btnClearYearLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
+        btnBack.setBackground(new java.awt.Color(0, 102, 255));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBack.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-back-20.png")); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

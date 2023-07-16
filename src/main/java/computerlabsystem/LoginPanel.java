@@ -28,7 +28,6 @@ public class LoginPanel extends javax.swing.JPanel {
         btnGoToSignUp.addActionListener(event);
     }
 
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -55,7 +54,7 @@ public class LoginPanel extends javax.swing.JPanel {
         loginPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-id-23.png")); // NOI18N
-        loginPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
+        loginPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
 
         chckbxShowPass.setFont(new java.awt.Font("Rockwell", 3, 12)); // NOI18N
         chckbxShowPass.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-eye-20.png")); // NOI18N
@@ -84,7 +83,7 @@ public class LoginPanel extends javax.swing.JPanel {
         txtStudentFacultyID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtStudentFacultyID.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "STUDENT / FACULTY ID", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Segoe UI Semibold", 0, 12))); // NOI18N
         txtStudentFacultyID.setPreferredSize(new java.awt.Dimension(65, 20));
-        loginPanel.add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 320, 50));
+        loginPanel.add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 320, 50));
 
         btnLogin.setBackground(new java.awt.Color(51, 51, 255));
         btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -110,7 +109,7 @@ public class LoginPanel extends javax.swing.JPanel {
         lblWarningMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWarningMsg.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-error-24.png")); // NOI18N
         lblWarningMsg.setText("jLabel3");
-        loginPanel.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 490, 235, -1));
+        loginPanel.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 235, -1));
 
         lblAttemptsLeft.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAttemptsLeft.setText("jLabel1");
@@ -123,13 +122,18 @@ public class LoginPanel extends javax.swing.JPanel {
 
         jButton1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         jButton1.setText("VISITORS");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         loginPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 490, -1, -1));
 
         jLabel2.setText("Don't have an account?");
         loginPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\output-onlinegiftools.gif")); // NOI18N
-        loginPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 230, 180));
+        loginPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 230, 180));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -181,6 +185,7 @@ public class LoginPanel extends javax.swing.JPanel {
                     admn.setVisible(true);
                     SwingUtilities.getWindowAncestor((Component) evt.getSource()).dispose();
                 } else if (userRole.equals("STUDENT") || userRole.equals("FACULTY")) {
+                    ComLabMethods.createLogs();
                     ComLabMethods.logUserLogin(sfID, fullName, pass);
                     System.out.println("anooonnaaaaa");
                     UsersDashboard userDashboard = new UsersDashboard(fname, sfID);
@@ -211,6 +216,17 @@ public class LoginPanel extends javax.swing.JPanel {
     private void btnGoToSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoToSignUpActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGoToSignUpActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Visitors dialog = new Visitors(new javax.swing.JFrame(), true);
+        dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                System.exit(0);
+            }
+        });
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private static int attempt = 3;
     private String stuFaculID, pass;

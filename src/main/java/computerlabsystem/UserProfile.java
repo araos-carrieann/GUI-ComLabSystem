@@ -22,16 +22,16 @@ public class UserProfile extends javax.swing.JDialog {
         this.id = id;
         this.stuFaculID = stuFaculID;
         this.email = email;
-        this.fname = firstName;
-        this.lname = lastName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.program = program;
         this.yearLevel = yearLevel;
 
         // Set the values to the corresponding text fields or combo boxes
         lblUserID.setText(stuFaculID);
         lblUserEmail.setText(email);
-        lblUserFirstName.setText(fname);
-        lblUserLastName.setText(lname);
+        lblUserFirstName.setText(firstName);
+        lblUserLastName.setText(lastName);
         lblYearLevel.setVisible(true);
         lblProgram.setVisible(true);
         lblUserYearLevel.setVisible(true);
@@ -47,13 +47,13 @@ public class UserProfile extends javax.swing.JDialog {
         this.stuFaculID = stuFaculID;
         this.department = department;
         this.email = email;
-        this.fname = firstName;
-        this.lname = lastName;
+        this.firstName = firstName;
+        this.lastName = lastName;
 
         lblUserID.setText(stuFaculID);
         lblUserEmail.setText(email);
-        lblUserFirstName.setText(fname);
-        lblUserLastName.setText(lname);
+        lblUserFirstName.setText(firstName);
+        lblUserLastName.setText(lastName);
         lblYearLevel.setVisible(false);
         lblProgram.setVisible(false);
         lblUserYearLevel.setVisible(false);
@@ -67,17 +67,17 @@ public class UserProfile extends javax.swing.JDialog {
     public void setAdminInfo(int id, String stuFaculID, String firstName, String lastName, String email, String program, String yearLevel, String department) {
         this.id = id;
         this.stuFaculID = stuFaculID;
-        this.department = department;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
-        this.fname = firstName;
-        this.lname = lastName;
         this.program = program;
         this.yearLevel = yearLevel;
+        this.department = department;
 
         lblUserID.setText(stuFaculID);
+        lblUserFirstName.setText(firstName);
+        lblUserLastName.setText(lastName);
         lblUserEmail.setText(email);
-        lblUserFirstName.setText(fname);
-        lblUserLastName.setText(lname);
         if (!program.equals("null")) {
             lblProgram.setVisible(true);
             lblUserProgram.setVisible(true);
@@ -139,9 +139,11 @@ public class UserProfile extends javax.swing.JDialog {
         panelGradient1.setColorSecondary(new java.awt.Color(255, 204, 0));
         panelGradient1.setLayout(new java.awt.BorderLayout());
 
-        headerPanel.setColorPrimary(new java.awt.Color(0, 255, 204));
+        headerPanel.setColorPrimary(new java.awt.Color(14, 41, 84));
         headerPanel.setPreferredSize(new java.awt.Dimension(100, 50));
 
+        btnUserInfo.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        btnUserInfo.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-more-info-20.png")); // NOI18N
         btnUserInfo.setText("User Info");
         btnUserInfo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -149,17 +151,22 @@ public class UserProfile extends javax.swing.JDialog {
             }
         });
         headerPanel.add(btnUserInfo);
-        btnUserInfo.setBounds(20, 10, 80, 16);
+        btnUserInfo.setBounds(170, 10, 90, 20);
 
-        btnSettings.setText("Change Pass");
+        btnSettings.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSettings.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-password-reset-20.png")); // NOI18N
+        btnSettings.setText("Change password");
         btnSettings.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSettingsMouseClicked(evt);
             }
         });
         headerPanel.add(btnSettings);
-        btnSettings.setBounds(130, 10, 90, 16);
+        btnSettings.setBounds(270, 10, 150, 20);
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 204));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-back-20.png")); // NOI18N
         jLabel1.setText("Back");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -167,150 +174,84 @@ public class UserProfile extends javax.swing.JDialog {
             }
         });
         headerPanel.add(jLabel1);
-        jLabel1.setBounds(315, 10, 40, 16);
+        jLabel1.setBounds(10, 10, 70, 16);
 
         panelGradient1.add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
         cardPanel.setLayout(new java.awt.CardLayout());
 
-        userInfoPanel.setColorSecondary(new java.awt.Color(0, 102, 102));
+        userInfoPanel.setColorSecondary(new java.awt.Color(82, 109, 130));
+        userInfoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblID.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblID.setText("ID:");
+        userInfoPanel.add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 37, -1));
 
-        lblFirstname.setText("FIRST NAME:");
+        lblFirstname.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblFirstname.setText("First Name:");
+        userInfoPanel.add(lblFirstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, 20));
 
-        lblLastname.setText("LAST NAME");
+        lblLastname.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblLastname.setText("Last Name");
+        userInfoPanel.add(lblLastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
 
         lblUserID.setText("jLabel6");
+        userInfoPanel.add(lblUserID, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
 
         lblUserFirstName.setText("jLabel7");
+        userInfoPanel.add(lblUserFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
 
         lblUserLastName.setText("jLabel8");
+        userInfoPanel.add(lblUserLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
 
-        lblEmail.setText("EMAIL:");
+        lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblEmail.setText("Email:");
+        userInfoPanel.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
 
         lblUserEmail.setText("jLabel10");
+        userInfoPanel.add(lblUserEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
 
-        lblProgram.setText("PROGRAM:");
+        lblProgram.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblProgram.setText("Program");
+        userInfoPanel.add(lblProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
 
-        lblYearLevel.setText("YEAR LEVEL:");
+        lblYearLevel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblYearLevel.setText("Year Level:");
+        userInfoPanel.add(lblYearLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
         lblUserProgram.setText("jLabel2");
+        userInfoPanel.add(lblUserProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, -1, -1));
 
         lblUserYearLevel.setText("jLabel2");
+        userInfoPanel.add(lblUserYearLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, -1, -1));
 
-        lblDepartment.setText("DEPARTMENT");
+        lblDepartment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblDepartment.setText("Department");
+        userInfoPanel.add(lblDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
 
         lblUserDepartment.setText("jLabel3");
-
-        userInfoPanel.setLayer(lblID, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        userInfoPanel.setLayer(lblFirstname, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        userInfoPanel.setLayer(lblLastname, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        userInfoPanel.setLayer(lblUserID, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        userInfoPanel.setLayer(lblUserFirstName, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        userInfoPanel.setLayer(lblUserLastName, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        userInfoPanel.setLayer(lblEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        userInfoPanel.setLayer(lblUserEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        userInfoPanel.setLayer(lblProgram, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        userInfoPanel.setLayer(lblYearLevel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        userInfoPanel.setLayer(lblUserProgram, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        userInfoPanel.setLayer(lblUserYearLevel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        userInfoPanel.setLayer(lblDepartment, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        userInfoPanel.setLayer(lblUserDepartment, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout userInfoPanelLayout = new javax.swing.GroupLayout(userInfoPanel);
-        userInfoPanel.setLayout(userInfoPanelLayout);
-        userInfoPanelLayout.setHorizontalGroup(
-            userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(userInfoPanelLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(userInfoPanelLayout.createSequentialGroup()
-                        .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblYearLevel)
-                                    .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblEmail)
-                                        .addComponent(lblLastname)))
-                                .addComponent(lblProgram))
-                            .addComponent(lblFirstname))
-                        .addGap(5, 5, 5)
-                        .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(userInfoPanelLayout.createSequentialGroup()
-                                .addGap(74, 74, 74)
-                                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblUserEmail)
-                                    .addComponent(lblUserDepartment)
-                                    .addComponent(lblUserProgram)))
-                            .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(userInfoPanelLayout.createSequentialGroup()
-                                        .addGap(74, 74, 74)
-                                        .addComponent(lblUserLastName))
-                                    .addComponent(lblUserYearLevel, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addComponent(lblUserFirstName)
-                                .addComponent(lblUserID))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, userInfoPanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDepartment, javax.swing.GroupLayout.Alignment.LEADING))))
-                .addContainerGap(158, Short.MAX_VALUE))
-        );
-        userInfoPanelLayout.setVerticalGroup(
-            userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(userInfoPanelLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblID)
-                    .addComponent(lblUserID))
-                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(userInfoPanelLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblFirstname)
-                            .addComponent(lblUserFirstName))
-                        .addGap(18, 18, 18)
-                        .addComponent(lblLastname))
-                    .addGroup(userInfoPanelLayout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(lblUserLastName)))
-                .addGap(18, 18, 18)
-                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUserEmail)
-                    .addComponent(lblEmail))
-                .addGap(18, 18, 18)
-                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUserProgram)
-                    .addComponent(lblProgram))
-                .addGap(18, 18, 18)
-                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblYearLevel)
-                    .addComponent(lblUserYearLevel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(userInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDepartment)
-                    .addComponent(lblUserDepartment))
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
+        userInfoPanel.add(lblUserDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, -1, -1));
 
         cardPanel.add(userInfoPanel, "card2");
 
-        settingsPanel.setColorPrimary(new java.awt.Color(255, 51, 102));
+        settingsPanel.setColorPrimary(new java.awt.Color(14, 41, 84));
 
-        lblCurrentPassField.setText("CURRENT PASSWORD");
+        lblCurrentPassField.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblCurrentPassField.setText("Current Password");
         settingsPanel.add(lblCurrentPassField);
-        lblCurrentPassField.setBounds(60, 60, 116, 16);
+        lblCurrentPassField.setBounds(50, 60, 98, 16);
 
-        btnSave.setText("SAVE");
+        btnSave.setBackground(new java.awt.Color(0, 102, 255));
+        btnSave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-save-20.png")); // NOI18N
+        btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
             }
         });
         settingsPanel.add(btnSave);
-        btnSave.setBounds(130, 260, 72, 23);
+        btnSave.setBounds(140, 260, 90, 27);
         settingsPanel.add(newPassField);
         newPassField.setBounds(200, 120, 120, 22);
         settingsPanel.add(reTypePassField);
@@ -318,18 +259,20 @@ public class UserProfile extends javax.swing.JDialog {
         settingsPanel.add(currentPassField);
         currentPassField.setBounds(200, 60, 120, 22);
 
-        lblNewPass.setText("NEW PASSWORD");
+        lblNewPass.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblNewPass.setText("New Password");
         settingsPanel.add(lblNewPass);
-        lblNewPass.setBounds(60, 120, 91, 16);
+        lblNewPass.setBounds(50, 120, 81, 16);
 
-        lblReTypePass.setText("RE-TYPE NEW PASSWORD");
+        lblReTypePass.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblReTypePass.setText("Re-Type New Password");
         settingsPanel.add(lblReTypePass);
         lblReTypePass.setBounds(50, 180, 140, 16);
 
         lblWarningMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWarningMsg.setText("jLabel2");
         settingsPanel.add(lblWarningMsg);
-        lblWarningMsg.setBounds(20, 220, 360, 16);
+        lblWarningMsg.setBounds(0, 230, 360, 16);
 
         cardPanel.add(settingsPanel, "card3");
 
@@ -339,11 +282,11 @@ public class UserProfile extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGradient1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelGradient1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
         );
 
         pack();
@@ -438,7 +381,7 @@ public class UserProfile extends javax.swing.JDialog {
     }
 
     int id;
-    private String stuFaculID, fname, lname, role, email, program, yearLevel, department;
+    private String stuFaculID, firstName, lastName, role, email, program, yearLevel, department;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel btnSettings;

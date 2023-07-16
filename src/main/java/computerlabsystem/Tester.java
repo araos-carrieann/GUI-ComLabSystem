@@ -36,7 +36,7 @@ public class Tester {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new AdminDashboard("CN").setVisible(true);
+                //new Loading.setVisible(true);
                 
             }
         });

@@ -4,13 +4,11 @@
  */
 package computerlabsystem;
 
-import static computerlabsystem.UserDashboardMethods.formatDuration;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
@@ -167,19 +165,25 @@ public class ComLabMethods {
         return msg;
     }
 
-    public static void logUserLogin(String stuFaculID, String fullName, String pass) {
+    public static void createLogs() {
         try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
             String createTableQuery = "CREATE TABLE IF NOT EXISTS logs (logID SERIAL PRIMARY KEY, "
-                    + "user_id INTEGER REFERENCES users(id), "
+                    + "user_id_users INTEGER REFERENCES users(id), "
+                    + "user_id_visitors INTEGER REFERENCES visitors(id), "
                     + "fullname VARCHAR(255), "
                     + "login_time TIMESTAMP DEFAULT (TO_TIMESTAMP(TO_CHAR(CURRENT_TIMESTAMP, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS')), "
-                    + "logout_time TIMESTAMP, "
-                    + "FOREIGN KEY (user_id) REFERENCES users(id))";
+                    + "logout_time TIMESTAMP)";
 
             try (PreparedStatement statement = conn.prepareStatement(createTableQuery)) {
                 statement.execute();
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public static void logUserLogin(String stuFaculID, String fullName, String pass) {
+        try (Connection conn = DatabaseConnector.getConnection()) {
             // Retrieve the user ID from the users table
             String selectUserIdQuery = "SELECT id, password FROM users WHERE studentFacultyID = ?";
 
@@ -286,7 +290,7 @@ public class ComLabMethods {
                 + "       users.studentfacultyID AS sfID, users.role AS userRole,\n"
                 + "       users.program AS program, users.yearlvl AS yrlvl, users.department AS facultyDepartment\n"
                 + "FROM users\n"
-                + "RIGHT JOIN logs ON logs.user_id = users.id;")); ResultSet rsltSet = stmt.executeQuery()) {
+                + "RIGHT JOIN logs ON logs.user_id_users = users.id;")); ResultSet rsltSet = stmt.executeQuery()) {
 
             while (rsltSet.next()) {
                 int userLogsID = rsltSet.getInt("logID");
@@ -527,7 +531,7 @@ public class ComLabMethods {
 
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement selectStmt = conn.prepareStatement("SELECT users.role, logs.fullname, COUNT(*) AS total_logs "
                 + "FROM logs "
-                + "JOIN users ON logs.user_id = users.id "
+                + "JOIN users ON logs.user_id_users = users.id "
                 + "GROUP BY users.role, logs.fullname "
                 + "ORDER BY total_logs DESC "
                 + "LIMIT 5"); ResultSet resultSet = selectStmt.executeQuery()) {
@@ -552,9 +556,9 @@ public class ComLabMethods {
     public static List<Data> longestTimeSpent() {
         List<Data> userSessions = new ArrayList<>();
 
-        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement selectStmt = conn.prepareStatement("SELECT users.role, fullname, EXTRACT(EPOCH FROM (logout_time - login_time))/3600 AS session_duration "
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement selectStmt = conn.prepareStatement("SELECT users.role, fullname, EXTRACT(EPOCH FROM (logout_time - login_time)) AS session_duration "
                 + "FROM logs "
-                + "JOIN users ON logs.user_id = users.id "
+                + "JOIN users ON logs.user_id_users = users.id "
                 + "ORDER BY session_duration DESC "
                 + "LIMIT 5"); ResultSet resultSet = selectStmt.executeQuery()) {
 
@@ -562,13 +566,15 @@ public class ComLabMethods {
                 // Retrieve the role, fullname, and session_duration from the ResultSet
                 String userRole = resultSet.getString("role");
                 String userFullname = resultSet.getString("fullname");
-                double sessionDuration = resultSet.getDouble("session_duration");
+                double sessionDurationInSeconds = resultSet.getDouble("session_duration");
 
-                // Format the duration using the formatDuration() method
-                String formattedDuration = formatDuration(Duration.ofHours((long) sessionDuration));
+                // Convert session duration to hours, minutes, and seconds
+                int hours = (int) (sessionDurationInSeconds / 3600);
+                int minutes = (int) ((sessionDurationInSeconds % 3600) / 60);
+                int seconds = (int) (sessionDurationInSeconds % 60);
 
                 // Create a new instance of Data and add it to the userSessions list
-                Data data = new Data(userRole, userFullname, formattedDuration);
+                Data data = new Data(userRole, userFullname, String.format("%02d:%02d:%02d", hours, minutes, seconds), null);
                 userSessions.add(data);
             }
         } catch (SQLException e) {
