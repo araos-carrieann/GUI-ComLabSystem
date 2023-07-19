@@ -237,6 +237,7 @@ public class AddAccount extends javax.swing.JDialog {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         role = null;
+        code = null;
         stuFaculID = txtStudentFacultyID.getText();
         fname = txtFname.getText();
         lname = txtLname.getText();
@@ -280,7 +281,7 @@ public class AddAccount extends javax.swing.JDialog {
             }
             status = "ACTIVE";
             String hashedPassword = ComLabMethods.hashPassword(pass);
-            String msg = ComLabMethods.registerUser(status, role, stuFaculID, fname, lname, email, hashedPassword, program, yrLvl, department);
+            String msg = ComLabMethods.registerUser(status, role, stuFaculID, fname, lname, email, hashedPassword, program, yrLvl, department, code);
             lblWarningMsg.setText(msg);
             System.out.println("pogiiiii");
         }
@@ -311,7 +312,7 @@ public class AddAccount extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBackActionPerformed
 
 
-     private String stuFaculID, status, fname, lname, role, email, pass, confirmPass, program, yrLvl, department;
+     private String stuFaculID, status, fname, lname, role, email, pass, confirmPass, program, yrLvl, department, code;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnClear;

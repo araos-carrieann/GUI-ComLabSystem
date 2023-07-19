@@ -37,9 +37,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblAdminName.setText(fname);
         displayLongestSpent();
         displayMostLogs();
+        displayLogs();
         displayStudentAccount();
         displayFacultyAccount();
-        displayLogs();
         displayAdminAccount();
 
     }
@@ -48,9 +48,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         DefaultTableModel studentAccount = (DefaultTableModel) studentAcctTable.getModel();
         studentAccount.setRowCount(0);
 
-        List<Data> acctList = ComLabMethods.getAllStudentDatas();
+        List<DTOaccount> acctList = ComLabMethods.getAllStudentDatas();
 
-        for (Data acct : acctList) {
+        for (DTOaccount acct : acctList) {
             Object[] row = {acct.getStudentfacultyID(), acct.getFirstName(), acct.getLastName(), acct.getEmail(), acct.getProgram(), acct.getYrlvl()};
             studentAccount.addRow(row);
         }
@@ -76,9 +76,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         DefaultTableModel facultyAccount = (DefaultTableModel) facultyAcctTable.getModel();
         facultyAccount.setRowCount(0);
 
-        List<Data> acctList = ComLabMethods.getAllFacultiesDatas();
+        List<DTOaccount> acctList = ComLabMethods.getAllFacultiesDatas();
 
-        for (Data acct : acctList) {
+        for (DTOaccount acct : acctList) {
             Object[] row = {acct.getStudentfacultyID(), acct.getDepartment(), acct.getFirstName(), acct.getLastName(), acct.getEmail()};
             facultyAccount.addRow(row);
         }
@@ -88,9 +88,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         DefaultTableModel adminAccount = (DefaultTableModel) adminAccountTable.getModel();
         adminAccount.setRowCount(0);
 
-        List<Data> acctList = ComLabMethods.getAllAdminDatas();
+        List<DTOaccount> acctList = ComLabMethods.getAllAdminDatas();
 
-        for (Data acct : acctList) {
+        for (DTOaccount acct : acctList) {
             Object[] row = {acct.getStudentfacultyID(), acct.getFirstName(), acct.getLastName(), acct.getEmail()};
             adminAccount.addRow(row);
         }
@@ -116,9 +116,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         DefaultTableModel allLogs = (DefaultTableModel) logsTable.getModel();
         allLogs.setRowCount(0);
 
-        List<Data> acctList = ComLabMethods.getAllLogs();
+        List<DTOlogs> acctList = DAOlogs.getAllLogs();
 
-        for (Data acct : acctList) {
+        for (DTOlogs acct : acctList) {
             Object[] logsRow = {acct.getLogsID(), acct.getRole(), acct.getStudentfacultyID(), acct.getFullname(), acct.getProgram(), acct.getYrlvl(), acct.getDepartment(), acct.getUserLogin(), acct.getUserLogout()};
             allLogs.addRow(logsRow);
         }
@@ -126,27 +126,27 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void insertContentComboProgram() {
         JComboBox<String> comboBox = new JComboBox<>();
-        List<Data> programList = ComLabMethods.programComboContent();
+        List<DTOaccount> programList = ComLabMethods.programComboContent();
         if (!programList.isEmpty()) {
-            Data acct = programList.get(0);
+            DTOaccount acct = programList.get(0);
             comboBox.addItem(acct.getProgram());
         }
     }
 
     private void insertContentComboYearLvl() {
         JComboBox<String> comboBox = new JComboBox<>();
-        List<Data> yrLvlList = ComLabMethods.yearlvlComboContent();
+        List<DTOaccount> yrLvlList = ComLabMethods.yearlvlComboContent();
         if (!yrLvlList.isEmpty()) {
-            Data acct = yrLvlList.get(1);
+            DTOaccount acct = yrLvlList.get(1);
             comboBox.addItem(acct.getYrlvl());
         }
     }
 
     private void insertContentComboDepartment() {
         JComboBox<String> comboBox = new JComboBox<>();
-        List<Data> departmentList = ComLabMethods.departmentComboContent();
+        List<DTOaccount> departmentList = ComLabMethods.departmentComboContent();
         if (!departmentList.isEmpty()) {
-            Data acct = departmentList.get(2);
+            DTOaccount acct = departmentList.get(2);
             comboBox.addItem(acct.getDepartment());
         }
     }
@@ -155,9 +155,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         DefaultTableModel allDepartment = (DefaultTableModel) logsTable.getModel();
         allDepartment.setRowCount(0);
 
-        List<Data> departmentList = ComLabMethods.getAllLogs();
+        List<DTOlogs> departmentList = DAOlogs.getAllLogs();
 
-        for (Data acct : departmentList) {
+        for (DTOlogs acct : departmentList) {
             Object[] departmentRow = {acct.getDepartment()};
             allDepartment.addRow(departmentRow);
         }
@@ -167,9 +167,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         DefaultTableModel mostLogs = (DefaultTableModel) mostLogsTable.getModel();
         mostLogs.setRowCount(0);
 
-        List<Data> mostLogsList = ComLabMethods.mostLogs();
+        List<DTOaccount> mostLogsList = ComLabMethods.mostLogs();
 
-        for (Data acct : mostLogsList) {
+        for (DTOaccount acct : mostLogsList) {
             Object[] mLogs = {acct.getRole(), acct.getFullname(), acct.getMostLogs()};
             mostLogs.addRow(mLogs);
         }
@@ -179,9 +179,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         DefaultTableModel longestSpent = (DefaultTableModel) longestTimeSpentTable.getModel();
         longestSpent.setRowCount(0);
 
-        List<Data> longestTimeSpent = ComLabMethods.longestTimeSpent();
+        List<DTOaccount> longestTimeSpent = ComLabMethods.longestTimeSpent();
 
-        for (Data acct : longestTimeSpent) {
+        for (DTOaccount acct : longestTimeSpent) {
             Object[] longestTimeS = {acct.getRole(), acct.getFullname(), acct.getLogsDuration()};
             longestSpent.addRow(longestTimeS);
         }
@@ -208,12 +208,17 @@ public class AdminDashboard extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        mostLogsTable = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        longestTimeSpentTable = new javax.swing.JTable();
         panelBorder1 = new computerlabsystem.Design.PanelBorder();
         jLabel1 = new javax.swing.JLabel();
+        panelBorder2 = new computerlabsystem.Design.PanelBorder();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        mostLogsTable = new javax.swing.JTable();
+        lblTopFiveLogs = new javax.swing.JLabel();
+        panelBorder3 = new computerlabsystem.Design.PanelBorder();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        longestTimeSpentTable = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        panelBorder4 = new computerlabsystem.Design.PanelBorder();
         accountPage = new computerlabsystem.Design.PanelGradient();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         facultyAccountPanel = new computerlabsystem.Design.PanelGradient();
@@ -246,16 +251,16 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1200, 600));
+        setPreferredSize(new java.awt.Dimension(1250, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelGradient1.setColorPrimary(new java.awt.Color(204, 204, 204));
         panelGradient1.setColorSecondary(new java.awt.Color(153, 153, 153));
         panelGradient1.setLayout(new java.awt.BorderLayout());
 
-        menuPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 3, new java.awt.Color(101, 100, 124)));
-        menuPanel.setColorPrimary(new java.awt.Color(101, 100, 124));
-        menuPanel.setColorSecondary(new java.awt.Color(199, 188, 161));
+        menuPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 3, new java.awt.Color(109, 113, 249)));
+        menuPanel.setColorPrimary(new java.awt.Color(109, 113, 249));
+        menuPanel.setColorSecondary(new java.awt.Color(109, 113, 249));
         menuPanel.setPreferredSize(new java.awt.Dimension(150, 150));
         menuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -264,7 +269,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         lblHome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblHome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHome.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-home-50.png")); // NOI18N
+        lblHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-home-60.png"))); // NOI18N
         lblHome.setText("Home");
         lblHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -279,14 +284,14 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
         panelHome.add(lblHome);
 
-        menuPanel.add(panelHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 130, 80));
+        menuPanel.add(panelHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 130, 80));
 
         panelAccounts.setBackground((new Color(0, 0, 0, 0)));
         panelAccounts.setLayout(new java.awt.GridLayout(1, 0));
 
         lblAccounts.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblAccounts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAccounts.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-account-50.png")); // NOI18N
+        lblAccounts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-user-60.png"))); // NOI18N
         lblAccounts.setText("Accounts");
         lblAccounts.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -301,14 +306,14 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
         panelAccounts.add(lblAccounts);
 
-        menuPanel.add(panelAccounts, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 130, 80));
+        menuPanel.add(panelAccounts, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 130, 80));
 
         panelLogs.setBackground((new Color(0, 0, 0, 0)));
         panelLogs.setLayout(new java.awt.GridLayout(1, 0));
 
         lblAllLogs.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblAllLogs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAllLogs.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-logs-60.png")); // NOI18N
+        lblAllLogs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-logs-60.png"))); // NOI18N
         lblAllLogs.setText("Logs");
         lblAllLogs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -323,18 +328,18 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
         panelLogs.add(lblAllLogs);
 
-        menuPanel.add(panelLogs, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 130, 80));
+        menuPanel.add(panelLogs, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 130, 80));
 
         panelGradient1.add(menuPanel, java.awt.BorderLayout.LINE_START);
 
-        headerPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(101, 100, 124)));
-        headerPanel.setColorPrimary(new java.awt.Color(101, 100, 124));
-        headerPanel.setColorSecondary(new java.awt.Color(101, 100, 124));
+        headerPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(109, 113, 249)));
+        headerPanel.setColorPrimary(new java.awt.Color(109, 113, 249));
+        headerPanel.setColorSecondary(new java.awt.Color(109, 113, 249));
         headerPanel.setPreferredSize(new java.awt.Dimension(80, 100));
 
         lblAdminName.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblAdminName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAdminName.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-user-55.png")); // NOI18N
+        lblAdminName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-user-64.png"))); // NOI18N
         lblAdminName.setText("jLabel2");
         lblAdminName.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -342,7 +347,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         headerPanel.add(lblAdminName);
-        lblAdminName.setBounds(1000, 10, 150, 60);
+        lblAdminName.setBounds(1050, 10, 180, 60);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -353,7 +358,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAdmin.setText("ADMIN");
         headerPanel.add(lblAdmin);
-        lblAdmin.setBounds(1070, 60, 60, 30);
+        lblAdmin.setBounds(1140, 60, 60, 30);
 
         panelGradient1.add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
@@ -361,8 +366,10 @@ public class AdminDashboard extends javax.swing.JFrame {
         cardPanel.setColorSecondary(new java.awt.Color(51, 51, 51));
         cardPanel.setLayout(new java.awt.CardLayout());
 
-        homePage.setColorPrimary(new java.awt.Color(199, 188, 161));
+        homePage.setColorPrimary(new java.awt.Color(239, 240, 248));
+        homePage.setColorSecondary(new java.awt.Color(239, 240, 248));
         homePage.setPreferredSize(new java.awt.Dimension(900, 800));
+        homePage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("PROGRAM");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -370,6 +377,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        homePage.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 104, -1));
 
         jButton2.setText("YEAR LEVEL");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -377,6 +385,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        homePage.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 104, -1));
 
         jButton3.setText("DEPARTMENT");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -384,6 +393,37 @@ public class AdminDashboard extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        homePage.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, -1, -1));
+
+        panelBorder1.setBackground(new java.awt.Color(39, 40, 72));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("WELCOME ADMIN!");
+
+        panelBorder1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
+        panelBorder1.setLayout(panelBorder1Layout);
+        panelBorder1Layout.setHorizontalGroup(
+            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBorder1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addContainerGap(966, Short.MAX_VALUE))
+        );
+        panelBorder1Layout.setVerticalGroup(
+            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBorder1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        homePage.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 70));
+
+        panelBorder2.setBackground(new java.awt.Color(109, 113, 249));
+        panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         mostLogsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -396,7 +436,15 @@ public class AdminDashboard extends javax.swing.JFrame {
             new String [] {
                 "ROLE", "NAME", "NUMBER OF LOGS"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         mostLogsTable.setEnabled(false);
         mostLogsTable.setGridColor(new java.awt.Color(0, 0, 0));
         mostLogsTable.setOpaque(false);
@@ -405,6 +453,24 @@ public class AdminDashboard extends javax.swing.JFrame {
         mostLogsTable.setShowGrid(true);
         mostLogsTable.setShowHorizontalLines(false);
         jScrollPane1.setViewportView(mostLogsTable);
+        if (mostLogsTable.getColumnModel().getColumnCount() > 0) {
+            mostLogsTable.getColumnModel().getColumn(0).setResizable(false);
+            mostLogsTable.getColumnModel().getColumn(0).setPreferredWidth(30);
+            mostLogsTable.getColumnModel().getColumn(1).setResizable(false);
+            mostLogsTable.getColumnModel().getColumn(1).setPreferredWidth(30);
+            mostLogsTable.getColumnModel().getColumn(2).setResizable(false);
+            mostLogsTable.getColumnModel().getColumn(2).setPreferredWidth(20);
+        }
+
+        panelBorder2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 140));
+
+        lblTopFiveLogs.setText("TOP 5");
+        panelBorder2.add(lblTopFiveLogs, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 90, -1));
+
+        homePage.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 490, 230));
+
+        panelBorder3.setBackground(new java.awt.Color(109, 113, 249));
+        panelBorder3.setPreferredSize(new java.awt.Dimension(495, 210));
 
         longestTimeSpentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -419,7 +485,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, true, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -429,86 +495,26 @@ public class AdminDashboard extends javax.swing.JFrame {
         longestTimeSpentTable.setEnabled(false);
         longestTimeSpentTable.setShowGrid(true);
         jScrollPane2.setViewportView(longestTimeSpentTable);
+        if (longestTimeSpentTable.getColumnModel().getColumnCount() > 0) {
+            longestTimeSpentTable.getColumnModel().getColumn(0).setResizable(false);
+            longestTimeSpentTable.getColumnModel().getColumn(0).setPreferredWidth(30);
+            longestTimeSpentTable.getColumnModel().getColumn(1).setResizable(false);
+            longestTimeSpentTable.getColumnModel().getColumn(1).setPreferredWidth(50);
+            longestTimeSpentTable.getColumnModel().getColumn(2).setResizable(false);
+            longestTimeSpentTable.getColumnModel().getColumn(2).setPreferredWidth(50);
+        }
 
-        panelBorder1.setBackground(new java.awt.Color(221, 230, 237));
+        panelBorder3.add(jScrollPane2);
+        jScrollPane2.setBounds(10, 70, 490, 130);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
-        jLabel1.setText("WELCOME ADMIN!");
+        jLabel3.setText("jLabel3");
+        panelBorder3.add(jLabel3);
+        jLabel3.setBounds(90, 20, 37, 16);
 
-        panelBorder1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        homePage.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 510, 230));
 
-        javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
-        panelBorder1.setLayout(panelBorder1Layout);
-        panelBorder1Layout.setHorizontalGroup(
-            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel1)
-                .addContainerGap(965, Short.MAX_VALUE))
-        );
-        panelBorder1Layout.setVerticalGroup(
-            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1)
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-
-        homePage.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        homePage.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        homePage.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        homePage.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        homePage.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        homePage.setLayer(panelBorder1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout homePageLayout = new javax.swing.GroupLayout(homePage);
-        homePage.setLayout(homePageLayout);
-        homePageLayout.setHorizontalGroup(
-            homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(homePageLayout.createSequentialGroup()
-                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(homePageLayout.createSequentialGroup()
-                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(homePageLayout.createSequentialGroup()
-                                .addGap(291, 291, 291)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(homePageLayout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(homePageLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(homePageLayout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(jButton3))))
-                    .addGroup(homePageLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(89, Short.MAX_VALUE))
-        );
-        homePageLayout.setVerticalGroup(
-            homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(homePageLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(116, 116, 116)
-                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(homePageLayout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)))
-                    .addGroup(homePageLayout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jButton1)))
-                .addContainerGap(72, Short.MAX_VALUE))
-        );
+        panelBorder4.setBackground(new java.awt.Color(160, 118, 249));
+        homePage.add(panelBorder4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 150, 110));
 
         cardPanel.add(homePage, "card6");
 
@@ -525,11 +531,9 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         lblSearchFaculty.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblSearchFaculty.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSearchFaculty.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-search-20.png")); // NOI18N
         facultyAccountPanel.add(lblSearchFaculty, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 20, 40, 40));
 
         btnDeleteFacultyAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnDeleteFacultyAcct.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-delete-20.png")); // NOI18N
         btnDeleteFacultyAcct.setText("DELETE");
         btnDeleteFacultyAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -539,7 +543,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         facultyAccountPanel.add(btnDeleteFacultyAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 79, -1, -1));
 
         btnAddFacultyAccount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnAddFacultyAccount.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-add-user-20.png")); // NOI18N
         btnAddFacultyAccount.setText("ADD USER");
         btnAddFacultyAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -577,7 +580,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         facultyAccountPanel.add(facultyAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 120, 970, 368));
 
         btnUpdateFacultyAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnUpdateFacultyAcct.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-update-20.png")); // NOI18N
         btnUpdateFacultyAcct.setText("UPDATE");
         btnUpdateFacultyAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -593,7 +595,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         studentAccountPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnDeleteStuAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnDeleteStuAcct.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-delete-20.png")); // NOI18N
         btnDeleteStuAcct.setText("DELETE");
         btnDeleteStuAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -659,18 +660,15 @@ public class AdminDashboard extends javax.swing.JFrame {
                 "STUDENT ID", "EMAIL", "FIRST NAME", "LAST NAME", "PROGRAM", "YEAR LEVEL"
             }
         ));
-        studentAcctTable.setEnabled(false);
         studentAcctPane.setViewportView(studentAcctTable);
 
         studentAccountPanel.add(studentAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 1000, 320));
 
         lblSearchStudent.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblSearchStudent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSearchStudent.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-search-20.png")); // NOI18N
         studentAccountPanel.add(lblSearchStudent, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 20, 40, 40));
 
         btnAddStudentAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnAddStudentAcct.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-add-user-20.png")); // NOI18N
         btnAddStudentAcct.setText("ADD USER");
         btnAddStudentAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -688,7 +686,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         studentAccountPanel.add(txtStudentSearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 310, 40));
 
         btnUpdateStudentAccount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnUpdateStudentAccount.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-update-20.png")); // NOI18N
         btnUpdateStudentAccount.setText("UPDATE");
         btnUpdateStudentAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -721,11 +718,9 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         lblSearchAdmin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblSearchAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSearchAdmin.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-search-20.png")); // NOI18N
         adminAccountPanel.add(lblSearchAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, -1, 40));
 
         btnDeleteAdminAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnDeleteAdminAcct.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-delete-20.png")); // NOI18N
         btnDeleteAdminAcct.setText("DELETE");
         btnDeleteAdminAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -748,7 +743,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         adminAccountPanel.add(txtAdminSearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, 290, 40));
 
         btnUpdateAdminAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnUpdateAdminAcct.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-update-20.png")); // NOI18N
         btnUpdateAdminAcct.setText("UPDATE");
         btnUpdateAdminAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -771,7 +765,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         );
         accountPageLayout.setVerticalGroup(
             accountPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
         );
 
         cardPanel.add(accountPage, "card2");
@@ -821,7 +815,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             logsTable.getColumnModel().getColumn(8).setPreferredWidth(150);
         }
 
-        logsPage.add(logsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 118, 1070, 399));
+        logsPage.add(logsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 1040, 360));
         logsPage.add(lblSeachLogs, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 30, 32));
 
         txtSearchLogs.setText("Enter Search");
@@ -869,7 +863,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         if (selectedRow != 1) {
             String studentID = (String) model.getValueAt(selectedRow, 0);
             model.removeRow(selectedRow);
-            ComLabMethods.deleteAcct(studentID);
+            DAOaccount.deleteAcct(studentID);
         }
     }//GEN-LAST:event_btnDeleteStuAcctActionPerformed
 
@@ -891,7 +885,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         if (selectedRow != 1) {
             String facultyID = (String) model.getValueAt(selectedRow, 0);
             model.removeRow(selectedRow);
-            ComLabMethods.deleteAcct(facultyID);
+            DAOaccount.deleteAcct(facultyID);
         }
     }//GEN-LAST:event_btnDeleteFacultyAcctActionPerformed
 
@@ -927,7 +921,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSearchLogsKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ProgramAddDelete dialog = new ProgramAddDelete(new javax.swing.JFrame(), true);
+        ComboBoxContentProgram dialog = new ComboBoxContentProgram(new javax.swing.JFrame(), true);
         dialog.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
@@ -938,7 +932,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        YearLevelAddDelete dialog = new YearLevelAddDelete(new javax.swing.JFrame(), true);
+        ComboBoxContentYearLevel dialog = new ComboBoxContentYearLevel(new javax.swing.JFrame(), true);
         dialog.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
@@ -949,7 +943,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        DepartmentAddDelete dialog = new DepartmentAddDelete(new javax.swing.JFrame(), true);
+        ComboBoxContentDepartment dialog = new ComboBoxContentDepartment(new javax.swing.JFrame(), true);
         dialog.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
@@ -1027,7 +1021,10 @@ public class AdminDashboard extends javax.swing.JFrame {
         if (selectedRow != 1) {
             String adminID = (String) model.getValueAt(selectedRow, 0);
             model.removeRow(selectedRow);
-            ComLabMethods.deleteAcct(adminID);
+            DAOaccount.deleteAcct(adminID);
+            displayStudentAccount();
+            displayFacultyAccount();
+            displayAdminAccount();
         }
 
     }//GEN-LAST:event_btnDeleteAdminAcctActionPerformed
@@ -1056,9 +1053,10 @@ public class AdminDashboard extends javax.swing.JFrame {
             UpdateAcct updateDialog = new UpdateAcct(new javax.swing.JFrame(), true);
             updateDialog.setAdminData(id, facultyAdminID, email, firstName, lastName);
             updateDialog.setVisible(true);
-            displayFacultyAccount();
-
         }
+        displayStudentAccount();
+        displayFacultyAccount();
+        displayAdminAccount();
     }//GEN-LAST:event_btnUpdateAdminAcctActionPerformed
 
     private void lblHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseEntered
@@ -1108,6 +1106,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1121,6 +1120,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel lblSearchAdmin;
     private javax.swing.JLabel lblSearchFaculty;
     private javax.swing.JLabel lblSearchStudent;
+    private javax.swing.JLabel lblTopFiveLogs;
     private computerlabsystem.Design.PanelGradient logsPage;
     private javax.swing.JScrollPane logsPane;
     private javax.swing.JTable logsTable;
@@ -1129,6 +1129,9 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTable mostLogsTable;
     private computerlabsystem.Design.PanelBorder panelAccounts;
     private computerlabsystem.Design.PanelBorder panelBorder1;
+    private computerlabsystem.Design.PanelBorder panelBorder2;
+    private computerlabsystem.Design.PanelBorder panelBorder3;
+    private computerlabsystem.Design.PanelBorder panelBorder4;
     private computerlabsystem.Design.PanelGradient panelGradient1;
     private computerlabsystem.Design.PanelBorder panelHome;
     private computerlabsystem.Design.PanelBorder panelLogs;

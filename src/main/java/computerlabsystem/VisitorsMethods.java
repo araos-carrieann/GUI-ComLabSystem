@@ -17,68 +17,76 @@ import java.sql.Statement;
  */
 public class VisitorsMethods {
 
-    public static String visitorsInfo(String role, String fullname, String mobileNumber, String email, String gender, String purpose) {
-        String message = null;
-        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
-            // Create the table if it doesn't exist
-            String createTableQuery = "CREATE TABLE IF NOT EXISTS visitors (id SERIAL PRIMARY KEY, role VARCHAR(10) NOT NULL, fullname VARCHAR(50) NOT NULL, mobileNumber VARCHAR(15) NOT NULL, email VARCHAR(100) NOT NULL, gender VARCHAR(30) NOT NULL, purpose VARCHAR(150))";
-            stmt.executeUpdate(createTableQuery);
-
-            // Prepare the INSERT query
-            String insertQuery = "INSERT INTO visitors (role, fullname, mobileNumber, email, gender, purpose) VALUES (?, ?, ?, ?, ?, ?)";
-            PreparedStatement insertStmt = conn.prepareStatement(insertQuery);
-            insertStmt.setString(1, role);
-            insertStmt.setString(2, fullname);
-            insertStmt.setString(3, mobileNumber);
-            insertStmt.setString(4, email);
-            insertStmt.setString(5, gender);
-            insertStmt.setString(6, purpose);
-
-            // Execute the INSERT query
-            int rowsInserted = insertStmt.executeUpdate();
-
-            if (rowsInserted > 0) {
-                message = "Visitor added successfully";
-                System.out.println("Record inserted successfully.");
-            } else {
-                message = "Failed to add visitor";
-                System.out.println("Failed to insert the record.");
+    public static void createVisitorsTable() {
+        try (Connection conn = DatabaseConnector.getConnection()) {
+            String createTableQuery = "CREATE TABLE IF NOT EXISTS visitors (id SERIAL PRIMARY KEY, codeidentity VARCHAR(20), role VARCHAR(10) NOT NULL, fullname VARCHAR(50) NOT NULL, mobileNumber VARCHAR(15) NOT NULL, email VARCHAR(100) NOT NULL, gender VARCHAR(30) NOT NULL, purpose VARCHAR(150))";
+            try (PreparedStatement stmt = conn.prepareStatement(createTableQuery)) {
+                stmt.executeUpdate();
+                System.out.println("Visitors table created successfully.");
             }
         } catch (SQLException exc) {
             exc.printStackTrace();
+            System.out.println("Failed to create visitors table.");
+        }
+    }
+
+    public static String insertVisitorData(String codeidentity, String role, String fullname, String mobileNumber, String email, String gender, String purpose) {
+        String message = null;
+
+        try (Connection conn = DatabaseConnector.getConnection()) {
+            String insertQuery = "INSERT INTO visitors (codeidentity, role, fullname, mobileNumber, email, gender, purpose) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+            try (PreparedStatement insertStmt = conn.prepareStatement(insertQuery)) {
+                insertStmt.setString(1, codeidentity);
+                insertStmt.setString(2, role);
+                insertStmt.setString(3, fullname);
+                insertStmt.setString(4, mobileNumber);
+                insertStmt.setString(5, email);
+                insertStmt.setString(6, gender);
+                insertStmt.setString(7, purpose);
+
+                int rowsInserted = insertStmt.executeUpdate();
+
+                if (rowsInserted > 0) {
+                    message = "Visitor added successfully";
+                    System.out.println("Record inserted successfully.");
+                } else {
+                    message = "Failed to add visitor";
+                    System.out.println("Failed to insert the record.");
+                }
+            }
+        } catch (SQLException exc) {
+            exc.printStackTrace();
+            message = "Failed to add visitor";
+            System.out.println("Failed to insert the record.");
+        } catch (Exception exc) {
+            exc.printStackTrace();
+            message = "An unexpected error occurred";
+            System.out.println("An unexpected error occurred.");
         }
         return message;
     }
 
-    public void visitorLogs(String fullname, String mobileNumber, String email) {
+    public static String VisitorInsertLog(int userId, String fullName) {
+        ComLabMethods.createLogs();
         try (Connection conn = DatabaseConnector.getConnection()) {
-            // Retrieve the user ID from the visitors table
-            String selectUserIdQuery = "SELECT id FROM visitors WHERE email = ? AND mobileNumber = ?";
+            String insertQuery = "INSERT INTO logs (user_id_visitors, fullname, login_time) VALUES (?, ?, DEFAULT)";
 
-            try (PreparedStatement selectUserIdStatement = conn.prepareStatement(selectUserIdQuery)) {
-                // Set the values of the email and mobileNumber parameters in the query
-                selectUserIdStatement.setString(1, email);
-                selectUserIdStatement.setString(2, mobileNumber);
-
-                try (ResultSet rs = selectUserIdStatement.executeQuery()) {
-                    // Check if there is at least one row in the result set
-                    if (rs.next()) {
-                        // Retrieve the user ID from the result set
-                        int userId = rs.getInt("id");
-
-                        // Insert the log entry into the logs table
-                        String insertQuery = "INSERT INTO logs (user_id_visitors , fullname, login_time) VALUES (?, ?, DEFAULT)";
-
-                        try (PreparedStatement insertStatement = conn.prepareStatement(insertQuery)) {
-                            insertStatement.setInt(1, userId);
-                            insertStatement.setString(2, fullname);
-                            insertStatement.executeUpdate();
-                        }
-                    }
-                }
+            try (PreparedStatement insertStatement = conn.prepareStatement(insertQuery)) {
+                insertStatement.setInt(1, userId);
+                insertStatement.setString(2, fullName);
+                insertStatement.executeUpdate();
+                System.out.println("Log entry added successfully.");
+                return "Log entry added successfully";
+            } catch (SQLException exc) {
+                exc.printStackTrace();
+                System.out.println("Failed to add log entry.");
+                return "Failed to add log entry";
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException exc) {
+            exc.printStackTrace();
+            System.out.println("Failed to connect to the database.");
+            return "Failed to connect to the database";
         }
     }
 
