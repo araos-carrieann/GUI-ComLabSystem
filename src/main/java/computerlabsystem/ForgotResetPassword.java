@@ -26,6 +26,7 @@ public class ForgotResetPassword extends javax.swing.JDialog {
         super(parent, modal);
         this.verificationCode = verificationCode;
         initComponents();
+        lblWarningMessage.setVisible(false);
     }
 
     /**
@@ -130,6 +131,8 @@ public class ForgotResetPassword extends javax.swing.JDialog {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         newPassword = String.valueOf(fieldNewPassword.getPassword());
         retypePassword = String.valueOf(fieldReTypePassword.getPassword());
+        
+        lblWarningMessage.setVisible(true);
         if (newPassword.isEmpty() && retypePassword.isEmpty()) {
             lblWarningMessage.setText("Please Enter your new password and re-type before Hitting the Save Button");
         } else if (newPassword.isEmpty()) {

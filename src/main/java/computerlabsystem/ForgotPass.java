@@ -109,6 +109,7 @@ public class ForgotPass extends javax.swing.JDialog {
 
     private void btnRequestCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestCodeActionPerformed
         String email = txtEmail.getText();
+        lblWarningMessage.setVisible(true);
         if (email.isEmpty()) {
             lblWarningMessage.setText("Enter your email before you hit the request button");
         } else if (!email.matches("[\\w.-]+@[a-zA-Z0-9-]+\\.[a-zA-Z]{2,}")) {
@@ -116,19 +117,23 @@ public class ForgotPass extends javax.swing.JDialog {
         } else {
             try {
                 ComLabMethods comLabMethods = new ComLabMethods();
-                String studentFacultyID = comLabMethods.getStudentFacultyID(email);
-                ForgetPasswordMethods forgetPasswordMethods = new ForgetPasswordMethods();
-                String name = forgetPasswordMethods.getName(email);
-                forgetPasswordMethods.sendMail(email, name, studentFacultyID);
-                ForgetPasswordVerification dialog = new ForgetPasswordVerification(new javax.swing.JFrame(), true, email);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dispose();
-                dialog.setVisible(true);
+                if (comLabMethods.isEmailExistsInDatabase(email)) {
+                    String studentFacultyID = comLabMethods.getStudentFacultyID(email);
+                    ForgetPasswordMethods forgetPasswordMethods = new ForgetPasswordMethods();
+                    String name = forgetPasswordMethods.getName(email);
+                    forgetPasswordMethods.sendMail(email, name, studentFacultyID);
+                    ForgetPasswordVerification dialog = new ForgetPasswordVerification(new javax.swing.JFrame(), true, email);
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent e) {
+                            System.exit(0);
+                        }
+                    });
+                    dispose();
+                    dialog.setVisible(true);
+                } else {
+                    lblWarningMessage.setText("This email is not in the System");
+                }
             } catch (Exception ex) {
                 Logger.getLogger(ForgotPass.class.getName()).log(Level.SEVERE, null, ex);
             }

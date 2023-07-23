@@ -377,6 +377,9 @@ public class SignUpPanel extends javax.swing.JPanel {
                     lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
                     String msg = ComLabMethods.registerUser(status, role, studentFacultyID, firstName, lastName, email, hashedPassword, program, yearLevel, department, code);
                     lblWarningMsg.setText(msg);
+                    btnSignIn.setEnabled(false);
+                    btnClear.setEnabled(false);
+                    System.out.println("pogiiiii");
                 }
             } else if (rbtnFaculty.isSelected()) {
                 role = rbtnFaculty.getText();
@@ -388,11 +391,11 @@ public class SignUpPanel extends javax.swing.JPanel {
                     lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
                     String msg = ComLabMethods.registerUser(status, role, studentFacultyID, firstName, lastName, email, hashedPassword, program, yearLevel, department, code);
                     lblWarningMsg.setText(msg);
+                    btnSignIn.setEnabled(false);
+                    btnClear.setEnabled(false);
+                    System.out.println("pogiiiii");
                 }
             }
-            btnSignIn.setEnabled(false);
-            btnClear.setEnabled(false);
-            System.out.println("pogiiiii");
         }
     }//GEN-LAST:event_btnSignInActionPerformed
 

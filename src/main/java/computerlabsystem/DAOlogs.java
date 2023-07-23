@@ -39,10 +39,10 @@ public class DAOlogs {
     public static List<DTOlogs> getAllLogs() {
         List<DTOlogs> dataList = new ArrayList<>();
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(("SELECT logs.logID, logs.fullname, logs.login_time, logs.logout_time, "
-    + "users.studentfacultyID AS sfID, users.role AS userRole, "
-    + "users.program AS program, users.yearlvl AS yrlvl, users.department AS facultyDepartment "
-    + "FROM users RIGHT JOIN logs ON logs.user_id_users = users.id "
-    + "WHERE users.role = 'STUDENT' OR users.role = 'FACULTY';")); ResultSet rsltSet = stmt.executeQuery()) {
+                + "users.studentfacultyID AS sfID, users.role AS userRole, "
+                + "users.program AS program, users.yearlvl AS yrlvl, users.department AS facultyDepartment "
+                + "FROM users RIGHT JOIN logs ON logs.user_id_users = users.id "
+                + "WHERE users.role = 'STUDENT' OR users.role = 'FACULTY';")); ResultSet rsltSet = stmt.executeQuery()) {
 
             while (rsltSet.next()) {
                 int userLogsID = rsltSet.getInt("logID");
@@ -56,6 +56,47 @@ public class DAOlogs {
                 String userLogout = rsltSet.getString("logout_time");
 
                 DTOlogs data = new DTOlogs(userLogsID, userRole, studentfacultyID, userFullname, userProgram, userYrlvl, userDepartment, userLogin, userLogout);
+                dataList.add(data);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+        }
+
+        return dataList;
+    }
+
+    public static List<DTOvisitors> getAllVisitorsLogs() {
+        List<DTOvisitors> dataList = new ArrayList<>();
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(
+                "SELECT "
+                + "    logs.logID,"
+                + "    logs.login_time,"
+                + "    logs.logout_time,"
+                + "    visitors.codeidentity AS visitorID,"
+                + "    visitors.fullname AS fullname,"
+                + "    visitors.mobilenumber AS mobilenumber,"
+                + "    visitors.email AS email,"
+                + "    visitors.gender AS gender,"
+                + "    visitors.purpose AS purpose "
+                + "FROM "
+                + "    logs "
+                + "RIGHT JOIN "
+                + "    visitors "
+                + "ON "
+                + "    logs.user_id_visitors = visitors.id;"); ResultSet rsltSet = stmt.executeQuery()) {
+
+            while (rsltSet.next()) {
+                int userLogsID = rsltSet.getInt("logID");
+                String visitorID = rsltSet.getString("visitorID");
+                String userFullname = rsltSet.getString("fullname");
+                String mobilenumber = rsltSet.getString("mobilenumber");
+                String email = rsltSet.getString("email");
+                String gender = rsltSet.getString("gender");
+                String purpose = rsltSet.getString("purpose");
+                String userLogin = rsltSet.getString("login_time");
+                String userLogout = rsltSet.getString("logout_time");
+
+                DTOvisitors data = new DTOvisitors(userLogsID, visitorID,userFullname, email, mobilenumber, gender, purpose, userLogin, userLogout);
                 dataList.add(data);
             }
         } catch (SQLException e) {

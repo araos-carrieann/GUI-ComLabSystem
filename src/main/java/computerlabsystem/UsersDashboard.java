@@ -50,7 +50,7 @@ public class UsersDashboard extends javax.swing.JFrame {
         List<DTOlogs> logsList = DAOlogs.getUserLogs(id);
 
         for (DTOlogs acct : logsList) {
-            Object[] logsRow = {acct.getUserLogin(), acct.getUserLogout()};
+            Object[] logsRow = {acct.getLoginTime(), acct.getLogoutTime()};
             myLogs.addRow(logsRow);
         }
     }

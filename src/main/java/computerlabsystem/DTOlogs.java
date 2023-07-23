@@ -20,13 +20,12 @@ public class DTOlogs {
     private String firstName;
     private String lastName;
     private String fullname;
-    private String email;
     private String program;
     private String yrlvl;
     private String department;
-    private String userLogin;
-    private String userLogout;
-
+    private String loginTime;
+    private String logoutTime;
+    
     public DTOlogs(int logsID, String role, String studentfacultyID, String fullname, String program, String yrlvl, String department, String userTimeIn, String userTimeOut) {
         this.logsID = logsID;
         this.studentfacultyID = studentfacultyID;
@@ -35,8 +34,8 @@ public class DTOlogs {
         this.program = program;
         this.yrlvl = yrlvl;
         this.department = department;
-        this.userLogin = userTimeIn;
-        this.userLogout = userTimeOut;
+        this.loginTime = userTimeIn;
+        this.logoutTime = userTimeOut;
     }
 
     public int getUserID() {
@@ -119,14 +118,6 @@ public class DTOlogs {
         this.fullname = fullname;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getProgram() {
         return program;
     }
@@ -151,20 +142,20 @@ public class DTOlogs {
         this.department = department;
     }
 
-    public String getUserLogin() {
-        return userLogin;
+    public String getLoginTime() {
+        return loginTime;
     }
 
-    public void setUserLogin(String userLogin) {
-        this.userLogin = userLogin;
+    public void setLoginTime(String loginTime) {
+        this.loginTime = loginTime;
     }
 
-    public String getUserLogout() {
-        return userLogout;
+    public String getLogoutTime() {
+        return logoutTime;
     }
 
-    public void setUserLogout(String userLogout) {
-        this.userLogout = userLogout;
+    public void setLogoutTime(String logoutTime) {
+        this.logoutTime = logoutTime;
     }
-
+    
 }

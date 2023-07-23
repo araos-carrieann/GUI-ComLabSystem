@@ -181,27 +181,30 @@ public class LoginPanel extends javax.swing.JPanel {
             if (!userDetails.equals("false")) {
                 lblWarningMsg.setIcon(null);
                 String[] parts = userDetails.split(",");
-                String userRole = parts[0];
-                String sfID = parts[1];
-                String fname = parts[2];
-                String lname = parts[3];
+                String status = parts[0];
+                String userRole = parts[1];
+                String sfID = parts[2];
+                String fname = parts[3];
+                String lname = parts[4];
 
                 String fullName = fname + " " + lname;
                 VisitorsMethods.createVisitorsTable();
-                ComLabMethods.createLogs() ;
-//                ComLabMethods.createLogs();
-                //  String hashedPassword = ComLabMethods.hashPassword(pass);
-                if (userRole.equals("ADMIN")) {
-                    ComLabMethods.logUserLogin(sfID, fullName, pass);
-                    AdminDashboard admn = new AdminDashboard(fname, sfID);
-                    admn.setVisible(true);
-                    SwingUtilities.getWindowAncestor((Component) evt.getSource()).dispose();
-                } else if (userRole.equals("STUDENT") || userRole.equals("FACULTY")) {
-                    ComLabMethods.logUserLogin(sfID, fullName, pass);
-                    System.out.println("anooonnaaaaa");
-                    UsersDashboard userDashboard = new UsersDashboard(fname, sfID);
-                    userDashboard.setVisible(true);
-                    SwingUtilities.getWindowAncestor((Component) evt.getSource()).dispose();
+                ComLabMethods.createLogs();
+                if (status.equals("ACTIVE")) {
+                    if (userRole.equals("ADMIN")) {
+                        ComLabMethods.logUserLogin(sfID, fullName, pass);
+                        AdminDashboard admn = new AdminDashboard(fname, sfID);
+                        admn.setVisible(true);
+                        SwingUtilities.getWindowAncestor((Component) evt.getSource()).dispose();
+                    } else if (userRole.equals("STUDENT") || userRole.equals("FACULTY")) {
+                        ComLabMethods.logUserLogin(sfID, fullName, pass);
+                        System.out.println("anooonnaaaaa");
+                        UsersDashboard userDashboard = new UsersDashboard(fname, sfID);
+                        userDashboard.setVisible(true);
+                        SwingUtilities.getWindowAncestor((Component) evt.getSource()).dispose();
+                    }
+                } else {
+                    lblWarningMsg.setText("This account doesn't exist anymore");
                 }
             } else {
 

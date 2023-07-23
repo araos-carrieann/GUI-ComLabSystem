@@ -32,11 +32,9 @@ public class ComLabMethods {
             stmt.executeUpdate(createTableQuery);
 
             // Prepare the SELECT query with parameters
-            String selectQuery = "SELECT * FROM users WHERE studentFacultyID = ? AND lastName = ? AND firstName = ?";
+            String selectQuery = "SELECT * FROM users WHERE studentFacultyID = ?";
             PreparedStatement selectStmt = conn.prepareStatement(selectQuery);
             selectStmt.setString(1, studentFacultyID);
-            selectStmt.setString(2, lname);
-            selectStmt.setString(3, fname);
 
             // Execute the SELECT query
             ResultSet resultSet = selectStmt.executeQuery();
@@ -117,12 +115,13 @@ public class ComLabMethods {
             if (rsltSet.next()) {
                 String storedHashedPassword = rsltSet.getString("password");
                 if (ComLabMethods.verifyPassword(password, storedHashedPassword)) {
+                    String status = rsltSet.getString("status");
                     String userRole = rsltSet.getString("role");
                     String studFaculID = rsltSet.getString("studentfacultyID");
                     String fname = rsltSet.getString("firstName");
                     String lname = rsltSet.getString("lastName");
 
-                    return userRole + "," + studFaculID + "," + fname + "," + lname;
+                    return status + "," + userRole + "," + studFaculID + "," + fname + "," + lname;
                 }
             }
         } catch (SQLException e) {
@@ -187,7 +186,7 @@ public class ComLabMethods {
         createLogs();
         try (Connection conn = DatabaseConnector.getConnection()) {
             // Retrieve the user ID from the users table
-            String selectUserIdQuery = "SELECT id, password FROM users WHERE studentFacultyID = ?";
+            String selectUserIdQuery = "SELECT id, status, password FROM users WHERE studentFacultyID = ?";
 
             try (PreparedStatement selectUserIdStatement = conn.prepareStatement(selectUserIdQuery)) {
                 // Set the value of the stuFaculID parameter in the query
@@ -544,8 +543,8 @@ public class ComLabMethods {
 
         return id;
     }
-    
-        public static String getStudentFacultyID(String email) {
+
+    public static String getStudentFacultyID(String email) {
         String studentFacultyID = null;
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT studentFacultyID FROM users WHERE email = '" + email + "'"); ResultSet rsltSet = stmt.executeQuery()) {
 
@@ -559,7 +558,7 @@ public class ComLabMethods {
         return studentFacultyID;
     }
 
-        public static String getUpdatedCode(String email) {
+    public static String getUpdatedCode(String email) {
         String code = null;
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT code FROM users WHERE email = '" + email + "'"); ResultSet rsltSet = stmt.executeQuery()) {
 
@@ -572,4 +571,34 @@ public class ComLabMethods {
 
         return code;
     }
+
+    public static boolean isEmailExistsInDatabase(String email) {
+        boolean emailExists = false;
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT 1 FROM users WHERE email = ?")) {
+
+            stmt.setString(1, email);
+            try (ResultSet rsltSet = stmt.executeQuery()) {
+                emailExists = rsltSet.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+        }
+
+        return emailExists;
+    }
+
+    public static int getTotalUserRows() {
+        int totalRows = 0;
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) AS total_rows FROM users"); ResultSet rs = stmt.executeQuery()) {
+
+            if (rs.next()) {
+                totalRows = rs.getInt("total_rows");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+        }
+
+        return totalRows;
+    }
+
 }

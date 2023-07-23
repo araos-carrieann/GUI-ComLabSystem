@@ -47,6 +47,7 @@ public class ForgetPasswordVerification extends javax.swing.JDialog {
         panelBorder1 = new computerlabsystem.Design.PanelBorder();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -55,7 +56,7 @@ public class ForgetPasswordVerification extends javax.swing.JDialog {
         lblOTPverification.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblOTPverification.setText("OTP Verification");
         panelGradient1.add(lblOTPverification);
-        lblOTPverification.setBounds(120, 20, 223, 41);
+        lblOTPverification.setBounds(110, 0, 223, 41);
 
         btnConfirmCode.setBackground(new java.awt.Color(0, 0, 51));
         btnConfirmCode.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,7 +115,11 @@ public class ForgetPasswordVerification extends javax.swing.JDialog {
         jLabel2.setBounds(0, 50, 330, 40);
 
         panelGradient1.add(panelBorder1);
-        panelBorder1.setBounds(60, 78, 330, 120);
+        panelBorder1.setBounds(60, 110, 330, 120);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/emailsent.gif"))); // NOI18N
+        panelGradient1.add(jLabel3);
+        jLabel3.setBounds(160, 50, 160, 70);
 
         getContentPane().add(panelGradient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 460));
 
@@ -134,6 +139,7 @@ public class ForgetPasswordVerification extends javax.swing.JDialog {
         ComLabMethods clm = new ComLabMethods();
         String verificationCode = clm.getUpdatedCode(email);
         String inputCode = txtCode.getText();
+        lblWarningMessage.setVisible(true);
         if (inputCode.isEmpty()) {
             lblWarningMessage.setText("Please Enter the code before you hit the reset Password");
         } else if (inputCode.equals(verificationCode)) {
@@ -155,6 +161,7 @@ public class ForgetPasswordVerification extends javax.swing.JDialog {
     private javax.swing.JButton btnConfirmCode;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblOTPverification;
     private javax.swing.JLabel lblWarningMessage;
     private computerlabsystem.Design.PanelBorder panelBorder1;

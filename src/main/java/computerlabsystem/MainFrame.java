@@ -49,7 +49,8 @@ public class MainFrame extends javax.swing.JFrame {
         panelGradient1 = new computerlabsystem.Design.PanelGradient();
         mainBorder = new computerlabsystem.Design.PanelBorder();
         mainSlide = new computerlabsystem.Design.PanelSlide();
-        jLabel1 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -66,7 +67,7 @@ public class MainFrame extends javax.swing.JFrame {
         mainSlide.setLayout(mainSlideLayout);
         mainSlideLayout.setHorizontalGroup(
             mainSlideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 474, Short.MAX_VALUE)
+            .addGap(0, 480, Short.MAX_VALUE)
         );
         mainSlideLayout.setVerticalGroup(
             mainSlideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,9 +80,7 @@ public class MainFrame extends javax.swing.JFrame {
         mainBorder.setLayout(mainBorderLayout);
         mainBorderLayout.setHorizontalGroup(
             mainBorderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainBorderLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(mainSlide, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(mainSlide, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         mainBorderLayout.setVerticalGroup(
             mainBorderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,12 +90,17 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         panelGradient1.add(mainBorder);
-        mainBorder.setBounds(200, 100, 480, 550);
+        mainBorder.setBounds(200, 70, 480, 550);
+
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.png"))); // NOI18N
+        panelGradient1.add(logo);
+        logo.setBounds(660, -30, 210, 210);
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bgImage.jpg"))); // NOI18N
+        panelGradient1.add(background);
+        background.setBounds(-300, 0, 1180, 700);
 
         getContentPane().add(panelGradient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 856, 684));
-
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 247, 550, 190));
 
         pack();
         setLocationRelativeTo(null);
@@ -139,7 +143,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel background;
+    private javax.swing.JLabel logo;
     private computerlabsystem.Design.PanelBorder mainBorder;
     private computerlabsystem.Design.PanelSlide mainSlide;
     private computerlabsystem.Design.PanelGradient panelGradient1;

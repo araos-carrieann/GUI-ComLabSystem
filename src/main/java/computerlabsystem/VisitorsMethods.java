@@ -19,7 +19,7 @@ public class VisitorsMethods {
 
     public static void createVisitorsTable() {
         try (Connection conn = DatabaseConnector.getConnection()) {
-            String createTableQuery = "CREATE TABLE IF NOT EXISTS visitors (id SERIAL PRIMARY KEY, codeidentity VARCHAR(20), role VARCHAR(10) NOT NULL, fullname VARCHAR(50) NOT NULL, mobileNumber VARCHAR(15) NOT NULL, email VARCHAR(100) NOT NULL, gender VARCHAR(30) NOT NULL, purpose VARCHAR(150))";
+            String createTableQuery = "CREATE TABLE IF NOT EXISTS visitors (id SERIAL PRIMARY KEY, codeidentity VARCHAR(20), fullname VARCHAR(50) NOT NULL, mobileNumber VARCHAR(15) NOT NULL, email VARCHAR(100) NOT NULL, gender VARCHAR(30) NOT NULL, purpose VARCHAR(150))";
             try (PreparedStatement stmt = conn.prepareStatement(createTableQuery)) {
                 stmt.executeUpdate();
                 System.out.println("Visitors table created successfully.");

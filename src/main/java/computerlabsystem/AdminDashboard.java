@@ -38,6 +38,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         displayLongestSpent();
         displayMostLogs();
         displayLogs();
+        displayVisitorsLogs();
         displayStudentAccount();
         displayFacultyAccount();
         displayAdminAccount();
@@ -54,6 +55,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             Object[] row = {acct.getStudentfacultyID(), acct.getFirstName(), acct.getLastName(), acct.getEmail(), acct.getProgram(), acct.getYrlvl()};
             studentAccount.addRow(row);
         }
+        lblTotalNumberUsers.setText(String.valueOf(ComLabMethods.getTotalUserRows()));
     }
 
     public void searchStudentAcct(String search) {
@@ -82,6 +84,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             Object[] row = {acct.getStudentfacultyID(), acct.getDepartment(), acct.getFirstName(), acct.getLastName(), acct.getEmail()};
             facultyAccount.addRow(row);
         }
+        lblTotalNumberUsers.setText(String.valueOf(ComLabMethods.getTotalUserRows()));
     }
 
     private void displayAdminAccount() {
@@ -94,6 +97,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             Object[] row = {acct.getStudentfacultyID(), acct.getFirstName(), acct.getLastName(), acct.getEmail()};
             adminAccount.addRow(row);
         }
+        lblTotalNumberUsers.setText(String.valueOf(ComLabMethods.getTotalUserRows()));
     }
 
     public void searchAdminAcct(String search) {
@@ -104,10 +108,18 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     }
 
-    public void searchLogs(String search) {
+    public void searchUserLogs(String search) {
         DefaultTableModel logs = (DefaultTableModel) logsTable.getModel();
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(logs);
         logsTable.setRowSorter(trs);
+        trs.setRowFilter(RowFilter.regexFilter(search));
+
+    }
+
+    public void searchVisitorsLogs(String search) {
+        DefaultTableModel logs = (DefaultTableModel) visitorsLogsTable.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(logs);
+        visitorsLogsTable.setRowSorter(trs);
         trs.setRowFilter(RowFilter.regexFilter(search));
 
     }
@@ -119,8 +131,20 @@ public class AdminDashboard extends javax.swing.JFrame {
         List<DTOlogs> acctList = DAOlogs.getAllLogs();
 
         for (DTOlogs acct : acctList) {
-            Object[] logsRow = {acct.getLogsID(), acct.getRole(), acct.getStudentfacultyID(), acct.getFullname(), acct.getProgram(), acct.getYrlvl(), acct.getDepartment(), acct.getUserLogin(), acct.getUserLogout()};
+            Object[] logsRow = {acct.getLogsID(), acct.getRole(), acct.getStudentfacultyID(), acct.getFullname(), acct.getProgram(), acct.getYrlvl(), acct.getDepartment(), acct.getLoginTime(), acct.getLogoutTime()};
             allLogs.addRow(logsRow);
+        }
+    }
+
+    private void displayVisitorsLogs() {
+        DefaultTableModel visitorsLogs = (DefaultTableModel) visitorsLogsTable.getModel();
+        visitorsLogs.setRowCount(0);
+
+        List<DTOvisitors> visitorsList = DAOlogs.getAllVisitorsLogs();
+
+        for (DTOvisitors acct : visitorsList) {
+            Object[] logsRow = {acct.getLogsID(), acct.getCodeIdentity(), acct.getFullname(), acct.getEmail(), acct.getMobilenumber(), acct.getGender(), acct.getPurpose(), acct.getLoginTime(), acct.getLogoutTime()};
+            visitorsLogs.addRow(logsRow);
         }
     }
 
@@ -218,6 +242,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         longestTimeSpentTable = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         panelBorder4 = new computerlabsystem.Design.PanelBorder();
+        jLabel4 = new javax.swing.JLabel();
+        lblTotalNumberUsers = new javax.swing.JLabel();
         accountPage = new computerlabsystem.Design.PanelGradient();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         facultyAccountPanel = new computerlabsystem.Design.PanelGradient();
@@ -243,19 +269,16 @@ public class AdminDashboard extends javax.swing.JFrame {
         txtAdminSearchAcct = new javax.swing.JTextField();
         btnUpdateAdminAcct = new javax.swing.JButton();
         logsPage = new computerlabsystem.Design.PanelGradient();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        UsersLogsPanel = new computerlabsystem.Design.PanelGradient();
         logsPane = new javax.swing.JScrollPane();
         logsTable = new javax.swing.JTable();
         lblSeachLogs = new javax.swing.JLabel();
         txtSearchLogs = new javax.swing.JTextField();
+        visitorsLogsPanel = new computerlabsystem.Design.PanelGradient();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        logsPage1 = new computerlabsystem.Design.PanelGradient();
-        logsPane1 = new javax.swing.JScrollPane();
-        logsTable1 = new javax.swing.JTable();
-        lblSeachLogs1 = new javax.swing.JLabel();
-        txtSearchLogs1 = new javax.swing.JTextField();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        visitorsLogsTable = new javax.swing.JTable();
+        txtVisitorsLogsSearch = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -520,6 +543,16 @@ public class AdminDashboard extends javax.swing.JFrame {
         homePage.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 510, 230));
 
         panelBorder4.setBackground(new java.awt.Color(160, 118, 249));
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("TOTAL NUMBER OF USERS");
+        panelBorder4.add(jLabel4);
+        jLabel4.setBounds(7, 10, 200, 16);
+
+        lblTotalNumberUsers.setText("jLabel5");
+        panelBorder4.add(lblTotalNumberUsers);
+        lblTotalNumberUsers.setBounds(80, 40, 37, 16);
+
         homePage.add(panelBorder4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 210, 110));
 
         cardPanel.add(homePage, "card6");
@@ -791,6 +824,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         logsPage.setColorSecondary(new java.awt.Color(255, 255, 204));
         logsPage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        UsersLogsPanel.setColorPrimary(new java.awt.Color(255, 255, 204));
+        UsersLogsPanel.setColorSecondary(new java.awt.Color(255, 255, 204));
+
         logsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -832,8 +868,10 @@ public class AdminDashboard extends javax.swing.JFrame {
             logsTable.getColumnModel().getColumn(8).setPreferredWidth(150);
         }
 
-        logsPage.add(logsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 1040, 280));
-        logsPage.add(lblSeachLogs, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 30, 32));
+        UsersLogsPanel.add(logsPane);
+        logsPane.setBounds(10, 70, 1060, 402);
+        UsersLogsPanel.add(lblSeachLogs);
+        lblSeachLogs.setBounds(0, 0, 0, 0);
 
         txtSearchLogs.setText("Enter Search");
         txtSearchLogs.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -841,39 +879,15 @@ public class AdminDashboard extends javax.swing.JFrame {
                 txtSearchLogsKeyReleased(evt);
             }
         });
-        logsPage.add(txtSearchLogs, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 16, 420, 40));
+        UsersLogsPanel.add(txtSearchLogs);
+        txtSearchLogs.setBounds(340, 20, 310, 22);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "LOGS ID", "IDENTITY CODE", "ROLE", "NAME", "MOBILE NUMBER", "EMAIL", "GENDER", "PURPOSE"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, false, false, false, true, false, false, false
-            };
+        jTabbedPane3.addTab("USER", UsersLogsPanel);
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane4.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-        }
+        visitorsLogsPanel.setColorPrimary(new java.awt.Color(255, 255, 204));
+        visitorsLogsPanel.setColorSecondary(new java.awt.Color(255, 255, 204));
 
-        logsPage.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 1040, 130));
-
-        logsPage1.setColorPrimary(new java.awt.Color(255, 255, 204));
-        logsPage1.setColorSecondary(new java.awt.Color(255, 255, 204));
-        logsPage1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        logsTable1.setModel(new javax.swing.table.DefaultTableModel(
+        visitorsLogsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -881,7 +895,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "LOGS ID", "ROLE", "STUDENT / FACULTY ID", "FULL NAME", "PROGRAM", "YEAR LEVEL", "DEPARTMENT", "LOG IN TIME", "LOG OUT TIME"
+                "LOGS ID", "ID CODE", "NAME", "EMAIL", "MOBILE NUMBER", "GENDER", "PURPOSE", "TIME IN", "TIME OUT"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -892,66 +906,47 @@ public class AdminDashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        logsTable1.setEnabled(false);
-        logsPane1.setViewportView(logsTable1);
-        if (logsTable1.getColumnModel().getColumnCount() > 0) {
-            logsTable1.getColumnModel().getColumn(0).setResizable(false);
-            logsTable1.getColumnModel().getColumn(0).setPreferredWidth(50);
-            logsTable1.getColumnModel().getColumn(1).setResizable(false);
-            logsTable1.getColumnModel().getColumn(1).setPreferredWidth(100);
-            logsTable1.getColumnModel().getColumn(2).setResizable(false);
-            logsTable1.getColumnModel().getColumn(2).setPreferredWidth(150);
-            logsTable1.getColumnModel().getColumn(3).setResizable(false);
-            logsTable1.getColumnModel().getColumn(4).setResizable(false);
-            logsTable1.getColumnModel().getColumn(4).setPreferredWidth(100);
-            logsTable1.getColumnModel().getColumn(5).setResizable(false);
-            logsTable1.getColumnModel().getColumn(5).setPreferredWidth(100);
-            logsTable1.getColumnModel().getColumn(6).setResizable(false);
-            logsTable1.getColumnModel().getColumn(6).setPreferredWidth(100);
-            logsTable1.getColumnModel().getColumn(7).setResizable(false);
-            logsTable1.getColumnModel().getColumn(7).setPreferredWidth(150);
-            logsTable1.getColumnModel().getColumn(8).setResizable(false);
-            logsTable1.getColumnModel().getColumn(8).setPreferredWidth(150);
+        jScrollPane4.setViewportView(visitorsLogsTable);
+        if (visitorsLogsTable.getColumnModel().getColumnCount() > 0) {
+            visitorsLogsTable.getColumnModel().getColumn(0).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(0).setPreferredWidth(5);
+            visitorsLogsTable.getColumnModel().getColumn(1).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(1).setPreferredWidth(20);
+            visitorsLogsTable.getColumnModel().getColumn(2).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+            visitorsLogsTable.getColumnModel().getColumn(3).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+            visitorsLogsTable.getColumnModel().getColumn(4).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(4).setPreferredWidth(80);
+            visitorsLogsTable.getColumnModel().getColumn(5).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(5).setPreferredWidth(80);
+            visitorsLogsTable.getColumnModel().getColumn(6).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(6).setPreferredWidth(200);
+            visitorsLogsTable.getColumnModel().getColumn(7).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(7).setPreferredWidth(100);
+            visitorsLogsTable.getColumnModel().getColumn(8).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(8).setPreferredWidth(100);
         }
 
-        logsPage1.add(logsPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 1040, 280));
-        logsPage1.add(lblSeachLogs1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 30, 32));
+        visitorsLogsPanel.add(jScrollPane4);
+        jScrollPane4.setBounds(10, 60, 1040, 402);
 
-        txtSearchLogs1.setText("Enter Search");
-        txtSearchLogs1.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtVisitorsLogsSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVisitorsLogsSearchActionPerformed(evt);
+            }
+        });
+        txtVisitorsLogsSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSearchLogs1KeyReleased(evt);
+                txtVisitorsLogsSearchKeyReleased(evt);
             }
         });
-        logsPage1.add(txtSearchLogs1, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 16, 420, 40));
+        visitorsLogsPanel.add(txtVisitorsLogsSearch);
+        txtVisitorsLogsSearch.setBounds(130, 20, 540, 30);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "LOGS ID", "IDENTITY CODE", "ROLE", "NAME", "MOBILE NUMBER", "EMAIL", "GENDER", "PURPOSE"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, false, false, false, true, false, false, false
-            };
+        jTabbedPane3.addTab("VISITORS", visitorsLogsPanel);
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane5.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(1).setResizable(false);
-        }
-
-        logsPage1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 1040, 130));
-
-        logsPage.add(logsPage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        logsPage.add(jTabbedPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1400, 580));
 
         cardPanel.add(logsPage, "card4");
 
@@ -1013,8 +1008,8 @@ public class AdminDashboard extends javax.swing.JFrame {
             String facultyID = (String) model.getValueAt(selectedRow, 0);
             model.removeRow(selectedRow);
             DAOaccount.deleteAcct(facultyID);
-        }else{
-           // lblWarningMessage.setText("Please Select a row you want to delete before hitting the button");
+        } else {
+            // lblWarningMessage.setText("Please Select a row you want to delete before hitting the button");
         }
     }//GEN-LAST:event_btnDeleteFacultyAcctActionPerformed
 
@@ -1046,7 +1041,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void txtSearchLogsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchLogsKeyReleased
         String search = txtSearchLogs.getText();
-        searchLogs(search);
+        searchUserLogs(search);
     }//GEN-LAST:event_txtSearchLogsKeyReleased
 
     private void btnProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgramActionPerformed
@@ -1216,11 +1211,17 @@ public class AdminDashboard extends javax.swing.JFrame {
         panelLogs.setBackground(new Color(0, 0, 0, 0));
     }//GEN-LAST:event_lblAllLogsMouseExited
 
-    private void txtSearchLogs1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchLogs1KeyReleased
+    private void txtVisitorsLogsSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVisitorsLogsSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchLogs1KeyReleased
+    }//GEN-LAST:event_txtVisitorsLogsSearchActionPerformed
+
+    private void txtVisitorsLogsSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtVisitorsLogsSearchKeyReleased
+        String search = txtVisitorsLogsSearch.getText();
+        searchVisitorsLogs(search);
+    }//GEN-LAST:event_txtVisitorsLogsSearchKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private computerlabsystem.Design.PanelGradient UsersLogsPanel;
     private computerlabsystem.Design.PanelGradient accountPage;
     private computerlabsystem.Design.PanelGradient adminAccountPanel;
     private javax.swing.JTable adminAccountTable;
@@ -1244,30 +1245,26 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JLabel lblAccounts;
     private javax.swing.JLabel lblAdminName;
     private javax.swing.JLabel lblAllLogs;
     private javax.swing.JLabel lblHome;
     private javax.swing.JLabel lblSeachLogs;
-    private javax.swing.JLabel lblSeachLogs1;
     private javax.swing.JLabel lblSearchAdmin;
     private javax.swing.JLabel lblSearchFaculty;
     private javax.swing.JLabel lblSearchStudent;
     private javax.swing.JLabel lblTopFiveLogs;
+    private javax.swing.JLabel lblTotalNumberUsers;
     private computerlabsystem.Design.PanelGradient logsPage;
-    private computerlabsystem.Design.PanelGradient logsPage1;
     private javax.swing.JScrollPane logsPane;
-    private javax.swing.JScrollPane logsPane1;
     private javax.swing.JTable logsTable;
-    private javax.swing.JTable logsTable1;
     private javax.swing.JTable longestTimeSpentTable;
     private computerlabsystem.Design.PanelGradient menuPanel;
     private javax.swing.JTable mostLogsTable;
@@ -1285,7 +1282,9 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField txtAdminSearchAcct;
     private javax.swing.JTextField txtFacultySearchAcct;
     private javax.swing.JTextField txtSearchLogs;
-    private javax.swing.JTextField txtSearchLogs1;
     private javax.swing.JTextField txtStudentSearchAcct;
+    private javax.swing.JTextField txtVisitorsLogsSearch;
+    private computerlabsystem.Design.PanelGradient visitorsLogsPanel;
+    private javax.swing.JTable visitorsLogsTable;
     // End of variables declaration//GEN-END:variables
 }
