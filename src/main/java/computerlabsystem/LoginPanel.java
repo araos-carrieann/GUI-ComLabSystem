@@ -54,7 +54,7 @@ public class LoginPanel extends javax.swing.JPanel {
         loginPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblID.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-id-23.png"))); // NOI18N
-        loginPanel.add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
+        loginPanel.add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
 
         checkboxShowPass.setFont(new java.awt.Font("Rockwell", 3, 12)); // NOI18N
         checkboxShowPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-hide-20.png"))); // NOI18N
@@ -63,10 +63,10 @@ public class LoginPanel extends javax.swing.JPanel {
                 checkboxShowPassActionPerformed(evt);
             }
         });
-        loginPanel.add(checkboxShowPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, -1, 60));
+        loginPanel.add(checkboxShowPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, -1, 60));
 
         lblPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-password-23.png"))); // NOI18N
-        loginPanel.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, -1, -1));
+        loginPanel.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, -1, -1));
 
         fieldPassword.setBackground((new Color(0, 0, 0, 0)));
         fieldPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -77,13 +77,13 @@ public class LoginPanel extends javax.swing.JPanel {
                 fieldPasswordActionPerformed(evt);
             }
         });
-        loginPanel.add(fieldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 320, 50));
+        loginPanel.add(fieldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 320, 50));
 
         txtStudentFacultyID.setBackground((new Color(0, 0, 0, 0)));
         txtStudentFacultyID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtStudentFacultyID.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "STUDENT / FACULTY ID", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Segoe UI Semibold", 0, 12))); // NOI18N
         txtStudentFacultyID.setPreferredSize(new java.awt.Dimension(65, 20));
-        loginPanel.add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 320, 50));
+        loginPanel.add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 320, 50));
 
         btnLogin.setBackground(new java.awt.Color(51, 51, 255));
         btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -93,7 +93,7 @@ public class LoginPanel extends javax.swing.JPanel {
                 btnLoginActionPerformed(evt);
             }
         });
-        loginPanel.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 270, -1));
+        loginPanel.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 300, -1));
 
         btnGoToSignUp.setBackground((new Color(0, 0, 0, 0)));
         btnGoToSignUp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -104,16 +104,16 @@ public class LoginPanel extends javax.swing.JPanel {
                 btnGoToSignUpActionPerformed(evt);
             }
         });
-        loginPanel.add(btnGoToSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 60, 20));
+        loginPanel.add(btnGoToSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, 60, 20));
 
         lblWarningMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-error-24.png"))); // NOI18N
         lblWarningMsg.setText("jLabel3");
-        loginPanel.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 235, -1));
+        loginPanel.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, 350, -1));
 
         lblAttemptsLeft.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAttemptsLeft.setText("jLabel1");
-        loginPanel.add(lblAttemptsLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 470, 210, -1));
+        loginPanel.add(lblAttemptsLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, 210, -1));
 
         btnForgotPass.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         btnForgotPass.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -123,7 +123,7 @@ public class LoginPanel extends javax.swing.JPanel {
                 btnForgotPassMouseClicked(evt);
             }
         });
-        loginPanel.add(btnForgotPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 120, 20));
+        loginPanel.add(btnForgotPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 120, 20));
 
         btnVisitor.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         btnVisitor.setText("VISITORS");
@@ -132,19 +132,19 @@ public class LoginPanel extends javax.swing.JPanel {
                 btnVisitorActionPerformed(evt);
             }
         });
-        loginPanel.add(btnVisitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 490, -1, -1));
+        loginPanel.add(btnVisitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, -1, -1));
 
         lblDoYouHaveanAccount.setText("Don't have an account?");
-        loginPanel.add(lblDoYouHaveanAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, -1, -1));
+        loginPanel.add(lblDoYouHaveanAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, -1, 20));
 
         lblWaveGIF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/output-onlinegiftools.gif"))); // NOI18N
-        loginPanel.add(lblWaveGIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 230, 180));
+        loginPanel.add(lblWaveGIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 230, 180));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(loginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+            .addComponent(loginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,6 +192,7 @@ public class LoginPanel extends javax.swing.JPanel {
 //                ComLabMethods.createLogs();
                 //  String hashedPassword = ComLabMethods.hashPassword(pass);
                 if (userRole.equals("ADMIN")) {
+                    ComLabMethods.logUserLogin(sfID, fullName, pass);
                     AdminDashboard admn = new AdminDashboard(fname, sfID);
                     admn.setVisible(true);
                     SwingUtilities.getWindowAncestor((Component) evt.getSource()).dispose();

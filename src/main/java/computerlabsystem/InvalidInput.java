@@ -15,7 +15,7 @@ import java.util.TimerTask;
 
 public class InvalidInput extends javax.swing.JDialog {
 
-    private final int waitTime = 5;
+    private final int waitTime = 10;
     private Timer timer;
 
     /**
@@ -54,7 +54,7 @@ public class InvalidInput extends javax.swing.JDialog {
         lblRemainingTime.setText("jLabel2");
 
         lblGIF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblGIF.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\iconnn\\ezgif.com-crop.gif")); // NOI18N
+        lblGIF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/ezgif.com-crop.gif"))); // NOI18N
 
         panelGradient1.setLayer(lblPleaseWait, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelGradient1.setLayer(lblRemainingTime, javax.swing.JLayeredPane.DEFAULT_LAYER);

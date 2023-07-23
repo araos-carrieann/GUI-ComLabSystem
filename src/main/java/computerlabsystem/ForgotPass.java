@@ -44,8 +44,9 @@ public class ForgotPass extends javax.swing.JDialog {
         Panel.setColorPrimary(new java.awt.Color(109, 113, 249));
         Panel.setColorSecondary(new java.awt.Color(199, 188, 161));
 
+        txtEmail.setForeground(new java.awt.Color(102, 102, 102));
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
+        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         Panel.add(txtEmail);
         txtEmail.setBounds(50, 150, 340, 40);
 
@@ -56,10 +57,10 @@ public class ForgotPass extends javax.swing.JDialog {
         lblForgotPassword.setBounds(60, 50, 310, 30);
 
         lblEnterEmail.setBackground(new java.awt.Color(255, 255, 255));
-        lblEnterEmail.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
+        lblEnterEmail.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         lblEnterEmail.setText("Don't worry! Please enter the email you use to sign in.");
         Panel.add(lblEnterEmail);
-        lblEnterEmail.setBounds(50, 80, 360, 40);
+        lblEnterEmail.setBounds(50, 90, 340, 40);
 
         btnRequestCode.setBackground(new java.awt.Color(0, 0, 51));
         btnRequestCode.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -71,20 +72,25 @@ public class ForgotPass extends javax.swing.JDialog {
             }
         });
         Panel.add(btnRequestCode);
-        btnRequestCode.setBounds(80, 220, 290, 40);
+        btnRequestCode.setBounds(70, 220, 290, 40);
 
         btnBackToLogin.setBackground(new java.awt.Color(0, 0, 51));
         btnBackToLogin.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnBackToLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnBackToLogin.setText("BACK TO LOGIN");
+        btnBackToLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackToLoginActionPerformed(evt);
+            }
+        });
         Panel.add(btnBackToLogin);
-        btnBackToLogin.setBounds(140, 270, 160, 23);
+        btnBackToLogin.setBounds(140, 270, 160, 30);
 
         lblWarningMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWarningMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-error-24.png"))); // NOI18N
         lblWarningMessage.setText("jLabel1");
         Panel.add(lblWarningMessage);
-        lblWarningMessage.setBounds(50, 300, 350, 30);
+        lblWarningMessage.setBounds(50, 310, 340, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,6 +104,7 @@ public class ForgotPass extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestCodeActionPerformed
@@ -128,6 +135,10 @@ public class ForgotPass extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_btnRequestCodeActionPerformed
+
+    private void btnBackToLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackToLoginActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnBackToLoginActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private computerlabsystem.Design.PanelGradient Panel;

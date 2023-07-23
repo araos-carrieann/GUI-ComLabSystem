@@ -19,7 +19,7 @@ public class Visitors extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         visitorsMethods = new VisitorsMethods(); // Initialize visitorsMethods
-
+        lblWarningMessage.setVisible(false);
         txtOtherPurpose.setVisible(false);
     }
 
@@ -37,7 +37,11 @@ public class Visitors extends javax.swing.JDialog {
         btnLogs = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        lblWarningMsg = new javax.swing.JLabel();
+        lblWarningMessage = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -45,9 +49,9 @@ public class Visitors extends javax.swing.JDialog {
         panelGradient1.setColorSecondary(new java.awt.Color(199, 188, 161));
 
         txtName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtName.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true), "NAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        txtName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         panelGradient1.add(txtName);
-        txtName.setBounds(75, 30, 250, 40);
+        txtName.setBounds(70, 80, 290, 30);
 
         comboBoxPurpose.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "OTHERS" }));
         comboBoxPurpose.addActionListener(new java.awt.event.ActionListener() {
@@ -56,25 +60,23 @@ public class Visitors extends javax.swing.JDialog {
             }
         });
         panelGradient1.add(comboBoxPurpose);
-        comboBoxPurpose.setBounds(75, 230, 250, 22);
-
-        txtOtherPurpose.setText("jTextField1");
+        comboBoxPurpose.setBounds(70, 270, 280, 22);
         panelGradient1.add(txtOtherPurpose);
-        txtOtherPurpose.setBounds(75, 260, 250, 22);
+        txtOtherPurpose.setBounds(70, 300, 280, 30);
 
         comboBoxGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DEFAULT", "MALE", "FEMALE", "I PREFER NOT TO SAY", " " }));
         panelGradient1.add(comboBoxGender);
-        comboBoxGender.setBounds(130, 190, 140, 22);
+        comboBoxGender.setBounds(130, 240, 160, 22);
 
         txtMobileNumber.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtMobileNumber.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true), "MOBILE NUMBER", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        txtMobileNumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         panelGradient1.add(txtMobileNumber);
-        txtMobileNumber.setBounds(75, 80, 250, 41);
+        txtMobileNumber.setBounds(70, 140, 290, 30);
 
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtEmail.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true), "EMAIL", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         panelGradient1.add(txtEmail);
-        txtEmail.setBounds(75, 130, 250, 41);
+        txtEmail.setBounds(70, 190, 290, 30);
 
         btnLogs.setBackground(new java.awt.Color(0, 0, 0));
         btnLogs.setForeground(new java.awt.Color(255, 255, 255));
@@ -85,7 +87,7 @@ public class Visitors extends javax.swing.JDialog {
             }
         });
         panelGradient1.add(btnLogs);
-        btnLogs.setBounds(232, 330, 90, 23);
+        btnLogs.setBounds(270, 350, 80, 23);
 
         btnClear.setBackground(new java.awt.Color(0, 0, 0));
         btnClear.setForeground(new java.awt.Color(255, 255, 255));
@@ -96,18 +98,42 @@ public class Visitors extends javax.swing.JDialog {
             }
         });
         panelGradient1.add(btnClear);
-        btnClear.setBounds(155, 330, 72, 23);
+        btnClear.setBounds(182, 350, 70, 23);
 
         btnBack.setBackground(new java.awt.Color(0, 0, 0));
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
         panelGradient1.add(btnBack);
-        btnBack.setBounds(75, 330, 72, 23);
+        btnBack.setBounds(70, 350, 80, 23);
 
-        lblWarningMsg.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-error-24.png")); // NOI18N
-        lblWarningMsg.setText("jLabel1");
-        panelGradient1.add(lblWarningMsg);
-        lblWarningMsg.setBounds(165, 370, 70, 24);
+        lblWarningMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWarningMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-error-24.png"))); // NOI18N
+        lblWarningMessage.setText("jLabel1");
+        panelGradient1.add(lblWarningMessage);
+        lblWarningMessage.setBounds(80, 386, 240, 20);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-user-30.png"))); // NOI18N
+        panelGradient1.add(jLabel1);
+        jLabel1.setBounds(30, 80, 71, 30);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-number-pad-30.png"))); // NOI18N
+        panelGradient1.add(jLabel2);
+        jLabel2.setBounds(30, 140, 30, 30);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-email-30.png"))); // NOI18N
+        panelGradient1.add(jLabel3);
+        jLabel3.setBounds(30, 190, 30, 30);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("VISITOR");
+        panelGradient1.add(jLabel4);
+        jLabel4.setBounds(107, 40, 180, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,19 +145,22 @@ public class Visitors extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelGradient1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(panelGradient1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboBoxPurposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxPurposeActionPerformed
         purpose = String.valueOf(comboBoxPurpose.getSelectedItem());
-
         if (purpose.equals("OTHERS")) {
             txtOtherPurpose.setVisible(true);
+            purpose = txtOtherPurpose.getText();
+        } else {
+            txtOtherPurpose.setVisible(false);
         }
     }//GEN-LAST:event_comboBoxPurposeActionPerformed
 
@@ -141,34 +170,38 @@ public class Visitors extends javax.swing.JDialog {
         mobileNumber = txtMobileNumber.getText();
         email = txtEmail.getText();
         gender = String.valueOf(comboBoxGender.getSelectedItem());
-        purpose = String.valueOf(comboBoxPurpose.getSelectedItem());
 
         if (fullname.isEmpty() && mobileNumber.isEmpty() && email.isEmpty() && gender.equals("DEFAULT") && purpose.equals("DEFAULT")) {
-            lblWarningMsg.setText("Please provide the required information before hitting Logs");
+            lblWarningMessage.setText("Please provide the required information before hitting Logs");
         } else if (fullname.isEmpty()) {
-            lblWarningMsg.setText("Please specify your name");
+            lblWarningMessage.setText("Please specify your name");
         } else if (fullname.contains("  ")) {
-            lblWarningMsg.setText("Your name contains too many spaces");
+            lblWarningMessage.setText("Your name contains too many spaces");
         } else if (mobileNumber.isEmpty()) {
-            lblWarningMsg.setText("Please specify your Mobile Number");
+            lblWarningMessage.setText("Please specify your Mobile Number");
         } else if (email.isEmpty()) {
-            lblWarningMsg.setText("Please specify your Email");
+            lblWarningMessage.setText("Please specify your Email");
         } else if (gender.equals("DEFAULT")) {
-            lblWarningMsg.setText("Please select your Gender");
+            lblWarningMessage.setText("Please select your Gender");
         } else if (purpose.equals("DEFAULT")) {
-            lblWarningMsg.setText("Please select the Purpose");
-        } else if(!fullname.matches("[A-Za-z0-9\\-.]+")){
-            lblWarningMsg.setText("Name should only consist of letters, numbers, dashes, or dots.");
-        }else if(!email.matches("[\\w.-]+@[a-zA-Z0-9-]+\\.[a-zA-Z]{2,}")){
-        lblWarningMsg.setText("Invalid email address format.");
-        }
-        else {
+            lblWarningMessage.setText("Please select the Purpose");
+        } else if (!fullname.matches("[A-Za-z0-9\\-.]+")) {
+            lblWarningMessage.setText("Name should only consist of letters, numbers, dashes, or dots.");
+        } else if (!email.matches("[\\w.-]+@[a-zA-Z0-9-]+\\.[a-zA-Z]{2,}")) {
+            lblWarningMessage.setText("Invalid email address format.");
+        } else {
+             purpose = (String) comboBoxPurpose.getSelectedItem();
             String identity = ForgetPasswordMethods.generateCode();
+            if (!purpose.equals("OTHERS")) {
+                purpose = (String) comboBoxPurpose.getSelectedItem();
+            } else {
+                purpose = txtOtherPurpose.getText();
+            }
             // All information provided, proceed with logging
             String msg = visitorsMethods.insertVisitorData(identity, role, fullname, mobileNumber, email, gender, purpose);
             int id = ComLabMethods.getVisitorID(identity);
             visitorsMethods.VisitorInsertLog(id, fullname);
-            lblWarningMsg.setText(msg);
+            lblWarningMessage.setText(msg);
         }
 
     }//GEN-LAST:event_btnLogsActionPerformed
@@ -180,6 +213,10 @@ public class Visitors extends javax.swing.JDialog {
         comboBoxGender.setSelectedIndex(0);
         comboBoxPurpose.setSelectedIndex(0);
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -227,7 +264,11 @@ public class Visitors extends javax.swing.JDialog {
     private javax.swing.JButton btnLogs;
     private javax.swing.JComboBox<String> comboBoxGender;
     private javax.swing.JComboBox<String> comboBoxPurpose;
-    private javax.swing.JLabel lblWarningMsg;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblWarningMessage;
     private computerlabsystem.Design.PanelGradient panelGradient1;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtMobileNumber;

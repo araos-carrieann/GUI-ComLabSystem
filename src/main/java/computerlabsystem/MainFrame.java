@@ -54,8 +54,8 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelGradient1.setColorPrimary(new java.awt.Color(14, 41, 84));
-        panelGradient1.setColorSecondary(new java.awt.Color(82, 109, 130));
+        panelGradient1.setColorPrimary(new java.awt.Color(109, 113, 249));
+        panelGradient1.setColorSecondary(new java.awt.Color(244, 193, 109));
 
         mainBorder.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -91,11 +91,10 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         panelGradient1.add(mainBorder);
-        mainBorder.setBounds(220, 100, 480, 550);
+        mainBorder.setBounds(200, 100, 480, 550);
 
         getContentPane().add(panelGradient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 856, 684));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\20230711_154133_0000-removebg-preview.png")); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 247, 550, 190));
 

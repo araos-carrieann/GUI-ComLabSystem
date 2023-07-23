@@ -64,8 +64,8 @@ public class UsersDashboard extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         myLogsTable = new javax.swing.JTable();
         panelBorder1 = new computerlabsystem.Design.PanelBorder();
-        lblMyTotalLogs = new javax.swing.JLabel();
         lblTotalLogs = new javax.swing.JLabel();
+        lblMyTotalLogs = new javax.swing.JLabel();
         panelBorder2 = new computerlabsystem.Design.PanelBorder();
         lblTimeDurationSpent = new javax.swing.JLabel();
         lblTimeSpent = new javax.swing.JLabel();
@@ -105,31 +105,30 @@ public class UsersDashboard extends javax.swing.JFrame {
         }
 
         panelBorder1.setBackground(new java.awt.Color(255, 255, 204));
-
-        lblMyTotalLogs.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
-        lblMyTotalLogs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMyTotalLogs.setText("MY TOTAL LOGS");
-        panelBorder1.add(lblMyTotalLogs);
-        lblMyTotalLogs.setBounds(20, 10, 120, 30);
+        panelBorder1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTotalLogs.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         lblTotalLogs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTotalLogs.setText("jLabel4");
-        panelBorder1.add(lblTotalLogs);
-        lblTotalLogs.setBounds(30, 30, 80, 40);
+        panelBorder1.add(lblTotalLogs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 22, 160, 80));
+
+        lblMyTotalLogs.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        lblMyTotalLogs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMyTotalLogs.setText("MY TOTAL LOGS");
+        panelBorder1.add(lblMyTotalLogs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 40));
 
         panelBorder2.setBackground(new java.awt.Color(255, 255, 204));
         panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTimeDurationSpent.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        lblTimeDurationSpent.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         lblTimeDurationSpent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTimeDurationSpent.setText("TIME DURATION SPENT");
-        panelBorder2.add(lblTimeDurationSpent, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        panelBorder2.add(lblTimeDurationSpent, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 1, 190, 40));
 
         lblTimeSpent.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         lblTimeSpent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTimeSpent.setText("jLabel4");
-        panelBorder2.add(lblTimeSpent, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 50, 170, 40));
+        panelBorder2.add(lblTimeSpent, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 50, 200, 40));
 
         btnLogout.setBackground(new java.awt.Color(255, 255, 204));
         btnLogout.setText("LOGOUT");
@@ -206,6 +205,7 @@ public class UsersDashboard extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblUserNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUserNameMouseClicked

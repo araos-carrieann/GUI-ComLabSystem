@@ -37,6 +37,7 @@ public class ForgotResetPassword extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelGradient1 = new computerlabsystem.Design.PanelGradient();
         checkboxShowNewPass = new javax.swing.JCheckBox();
         checkboxShowReTypePassword = new javax.swing.JCheckBox();
         fieldNewPassword = new javax.swing.JPasswordField();
@@ -45,6 +46,7 @@ public class ForgotResetPassword extends javax.swing.JDialog {
         lblWarningMessage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         checkboxShowNewPass.setBackground((new Color(0, 0, 0, 0)));
@@ -56,7 +58,8 @@ public class ForgotResetPassword extends javax.swing.JDialog {
                 checkboxShowNewPassActionPerformed(evt);
             }
         });
-        getContentPane().add(checkboxShowNewPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, 30));
+        panelGradient1.add(checkboxShowNewPass);
+        checkboxShowNewPass.setBounds(290, 84, 30, 40);
 
         checkboxShowReTypePassword.setBackground((new Color(0, 0, 0, 0)));
         checkboxShowReTypePassword.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -67,26 +70,39 @@ public class ForgotResetPassword extends javax.swing.JDialog {
                 checkboxShowReTypePasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(checkboxShowReTypePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, -1, 30));
+        panelGradient1.add(checkboxShowReTypePassword);
+        checkboxShowReTypePassword.setBounds(290, 160, 30, 40);
 
         fieldNewPassword.setText("jPasswordField1");
-        getContentPane().add(fieldNewPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 63, 191, -1));
+        panelGradient1.add(fieldNewPassword);
+        fieldNewPassword.setBounds(80, 82, 240, 40);
 
         fieldReTypePassword.setText("jPasswordField2");
-        getContentPane().add(fieldReTypePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 155, 190, -1));
+        panelGradient1.add(fieldReTypePassword);
+        fieldReTypePassword.setBounds(80, 160, 240, 40);
 
+        btnSave.setBackground(new java.awt.Color(0, 0, 51));
+        btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("SAVE");
+        btnSave.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 230, 40));
+        panelGradient1.add(btnSave);
+        btnSave.setBounds(110, 220, 190, 30);
 
+        lblWarningMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWarningMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-error-24.png"))); // NOI18N
         lblWarningMessage.setText("jLabel1");
-        getContentPane().add(lblWarningMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, -1, -1));
+        panelGradient1.add(lblWarningMessage);
+        lblWarningMessage.setBounds(57, 266, 290, 20);
+
+        getContentPane().add(panelGradient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 320));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void checkboxShowReTypePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkboxShowReTypePasswordActionPerformed
@@ -137,5 +153,6 @@ public class ForgotResetPassword extends javax.swing.JDialog {
     private javax.swing.JPasswordField fieldNewPassword;
     private javax.swing.JPasswordField fieldReTypePassword;
     private javax.swing.JLabel lblWarningMessage;
+    private computerlabsystem.Design.PanelGradient panelGradient1;
     // End of variables declaration//GEN-END:variables
 }

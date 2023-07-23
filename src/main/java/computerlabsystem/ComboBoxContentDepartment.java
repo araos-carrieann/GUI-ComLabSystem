@@ -29,8 +29,8 @@ public class ComboBoxContentDepartment extends javax.swing.JDialog {
 
         List<DTOaccount> departmentList = ComLabMethods.departmentComboContent();
 
-        for (DTOaccount data : departmentList) {
-            Object[] departmentRow = {data.getDepartment()};
+        for (DTOaccount department : departmentList) {
+            Object[] departmentRow = {department.getDepartment()};
             allDepartment.addRow(departmentRow);
         }
     }
@@ -45,9 +45,9 @@ public class ComboBoxContentDepartment extends javax.swing.JDialog {
         txtAddDepartment = new javax.swing.JTextField();
         btnAddDepartment = new javax.swing.JButton();
         btnDeleteDepartment = new javax.swing.JButton();
-        btnClearDepartment = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         lblDepartment = new javax.swing.JLabel();
+        lblWarningMessage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
@@ -71,13 +71,14 @@ public class ComboBoxContentDepartment extends javax.swing.JDialog {
         ));
         jScrollPane3.setViewportView(departmentTable);
 
-        panelGradient4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 330, 200));
+        panelGradient4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 330, 170));
 
         txtAddDepartment.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        panelGradient4.add(txtAddDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 210, -1));
+        panelGradient4.add(txtAddDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 210, 30));
 
         btnAddDepartment.setBackground(new java.awt.Color(255, 255, 204));
         btnAddDepartment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAddDepartment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-add-20.png"))); // NOI18N
         btnAddDepartment.setText("ADD");
         btnAddDepartment.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnAddDepartment.setMaximumSize(new java.awt.Dimension(72, 23));
@@ -88,10 +89,11 @@ public class ComboBoxContentDepartment extends javax.swing.JDialog {
                 btnAddDepartmentActionPerformed(evt);
             }
         });
-        panelGradient4.add(btnAddDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 70, -1));
+        panelGradient4.add(btnAddDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 90, 20));
 
         btnDeleteDepartment.setBackground(new java.awt.Color(255, 255, 204));
         btnDeleteDepartment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDeleteDepartment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-delete-20.png"))); // NOI18N
         btnDeleteDepartment.setText("DELETE");
         btnDeleteDepartment.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnDeleteDepartment.setMaximumSize(new java.awt.Dimension(72, 23));
@@ -102,21 +104,7 @@ public class ComboBoxContentDepartment extends javax.swing.JDialog {
                 btnDeleteDepartmentActionPerformed(evt);
             }
         });
-        panelGradient4.add(btnDeleteDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 80, -1));
-
-        btnClearDepartment.setBackground(new java.awt.Color(255, 255, 204));
-        btnClearDepartment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnClearDepartment.setText("CLEAR");
-        btnClearDepartment.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnClearDepartment.setMaximumSize(new java.awt.Dimension(72, 23));
-        btnClearDepartment.setMinimumSize(new java.awt.Dimension(72, 23));
-        btnClearDepartment.setPreferredSize(new java.awt.Dimension(72, 23));
-        btnClearDepartment.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearDepartmentActionPerformed(evt);
-            }
-        });
-        panelGradient4.add(btnClearDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 70, -1));
+        panelGradient4.add(btnDeleteDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 90, 20));
 
         btnBack.setBackground(new java.awt.Color(255, 255, 204));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -126,37 +114,37 @@ public class ComboBoxContentDepartment extends javax.swing.JDialog {
                 btnBackActionPerformed(evt);
             }
         });
-        panelGradient4.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, -1));
+        panelGradient4.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
-        lblDepartment.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        lblDepartment.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblDepartment.setText("DEPARTMENT");
         panelGradient4.add(lblDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+
+        lblWarningMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWarningMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-error-24.png"))); // NOI18N
+        lblWarningMessage.setText("jLabel1");
+        panelGradient4.add(lblWarningMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 270, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(panelGradient4, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelGradient4, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panelGradient4, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDepartmentActionPerformed
-        String addDepartment = txtAddDepartment.getText();
-        ComLabMethods.departmentComboBox(addDepartment);
-        displayDepartment();
-        txtAddDepartment.setText("");
-    }//GEN-LAST:event_btnAddDepartmentActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnDeleteDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteDepartmentActionPerformed
         DefaultTableModel model = (DefaultTableModel) departmentTable.getModel();
@@ -164,18 +152,23 @@ public class ComboBoxContentDepartment extends javax.swing.JDialog {
         if (selectedRow != 1) {
             String department = (String) model.getValueAt(selectedRow, 0);
             model.removeRow(selectedRow);
-            ComLabMethods.deleteProgram(department);
+            ComLabMethods.deleteDepartment(department);
             displayDepartment();
+            lblWarningMessage.setVisible(false);
         }
     }//GEN-LAST:event_btnDeleteDepartmentActionPerformed
 
-    private void btnClearDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearDepartmentActionPerformed
-        txtAddDepartment.setText("");
-    }//GEN-LAST:event_btnClearDepartmentActionPerformed
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        dispose();
-    }//GEN-LAST:event_btnBackActionPerformed
+    private void btnAddDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDepartmentActionPerformed
+        String addDepartment = txtAddDepartment.getText();
+        if (addDepartment.isEmpty()) {
+            lblWarningMessage.setText("Please Input First ");
+        } else {
+            ComLabMethods.departmentComboBox(addDepartment);
+            displayDepartment();
+            txtAddDepartment.setText("");
+            lblWarningMessage.setVisible(false);
+        }
+    }//GEN-LAST:event_btnAddDepartmentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,11 +222,11 @@ public class ComboBoxContentDepartment extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddDepartment;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnClearDepartment;
     private javax.swing.JButton btnDeleteDepartment;
     private javax.swing.JTable departmentTable;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblDepartment;
+    private javax.swing.JLabel lblWarningMessage;
     private computerlabsystem.Design.PanelGradient panelGradient4;
     private javax.swing.JTextField txtAddDepartment;
     // End of variables declaration//GEN-END:variables

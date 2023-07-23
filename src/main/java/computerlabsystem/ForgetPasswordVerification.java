@@ -4,6 +4,8 @@
  */
 package computerlabsystem;
 
+import java.awt.Color;
+
 /**
  *
  * @author araos
@@ -36,68 +38,88 @@ public class ForgetPasswordVerification extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelGradient1 = new computerlabsystem.Design.PanelGradient();
         lblOTPverification = new javax.swing.JLabel();
         btnConfirmCode = new javax.swing.JButton();
         btnBackToLogin = new javax.swing.JButton();
         txtCode = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textAreaMessage = new javax.swing.JTextArea();
         lblWarningMessage = new javax.swing.JLabel();
+        panelBorder1 = new computerlabsystem.Design.PanelBorder();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblOTPverification.setFont(new java.awt.Font("Segoe UI Semibold", 1, 30)); // NOI18N
         lblOTPverification.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblOTPverification.setText("OTP VERIFICATION");
-        getContentPane().add(lblOTPverification, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 320, -1));
+        lblOTPverification.setText("OTP Verification");
+        panelGradient1.add(lblOTPverification);
+        lblOTPverification.setBounds(120, 20, 223, 41);
 
-        btnConfirmCode.setText("jButton1");
+        btnConfirmCode.setBackground(new java.awt.Color(0, 0, 51));
+        btnConfirmCode.setForeground(new java.awt.Color(255, 255, 255));
+        btnConfirmCode.setText("SUBMIT");
         btnConfirmCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmCodeActionPerformed(evt);
             }
         });
-        getContentPane().add(btnConfirmCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 258, -1));
+        panelGradient1.add(btnConfirmCode);
+        btnConfirmCode.setBounds(80, 310, 290, 40);
 
-        btnBackToLogin.setText("jButton2");
+        btnBackToLogin.setBackground(new java.awt.Color(0, 51, 102));
+        btnBackToLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnBackToLogin.setText("BACK");
         btnBackToLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackToLoginActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBackToLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 128, -1));
+        panelGradient1.add(btnBackToLogin);
+        btnBackToLogin.setBounds(130, 370, 190, 23);
 
+        txtCode.setForeground(new java.awt.Color(102, 102, 102));
         txtCode.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCode.setText("jTextField1");
-        txtCode.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        txtCode.setText("Enter verification code");
+        txtCode.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         txtCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodeActionPerformed(evt);
             }
         });
-        getContentPane().add(txtCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 310, 40));
+        panelGradient1.add(txtCode);
+        txtCode.setBounds(60, 240, 330, 50);
 
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        jScrollPane1.setViewportBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jScrollPane1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
-        jScrollPane1.setWheelScrollingEnabled(false);
-
-        textAreaMessage.setEditable(false);
-        textAreaMessage.setBackground(new java.awt.Color(255, 51, 0));
-        textAreaMessage.setColumns(20);
-        textAreaMessage.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
-        textAreaMessage.setRows(5);
-        textAreaMessage.setText("\nWe've sent a One-Time Password (OTP)  \nto your registered email for verification. ");
-        jScrollPane1.setViewportView(textAreaMessage);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 290, 100));
-
+        lblWarningMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWarningMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-error-24.png"))); // NOI18N
         lblWarningMessage.setText("jLabel1");
-        getContentPane().add(lblWarningMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, -1, -1));
+        panelGradient1.add(lblWarningMessage);
+        lblWarningMessage.setBounds(45, 410, 360, 24);
+
+        panelBorder1.setBackground((new Color(0, 128, 0, 128)));
+
+        jLabel1.setBackground((new Color(0, 0, 0, 0)));
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText(" We've sent a One-Time Password (OTP)");
+        panelBorder1.add(jLabel1);
+        jLabel1.setBounds(0, 10, 330, 60);
+
+        jLabel2.setBackground((new Color(0, 0, 0, 0)));
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("  to your registered email for verification. ");
+        panelBorder1.add(jLabel2);
+        jLabel2.setBounds(0, 50, 330, 40);
+
+        panelGradient1.add(panelBorder1);
+        panelBorder1.setBounds(60, 78, 330, 120);
+
+        getContentPane().add(panelGradient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 460));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodeActionPerformed
@@ -131,10 +153,12 @@ public class ForgetPasswordVerification extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBackToLogin;
     private javax.swing.JButton btnConfirmCode;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblOTPverification;
     private javax.swing.JLabel lblWarningMessage;
-    private javax.swing.JTextArea textAreaMessage;
+    private computerlabsystem.Design.PanelBorder panelBorder1;
+    private computerlabsystem.Design.PanelGradient panelGradient1;
     private javax.swing.JTextField txtCode;
     // End of variables declaration//GEN-END:variables
 }

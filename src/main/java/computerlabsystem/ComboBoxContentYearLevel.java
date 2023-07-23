@@ -19,33 +19,37 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
     public ComboBoxContentYearLevel(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        displayYearLvl() ;
+        displayYearLvl();
     }
 
-        private void displayYearLvl() {
+    private void displayYearLvl() {
         DefaultTableModel allYrLvl = (DefaultTableModel) yrLvlTable.getModel();
         allYrLvl.setRowCount(0);
 
         List<DTOaccount> yearLevelList = ComLabMethods.yearlvlComboContent();
 
-        for (DTOaccount acct : yearLevelList) {
-            Object[] yearLvlRow = {acct.getYrlvl()};
+        for (DTOaccount yearLevel : yearLevelList) {
+            Object[] yearLvlRow = {yearLevel.getYrlvl()};
             allYrLvl.addRow(yearLvlRow);
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         panelGradient3 = new computerlabsystem.Design.PanelGradient();
         jScrollPane2 = new javax.swing.JScrollPane();
         yrLvlTable = new javax.swing.JTable();
         txtAddYrLvl = new javax.swing.JTextField();
         btnAddYrLvl = new javax.swing.JButton();
         btnDeleteYrLvl = new javax.swing.JButton();
-        btnClearYearLevel = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        lblWarningMsg = new javax.swing.JLabel();
+        lblWarningMessage = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -67,62 +71,62 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
         ));
         jScrollPane2.setViewportView(yrLvlTable);
 
-        panelGradient3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 100, 340, 200));
+        panelGradient3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 340, 200));
 
         txtAddYrLvl.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtAddYrLvl.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true), "YEAR LEVEL", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        txtAddYrLvl.setBorder(null);
         txtAddYrLvl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAddYrLvlActionPerformed(evt);
             }
         });
-        panelGradient3.add(txtAddYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 15, 200, 50));
+        panelGradient3.add(txtAddYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 230, 30));
 
+        btnAddYrLvl.setBackground(new java.awt.Color(255, 255, 204));
         btnAddYrLvl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAddYrLvl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-add-20.png"))); // NOI18N
         btnAddYrLvl.setText("ADD");
         btnAddYrLvl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddYrLvlActionPerformed(evt);
             }
         });
-        panelGradient3.add(btnAddYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 70, -1, -1));
+        panelGradient3.add(btnAddYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 77, 100, 20));
 
+        btnDeleteYrLvl.setBackground(new java.awt.Color(255, 255, 204));
         btnDeleteYrLvl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDeleteYrLvl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-delete-20.png"))); // NOI18N
         btnDeleteYrLvl.setText("DELETE");
         btnDeleteYrLvl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteYrLvlActionPerformed(evt);
             }
         });
-        panelGradient3.add(btnDeleteYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, -1));
-
-        btnClearYearLevel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnClearYearLevel.setText("CLEAR");
-        btnClearYearLevel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearYearLevelActionPerformed(evt);
-            }
-        });
-        panelGradient3.add(btnClearYearLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 70, -1, -1));
+        panelGradient3.add(btnDeleteYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 77, 100, 20));
 
         btnBack.setBackground(new java.awt.Color(255, 255, 204));
-        btnBack.setFont(new java.awt.Font("Rockwell", 0, 10)); // NOI18N
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        panelGradient3.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 2, -1, 20));
+        panelGradient3.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 70, 20));
 
-        lblWarningMsg.setText("jLabel1");
-        panelGradient3.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 90, -1));
+        lblWarningMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-error-24.png"))); // NOI18N
+        lblWarningMessage.setText("jLabel1");
+        panelGradient3.add(lblWarningMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 90, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("YEAR LEVEL");
+        panelGradient3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGradient3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelGradient3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,12 +141,14 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
 
     private void btnAddYrLvlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddYrLvlActionPerformed
         String addYrLvl = txtAddYrLvl.getText();
-        if(addYrLvl.isEmpty()){
-        lblWarningMsg.setText("Please input appropriate year level.");}
-        else{
-        ComLabMethods.yearLevelComboBox(addYrLvl);
-        displayYearLvl();
-        txtAddYrLvl.setText("");}
+        if (addYrLvl.isEmpty()) {
+            lblWarningMessage.setText("Please input appropriate year level.");
+        } else {
+            ComLabMethods.yearLevelComboBox(addYrLvl);
+            displayYearLvl();
+            txtAddYrLvl.setText("");
+            lblWarningMessage.setVisible(false);
+        }
     }//GEN-LAST:event_btnAddYrLvlActionPerformed
 
     private void btnDeleteYrLvlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteYrLvlActionPerformed
@@ -153,12 +159,9 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
             model.removeRow(selectedRow);
             ComLabMethods.deleteYearLvl(yrLvl);
             displayYearLvl();
+            lblWarningMessage.setVisible(false);
         }
     }//GEN-LAST:event_btnDeleteYrLvlActionPerformed
-
-    private void btnClearYearLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearYearLevelActionPerformed
-        txtAddYrLvl.setText("");
-    }//GEN-LAST:event_btnClearYearLevelActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         dispose();
@@ -216,10 +219,11 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddYrLvl;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnClearYearLevel;
     private javax.swing.JButton btnDeleteYrLvl;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblWarningMsg;
+    private javax.swing.JLabel lblWarningMessage;
     private computerlabsystem.Design.PanelGradient panelGradient3;
     private javax.swing.JTextField txtAddYrLvl;
     private javax.swing.JTable yrLvlTable;

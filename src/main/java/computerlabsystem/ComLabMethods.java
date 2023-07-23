@@ -410,7 +410,7 @@ public class ComLabMethods {
 
     public static void deleteDepartment(String department) {
         try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
-            String sql = "DELETE FROM yearLevel WHERE yearLevel = ?";
+            String sql = "DELETE FROM department WHERE facultyDepartment = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, department);
             statement.executeUpdate();

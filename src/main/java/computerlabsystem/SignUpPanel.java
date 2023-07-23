@@ -104,10 +104,9 @@ public class SignUpPanel extends javax.swing.JPanel {
         lblUsername.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         signUpPanel.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 50, 30));
 
-        btnClear.setBackground(new java.awt.Color(51, 102, 255));
+        btnClear.setBackground(new java.awt.Color(51, 51, 255));
         btnClear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnClear.setText("CLEAR");
-        btnClear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearActionPerformed(evt);
@@ -115,10 +114,9 @@ public class SignUpPanel extends javax.swing.JPanel {
         });
         signUpPanel.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 80, -1));
 
-        btnSignIn.setBackground(new java.awt.Color(51, 102, 255));
+        btnSignIn.setBackground(new java.awt.Color(51, 51, 255));
         btnSignIn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSignIn.setText("SIGN IN");
-        btnSignIn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignInActionPerformed(evt);
@@ -126,10 +124,9 @@ public class SignUpPanel extends javax.swing.JPanel {
         });
         signUpPanel.add(btnSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 190, -1));
 
-        btnBackToLogin.setBackground(new java.awt.Color(51, 102, 255));
+        btnBackToLogin.setBackground(new java.awt.Color(51, 51, 255));
         btnBackToLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnBackToLogin.setText("BACK TO LOGIN");
-        btnBackToLogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         signUpPanel.add(btnBackToLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 279, -1));
 
         txtFirstName.setBackground((new Color(0, 0, 0, 0)));
@@ -288,7 +285,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         lblCreatePassword.setText("Create an account");
         signUpPanel.add(lblCreatePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 160, 40));
 
-        add(signUpPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 590));
+        add(signUpPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 570));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastNameActionPerformed
@@ -335,6 +332,7 @@ public class SignUpPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_checkboxShowConfirmActionPerformed
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
+        status = "ACTIVE";
         role = null;
         code = null;
         studentFacultyID = txtStudentFacultyID.getText();
@@ -343,6 +341,9 @@ public class SignUpPanel extends javax.swing.JPanel {
         email = txtEmail.getText();
         pass = String.valueOf(fieldPassword.getPassword());
         confirmPass = String.valueOf(fieldPassword.getPassword());
+        program = (String) comboProgram.getSelectedItem();
+        yearLevel = (String) comboYrLvl.getSelectedItem();
+        department = (String) comboDepartment.getSelectedItem();
 
         lblWarningMsg.setVisible(true);
         if (studentFacultyID.isEmpty() && firstName.isEmpty() && lastName.isEmpty() && email.isEmpty() && pass.isEmpty() && confirmPass.isEmpty() && !rbtnStudent.isSelected() && !rbtnFaculty.isSelected()) {
@@ -366,30 +367,31 @@ public class SignUpPanel extends javax.swing.JPanel {
         } else if (!email.matches("[\\w.-]+@[a-zA-Z0-9-]+\\.[a-zA-Z]{2,}")) {
             lblWarningMsg.setText("Invalid email address format.");
         } else {
+            String hashedPassword = ComLabMethods.hashPassword(pass);
             if (rbtnStudent.isSelected()) {
-                program = (String) comboProgram.getSelectedItem();
-                yearLevel = (String) comboYrLvl.getSelectedItem();
                 if (program.equals("DEFAULT") || yearLevel.equals("DEFAULT")) {
                     lblWarningMsg.setText("Please specify your program/year level.");
+                } else {
+                    role = rbtnStudent.getText();
+                    department = null;
+                    lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
+                    String msg = ComLabMethods.registerUser(status, role, studentFacultyID, firstName, lastName, email, hashedPassword, program, yearLevel, department, code);
+                    lblWarningMsg.setText(msg);
                 }
-                role = rbtnStudent.getText();
-                department = null;
-            } else {
+            } else if (rbtnFaculty.isSelected()) {
                 role = rbtnFaculty.getText();
-                department = (String) comboDepartment.getSelectedItem();
                 if (department.equals("DEFAULT")) {
                     lblWarningMsg.setText("Please specify your Department.");
+                } else {
+                    program = null;
+                    yearLevel = null;
+                    lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
+                    String msg = ComLabMethods.registerUser(status, role, studentFacultyID, firstName, lastName, email, hashedPassword, program, yearLevel, department, code);
+                    lblWarningMsg.setText(msg);
                 }
-                program = null;
-                yearLevel = null;
             }
-            status = "ACTIVE";
-            String hashedPassword = ComLabMethods.hashPassword(pass);
-            String msg = ComLabMethods.registerUser(status, role, studentFacultyID, firstName, lastName, email, hashedPassword, program, yearLevel, department, code);
             btnSignIn.setEnabled(false);
             btnClear.setEnabled(false);
-            lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
-            lblWarningMsg.setText(msg);
             System.out.println("pogiiiii");
         }
     }//GEN-LAST:event_btnSignInActionPerformed

@@ -144,18 +144,16 @@ public class UserProfile extends javax.swing.JDialog {
         headerPanel.setPreferredSize(new java.awt.Dimension(100, 50));
 
         btnUserInfo.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        btnUserInfo.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-more-info-20.png")); // NOI18N
-        btnUserInfo.setText("User Info");
+        btnUserInfo.setText("User's Information");
         btnUserInfo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnUserInfoMouseClicked(evt);
             }
         });
         headerPanel.add(btnUserInfo);
-        btnUserInfo.setBounds(170, 10, 90, 20);
+        btnUserInfo.setBounds(40, 10, 140, 20);
 
         btnSettings.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnSettings.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-password-reset-20.png")); // NOI18N
         btnSettings.setText("Change password");
         btnSettings.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -163,11 +161,9 @@ public class UserProfile extends javax.swing.JDialog {
             }
         });
         headerPanel.add(btnSettings);
-        btnSettings.setBounds(300, 10, 150, 20);
+        btnSettings.setBounds(220, 10, 150, 20);
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 204));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-back-20.png")); // NOI18N
         jLabel1.setText("Back");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -175,7 +171,7 @@ public class UserProfile extends javax.swing.JDialog {
             }
         });
         headerPanel.add(jLabel1);
-        jLabel1.setBounds(10, 10, 70, 16);
+        jLabel1.setBounds(420, 10, 50, 20);
 
         panelGradient1.add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
@@ -246,7 +242,6 @@ public class UserProfile extends javax.swing.JDialog {
 
         btnSave.setBackground(new java.awt.Color(0, 102, 255));
         btnSave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnSave.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-save-20.png")); // NOI18N
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,7 +280,7 @@ public class UserProfile extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+            .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
