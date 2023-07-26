@@ -25,8 +25,9 @@ public class DAOlogs {
             while (rsltSet.next()) {
                 String userLogin = rsltSet.getString("login_time");
                 String userLogout = rsltSet.getString("logout_time");
+                String facultyaccountable = rsltSet.getString("facultyaccountable");
 
-                DTOlogs data = new DTOlogs(0, null, null, null, null, null, null, userLogin, userLogout);
+                DTOlogs data = new DTOlogs(facultyaccountable, userLogin, userLogout);
                 dataList.add(data);
             }
         } catch (SQLException e) {
@@ -38,11 +39,26 @@ public class DAOlogs {
 
     public static List<DTOlogs> getAllLogs() {
         List<DTOlogs> dataList = new ArrayList<>();
-        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(("SELECT logs.logID, logs.fullname, logs.login_time, logs.logout_time, "
-                + "users.studentfacultyID AS sfID, users.role AS userRole, "
-                + "users.program AS program, users.yearlvl AS yrlvl, users.department AS facultyDepartment "
-                + "FROM users RIGHT JOIN logs ON logs.user_id_users = users.id "
-                + "WHERE users.role = 'STUDENT' OR users.role = 'FACULTY';")); ResultSet rsltSet = stmt.executeQuery()) {
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(("SELECT " +
+            "    logs.logID," +
+            "    logs.fullname," +
+            "    logs.login_time," +
+            "    logs.logout_time," +
+            "    users.studentfacultyID AS sfID," +
+            "    users.role AS userRole," +
+            "    users.program," +
+            "    users.yearlvl," +
+            "    users.department AS facultyDepartment " +
+            "FROM " +
+            "    users " +
+            "RIGHT JOIN " +
+            "    logs " +
+            "ON " +
+            "    logs.user_id_users = users.id " +
+            "WHERE " +
+            "    users.role = 'STUDENT' OR users.role = 'FACULTY' OR users.role = 'ADMIN' " +
+            "ORDER BY " +
+            "    logs.login_time DESC")); ResultSet rsltSet = stmt.executeQuery()) {
 
             while (rsltSet.next()) {
                 int userLogsID = rsltSet.getInt("logID");
@@ -50,7 +66,7 @@ public class DAOlogs {
                 String userFullname = rsltSet.getString("fullname");
                 String studentfacultyID = rsltSet.getString("sfID");
                 String userProgram = rsltSet.getString("program");
-                String userYrlvl = rsltSet.getString("yrlvl");
+                String userYrlvl = rsltSet.getString("yearlvl");
                 String userDepartment = rsltSet.getString("facultyDepartment");
                 String userLogin = rsltSet.getString("login_time");
                 String userLogout = rsltSet.getString("logout_time");
@@ -68,22 +84,24 @@ public class DAOlogs {
     public static List<DTOvisitors> getAllVisitorsLogs() {
         List<DTOvisitors> dataList = new ArrayList<>();
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(
-                "SELECT "
-                + "    logs.logID,"
-                + "    logs.login_time,"
-                + "    logs.logout_time,"
-                + "    visitors.codeidentity AS visitorID,"
-                + "    visitors.fullname AS fullname,"
-                + "    visitors.mobilenumber AS mobilenumber,"
-                + "    visitors.email AS email,"
-                + "    visitors.gender AS gender,"
-                + "    visitors.purpose AS purpose "
-                + "FROM "
-                + "    logs "
-                + "RIGHT JOIN "
-                + "    visitors "
-                + "ON "
-                + "    logs.user_id_visitors = visitors.id;"); ResultSet rsltSet = stmt.executeQuery()) {
+                 "SELECT " +
+            "    logs.logID," +
+            "    logs.login_time," +
+            "    logs.logout_time," +
+            "    visitors.codeidentity AS visitorID," +
+            "    visitors.fullname AS fullname," +
+            "    visitors.mobilenumber AS mobilenumber," +
+            "    visitors.email AS email," +
+            "    visitors.gender AS gender," +
+            "    visitors.purpose AS purpose " +
+            "FROM " +
+            "    logs " +
+            "RIGHT JOIN " +
+            "    visitors " +
+            "ON " +
+            "    logs.user_id_visitors = visitors.id " +
+            "ORDER BY " +
+            "    logs.login_time DESC"); ResultSet rsltSet = stmt.executeQuery()) {
 
             while (rsltSet.next()) {
                 int userLogsID = rsltSet.getInt("logID");

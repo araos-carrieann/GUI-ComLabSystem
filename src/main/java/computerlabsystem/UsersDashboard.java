@@ -50,7 +50,7 @@ public class UsersDashboard extends javax.swing.JFrame {
         List<DTOlogs> logsList = DAOlogs.getUserLogs(id);
 
         for (DTOlogs acct : logsList) {
-            Object[] logsRow = {acct.getLoginTime(), acct.getLogoutTime()};
+            Object[] logsRow = {acct.getLoginTime(), acct.getLogoutTime(), acct.getAccountableName()};
             myLogs.addRow(logsRow);
         }
     }
@@ -78,21 +78,21 @@ public class UsersDashboard extends javax.swing.JFrame {
         panelGradient1.setLayout(new java.awt.BorderLayout());
 
         panelGradient3.setColorPrimary(new java.awt.Color(109, 113, 249));
-        panelGradient3.setColorSecondary(new java.awt.Color(139, 126, 116));
+        panelGradient3.setColorSecondary(new java.awt.Color(255, 255, 204));
 
         myLogsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "LOG IN TIME", "LOG OUT TIME "
+                "LOG IN TIME", "LOG OUT TIME ", "FACULTY ACCOUNTABLE"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -102,6 +102,11 @@ public class UsersDashboard extends javax.swing.JFrame {
         jScrollPane1.setViewportView(myLogsTable);
         if (myLogsTable.getColumnModel().getColumnCount() > 0) {
             myLogsTable.getColumnModel().getColumn(0).setResizable(false);
+            myLogsTable.getColumnModel().getColumn(0).setPreferredWidth(150);
+            myLogsTable.getColumnModel().getColumn(1).setResizable(false);
+            myLogsTable.getColumnModel().getColumn(1).setPreferredWidth(150);
+            myLogsTable.getColumnModel().getColumn(2).setResizable(false);
+            myLogsTable.getColumnModel().getColumn(2).setPreferredWidth(200);
         }
 
         panelBorder1.setBackground(new java.awt.Color(255, 255, 204));
@@ -163,9 +168,9 @@ public class UsersDashboard extends javax.swing.JFrame {
             .addGroup(panelGradient3Layout.createSequentialGroup()
                 .addGroup(panelGradient3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelGradient3Layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
+                        .addGap(126, 126, 126)
                         .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
+                        .addGap(76, 76, 76)
                         .addComponent(panelBorder2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelGradient3Layout.createSequentialGroup()
                         .addGap(49, 49, 49)

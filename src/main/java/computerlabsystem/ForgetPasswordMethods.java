@@ -76,40 +76,37 @@ public class ForgetPasswordMethods {
     }
 
     public static void updateCode(String code, String studentFacultyID) {
-    try (Connection conn = DatabaseConnector.getConnection();
-         PreparedStatement selectStmt = conn.prepareStatement("SELECT * FROM users WHERE studentFacultyID = ?");
-         PreparedStatement updateStmt = conn.prepareStatement("UPDATE users SET code = ? WHERE studentFacultyID = ?")) {
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement selectStmt = conn.prepareStatement("SELECT * FROM users WHERE studentFacultyID = ?"); PreparedStatement updateStmt = conn.prepareStatement("UPDATE users SET code = ? WHERE studentFacultyID = ?")) {
 
-        // Set parameters for the SELECT statement
-        selectStmt.setString(1, studentFacultyID);
+            // Set parameters for the SELECT statement
+            selectStmt.setString(1, studentFacultyID);
 
-        // Execute the SELECT statement
-        ResultSet resultSet = selectStmt.executeQuery();
+            // Execute the SELECT statement
+            ResultSet resultSet = selectStmt.executeQuery();
 
-        // If a row is returned, update the code for the existing studentFacultyID
-        if (resultSet.next()) {
-            // Set parameters for the UPDATE statement
-            updateStmt.setString(1, code);
-            updateStmt.setString(2, studentFacultyID);
+            // If a row is returned, update the code for the existing studentFacultyID
+            if (resultSet.next()) {
+                // Set parameters for the UPDATE statement
+                updateStmt.setString(1, code);
+                updateStmt.setString(2, studentFacultyID);
 
-            // Execute the UPDATE statement
-            int rowsUpdated = updateStmt.executeUpdate();
+                // Execute the UPDATE statement
+                int rowsUpdated = updateStmt.executeUpdate();
 
-            if (rowsUpdated > 0) {
-                System.out.println("Code updated successfully");
-                System.out.println("Record updated successfully.");
+                if (rowsUpdated > 0) {
+                    System.out.println("Code updated successfully");
+                    System.out.println("Record updated successfully.");
+                } else {
+                    System.out.println("Failed to update code");
+                    System.out.println("Failed to update the record.");
+                }
             } else {
-                System.out.println("Failed to update code");
-                System.out.println("Failed to update the record.");
+                System.out.println("StudentFacultyID not found. Code update failed.");
             }
-        } else {
-            System.out.println("StudentFacultyID not found. Code update failed.");
+        } catch (SQLException exc) {
+            exc.printStackTrace();
         }
-    } catch (SQLException exc) {
-        exc.printStackTrace();
     }
-}
-
 
     public static String generateCode() {
         // Generate a random recovery code
@@ -180,6 +177,71 @@ public class ForgetPasswordMethods {
                 + "\n"
                 + "Best regards,\n"
                 + "PUP Unisan Branch";
+
+        // Encode as MIME msg
+        Properties props = new Properties();
+        Session session = Session.getDefaultInstance(props, null);
+        MimeMessage email = new MimeMessage(session);
+        email.setFrom(new InternetAddress(EMAIL));
+        email.addRecipient(javax.mail.Message.RecipientType.TO,
+                new InternetAddress(receiver));
+        email.setSubject(messageSubject);
+        email.setText(bodyText);
+
+        // Encode and wrap the MIME msg into a gmail msg
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        email.writeTo(buffer);
+        byte[] rawMessageBytes = buffer.toByteArray();
+        String encodedEmail = Base64.encodeBase64URLSafeString(rawMessageBytes);
+        Message msg = new Message();
+        msg.setRaw(encodedEmail);
+
+        try {
+            // Create send msg
+            msg = service.users().messages().send("me", msg).execute();
+            System.out.println("Message id: " + msg.getId());
+            System.out.println(msg.toPrettyString());
+        } catch (GoogleJsonResponseException e) {
+            // TODO(developer) - handle error appropriately
+            GoogleJsonError error = e.getDetails();
+            if (error.getCode() == 403) {
+                System.err.println("Unable to send message: " + e.getDetails());
+            } else {
+                throw e;
+            }
+        }
+    }
+
+    public void sendMailToAccountableFaculty(String receiver, String name, String studentName, String dateTime) throws Exception {
+        final NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+        GsonFactory jsonFactory = GsonFactory.getDefaultInstance();
+        Gmail service = new Gmail.Builder(httpTransport, jsonFactory, getCredentials(httpTransport, jsonFactory))
+                .setApplicationName("My Mailer")
+                .build();
+
+        // Create the email content
+
+        String messageSubject = " Urgent: User Logged in Under Your Name ";
+        String bodyText = "Dear Professor "+ name + ",\n"
+                + "\n"
+                + "We hope this email finds you well. We wanted to inform you that a user recently accessed our ComLab platform, and they specified that they are under your care or affiliation.\n"
+                + "\n"
+                + "User Details:\n"
+                + "\n"
+                + "Username:" + studentName + "\n"
+                + "Date and Time: "+ dateTime + "\n"
+                + "\n"
+                + "If you are aware of this association and have authorized the user's access, no further action is needed. We appreciate your support in our academic community.\n"
+                + "\n"
+                + "However, if you are not familiar with this user or their affiliation, please let us know as soon as possible. Ensuring accurate records is important to us.\n"
+                + "\n"
+                + "Should you have any questions or concerns, please contact us at pupschoolpurposes@gmail.com.\n"
+                + "\n"
+                + "Thank you for your attention.\n"
+                + "\n"
+                + "Best regards,\n"
+                + "\n"
+                + "PUP Unisan Branchh";
 
         // Encode as MIME msg
         Properties props = new Properties();

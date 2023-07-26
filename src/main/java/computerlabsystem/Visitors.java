@@ -44,6 +44,7 @@ public class Visitors extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         panelGradient1.setColorPrimary(new java.awt.Color(109, 113, 249));
         panelGradient1.setColorSecondary(new java.awt.Color(199, 188, 161));
@@ -53,7 +54,7 @@ public class Visitors extends javax.swing.JDialog {
         panelGradient1.add(txtName);
         txtName.setBounds(70, 80, 290, 30);
 
-        comboBoxPurpose.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "OTHERS" }));
+        comboBoxPurpose.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thesis defense panelist", "Learning Workshop", "Technical Support", "OTHERS" }));
         comboBoxPurpose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxPurposeActionPerformed(evt);
@@ -64,7 +65,7 @@ public class Visitors extends javax.swing.JDialog {
         panelGradient1.add(txtOtherPurpose);
         txtOtherPurpose.setBounds(70, 300, 280, 30);
 
-        comboBoxGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DEFAULT", "MALE", "FEMALE", "I PREFER NOT TO SAY", " " }));
+        comboBoxGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DEFAULT", "MALE", "FEMALE", "OTHER" }));
         panelGradient1.add(comboBoxGender);
         comboBoxGender.setBounds(130, 240, 160, 22);
 

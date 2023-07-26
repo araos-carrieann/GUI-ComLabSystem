@@ -52,6 +52,8 @@ public class ForgetPasswordVerification extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        panelGradient1.setColorSecondary(new java.awt.Color(109, 113, 249));
+
         lblOTPverification.setFont(new java.awt.Font("Segoe UI Semibold", 1, 30)); // NOI18N
         lblOTPverification.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblOTPverification.setText("OTP Verification");
@@ -67,7 +69,7 @@ public class ForgetPasswordVerification extends javax.swing.JDialog {
             }
         });
         panelGradient1.add(btnConfirmCode);
-        btnConfirmCode.setBounds(80, 310, 290, 40);
+        btnConfirmCode.setBounds(80, 330, 290, 40);
 
         btnBackToLogin.setBackground(new java.awt.Color(0, 51, 102));
         btnBackToLogin.setForeground(new java.awt.Color(255, 255, 255));
@@ -78,7 +80,7 @@ public class ForgetPasswordVerification extends javax.swing.JDialog {
             }
         });
         panelGradient1.add(btnBackToLogin);
-        btnBackToLogin.setBounds(130, 370, 190, 23);
+        btnBackToLogin.setBounds(130, 380, 190, 23);
 
         txtCode.setForeground(new java.awt.Color(102, 102, 102));
         txtCode.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -90,7 +92,7 @@ public class ForgetPasswordVerification extends javax.swing.JDialog {
             }
         });
         panelGradient1.add(txtCode);
-        txtCode.setBounds(60, 240, 330, 50);
+        txtCode.setBounds(60, 270, 330, 50);
 
         lblWarningMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWarningMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-error-24.png"))); // NOI18N
@@ -115,11 +117,11 @@ public class ForgetPasswordVerification extends javax.swing.JDialog {
         jLabel2.setBounds(0, 50, 330, 40);
 
         panelGradient1.add(panelBorder1);
-        panelBorder1.setBounds(60, 110, 330, 120);
+        panelBorder1.setBounds(60, 130, 330, 120);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/emailsent.gif"))); // NOI18N
         panelGradient1.add(jLabel3);
-        jLabel3.setBounds(160, 50, 160, 70);
+        jLabel3.setBounds(150, 50, 160, 100);
 
         getContentPane().add(panelGradient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 460));
 

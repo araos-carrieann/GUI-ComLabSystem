@@ -20,11 +20,20 @@ public class DTOlogs {
     private String firstName;
     private String lastName;
     private String fullname;
+    private String accountableName;
     private String program;
     private String yrlvl;
     private String department;
     private String loginTime;
     private String logoutTime;
+
+    public DTOlogs(String accountableName, String loginTime, String logoutTime) {
+        this.accountableName = accountableName;
+        this.loginTime = loginTime;
+        this.logoutTime = logoutTime;
+    }
+    
+    
     
     public DTOlogs(int logsID, String role, String studentfacultyID, String fullname, String program, String yrlvl, String department, String userTimeIn, String userTimeOut) {
         this.logsID = logsID;
@@ -156,6 +165,14 @@ public class DTOlogs {
 
     public void setLogoutTime(String logoutTime) {
         this.logoutTime = logoutTime;
+    }
+
+    public String getAccountableName() {
+        return accountableName;
+    }
+
+    public void setAccountableName(String accountableName) {
+        this.accountableName = accountableName;
     }
     
 }

@@ -21,6 +21,7 @@ public class ComboBoxContentDepartment extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         displayDepartment();
+        lblWarningMessage.setVisible(false);
     }
 
     private void displayDepartment() {
@@ -161,6 +162,7 @@ public class ComboBoxContentDepartment extends javax.swing.JDialog {
     private void btnAddDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDepartmentActionPerformed
         String addDepartment = txtAddDepartment.getText();
         if (addDepartment.isEmpty()) {
+            lblWarningMessage.setVisible(true);
             lblWarningMessage.setText("Please Input First ");
         } else {
             ComLabMethods.departmentComboBox(addDepartment);

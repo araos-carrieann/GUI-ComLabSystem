@@ -10,7 +10,6 @@ package computerlabsystem;
  */
 public class DTOaccount {
 
-    
     private int userID;
     private int logsID;
     private String logsDuration;
@@ -21,12 +20,17 @@ public class DTOaccount {
     private String firstName;
     private String lastName;
     private String fullname;
+    private String accountablename;
     private String email;
     private String program;
     private String yrlvl;
     private String department;
     private String userLogin;
     private String userLogout;
+
+    public DTOaccount(String accountablename) {
+        this.accountablename = accountablename;
+    }
 
     public DTOaccount(int logsID, String fullname, String userLogin, String userLogout) {
         this.logsID = logsID;
@@ -56,8 +60,6 @@ public class DTOaccount {
         this.email = email;
     }
 
-    
-    
     public DTOaccount(int logsID, String studentfacultyID, String role, String firstName, String lastName, String email, String program, String yrlvl, String department, String userTimeIn, String userTimeOut) {
         this.logsID = logsID;
         this.studentfacultyID = studentfacultyID;
@@ -72,10 +74,8 @@ public class DTOaccount {
         this.userLogout = userTimeOut;
     }
 
-    
- 
     //Student account
-    public DTOaccount(String studentfacultyID,  String firstName, String lastName, String email, String program, String yrlvl) {
+    public DTOaccount(String studentfacultyID, String firstName, String lastName, String email, String program, String yrlvl) {
         this.studentfacultyID = studentfacultyID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -85,7 +85,6 @@ public class DTOaccount {
     }
 
     //Faculty account
-
     public DTOaccount(String studentfacultyID, String department, String firstName, String lastName, String email) {
         this.studentfacultyID = studentfacultyID;
         this.firstName = firstName;
@@ -93,7 +92,6 @@ public class DTOaccount {
         this.email = email;
         this.department = department;
     }
-   
 
     public int getUserID() {
         return userID;
@@ -134,7 +132,7 @@ public class DTOaccount {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
+
     public String getFullname() {
         return fullname;
     }
@@ -142,7 +140,15 @@ public class DTOaccount {
     public void setFullname(String fullname) {
         this.fullname = fullname;
     }
-    
+
+    public String getAccountablename() {
+        return accountablename;
+    }
+
+    public void setAccountablename(String accountablename) {
+        this.accountablename = accountablename;
+    }
+
     public String getEmail() {
         return email;
     }

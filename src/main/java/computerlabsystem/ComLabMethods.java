@@ -167,12 +167,15 @@ public class ComLabMethods {
 
     public static void createLogs() {
         try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
-            String createTableQuery = "CREATE TABLE IF NOT EXISTS logs (logID SERIAL PRIMARY KEY, "
-                    + "user_id_users INTEGER REFERENCES users(id), "
-                    + "user_id_visitors INTEGER REFERENCES visitors(id), "
-                    + "fullname VARCHAR(255), "
-                    + "login_time TIMESTAMP DEFAULT (TO_TIMESTAMP(TO_CHAR(CURRENT_TIMESTAMP, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS')), "
-                    + "logout_time TIMESTAMP)";
+            String createTableQuery = "CREATE TABLE IF NOT EXISTS logs (\n"
+                    + "    logID SERIAL PRIMARY KEY,\n"
+                    + "    user_id_users INTEGER REFERENCES users(id),\n"
+                    + "    user_id_visitors INTEGER REFERENCES visitors(id),\n"
+                    + "    fullname VARCHAR(255),\n"
+                    + "    login_time TIMESTAMP DEFAULT (TO_TIMESTAMP(TO_CHAR(CURRENT_TIMESTAMP, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS')),\n"
+                    + "    logout_time TIMESTAMP,\n"
+                    + "    facultyAccountable VARCHAR(255)\n"
+                    + ");";
 
             try (PreparedStatement statement = conn.prepareStatement(createTableQuery)) {
                 statement.execute();
@@ -600,5 +603,93 @@ public class ComLabMethods {
 
         return totalRows;
     }
+    
+        public static int getTotalActiveUser() {
+        int totalActive = 0;
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) AS total_active FROM logs WHERE logout_time IS NULL;"); ResultSet rs = stmt.executeQuery()) {
+
+            if (rs.next()) {
+                totalActive = rs.getInt("total_active");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+        }
+
+        return totalActive;
+    }
+
+    public static List<DTOaccount> professorComboContent() {
+        List<DTOaccount> yearLevelList = new ArrayList<>();
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT CONCAT(lastname, ', ',firstname ) AS accountablename\n"
+                + "FROM users\n"
+                + "WHERE role = 'FACULTY' OR role = 'ADMIN';"); ResultSet rsltSet = stmt.executeQuery()) {
+            while (rsltSet.next()) {
+                String accountablename = rsltSet.getString("accountablename");
+                DTOaccount data = new DTOaccount(accountablename);
+                yearLevelList.add(data);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+        }
+        return yearLevelList;
+
+    }
+
+    public static String getAccountableEmail(String lastname, String firstname) {
+        String email = null;
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT email FROM users WHERE lastname = ? AND firstname = ?")) {
+
+            stmt.setString(1, lastname);
+            stmt.setString(2, firstname);
+
+            try (ResultSet rsltSet = stmt.executeQuery()) {
+                if (rsltSet.next()) {
+                    email = rsltSet.getString("email");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+        }
+
+        return email;
+    }
+
+    void updateLogsFacultyAccountable(String accountableName, String studentFacultyID) {
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(
+                "UPDATE logs SET facultyAccountable = ? "
+                + "WHERE user_id_users = (SELECT id FROM users WHERE studentFacultyID = ?) "
+                + "AND logout_time IS NULL")) {
+
+            stmt.setString(1, accountableName);
+            stmt.setString(2, studentFacultyID);
+
+            int rowsAffected = stmt.executeUpdate();
+            System.out.println(rowsAffected + " row(s) updated.");
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+        }
+    }
+    
+    public String getTimeLogin(String studentFacultyID){
+    String loginTime = null;
+    try (Connection conn = DatabaseConnector.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(
+                 "SELECT login_time FROM logs "
+                 + "WHERE user_id_users = (SELECT id FROM users WHERE studentFacultyID = ?) "
+                 + "AND logout_time IS NULL")) {
+
+        stmt.setString(1, studentFacultyID);
+
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                loginTime = rs.getString("login_time");
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+    }
+    return loginTime;
+}
+
 
 }

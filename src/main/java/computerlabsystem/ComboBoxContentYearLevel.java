@@ -20,6 +20,7 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         displayYearLvl();
+        lblWarningMessage.setVisible(false);
     }
 
     private void displayYearLvl() {
@@ -142,6 +143,7 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
     private void btnAddYrLvlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddYrLvlActionPerformed
         String addYrLvl = txtAddYrLvl.getText();
         if (addYrLvl.isEmpty()) {
+            lblWarningMessage.setVisible(true);
             lblWarningMessage.setText("Please input appropriate year level.");
         } else {
             ComLabMethods.yearLevelComboBox(addYrLvl);

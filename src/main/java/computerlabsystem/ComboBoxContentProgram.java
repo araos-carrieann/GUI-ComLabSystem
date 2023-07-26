@@ -20,6 +20,7 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         displayProgram();
+        lblWarningMessage.setVisible(false);
     }
 
     private void displayProgram() {
@@ -140,6 +141,7 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
     private void btnAddProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProgramActionPerformed
         String addProgram = txtAddProgram.getText();
         if (addProgram.isEmpty()) {
+            lblWarningMessage.setVisible(true);
 
         } else {
             ComLabMethods.programComboBox(addProgram);

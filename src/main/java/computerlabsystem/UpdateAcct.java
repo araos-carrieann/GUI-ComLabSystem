@@ -19,6 +19,7 @@ public class UpdateAcct extends javax.swing.JDialog {
     public UpdateAcct(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        lblWarningMsg.setVisible(false);
         comboProgram.setVisible(false);
         comboYrLvl.setVisible(false);
         comboDepartment.setVisible(false);

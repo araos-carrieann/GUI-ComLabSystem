@@ -89,6 +89,7 @@ public class AddAccount extends javax.swing.JDialog {
         setModal(true);
         setUndecorated(true);
 
+        panelGradient2.setColorPrimary(new java.awt.Color(109, 113, 249));
         panelGradient2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblStudentFacultyID.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-id-30.png"))); // NOI18N
