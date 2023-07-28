@@ -164,8 +164,12 @@ public class AddAccount extends javax.swing.JDialog {
         fieldConfirmPassword.setPreferredSize(new java.awt.Dimension(65, 40));
         panelGradient2.add(fieldConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 290, 40));
 
+        comboProgram.setBackground(new java.awt.Color(255, 255, 204));
+        comboProgram.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         panelGradient2.add(comboProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 140, 30));
 
+        comboYrLvl.setBackground(new java.awt.Color(255, 255, 204));
+        comboYrLvl.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         comboYrLvl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboYrLvlActionPerformed(evt);
@@ -173,6 +177,8 @@ public class AddAccount extends javax.swing.JDialog {
         });
         panelGradient2.add(comboYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 150, 30));
 
+        comboDepartment.setBackground(new java.awt.Color(255, 255, 204));
+        comboDepartment.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         panelGradient2.add(comboDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 180, 30));
 
         btnGrp.add(rbtnStudent);

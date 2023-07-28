@@ -42,7 +42,6 @@ public class ForgotPass extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Panel.setColorPrimary(new java.awt.Color(109, 113, 249));
-        Panel.setColorSecondary(new java.awt.Color(199, 188, 161));
 
         txtEmail.setForeground(new java.awt.Color(102, 102, 102));
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);

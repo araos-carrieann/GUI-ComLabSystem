@@ -66,9 +66,9 @@ public class AccountableFaculty extends javax.swing.JDialog {
 
         accountableCombobox.setBackground(new java.awt.Color(255, 255, 204));
         accountableCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        accountableCombobox.setBorder(null);
+        accountableCombobox.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         panelGradient1.add(accountableCombobox);
-        accountableCombobox.setBounds(80, 120, 250, 30);
+        accountableCombobox.setBounds(70, 120, 280, 30);
 
         btnSubmit.setBackground(new java.awt.Color(51, 51, 255));
         btnSubmit.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
@@ -84,9 +84,10 @@ public class AccountableFaculty extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 153));
-        jLabel1.setText("FACULTY");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Faculty that gives you permission");
         panelGradient1.add(jLabel1);
-        jLabel1.setBounds(160, 60, 110, 40);
+        jLabel1.setBounds(30, 60, 360, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

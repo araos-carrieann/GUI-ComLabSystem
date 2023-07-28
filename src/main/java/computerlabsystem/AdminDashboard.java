@@ -248,6 +248,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         btnProgram = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         panelBorder8 = new computerlabsystem.Design.PanelBorder();
+        chartPanel1 = new computerlabsystem.ChartPanel();
         jLabel1 = new javax.swing.JLabel();
         panelBorder9 = new computerlabsystem.Design.PanelBorder();
         lblActiveIcon = new javax.swing.JLabel();
@@ -389,7 +390,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         menuDashboard.add(jLabel2);
         jLabel2.setBounds(0, 10, 140, 120);
 
-        panelLogout.setLayout(new java.awt.GridLayout());
+        panelLogout.setLayout(new java.awt.GridLayout(1, 0));
 
         lblLogout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblLogout.setForeground(new java.awt.Color(255, 255, 255));
@@ -612,6 +613,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         homePage.add(panelBorder7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 310, 180));
 
         panelBorder8.setBackground(new java.awt.Color(109, 113, 249));
+        panelBorder8.add(chartPanel1);
+        chartPanel1.setBounds(10, 10, 520, 260);
+
         homePage.add(panelBorder8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 540, 280));
 
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 48)); // NOI18N
@@ -1275,7 +1279,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateAdminAcctActionPerformed
 
     private void lblHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseEntered
-        panelHome.setBackground(new Color(220, 220, 220, 100));
+        panelHome.setBackground(new Color(0, 0, 0, 50));
     }//GEN-LAST:event_lblHomeMouseEntered
 
     private void lblHomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseExited
@@ -1283,7 +1287,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHomeMouseExited
 
     private void lblAccountsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccountsMouseEntered
-        panelAccounts.setBackground(new Color(220, 220, 220, 100));
+        panelAccounts.setBackground(new Color(0, 0, 0, 50));
     }//GEN-LAST:event_lblAccountsMouseEntered
 
     private void lblAccountsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccountsMouseExited
@@ -1291,7 +1295,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_lblAccountsMouseExited
 
     private void lblAllLogsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAllLogsMouseEntered
-        panelLogs.setBackground(new Color(220, 220, 220, 100));
+        panelLogs.setBackground(new Color(0, 0, 0, 50));
     }//GEN-LAST:event_lblAllLogsMouseEntered
 
     private void lblAllLogsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAllLogsMouseExited
@@ -1314,7 +1318,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_lblLogoutMouseClicked
 
     private void lblLogoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseEntered
-        panelLogout.setBackground(new Color(220, 220, 220, 100));
+        panelLogout.setBackground(new Color(0, 0, 0, 50));
     }//GEN-LAST:event_lblLogoutMouseEntered
 
     private void lblLogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseExited
@@ -1338,6 +1342,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdateStudentAccount;
     private javax.swing.JButton btnYearLevel;
     private computerlabsystem.Design.PanelGradient cardPanel;
+    private computerlabsystem.ChartPanel chartPanel1;
     private computerlabsystem.Design.PanelGradient facultyAccountPanel;
     private javax.swing.JScrollPane facultyAcctPane;
     private final javax.swing.JTable facultyAcctTable = new javax.swing.JTable();

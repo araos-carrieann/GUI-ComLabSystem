@@ -238,7 +238,7 @@ public class UserProfile extends javax.swing.JDialog {
         panelBorder1.add(jLabel2);
         jLabel2.setBounds(20, 10, 70, 80);
 
-        userInfoPanel.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 440, 260));
+        userInfoPanel.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 430, 260));
 
         cardPanel.add(userInfoPanel, "card2");
 
@@ -341,6 +341,8 @@ public class UserProfile extends javax.swing.JDialog {
             lblWarningMsg.setText("Please Input in the Re-type Password");
         } else if (!newPass.equals(reTypePass)) {
             lblWarningMsg.setText("New Password and Re-Type Password doesn't match");
+        } else if (newPass.length() < 8) {
+            lblWarningMsg.setText("Password should be at least 8 characters long.");
         } else {
             String msg = ComLabMethods.userChangePass(stuFaculID, currentPass, newPass);
             if (msg.equals("Password Changed Successfully")) {
