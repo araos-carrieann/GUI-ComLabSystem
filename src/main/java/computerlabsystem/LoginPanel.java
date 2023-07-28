@@ -198,15 +198,18 @@ public class LoginPanel extends javax.swing.JPanel {
                         SwingUtilities.getWindowAncestor((Component) evt.getSource()).dispose();
                     } else if (userRole.equals("STUDENT") || userRole.equals("FACULTY")) {
                         ComLabMethods.logUserLogin(sfID, fullName, pass);
-                        System.out.println("anooonnaaaaa");
-                        AccountableFaculty dialog = new AccountableFaculty(new javax.swing.JFrame(), true, fullName, sfID);
-                        dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                            @Override
-                            public void windowClosing(java.awt.event.WindowEvent e) {
-                                System.exit(0);
-                            }
-                        });
-                        dialog.setVisible(true);
+                        if (userRole.equals("STUDENT")) {
+                            AccountableFaculty dialog = new AccountableFaculty(new javax.swing.JFrame(), true, fullName, sfID);
+                            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                                @Override
+                                public void windowClosing(java.awt.event.WindowEvent e) {
+                                    System.exit(0);
+                                }
+                            });
+                            dialog.setVisible(true);
+                        }
+                        UsersDashboard userDashboard = new UsersDashboard(fname, sfID);
+                        userDashboard.setVisible(true);
                         SwingUtilities.getWindowAncestor((Component) evt.getSource()).dispose();
                     }
                 } else {

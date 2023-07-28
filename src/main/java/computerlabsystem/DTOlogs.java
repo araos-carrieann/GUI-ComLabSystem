@@ -32,20 +32,20 @@ public class DTOlogs {
         this.loginTime = loginTime;
         this.logoutTime = logoutTime;
     }
-    
-    
-    
-    public DTOlogs(int logsID, String role, String studentfacultyID, String fullname, String program, String yrlvl, String department, String userTimeIn, String userTimeOut) {
+
+    public DTOlogs(int logsID, String role, String fullname, String program, String yrlvl, String department, String loginTime, String logoutTime, String accountableName) {
         this.logsID = logsID;
-        this.studentfacultyID = studentfacultyID;
         this.role = role;
         this.fullname = fullname;
         this.program = program;
         this.yrlvl = yrlvl;
         this.department = department;
-        this.loginTime = userTimeIn;
-        this.logoutTime = userTimeOut;
+        this.loginTime = loginTime;
+        this.logoutTime = logoutTime;
+        this.accountableName = accountableName;
     }
+    
+    
 
     public int getUserID() {
         return userID;

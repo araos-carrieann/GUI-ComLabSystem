@@ -30,20 +30,19 @@ public class VisitorsMethods {
         }
     }
 
-    public static String insertVisitorData(String codeidentity, String role, String fullname, String mobileNumber, String email, String gender, String purpose) {
+    public static String insertVisitorData(String codeidentity, String fullname, String mobileNumber, String email, String gender, String purpose) {
         String message = null;
 
         try (Connection conn = DatabaseConnector.getConnection()) {
-            String insertQuery = "INSERT INTO visitors (codeidentity, role, fullname, mobileNumber, email, gender, purpose) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO visitors (codeidentity, fullname, mobileNumber, email, gender, purpose) VALUES (?, ?, ?, ?, ?, ?)";
 
             try (PreparedStatement insertStmt = conn.prepareStatement(insertQuery)) {
                 insertStmt.setString(1, codeidentity);
-                insertStmt.setString(2, role);
-                insertStmt.setString(3, fullname);
-                insertStmt.setString(4, mobileNumber);
-                insertStmt.setString(5, email);
-                insertStmt.setString(6, gender);
-                insertStmt.setString(7, purpose);
+                insertStmt.setString(2, fullname);
+                insertStmt.setString(3, mobileNumber);
+                insertStmt.setString(4, email);
+                insertStmt.setString(5, gender);
+                insertStmt.setString(6, purpose);
 
                 int rowsInserted = insertStmt.executeUpdate();
 

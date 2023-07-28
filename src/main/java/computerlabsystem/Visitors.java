@@ -166,12 +166,13 @@ public class Visitors extends javax.swing.JDialog {
     }//GEN-LAST:event_comboBoxPurposeActionPerformed
 
     private void btnLogsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogsActionPerformed
-        role = "VISITORS";
         fullname = txtName.getText();
         mobileNumber = txtMobileNumber.getText();
         email = txtEmail.getText();
         gender = String.valueOf(comboBoxGender.getSelectedItem());
+        purpose = (String) comboBoxPurpose.getSelectedItem();
 
+        lblWarningMessage.setVisible(true);
         if (fullname.isEmpty() && mobileNumber.isEmpty() && email.isEmpty() && gender.equals("DEFAULT") && purpose.equals("DEFAULT")) {
             lblWarningMessage.setText("Please provide the required information before hitting Logs");
         } else if (fullname.isEmpty()) {
@@ -186,20 +187,21 @@ public class Visitors extends javax.swing.JDialog {
             lblWarningMessage.setText("Please select your Gender");
         } else if (purpose.equals("DEFAULT")) {
             lblWarningMessage.setText("Please select the Purpose");
-        } else if (!fullname.matches("[A-Za-z0-9\\-.]+")) {
+        } else if (!fullname.matches("[A-Za-z0-9\\-. ]+")) {
             lblWarningMessage.setText("Name should only consist of letters, numbers, dashes, or dots.");
         } else if (!email.matches("[\\w.-]+@[a-zA-Z0-9-]+\\.[a-zA-Z]{2,}")) {
             lblWarningMessage.setText("Invalid email address format.");
         } else {
-             purpose = (String) comboBoxPurpose.getSelectedItem();
             String identity = ForgetPasswordMethods.generateCode();
             if (!purpose.equals("OTHERS")) {
                 purpose = (String) comboBoxPurpose.getSelectedItem();
             } else {
                 purpose = txtOtherPurpose.getText();
             }
+            VisitorsMethods.createVisitorsTable();
+            ComLabMethods.createLogs();
             // All information provided, proceed with logging
-            String msg = visitorsMethods.insertVisitorData(identity, role, fullname, mobileNumber, email, gender, purpose);
+            String msg = visitorsMethods.insertVisitorData(identity, fullname, mobileNumber, email, gender, purpose);
             int id = ComLabMethods.getVisitorID(identity);
             visitorsMethods.VisitorInsertLog(id, fullname);
             lblWarningMessage.setText(msg);
@@ -258,7 +260,7 @@ public class Visitors extends javax.swing.JDialog {
             }
         });
     }
-    private String role, fullname, mobileNumber, email, gender, purpose;
+    private String fullname, mobileNumber, email, gender, purpose;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnClear;

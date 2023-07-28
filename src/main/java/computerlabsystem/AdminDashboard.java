@@ -132,7 +132,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         List<DTOlogs> acctList = DAOlogs.getAllLogs();
 
         for (DTOlogs acct : acctList) {
-            Object[] logsRow = {acct.getLogsID(), acct.getRole(), acct.getStudentfacultyID(), acct.getFullname(), acct.getProgram(), acct.getYrlvl(), acct.getDepartment(), acct.getLoginTime(), acct.getLogoutTime()};
+            Object[] logsRow = {acct.getLogsID(), acct.getRole(), acct.getFullname(), acct.getProgram(), acct.getYrlvl(), acct.getDepartment(), acct.getLoginTime(), acct.getLogoutTime(), acct.getAccountableName()};
             allLogs.addRow(logsRow);
         }
     }
@@ -217,19 +217,19 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         panelGradient1 = new computerlabsystem.Design.PanelGradient();
-        menuPanel = new computerlabsystem.Design.PanelGradient();
+        menuDashboard = new computerlabsystem.Design.PanelBorder();
         panelHome = new computerlabsystem.Design.PanelBorder();
         lblHome = new javax.swing.JLabel();
         panelAccounts = new computerlabsystem.Design.PanelBorder();
         lblAccounts = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         panelLogs = new computerlabsystem.Design.PanelBorder();
         lblAllLogs = new javax.swing.JLabel();
-        btnLogout = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        panelLogout = new computerlabsystem.Design.PanelBorder();
+        lblLogout = new javax.swing.JLabel();
         cardPanel = new computerlabsystem.Design.PanelGradient();
         homePage = new computerlabsystem.Design.PanelGradient();
         panelBorder1 = new computerlabsystem.Design.PanelBorder();
-        jLabel1 = new javax.swing.JLabel();
         lblAdminName = new javax.swing.JLabel();
         panelBorder2 = new computerlabsystem.Design.PanelBorder();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -241,8 +241,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         panelBorder4 = new computerlabsystem.Design.PanelBorder();
         lblRegisteredIcon = new javax.swing.JLabel();
-        lblNumberOfActive = new javax.swing.JLabel();
-        lblActiveIcon = new javax.swing.JLabel();
         lblTotalNumberUsers = new javax.swing.JLabel();
         panelBorder7 = new computerlabsystem.Design.PanelBorder();
         btnDepartment = new javax.swing.JButton();
@@ -250,10 +248,26 @@ public class AdminDashboard extends javax.swing.JFrame {
         btnProgram = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         panelBorder8 = new computerlabsystem.Design.PanelBorder();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        lblNotification = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        panelBorder9 = new computerlabsystem.Design.PanelBorder();
+        lblActiveIcon = new javax.swing.JLabel();
+        lblNumberOfActive = new javax.swing.JLabel();
+        logsPage = new computerlabsystem.Design.PanelGradient();
+        panelBorder5 = new computerlabsystem.Design.PanelBorder();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        UsersLogsPanel = new computerlabsystem.Design.PanelGradient();
+        logsPane = new javax.swing.JScrollPane();
+        logsTable = new javax.swing.JTable();
+        lblSeachLogs = new javax.swing.JLabel();
+        txtSearchLogs = new javax.swing.JTextField();
+        visitorsLogsPanel = new computerlabsystem.Design.PanelGradient();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        visitorsLogsTable = new javax.swing.JTable();
+        txtVisitorsLogsSearch = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         accountPage = new computerlabsystem.Design.PanelGradient();
+        jLabel6 = new javax.swing.JLabel();
+        panelBorder10 = new computerlabsystem.Design.PanelBorder();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         studentAccountPanel = new computerlabsystem.Design.PanelGradient();
         btnDeleteStuAcct = new javax.swing.JButton();
@@ -277,43 +291,27 @@ public class AdminDashboard extends javax.swing.JFrame {
         btnDeleteAdminAcct = new javax.swing.JButton();
         txtAdminSearchAcct = new javax.swing.JTextField();
         btnUpdateAdminAcct = new javax.swing.JButton();
-        panelBorder6 = new computerlabsystem.Design.PanelBorder();
-        jLabel6 = new javax.swing.JLabel();
-        logsPage = new computerlabsystem.Design.PanelGradient();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
-        UsersLogsPanel = new computerlabsystem.Design.PanelGradient();
-        logsPane = new javax.swing.JScrollPane();
-        logsTable = new javax.swing.JTable();
-        lblSeachLogs = new javax.swing.JLabel();
-        txtSearchLogs = new javax.swing.JTextField();
-        visitorsLogsPanel = new computerlabsystem.Design.PanelGradient();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        visitorsLogsTable = new javax.swing.JTable();
-        txtVisitorsLogsSearch = new javax.swing.JTextField();
-        panelBorder5 = new computerlabsystem.Design.PanelBorder();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1250, 600));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelGradient1.setColorPrimary(new java.awt.Color(204, 204, 204));
-        panelGradient1.setColorSecondary(new java.awt.Color(153, 153, 153));
-        panelGradient1.setLayout(new java.awt.BorderLayout());
+        panelGradient1.setBackground(new java.awt.Color(255, 255, 204));
+        panelGradient1.setColorPrimary(new java.awt.Color(255, 255, 204));
+        panelGradient1.setColorSecondary(new java.awt.Color(255, 255, 204));
+        panelGradient1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menuPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 3, new java.awt.Color(109, 113, 249)));
-        menuPanel.setColorPrimary(new java.awt.Color(109, 113, 249));
-        menuPanel.setColorSecondary(new java.awt.Color(109, 113, 249));
-        menuPanel.setPreferredSize(new java.awt.Dimension(150, 150));
-        menuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        menuDashboard.setBackground(new java.awt.Color(109, 113, 249));
 
         panelHome.setBackground((new Color(0, 0, 0, 0)));
         panelHome.setLayout(new java.awt.GridLayout(1, 0));
 
         lblHome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/menuHome.png"))); // NOI18N
-        lblHome.setText("Home");
+        lblHome.setForeground(new java.awt.Color(255, 255, 255));
+        lblHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/menuDashboardIcon.png"))); // NOI18N
+        lblHome.setText("DASHBOARD");
         lblHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblHomeMouseClicked(evt);
@@ -326,15 +324,21 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         panelHome.add(lblHome);
+        lblHome.getAccessibleContext().setAccessibleName("");
 
-        menuPanel.add(panelHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 130, 60));
+        menuDashboard.add(panelHome);
+        panelHome.setBounds(10, 220, 130, 50);
 
         panelAccounts.setBackground((new Color(0, 0, 0, 0)));
         panelAccounts.setLayout(new java.awt.GridLayout(1, 0));
 
         lblAccounts.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblAccounts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/menuUser.png"))); // NOI18N
-        lblAccounts.setText("Accounts");
+        lblAccounts.setForeground(new java.awt.Color(255, 255, 255));
+        lblAccounts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/menuUserIcon.png"))); // NOI18N
+        lblAccounts.setText("ACCOUNTS");
+        lblAccounts.setMaximumSize(new java.awt.Dimension(122, 30));
+        lblAccounts.setMinimumSize(new java.awt.Dimension(122, 30));
+        lblAccounts.setPreferredSize(new java.awt.Dimension(122, 30));
         lblAccounts.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblAccountsMouseClicked(evt);
@@ -347,20 +351,21 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         panelAccounts.add(lblAccounts);
+        lblAccounts.getAccessibleContext().setAccessibleName("");
 
-        menuPanel.add(panelAccounts, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 130, 60));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.png"))); // NOI18N
-        menuPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 130, 130));
+        menuDashboard.add(panelAccounts);
+        panelAccounts.setBounds(10, 280, 130, 50);
 
         panelLogs.setBackground((new Color(0, 0, 0, 0)));
         panelLogs.setLayout(new java.awt.GridLayout(1, 0));
 
         lblAllLogs.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblAllLogs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/menuLogs.png"))); // NOI18N
-        lblAllLogs.setText("Logs ");
+        lblAllLogs.setForeground(new java.awt.Color(255, 255, 255));
+        lblAllLogs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/menuLogsIcon.png"))); // NOI18N
+        lblAllLogs.setText("LOGS");
+        lblAllLogs.setMaximumSize(new java.awt.Dimension(122, 30));
+        lblAllLogs.setMinimumSize(new java.awt.Dimension(122, 30));
+        lblAllLogs.setPreferredSize(new java.awt.Dimension(122, 30));
         lblAllLogs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblAllLogsMouseClicked(evt);
@@ -373,20 +378,40 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         panelLogs.add(lblAllLogs);
+        lblAllLogs.getAccessibleContext().setAccessibleName("");
 
-        menuPanel.add(panelLogs, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 130, 60));
+        menuDashboard.add(panelLogs);
+        panelLogs.setBounds(10, 350, 130, 50);
 
-        btnLogout.setBackground(new java.awt.Color(255, 255, 204));
-        btnLogout.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-logout-30.png")); // NOI18N
-        btnLogout.setText("LOGOUT");
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.png"))); // NOI18N
+        menuDashboard.add(jLabel2);
+        jLabel2.setBounds(0, 10, 140, 120);
+
+        panelLogout.setLayout(new java.awt.GridLayout());
+
+        lblLogout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblLogout.setForeground(new java.awt.Color(255, 255, 255));
+        lblLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/menuLogoutIcon.png"))); // NOI18N
+        lblLogout.setText("LOGOUT");
+        lblLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLogoutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblLogoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblLogoutMouseExited(evt);
             }
         });
-        menuPanel.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, -1, -1));
+        panelLogout.add(lblLogout);
 
-        panelGradient1.add(menuPanel, java.awt.BorderLayout.LINE_START);
+        menuDashboard.add(panelLogout);
+        panelLogout.setBounds(10, 470, 130, 50);
+
+        panelGradient1.add(menuDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 580));
 
         cardPanel.setColorPrimary(new java.awt.Color(0, 0, 0));
         cardPanel.setColorSecondary(new java.awt.Color(51, 51, 51));
@@ -397,14 +422,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         homePage.setPreferredSize(new java.awt.Dimension(900, 800));
         homePage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelBorder1.setBackground(new java.awt.Color(39, 40, 72));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("WELCOME ADMIN!");
+        panelBorder1.setBackground(new java.awt.Color(109, 113, 249));
 
         lblAdminName.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lblAdminName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAdminName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/adminSmallUser.png"))); // NOI18N
         lblAdminName.setText("jLabel2");
         lblAdminName.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -413,30 +433,26 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        panelBorder1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelBorder1.setLayer(lblAdminName, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
         panelBorder1Layout.setHorizontalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 489, Short.MAX_VALUE)
-                .addComponent(lblAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder1Layout.createSequentialGroup()
+                .addContainerGap(466, Short.MAX_VALUE)
+                .addComponent(lblAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblAdminName, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(lblAdminName, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        homePage.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1070, 70));
+        homePage.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 660, 90));
 
         panelBorder2.setBackground(new java.awt.Color(109, 113, 249));
         panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -446,7 +462,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jScrollPane1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jScrollPane1.setRowHeaderView(null);
 
-        mostLogsTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         mostLogsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -483,13 +498,13 @@ public class AdminDashboard extends javax.swing.JFrame {
             mostLogsTable.getColumnModel().getColumn(2).setPreferredWidth(20);
         }
 
-        panelBorder2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 470, 130));
+        panelBorder2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 470, 130));
 
         lblTopFiveLogs.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTopFiveLogs.setText("TOP 5");
         panelBorder2.add(lblTopFiveLogs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 15, 140, 40));
 
-        homePage.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, 500, 210));
+        homePage.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 490, 240));
 
         panelBorder3.setBackground(new java.awt.Color(109, 113, 249));
         panelBorder3.setPreferredSize(new java.awt.Dimension(495, 210));
@@ -527,41 +542,35 @@ public class AdminDashboard extends javax.swing.JFrame {
         }
 
         panelBorder3.add(jScrollPane2);
-        jScrollPane2.setBounds(10, 80, 480, 120);
+        jScrollPane2.setBounds(10, 80, 470, 120);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("TOP 5");
         panelBorder3.add(jLabel3);
         jLabel3.setBounds(17, 30, 90, 25);
 
-        homePage.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, 500, -1));
+        homePage.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 490, 220));
 
-        panelBorder4.setBackground(new java.awt.Color(160, 118, 249));
+        panelBorder4.setBackground(new java.awt.Color(109, 113, 249));
 
         lblRegisteredIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRegisteredIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/registeredUser.png"))); // NOI18N
+        lblRegisteredIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboardRegisteredUserIcon.png"))); // NOI18N
         panelBorder4.add(lblRegisteredIcon);
-        lblRegisteredIcon.setBounds(10, 10, 80, 60);
-
-        lblNumberOfActive.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        lblNumberOfActive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNumberOfActive.setText("0");
-        panelBorder4.add(lblNumberOfActive);
-        lblNumberOfActive.setBounds(90, 80, 100, 70);
-
-        lblActiveIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/active.png"))); // NOI18N
-        panelBorder4.add(lblActiveIcon);
-        lblActiveIcon.setBounds(20, 80, 70, 70);
+        lblRegisteredIcon.setBounds(0, 0, 90, 80);
 
         lblTotalNumberUsers.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblTotalNumberUsers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTotalNumberUsers.setText("0");
         panelBorder4.add(lblTotalNumberUsers);
-        lblTotalNumberUsers.setBounds(90, 0, 100, 70);
+        lblTotalNumberUsers.setBounds(110, 0, 110, 80);
 
-        homePage.add(panelBorder4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 210, 160));
+        homePage.add(panelBorder4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 220, 80));
 
+        panelBorder7.setBackground(new java.awt.Color(109, 113, 249));
+
+        btnDepartment.setBackground(new java.awt.Color(39, 40, 72));
         btnDepartment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDepartment.setForeground(new java.awt.Color(255, 255, 255));
         btnDepartment.setText("DEPARTMENT");
         btnDepartment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -571,7 +580,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         panelBorder7.add(btnDepartment);
         btnDepartment.setBounds(100, 100, 120, 23);
 
+        btnYearLevel.setBackground(new java.awt.Color(39, 40, 72));
         btnYearLevel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnYearLevel.setForeground(new java.awt.Color(255, 255, 255));
         btnYearLevel.setText("YEAR LEVEL");
         btnYearLevel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -581,7 +592,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         panelBorder7.add(btnYearLevel);
         btnYearLevel.setBounds(180, 60, 120, 23);
 
+        btnProgram.setBackground(new java.awt.Color(39, 40, 72));
         btnProgram.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnProgram.setForeground(new java.awt.Color(255, 255, 255));
         btnProgram.setText("PROGRAM");
         btnProgram.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -596,29 +609,182 @@ public class AdminDashboard extends javax.swing.JFrame {
         panelBorder7.add(jLabel4);
         jLabel4.setBounds(67, 10, 180, 16);
 
-        homePage.add(panelBorder7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 310, 160));
+        homePage.add(panelBorder7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 310, 180));
 
-        panelBorder8.setBackground(new java.awt.Color(51, 255, 255));
+        panelBorder8.setBackground(new java.awt.Color(109, 113, 249));
+        homePage.add(panelBorder8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 540, 280));
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane5.setViewportView(jList1);
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 48)); // NOI18N
+        jLabel1.setText("DASHBOARD");
+        homePage.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        panelBorder8.add(jScrollPane5);
-        jScrollPane5.setBounds(10, 70, 510, 190);
+        panelBorder9.setBackground(new java.awt.Color(109, 113, 249));
 
-        lblNotification.setText("NOTIFICATION");
-        panelBorder8.add(lblNotification);
-        lblNotification.setBounds(20, 20, 110, 16);
+        lblActiveIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblActiveIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboardActiveUser.png"))); // NOI18N
+        panelBorder9.add(lblActiveIcon);
+        lblActiveIcon.setBounds(0, 0, 90, 70);
 
-        homePage.add(panelBorder8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 540, 280));
+        lblNumberOfActive.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lblNumberOfActive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNumberOfActive.setText("0");
+        panelBorder9.add(lblNumberOfActive);
+        lblNumberOfActive.setBounds(110, 0, 110, 70);
+
+        homePage.add(panelBorder9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 220, 80));
 
         cardPanel.add(homePage, "card6");
 
+        logsPage.setColorPrimary(new java.awt.Color(255, 255, 204));
+        logsPage.setColorSecondary(new java.awt.Color(255, 255, 204));
+        logsPage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelBorder5.setBackground(new java.awt.Color(109, 113, 249));
+
+        jTabbedPane3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        UsersLogsPanel.setColorPrimary(new java.awt.Color(255, 255, 204));
+        UsersLogsPanel.setColorSecondary(new java.awt.Color(255, 255, 204));
+
+        logsTable.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        logsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "LOGS ID", "ROLE", "FULL NAME", "PROGRAM", "YEAR LEVEL", "DEPARTMENT", "LOG IN TIME", "LOG OUT TIME", "ACCOUNTABLE PROFESSOR"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        logsTable.setEnabled(false);
+        logsTable.setShowGrid(true);
+        logsPane.setViewportView(logsTable);
+        if (logsTable.getColumnModel().getColumnCount() > 0) {
+            logsTable.getColumnModel().getColumn(0).setResizable(false);
+            logsTable.getColumnModel().getColumn(0).setPreferredWidth(50);
+            logsTable.getColumnModel().getColumn(1).setResizable(false);
+            logsTable.getColumnModel().getColumn(1).setPreferredWidth(60);
+            logsTable.getColumnModel().getColumn(2).setResizable(false);
+            logsTable.getColumnModel().getColumn(3).setResizable(false);
+            logsTable.getColumnModel().getColumn(3).setPreferredWidth(50);
+            logsTable.getColumnModel().getColumn(4).setResizable(false);
+            logsTable.getColumnModel().getColumn(4).setPreferredWidth(50);
+            logsTable.getColumnModel().getColumn(5).setResizable(false);
+            logsTable.getColumnModel().getColumn(5).setPreferredWidth(100);
+            logsTable.getColumnModel().getColumn(6).setResizable(false);
+            logsTable.getColumnModel().getColumn(6).setPreferredWidth(150);
+            logsTable.getColumnModel().getColumn(7).setResizable(false);
+            logsTable.getColumnModel().getColumn(7).setPreferredWidth(150);
+            logsTable.getColumnModel().getColumn(8).setResizable(false);
+        }
+
+        UsersLogsPanel.add(logsPane);
+        logsPane.setBounds(10, 70, 1030, 330);
+        UsersLogsPanel.add(lblSeachLogs);
+        lblSeachLogs.setBounds(0, 0, 0, 0);
+
+        txtSearchLogs.setText("Enter Search");
+        txtSearchLogs.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchLogsKeyReleased(evt);
+            }
+        });
+        UsersLogsPanel.add(txtSearchLogs);
+        txtSearchLogs.setBounds(340, 20, 310, 22);
+
+        jTabbedPane3.addTab("USER", UsersLogsPanel);
+
+        visitorsLogsPanel.setColorPrimary(new java.awt.Color(255, 255, 204));
+        visitorsLogsPanel.setColorSecondary(new java.awt.Color(255, 255, 204));
+
+        visitorsLogsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "LOGS ID", "ID CODE", "NAME", "EMAIL", "MOBILE NUMBER", "GENDER", "PURPOSE", "TIME IN", "TIME OUT"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(visitorsLogsTable);
+        if (visitorsLogsTable.getColumnModel().getColumnCount() > 0) {
+            visitorsLogsTable.getColumnModel().getColumn(0).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(0).setPreferredWidth(30);
+            visitorsLogsTable.getColumnModel().getColumn(1).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(1).setPreferredWidth(30);
+            visitorsLogsTable.getColumnModel().getColumn(2).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+            visitorsLogsTable.getColumnModel().getColumn(3).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+            visitorsLogsTable.getColumnModel().getColumn(4).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(4).setPreferredWidth(80);
+            visitorsLogsTable.getColumnModel().getColumn(5).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(5).setPreferredWidth(50);
+            visitorsLogsTable.getColumnModel().getColumn(6).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(6).setPreferredWidth(200);
+            visitorsLogsTable.getColumnModel().getColumn(7).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(7).setPreferredWidth(100);
+            visitorsLogsTable.getColumnModel().getColumn(8).setResizable(false);
+            visitorsLogsTable.getColumnModel().getColumn(8).setPreferredWidth(100);
+        }
+
+        visitorsLogsPanel.add(jScrollPane4);
+        jScrollPane4.setBounds(10, 60, 1000, 290);
+
+        txtVisitorsLogsSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVisitorsLogsSearchActionPerformed(evt);
+            }
+        });
+        txtVisitorsLogsSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtVisitorsLogsSearchKeyReleased(evt);
+            }
+        });
+        visitorsLogsPanel.add(txtVisitorsLogsSearch);
+        txtVisitorsLogsSearch.setBounds(30, 20, 540, 30);
+
+        jTabbedPane3.addTab("VISITORS", visitorsLogsPanel);
+
+        panelBorder5.add(jTabbedPane3);
+        jTabbedPane3.setBounds(10, 10, 1070, 480);
+
+        logsPage.add(panelBorder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 1100, 500));
+
+        jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 48)); // NOI18N
+        jLabel5.setText("LOGS");
+        logsPage.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 170, 40));
+
+        cardPanel.add(logsPage, "card4");
+
         accountPage.setColorPrimary(new java.awt.Color(255, 255, 204));
+        accountPage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 48)); // NOI18N
+        jLabel6.setText("ACCOUNTS");
+        accountPage.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 340, 50));
+
+        panelBorder10.setBackground(new java.awt.Color(109, 113, 249));
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 204));
         jTabbedPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -697,7 +863,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         ));
         studentAcctPane.setViewportView(studentAcctTable);
 
-        studentAccountPanel.add(studentAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 1040, 330));
+        studentAccountPanel.add(studentAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 1000, 330));
 
         lblSearchStudent.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblSearchStudent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -718,7 +884,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 txtStudentSearchAcctKeyReleased(evt);
             }
         });
-        studentAccountPanel.add(txtStudentSearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 310, 40));
+        studentAccountPanel.add(txtStudentSearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, 310, 40));
 
         btnUpdateStudentAccount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnUpdateStudentAccount.setText("UPDATE");
@@ -767,7 +933,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 txtFacultySearchAcctKeyReleased(evt);
             }
         });
-        facultyAccountPanel.add(txtFacultySearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 390, 40));
+        facultyAccountPanel.add(txtFacultySearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 390, 40));
 
         facultyAcctTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -783,7 +949,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         facultyAcctTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         facultyAcctPane.setViewportView(facultyAcctTable);
 
-        facultyAccountPanel.add(facultyAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 100, 1010, 320));
+        facultyAccountPanel.add(facultyAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 1000, 320));
 
         btnUpdateFacultyAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnUpdateFacultyAcct.setText("UPDATE");
@@ -864,185 +1030,16 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("ADMINS", adminAccountPanel);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel6.setText("ACCOUNTS");
-        panelBorder6.add(jLabel6);
-        jLabel6.setBounds(30, 10, 200, 50);
+        panelBorder10.add(jTabbedPane1);
+        jTabbedPane1.setBounds(10, 0, 1020, 470);
 
-        accountPage.setLayer(jTabbedPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        accountPage.setLayer(panelBorder6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout accountPageLayout = new javax.swing.GroupLayout(accountPage);
-        accountPage.setLayout(accountPageLayout);
-        accountPageLayout.setHorizontalGroup(
-            accountPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(accountPageLayout.createSequentialGroup()
-                .addGroup(accountPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(accountPageLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(accountPageLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(panelBorder6, javax.swing.GroupLayout.PREFERRED_SIZE, 1030, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(183, Short.MAX_VALUE))
-        );
-        accountPageLayout.setVerticalGroup(
-            accountPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(accountPageLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelBorder6, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
-                .addGap(30, 30, 30))
-        );
+        accountPage.add(panelBorder10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 1040, 490));
 
         cardPanel.add(accountPage, "card2");
 
-        logsPage.setColorPrimary(new java.awt.Color(255, 255, 204));
-        logsPage.setColorSecondary(new java.awt.Color(255, 255, 204));
-        logsPage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelGradient1.add(cardPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 0, 1390, 623));
 
-        jTabbedPane3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-
-        UsersLogsPanel.setColorPrimary(new java.awt.Color(255, 255, 204));
-        UsersLogsPanel.setColorSecondary(new java.awt.Color(255, 255, 204));
-
-        logsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "LOGS ID", "ROLE", "STUDENT / FACULTY ID", "FULL NAME", "PROGRAM", "YEAR LEVEL", "DEPARTMENT", "LOG IN TIME", "LOG OUT TIME"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        logsTable.setEnabled(false);
-        logsPane.setViewportView(logsTable);
-        if (logsTable.getColumnModel().getColumnCount() > 0) {
-            logsTable.getColumnModel().getColumn(0).setResizable(false);
-            logsTable.getColumnModel().getColumn(0).setPreferredWidth(50);
-            logsTable.getColumnModel().getColumn(1).setResizable(false);
-            logsTable.getColumnModel().getColumn(1).setPreferredWidth(100);
-            logsTable.getColumnModel().getColumn(2).setResizable(false);
-            logsTable.getColumnModel().getColumn(2).setPreferredWidth(150);
-            logsTable.getColumnModel().getColumn(3).setResizable(false);
-            logsTable.getColumnModel().getColumn(4).setResizable(false);
-            logsTable.getColumnModel().getColumn(4).setPreferredWidth(100);
-            logsTable.getColumnModel().getColumn(5).setResizable(false);
-            logsTable.getColumnModel().getColumn(5).setPreferredWidth(100);
-            logsTable.getColumnModel().getColumn(6).setResizable(false);
-            logsTable.getColumnModel().getColumn(6).setPreferredWidth(100);
-            logsTable.getColumnModel().getColumn(7).setResizable(false);
-            logsTable.getColumnModel().getColumn(7).setPreferredWidth(150);
-            logsTable.getColumnModel().getColumn(8).setResizable(false);
-            logsTable.getColumnModel().getColumn(8).setPreferredWidth(150);
-        }
-
-        UsersLogsPanel.add(logsPane);
-        logsPane.setBounds(10, 70, 1060, 380);
-        UsersLogsPanel.add(lblSeachLogs);
-        lblSeachLogs.setBounds(0, 0, 0, 0);
-
-        txtSearchLogs.setText("Enter Search");
-        txtSearchLogs.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSearchLogsKeyReleased(evt);
-            }
-        });
-        UsersLogsPanel.add(txtSearchLogs);
-        txtSearchLogs.setBounds(340, 20, 310, 22);
-
-        jTabbedPane3.addTab("USER", UsersLogsPanel);
-
-        visitorsLogsPanel.setColorPrimary(new java.awt.Color(255, 255, 204));
-        visitorsLogsPanel.setColorSecondary(new java.awt.Color(255, 255, 204));
-
-        visitorsLogsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "LOGS ID", "ID CODE", "NAME", "EMAIL", "MOBILE NUMBER", "GENDER", "PURPOSE", "TIME IN", "TIME OUT"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane4.setViewportView(visitorsLogsTable);
-        if (visitorsLogsTable.getColumnModel().getColumnCount() > 0) {
-            visitorsLogsTable.getColumnModel().getColumn(0).setResizable(false);
-            visitorsLogsTable.getColumnModel().getColumn(0).setPreferredWidth(30);
-            visitorsLogsTable.getColumnModel().getColumn(1).setResizable(false);
-            visitorsLogsTable.getColumnModel().getColumn(1).setPreferredWidth(30);
-            visitorsLogsTable.getColumnModel().getColumn(2).setResizable(false);
-            visitorsLogsTable.getColumnModel().getColumn(2).setPreferredWidth(100);
-            visitorsLogsTable.getColumnModel().getColumn(3).setResizable(false);
-            visitorsLogsTable.getColumnModel().getColumn(3).setPreferredWidth(100);
-            visitorsLogsTable.getColumnModel().getColumn(4).setResizable(false);
-            visitorsLogsTable.getColumnModel().getColumn(4).setPreferredWidth(80);
-            visitorsLogsTable.getColumnModel().getColumn(5).setResizable(false);
-            visitorsLogsTable.getColumnModel().getColumn(5).setPreferredWidth(50);
-            visitorsLogsTable.getColumnModel().getColumn(6).setResizable(false);
-            visitorsLogsTable.getColumnModel().getColumn(6).setPreferredWidth(200);
-            visitorsLogsTable.getColumnModel().getColumn(7).setResizable(false);
-            visitorsLogsTable.getColumnModel().getColumn(7).setPreferredWidth(100);
-            visitorsLogsTable.getColumnModel().getColumn(8).setResizable(false);
-            visitorsLogsTable.getColumnModel().getColumn(8).setPreferredWidth(100);
-        }
-
-        visitorsLogsPanel.add(jScrollPane4);
-        jScrollPane4.setBounds(10, 60, 1040, 350);
-
-        txtVisitorsLogsSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtVisitorsLogsSearchActionPerformed(evt);
-            }
-        });
-        txtVisitorsLogsSearch.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtVisitorsLogsSearchKeyReleased(evt);
-            }
-        });
-        visitorsLogsPanel.add(txtVisitorsLogsSearch);
-        txtVisitorsLogsSearch.setBounds(130, 20, 540, 30);
-
-        jTabbedPane3.addTab("VISITORS", visitorsLogsPanel);
-
-        logsPage.add(jTabbedPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1400, 510));
-
-        panelBorder5.setBackground(new java.awt.Color(204, 204, 204));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("LOGS");
-        panelBorder5.add(jLabel5);
-        jLabel5.setBounds(10, 10, 170, 40);
-
-        logsPage.add(panelBorder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1380, 60));
-
-        cardPanel.add(logsPage, "card4");
-
-        panelGradient1.add(cardPanel, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(panelGradient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1552, 623));
+        getContentPane().add(panelGradient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1552, 600));
 
         pack();
         setLocationRelativeTo(null);
@@ -1310,10 +1307,19 @@ public class AdminDashboard extends javax.swing.JFrame {
         searchVisitorsLogs(search);
     }//GEN-LAST:event_txtVisitorsLogsSearchKeyReleased
 
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+    private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
+        System.out.println(getSfID());
         UserDashboardMethods.userLogout(getSfID());
         dispose();
-    }//GEN-LAST:event_btnLogoutActionPerformed
+    }//GEN-LAST:event_lblLogoutMouseClicked
+
+    private void lblLogoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseEntered
+        panelLogout.setBackground(new Color(220, 220, 220, 100));
+    }//GEN-LAST:event_lblLogoutMouseEntered
+
+    private void lblLogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseExited
+        panelLogout.setBackground(new Color(0, 0, 0, 0));
+    }//GEN-LAST:event_lblLogoutMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private computerlabsystem.Design.PanelGradient UsersLogsPanel;
@@ -1326,7 +1332,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteFacultyAcct;
     private javax.swing.JButton btnDeleteStuAcct;
     private javax.swing.JButton btnDepartment;
-    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnProgram;
     private javax.swing.JButton btnUpdateAdminAcct;
     private javax.swing.JButton btnUpdateFacultyAcct;
@@ -1343,12 +1348,10 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JLabel lblAccounts;
@@ -1356,7 +1359,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel lblAdminName;
     private javax.swing.JLabel lblAllLogs;
     private javax.swing.JLabel lblHome;
-    private javax.swing.JLabel lblNotification;
+    private javax.swing.JLabel lblLogout;
     private javax.swing.JLabel lblNumberOfActive;
     private javax.swing.JLabel lblRegisteredIcon;
     private javax.swing.JLabel lblSeachLogs;
@@ -1369,19 +1372,21 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane logsPane;
     private javax.swing.JTable logsTable;
     private javax.swing.JTable longestTimeSpentTable;
-    private computerlabsystem.Design.PanelGradient menuPanel;
+    private computerlabsystem.Design.PanelBorder menuDashboard;
     private javax.swing.JTable mostLogsTable;
     private computerlabsystem.Design.PanelBorder panelAccounts;
     private computerlabsystem.Design.PanelBorder panelBorder1;
+    private computerlabsystem.Design.PanelBorder panelBorder10;
     private computerlabsystem.Design.PanelBorder panelBorder2;
     private computerlabsystem.Design.PanelBorder panelBorder3;
     private computerlabsystem.Design.PanelBorder panelBorder4;
     private computerlabsystem.Design.PanelBorder panelBorder5;
-    private computerlabsystem.Design.PanelBorder panelBorder6;
     private computerlabsystem.Design.PanelBorder panelBorder7;
     private computerlabsystem.Design.PanelBorder panelBorder8;
+    private computerlabsystem.Design.PanelBorder panelBorder9;
     private computerlabsystem.Design.PanelGradient panelGradient1;
     private computerlabsystem.Design.PanelBorder panelHome;
+    private computerlabsystem.Design.PanelBorder panelLogout;
     private computerlabsystem.Design.PanelBorder panelLogs;
     private computerlabsystem.Design.PanelGradient studentAccountPanel;
     private javax.swing.JScrollPane studentAcctPane;

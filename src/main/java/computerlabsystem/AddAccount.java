@@ -96,7 +96,7 @@ public class AddAccount extends javax.swing.JDialog {
         panelGradient2.add(lblStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
         txtStudentFacultyID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtStudentFacultyID.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "STUDENT / FACULTY ID", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        txtStudentFacultyID.setBorder(new javax.swing.border.MatteBorder(null));
         txtStudentFacultyID.setMinimumSize(new java.awt.Dimension(65, 40));
         txtStudentFacultyID.setPreferredSize(new java.awt.Dimension(65, 40));
         panelGradient2.add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 290, 40));
@@ -106,11 +106,11 @@ public class AddAccount extends javax.swing.JDialog {
         panelGradient2.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
         txtFname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtFname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "FIRST NAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        txtFname.setBorder(new javax.swing.border.MatteBorder(null));
         panelGradient2.add(txtFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 130, 40));
 
         txtLname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtLname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "LAST NAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        txtLname.setBorder(new javax.swing.border.MatteBorder(null));
         txtLname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLnameActionPerformed(evt);
@@ -123,7 +123,7 @@ public class AddAccount extends javax.swing.JDialog {
         panelGradient2.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtEmail.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "EMAIL", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        txtEmail.setBorder(new javax.swing.border.MatteBorder(null));
         txtEmail.setMinimumSize(new java.awt.Dimension(65, 40));
         txtEmail.setPreferredSize(new java.awt.Dimension(65, 40));
         panelGradient2.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 290, 40));
@@ -141,7 +141,7 @@ public class AddAccount extends javax.swing.JDialog {
         panelGradient2.add(checkboxShowPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 30, 30));
 
         fieldPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fieldPassword.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "PASSWORD", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        fieldPassword.setBorder(new javax.swing.border.MatteBorder(null));
         fieldPassword.setMinimumSize(new java.awt.Dimension(65, 40));
         fieldPassword.setPreferredSize(new java.awt.Dimension(65, 40));
         panelGradient2.add(fieldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 290, 40));
@@ -159,7 +159,7 @@ public class AddAccount extends javax.swing.JDialog {
         panelGradient2.add(checkboxShowConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, 30, 40));
 
         fieldConfirmPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fieldConfirmPassword.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "CONFIRM PASSWORD", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        fieldConfirmPassword.setBorder(new javax.swing.border.MatteBorder(null));
         fieldConfirmPassword.setMinimumSize(new java.awt.Dimension(65, 40));
         fieldConfirmPassword.setPreferredSize(new java.awt.Dimension(65, 40));
         panelGradient2.add(fieldConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 290, 40));

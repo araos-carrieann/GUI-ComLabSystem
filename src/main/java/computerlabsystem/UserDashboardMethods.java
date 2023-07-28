@@ -70,15 +70,23 @@ public class UserDashboardMethods {
     }
 
     public static void userLogout(String stuFaculID) {
-        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("UPDATE logs SET logout_time = TO_TIMESTAMP(TO_CHAR(CURRENT_TIMESTAMP, 'YYY-MM-DD HH24:MI:SS'),'YYY-MM-DD HH24:MI:SS') WHERE user_id_users = (SELECT id FROM users WHERE studentFacultyID = ?) AND logout_time IS NULL")) {
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT id FROM users WHERE studentFacultyID = ?"); PreparedStatement updateStmt = conn.prepareStatement("UPDATE logs SET logout_time = TO_TIMESTAMP(TO_CHAR(CURRENT_TIMESTAMP, 'YYY-MM-DD HH24:MI:SS'),'YYY-MM-DD HH24:MI:SS') WHERE user_id_users = ? AND logout_time IS NULL")) {
+
             stmt.setString(1, stuFaculID);
-            stmt.executeUpdate();
+            ResultSet resultSet = stmt.executeQuery();
+
+            while (resultSet.next()) {
+                int userId = resultSet.getInt("id");
+                updateStmt.setInt(1, userId);
+                updateStmt.executeUpdate();
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
-     public static void visitorsLogout(String codeidentity) {
+
+    public static void visitorsLogout(String codeidentity) {
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("UPDATE logs SET logout_time = TO_TIMESTAMP(TO_CHAR(CURRENT_TIMESTAMP, 'YYY-MM-DD HH24:MI:SS'),'YYY-MM-DD HH24:MI:SS') WHERE user_id_visitors = (SELECT id FROM logs WHERE codeidentity = ?) AND logout_time IS NULL")) {
             stmt.setString(1, codeidentity);
             stmt.executeUpdate();

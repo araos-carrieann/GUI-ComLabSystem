@@ -122,6 +122,8 @@ public class UserProfile extends javax.swing.JDialog {
         lblUserYearLevel = new javax.swing.JLabel();
         lblDepartment = new javax.swing.JLabel();
         lblUserDepartment = new javax.swing.JLabel();
+        panelBorder1 = new computerlabsystem.Design.PanelBorder();
+        jLabel2 = new javax.swing.JLabel();
         settingsPanel = new computerlabsystem.Design.PanelGradient();
         lblCurrentPassField = new javax.swing.JLabel();
         btnSave = new javax.swing.JButton();
@@ -139,9 +141,9 @@ public class UserProfile extends javax.swing.JDialog {
         panelGradient1.setColorSecondary(new java.awt.Color(255, 204, 0));
         panelGradient1.setLayout(new java.awt.BorderLayout());
 
-        headerPanel.setColorPrimary(new java.awt.Color(109, 113, 249));
-        headerPanel.setColorSecondary(new java.awt.Color(109, 113, 249));
-        headerPanel.setPreferredSize(new java.awt.Dimension(100, 50));
+        headerPanel.setColorPrimary(new java.awt.Color(255, 255, 204));
+        headerPanel.setColorSecondary(new java.awt.Color(255, 255, 204));
+        headerPanel.setPreferredSize(new java.awt.Dimension(100, 70));
 
         btnUserInfo.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         btnUserInfo.setText("User's Information");
@@ -151,7 +153,7 @@ public class UserProfile extends javax.swing.JDialog {
             }
         });
         headerPanel.add(btnUserInfo);
-        btnUserInfo.setBounds(40, 10, 140, 20);
+        btnUserInfo.setBounds(30, 20, 140, 20);
 
         btnSettings.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSettings.setText("Change password");
@@ -161,7 +163,7 @@ public class UserProfile extends javax.swing.JDialog {
             }
         });
         headerPanel.add(btnSettings);
-        btnSettings.setBounds(220, 10, 150, 20);
+        btnSettings.setBounds(210, 20, 150, 20);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Back");
@@ -177,68 +179,76 @@ public class UserProfile extends javax.swing.JDialog {
 
         cardPanel.setLayout(new java.awt.CardLayout());
 
-        userInfoPanel.setColorPrimary(new java.awt.Color(109, 113, 249));
-        userInfoPanel.setColorSecondary(new java.awt.Color(199, 188, 161));
+        userInfoPanel.setColorPrimary(new java.awt.Color(255, 255, 204));
+        userInfoPanel.setColorSecondary(new java.awt.Color(255, 255, 204));
         userInfoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblID.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblID.setText("ID:");
-        userInfoPanel.add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 37, -1));
+        userInfoPanel.add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 37, -1));
 
         lblFirstname.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblFirstname.setText("First Name:");
-        userInfoPanel.add(lblFirstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, 20));
+        userInfoPanel.add(lblFirstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, 20));
 
         lblLastname.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblLastname.setText("Last Name");
-        userInfoPanel.add(lblLastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+        userInfoPanel.add(lblLastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
 
         lblUserID.setText("jLabel6");
-        userInfoPanel.add(lblUserID, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 40, -1, -1));
+        userInfoPanel.add(lblUserID, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
 
         lblUserFirstName.setText("jLabel7");
-        userInfoPanel.add(lblUserFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 70, -1, -1));
+        userInfoPanel.add(lblUserFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
 
         lblUserLastName.setText("jLabel8");
-        userInfoPanel.add(lblUserLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 100, -1, -1));
+        userInfoPanel.add(lblUserLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
 
         lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblEmail.setText("Email:");
-        userInfoPanel.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+        userInfoPanel.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, -1));
 
         lblUserEmail.setText("jLabel10");
-        userInfoPanel.add(lblUserEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 130, -1, -1));
+        userInfoPanel.add(lblUserEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, -1, -1));
 
         lblProgram.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblProgram.setText("Program");
-        userInfoPanel.add(lblProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+        userInfoPanel.add(lblProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
 
         lblYearLevel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblYearLevel.setText("Year Level:");
-        userInfoPanel.add(lblYearLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
+        userInfoPanel.add(lblYearLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, -1, -1));
 
         lblUserProgram.setText("jLabel2");
-        userInfoPanel.add(lblUserProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 160, -1, -1));
+        userInfoPanel.add(lblUserProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, -1, -1));
 
         lblUserYearLevel.setText("jLabel2");
-        userInfoPanel.add(lblUserYearLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 190, -1, -1));
+        userInfoPanel.add(lblUserYearLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, -1, -1));
 
         lblDepartment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblDepartment.setText("Department");
-        userInfoPanel.add(lblDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
+        userInfoPanel.add(lblDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, -1, -1));
 
         lblUserDepartment.setText("jLabel3");
-        userInfoPanel.add(lblUserDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 220, -1, -1));
+        userInfoPanel.add(lblUserDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, -1, -1));
+
+        panelBorder1.setBackground(new java.awt.Color(109, 113, 249));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/userIcon.png"))); // NOI18N
+        panelBorder1.add(jLabel2);
+        jLabel2.setBounds(20, 10, 70, 80);
+
+        userInfoPanel.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 440, 260));
 
         cardPanel.add(userInfoPanel, "card2");
 
         settingsPanel.setColorPrimary(new java.awt.Color(109, 113, 249));
         settingsPanel.setColorSecondary(new java.awt.Color(199, 188, 161));
 
-        lblCurrentPassField.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblCurrentPassField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblCurrentPassField.setText("Current Password");
         settingsPanel.add(lblCurrentPassField);
-        lblCurrentPassField.setBounds(50, 60, 98, 16);
+        lblCurrentPassField.setBounds(20, 50, 140, 20);
 
         btnSave.setBackground(new java.awt.Color(0, 102, 255));
         btnSave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -250,27 +260,34 @@ public class UserProfile extends javax.swing.JDialog {
         });
         settingsPanel.add(btnSave);
         btnSave.setBounds(175, 260, 90, 27);
-        settingsPanel.add(newPassField);
-        newPassField.setBounds(230, 120, 170, 22);
-        settingsPanel.add(reTypePassField);
-        reTypePassField.setBounds(230, 180, 170, 22);
-        settingsPanel.add(currentPassField);
-        currentPassField.setBounds(230, 60, 170, 22);
 
-        lblNewPass.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        newPassField.setBorder(new javax.swing.border.MatteBorder(null));
+        settingsPanel.add(newPassField);
+        newPassField.setBounds(210, 110, 210, 35);
+
+        reTypePassField.setBorder(new javax.swing.border.MatteBorder(null));
+        settingsPanel.add(reTypePassField);
+        reTypePassField.setBounds(210, 180, 210, 35);
+
+        currentPassField.setBorder(new javax.swing.border.MatteBorder(null));
+        settingsPanel.add(currentPassField);
+        currentPassField.setBounds(210, 42, 210, 35);
+
+        lblNewPass.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblNewPass.setText("New Password");
         settingsPanel.add(lblNewPass);
-        lblNewPass.setBounds(50, 120, 81, 16);
+        lblNewPass.setBounds(20, 120, 120, 20);
 
-        lblReTypePass.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblReTypePass.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblReTypePass.setText("Re-Type New Password");
         settingsPanel.add(lblReTypePass);
-        lblReTypePass.setBounds(50, 180, 140, 16);
+        lblReTypePass.setBounds(20, 190, 180, 20);
 
         lblWarningMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-error-24.png"))); // NOI18N
         lblWarningMsg.setText("jLabel2");
         settingsPanel.add(lblWarningMsg);
-        lblWarningMsg.setBounds(90, 230, 250, 16);
+        lblWarningMsg.setBounds(90, 216, 310, 30);
 
         cardPanel.add(settingsPanel, "card3");
 
@@ -280,7 +297,7 @@ public class UserProfile extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+            .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,6 +405,7 @@ public class UserProfile extends javax.swing.JDialog {
     private javax.swing.JPasswordField currentPassField;
     private computerlabsystem.Design.PanelGradient headerPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblCurrentPassField;
     private javax.swing.JLabel lblDepartment;
     private javax.swing.JLabel lblEmail;
@@ -407,6 +425,7 @@ public class UserProfile extends javax.swing.JDialog {
     private javax.swing.JLabel lblWarningMsg;
     private javax.swing.JLabel lblYearLevel;
     private javax.swing.JPasswordField newPassField;
+    private computerlabsystem.Design.PanelBorder panelBorder1;
     private computerlabsystem.Design.PanelGradient panelGradient1;
     private javax.swing.JPasswordField reTypePassField;
     private computerlabsystem.Design.PanelGradient settingsPanel;

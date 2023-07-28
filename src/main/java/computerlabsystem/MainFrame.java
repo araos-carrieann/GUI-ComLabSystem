@@ -90,11 +90,11 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         panelGradient1.add(mainBorder);
-        mainBorder.setBounds(200, 70, 480, 550);
+        mainBorder.setBounds(180, 70, 480, 550);
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.png"))); // NOI18N
         panelGradient1.add(logo);
-        logo.setBounds(660, -30, 210, 210);
+        logo.setBounds(640, -20, 210, 210);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bgImage.jpg"))); // NOI18N
         panelGradient1.add(background);

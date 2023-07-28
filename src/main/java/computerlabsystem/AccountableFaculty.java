@@ -57,16 +57,22 @@ public class AccountableFaculty extends javax.swing.JDialog {
         panelGradient1 = new computerlabsystem.Design.PanelGradient();
         accountableCombobox = new javax.swing.JComboBox<>();
         btnSubmit = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        accountableCombobox.setBackground(new java.awt.Color(51, 64, 225));
+        panelGradient1.setColorPrimary(new java.awt.Color(102, 102, 255));
+
+        accountableCombobox.setBackground(new java.awt.Color(255, 255, 204));
         accountableCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         accountableCombobox.setBorder(null);
         panelGradient1.add(accountableCombobox);
-        accountableCombobox.setBounds(60, 140, 320, 30);
+        accountableCombobox.setBounds(80, 120, 250, 30);
 
+        btnSubmit.setBackground(new java.awt.Color(51, 51, 255));
+        btnSubmit.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
+        btnSubmit.setForeground(new java.awt.Color(255, 255, 255));
         btnSubmit.setText("SUBMIT");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,13 +80,19 @@ public class AccountableFaculty extends javax.swing.JDialog {
             }
         });
         panelGradient1.add(btnSubmit);
-        btnSubmit.setBounds(100, 240, 190, 23);
+        btnSubmit.setBounds(80, 220, 250, 23);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel1.setText("FACULTY");
+        panelGradient1.add(jLabel1);
+        jLabel1.setBounds(160, 60, 110, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGradient1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+            .addComponent(panelGradient1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,6 +127,7 @@ public class AccountableFaculty extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> accountableCombobox;
     private javax.swing.JButton btnSubmit;
+    private javax.swing.JLabel jLabel1;
     private computerlabsystem.Design.PanelGradient panelGradient1;
     // End of variables declaration//GEN-END:variables
 }
