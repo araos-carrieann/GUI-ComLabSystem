@@ -20,9 +20,7 @@ public class DTOvisitors {
     private String loginTime;
     private String logoutTime;
 
-    public DTOvisitors(int logsID, String codeIdentity, String fullname, String email, String mobilenumber, String gender, String purpose, String loginTime, String logoutTime) {
-        this.logsID = logsID;
-        this.codeIdentity = codeIdentity;
+    public DTOvisitors( String fullname, String email, String mobilenumber, String gender, String purpose, String loginTime, String logoutTime) {
         this.fullname = fullname;
         this.email = email;
         this.mobilenumber = mobilenumber;

@@ -4,6 +4,9 @@
  */
 package computerlabsystem;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +14,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import org.mindrot.jbcrypt.BCrypt;
+import scroll.ScrollBarCustom;
+import java.awt.Dimension;
 
 /**
  *
@@ -19,9 +27,26 @@ import org.mindrot.jbcrypt.BCrypt;
  */
 public class ComLabMethods {
 
-    //METHODS FOR SIGN UP
+    /*
+    1. hashPassword
+    2. verifyPassword
+    3. registerUser
+    4. getInfo (for Admin and User profile)
+    5. getUserDetails
+    6. userChangePass
+    7. createLogs
+    8. logUserLogin
+    9.
+    10. 
+    11. 
+    
+     */
     public static String hashPassword(String password) {
         return BCrypt.hashpw(password, BCrypt.gensalt(12));
+    }
+
+    public static boolean verifyPassword(String password, String hashedPassword) {
+        return BCrypt.checkpw(password, hashedPassword);
     }
 
     public static String registerUser(String status, String role, String studentFacultyID, String fname, String lname, String email, String pass, String program, String yrLvl, String department, String code) {
@@ -68,11 +93,6 @@ public class ComLabMethods {
             exc.printStackTrace();
         }
         return message;
-    }
-
-    //METHODS FOR LOGIN
-    public static boolean verifyPassword(String password, String hashedPassword) {
-        return BCrypt.checkpw(password, hashedPassword);
     }
 
     public static String getInfo(String stuFaculID) {
@@ -603,8 +623,8 @@ public class ComLabMethods {
 
         return totalRows;
     }
-    
-        public static int getTotalActiveUser() {
+
+    public static int getTotalActiveUser() {
         int totalActive = 0;
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) AS total_active FROM logs WHERE logout_time IS NULL;"); ResultSet rs = stmt.executeQuery()) {
 
@@ -669,27 +689,43 @@ public class ComLabMethods {
             e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
         }
     }
-    
-    public String getTimeLogin(String studentFacultyID){
-    String loginTime = null;
-    try (Connection conn = DatabaseConnector.getConnection();
-         PreparedStatement stmt = conn.prepareStatement(
-                 "SELECT login_time FROM logs "
-                 + "WHERE user_id_users = (SELECT id FROM users WHERE studentFacultyID = ?) "
-                 + "AND logout_time IS NULL")) {
 
-        stmt.setString(1, studentFacultyID);
+    public String getTimeLogin(String studentFacultyID) {
+        String loginTime = null;
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(
+                "SELECT login_time FROM logs "
+                + "WHERE user_id_users = (SELECT id FROM users WHERE studentFacultyID = ?) "
+                + "AND logout_time IS NULL")) {
 
-        try (ResultSet rs = stmt.executeQuery()) {
-            if (rs.next()) {
-                loginTime = rs.getString("login_time");
+            stmt.setString(1, studentFacultyID);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    loginTime = rs.getString("login_time");
+                }
             }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
         }
-    } catch (SQLException e) {
-        e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+        return loginTime;
     }
-    return loginTime;
-}
 
+    public void Scroll(JScrollPane pane) {
+        pane.setVerticalScrollBar(new ScrollBarCustom());
+        ScrollBarCustom sp = new ScrollBarCustom();
+        sp.setOrientation(JScrollBar.HORIZONTAL);
+        pane.setHorizontalScrollBar(sp);
+    }
+
+    public void Table(JTable table) {
+        // Set font and appearance for table header
+        table.getTableHeader().setFont(new Font("Segui UI", Font.BOLD, 14));
+        table.getTableHeader().setOpaque(false);
+        table.getTableHeader().setBackground(new Color(0, 0, 255));
+        table.getTableHeader().setForeground(Color.WHITE);
+
+        // Set height of the table header
+        table.getTableHeader().setPreferredSize(new Dimension(table.getTableHeader().getPreferredSize().width, 30));
+    }
 
 }

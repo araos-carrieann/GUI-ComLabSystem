@@ -86,13 +86,4 @@ public class UserDashboardMethods {
         }
     }
 
-    public static void visitorsLogout(String codeidentity) {
-        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("UPDATE logs SET logout_time = TO_TIMESTAMP(TO_CHAR(CURRENT_TIMESTAMP, 'YYY-MM-DD HH24:MI:SS'),'YYY-MM-DD HH24:MI:SS') WHERE user_id_visitors = (SELECT id FROM logs WHERE codeidentity = ?) AND logout_time IS NULL")) {
-            stmt.setString(1, codeidentity);
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

@@ -72,7 +72,7 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
         ));
         jScrollPane2.setViewportView(yrLvlTable);
 
-        panelGradient3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 340, 200));
+        panelGradient3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 340, 210));
 
         txtAddYrLvl.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtAddYrLvl.setBorder(null);
@@ -83,7 +83,7 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
         });
         panelGradient3.add(txtAddYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 230, 30));
 
-        btnAddYrLvl.setBackground(new java.awt.Color(255, 255, 204));
+        btnAddYrLvl.setBackground(new java.awt.Color(204, 255, 204));
         btnAddYrLvl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAddYrLvl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-add-20.png"))); // NOI18N
         btnAddYrLvl.setText("ADD");
@@ -92,9 +92,9 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
                 btnAddYrLvlActionPerformed(evt);
             }
         });
-        panelGradient3.add(btnAddYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 77, 100, 20));
+        panelGradient3.add(btnAddYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 77, 90, 30));
 
-        btnDeleteYrLvl.setBackground(new java.awt.Color(255, 255, 204));
+        btnDeleteYrLvl.setBackground(new java.awt.Color(255, 51, 51));
         btnDeleteYrLvl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDeleteYrLvl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-delete-20.png"))); // NOI18N
         btnDeleteYrLvl.setText("DELETE");
@@ -103,7 +103,7 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
                 btnDeleteYrLvlActionPerformed(evt);
             }
         });
-        panelGradient3.add(btnDeleteYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 77, 100, 20));
+        panelGradient3.add(btnDeleteYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 77, 100, 30));
 
         btnBack.setBackground(new java.awt.Color(255, 255, 204));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -113,11 +113,11 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
                 btnBackActionPerformed(evt);
             }
         });
-        panelGradient3.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 70, 20));
+        panelGradient3.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 70, 20));
 
         lblWarningMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-error-24.png"))); // NOI18N
         lblWarningMessage.setText("jLabel1");
-        panelGradient3.add(lblWarningMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 90, -1));
+        panelGradient3.add(lblWarningMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 90, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("YEAR LEVEL");
@@ -127,12 +127,12 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGradient3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+            .addComponent(panelGradient3, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panelGradient3, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelGradient3, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 

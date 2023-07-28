@@ -72,7 +72,7 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(programTable);
 
-        panelGradient2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 340, 200));
+        panelGradient2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 340, 190));
 
         txtAddProgram.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtAddProgram.setBorder(null);
@@ -83,7 +83,7 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
         });
         panelGradient2.add(txtAddProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 240, 30));
 
-        btnAddProgram.setBackground(new java.awt.Color(255, 255, 204));
+        btnAddProgram.setBackground(new java.awt.Color(204, 255, 204));
         btnAddProgram.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAddProgram.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-add-20.png"))); // NOI18N
         btnAddProgram.setText("ADD");
@@ -92,9 +92,9 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
                 btnAddProgramActionPerformed(evt);
             }
         });
-        panelGradient2.add(btnAddProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, 20));
+        panelGradient2.add(btnAddProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 90, 30));
 
-        btnDeleteProgram.setBackground(new java.awt.Color(255, 255, 204));
+        btnDeleteProgram.setBackground(new java.awt.Color(255, 51, 51));
         btnDeleteProgram.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDeleteProgram.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-delete-20.png"))); // NOI18N
         btnDeleteProgram.setText("DELETE");
@@ -103,7 +103,7 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
                 btnDeleteProgramActionPerformed(evt);
             }
         });
-        panelGradient2.add(btnDeleteProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, -1, 20));
+        panelGradient2.add(btnDeleteProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 100, 30));
 
         btnBack.setBackground(new java.awt.Color(255, 255, 204));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -113,11 +113,12 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
                 btnBackActionPerformed(evt);
             }
         });
-        panelGradient2.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
+        panelGradient2.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
 
+        lblWarningMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWarningMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-error-24.png"))); // NOI18N
         lblWarningMessage.setText("jLabel1");
-        panelGradient2.add(lblWarningMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 190, -1));
+        panelGradient2.add(lblWarningMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 310, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("PROGRAM");
@@ -131,7 +132,7 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGradient2, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+            .addComponent(panelGradient2, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
         );
 
         pack();

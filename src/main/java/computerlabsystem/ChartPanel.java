@@ -23,7 +23,7 @@ public class ChartPanel extends javax.swing.JPanel {
      */
     public ChartPanel() {
         initComponents();
-        chart.setTitle("Chart Data");
+        chart.setTitle("Logs Data");
         chart.addLegend("Student", Color.decode("#7b4397"), Color.decode("#dc2430"));
         chart.addLegend("Faculty", Color.decode("#e65c00"), Color.decode("#F9D423"));
         chart.addLegend("Admin", Color.decode("#0099F7"), Color.decode("#F11712"));

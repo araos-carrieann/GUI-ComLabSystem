@@ -306,7 +306,7 @@ public class CurveLineChart extends JComponent {
         panelLegend.setOpaque(false);
         panelLegend.setLayout(new MigLayout("filly, center, inset 0", "[]10[]"));
         labelTitle = new JLabel();
-        labelTitle.setForeground(new Color(229, 229, 229));
+        labelTitle.setForeground(new Color(0, 0, 229));
         labelTitle.setFont(labelTitle.getFont().deriveFont(Font.BOLD, 15));
         panelLegend.add(labelTitle, "push, gap left 10");
         add(panelLegend, "wrap");

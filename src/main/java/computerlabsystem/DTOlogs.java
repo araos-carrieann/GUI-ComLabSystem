@@ -33,8 +33,7 @@ public class DTOlogs {
         this.logoutTime = logoutTime;
     }
 
-    public DTOlogs(int logsID, String role, String fullname, String program, String yrlvl, String department, String loginTime, String logoutTime, String accountableName) {
-        this.logsID = logsID;
+    public DTOlogs(String role, String fullname, String program, String yrlvl, String department, String loginTime, String logoutTime, String accountableName) {
         this.role = role;
         this.fullname = fullname;
         this.program = program;

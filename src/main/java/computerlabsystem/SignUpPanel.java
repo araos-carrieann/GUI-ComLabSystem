@@ -228,7 +228,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         });
         signUpPanel.add(rbtnFaculty, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, -1, -1));
 
-        comboProgram.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        comboProgram.setBackground(new java.awt.Color(255, 255, 204));
         comboProgram.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboProgramActionPerformed(evt);
@@ -236,7 +236,8 @@ public class SignUpPanel extends javax.swing.JPanel {
         });
         signUpPanel.add(comboProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 130, -1));
 
-        comboYrLvl.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        comboYrLvl.setBackground(new java.awt.Color(255, 255, 204));
+        comboYrLvl.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         comboYrLvl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboYrLvlActionPerformed(evt);
@@ -250,7 +251,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         lblWarningMsg.setText("jLabel1");
         signUpPanel.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 366, -1));
 
-        comboDepartment.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        comboDepartment.setBackground(new java.awt.Color(255, 255, 204));
         signUpPanel.add(comboDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 190, -1));
 
         txtStudentFacultyID.setBackground((new Color(0, 0, 0, 0)));
@@ -296,6 +297,8 @@ public class SignUpPanel extends javax.swing.JPanel {
         comboProgram.setVisible(true);
         comboYrLvl.setVisible(true);
         comboDepartment.setVisible(false);
+        comboProgram.setVisible(false);
+        comboYrLvl.setVisible(false);
     }//GEN-LAST:event_rbtnStudentActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -306,7 +309,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         fieldPassword.setText("");
         fieldConfirmPassword.setText("");
         btnGrp.clearSelection();
-        //combo box set the selected in index zero
+        comboDepartment.setVisible(false);
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void checkboxShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkboxShowPassActionPerformed

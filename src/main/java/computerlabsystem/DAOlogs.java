@@ -42,7 +42,6 @@ public class DAOlogs {
 
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(
                 "SELECT\n"
-                + "    logs.logID,\n"
                 + "    logs.fullname,\n"
                 + "    logs.login_time,\n"
                 + "    logs.logout_time,\n"
@@ -66,7 +65,6 @@ public class DAOlogs {
 
             // Loop through the ResultSet and fetch data for each row
             while (rsltSet.next()) {
-                int userLogsID = rsltSet.getInt("logID");
                 String userRole = rsltSet.getString("userRole");
                 String userFullname = rsltSet.getString("fullname");
                 String userProgram = rsltSet.getString("program");
@@ -77,7 +75,7 @@ public class DAOlogs {
                 String facultyAccountable = rsltSet.getString("facultyAccountable");
 
                 // Create a DTOlogs object and add it to the dataList
-                DTOlogs data = new DTOlogs(userLogsID, userRole, userFullname, userProgram, userYrlvl, userDepartment, userLogin, userLogout, facultyAccountable);
+                DTOlogs data = new DTOlogs(userRole, userFullname, userProgram, userYrlvl, userDepartment, userLogin, userLogout, facultyAccountable);
                 dataList.add(data);
             }
         } catch (SQLException e) {
@@ -92,10 +90,8 @@ public class DAOlogs {
         List<DTOvisitors> dataList = new ArrayList<>();
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(
                 "SELECT "
-                + "    logs.logID,"
                 + "    logs.login_time,"
                 + "    logs.logout_time,"
-                + "    visitors.codeidentity AS visitorID,"
                 + "    visitors.fullname AS fullname,"
                 + "    visitors.mobilenumber AS mobilenumber,"
                 + "    visitors.email AS email,"
@@ -111,8 +107,6 @@ public class DAOlogs {
                 + "    logs.login_time DESC"); ResultSet rsltSet = stmt.executeQuery()) {
 
             while (rsltSet.next()) {
-                int userLogsID = rsltSet.getInt("logID");
-                String visitorID = rsltSet.getString("visitorID");
                 String userFullname = rsltSet.getString("fullname");
                 String mobilenumber = rsltSet.getString("mobilenumber");
                 String email = rsltSet.getString("email");
@@ -121,7 +115,7 @@ public class DAOlogs {
                 String userLogin = rsltSet.getString("login_time");
                 String userLogout = rsltSet.getString("logout_time");
 
-                DTOvisitors data = new DTOvisitors(userLogsID, visitorID, userFullname, email, mobilenumber, gender, purpose, userLogin, userLogout);
+                DTOvisitors data = new DTOvisitors(userFullname, email, mobilenumber, gender, purpose, userLogin, userLogout);
                 dataList.add(data);
             }
         } catch (SQLException e) {

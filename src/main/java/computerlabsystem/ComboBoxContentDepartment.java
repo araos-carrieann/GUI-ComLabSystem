@@ -72,12 +72,12 @@ public class ComboBoxContentDepartment extends javax.swing.JDialog {
         ));
         jScrollPane3.setViewportView(departmentTable);
 
-        panelGradient4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 330, 170));
+        panelGradient4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 330, 170));
 
         txtAddDepartment.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         panelGradient4.add(txtAddDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 210, 30));
 
-        btnAddDepartment.setBackground(new java.awt.Color(255, 255, 204));
+        btnAddDepartment.setBackground(new java.awt.Color(204, 255, 204));
         btnAddDepartment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAddDepartment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-add-20.png"))); // NOI18N
         btnAddDepartment.setText("ADD");
@@ -90,9 +90,9 @@ public class ComboBoxContentDepartment extends javax.swing.JDialog {
                 btnAddDepartmentActionPerformed(evt);
             }
         });
-        panelGradient4.add(btnAddDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 90, 20));
+        panelGradient4.add(btnAddDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 90, 30));
 
-        btnDeleteDepartment.setBackground(new java.awt.Color(255, 255, 204));
+        btnDeleteDepartment.setBackground(new java.awt.Color(255, 51, 51));
         btnDeleteDepartment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDeleteDepartment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-delete-20.png"))); // NOI18N
         btnDeleteDepartment.setText("DELETE");
@@ -105,7 +105,7 @@ public class ComboBoxContentDepartment extends javax.swing.JDialog {
                 btnDeleteDepartmentActionPerformed(evt);
             }
         });
-        panelGradient4.add(btnDeleteDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 90, 20));
+        panelGradient4.add(btnDeleteDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 90, 30));
 
         btnBack.setBackground(new java.awt.Color(255, 255, 204));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -115,7 +115,7 @@ public class ComboBoxContentDepartment extends javax.swing.JDialog {
                 btnBackActionPerformed(evt);
             }
         });
-        panelGradient4.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+        panelGradient4.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
 
         lblDepartment.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblDepartment.setText("DEPARTMENT");
@@ -124,7 +124,7 @@ public class ComboBoxContentDepartment extends javax.swing.JDialog {
         lblWarningMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWarningMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-error-24.png"))); // NOI18N
         lblWarningMessage.setText("jLabel1");
-        panelGradient4.add(lblWarningMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 270, -1));
+        panelGradient4.add(lblWarningMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 270, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -180,6 +180,7 @@ public class UpdateAcct extends javax.swing.JDialog {
         });
         panelGradient1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 310, -1));
 
+        comboProgram.setBackground(new java.awt.Color(255, 255, 204));
         comboProgram.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboProgramActionPerformed(evt);
@@ -187,6 +188,7 @@ public class UpdateAcct extends javax.swing.JDialog {
         });
         panelGradient1.add(comboProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 130, -1));
 
+        comboDepartment.setBackground(new java.awt.Color(255, 255, 204));
         comboDepartment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboDepartmentActionPerformed(evt);
@@ -221,6 +223,7 @@ public class UpdateAcct extends javax.swing.JDialog {
         });
         panelGradient1.add(rbtnAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, -1, -1));
 
+        comboYrLvl.setBackground(new java.awt.Color(255, 255, 204));
         comboYrLvl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboYrLvlActionPerformed(evt);
