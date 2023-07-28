@@ -53,6 +53,7 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         panelGradient3.setBackground(new java.awt.Color(14, 41, 84));
         panelGradient3.setColorPrimary(new java.awt.Color(109, 113, 249));

@@ -73,6 +73,7 @@ public class UsersDashboard extends javax.swing.JFrame {
         lblUserName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         panelGradient1.setColorPrimary(new java.awt.Color(255, 51, 51));
         panelGradient1.setLayout(new java.awt.BorderLayout());

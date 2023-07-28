@@ -749,7 +749,6 @@ public class AdminDashboard extends javax.swing.JFrame {
                 "STUDENT ID", "EMAIL", "FIRST NAME", "LAST NAME", "PROGRAM", "YEAR LEVEL"
             }
         ));
-        studentAcctTable.setRowSelectionAllowed(true);
         studentAcctTable.setShowGrid(true);
         studentAcctPane.setViewportView(studentAcctTable);
 

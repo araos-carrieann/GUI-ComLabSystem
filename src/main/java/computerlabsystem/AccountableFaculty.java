@@ -82,8 +82,8 @@ public class AccountableFaculty extends javax.swing.JDialog {
         panelGradient1.add(btnSubmit);
         btnSubmit.setBounds(80, 220, 250, 23);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Faculty that gives you permission");
         panelGradient1.add(jLabel1);

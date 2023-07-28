@@ -47,6 +47,7 @@ public class VisitorsDashboard extends javax.swing.JFrame {
         lblName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         panelGradient1.setColorPrimary(new java.awt.Color(153, 153, 255));
 
@@ -86,7 +87,7 @@ public class VisitorsDashboard extends javax.swing.JFrame {
         btnLogout.setBounds(170, 390, 100, 23);
 
         panelBorder2.setBackground(new java.awt.Color(153, 153, 153));
-        panelBorder2.setLayout(new java.awt.GridLayout());
+        panelBorder2.setLayout(new java.awt.GridLayout(1, 0));
 
         lblName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboardUserIcon.png"))); // NOI18N
         lblName.setText("jLabel1");
@@ -107,6 +108,7 @@ public class VisitorsDashboard extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed

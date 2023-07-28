@@ -43,6 +43,9 @@ public class InvalidInput extends javax.swing.JDialog {
         lblGIF = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
+
+        panelGradient1.setColorPrimary(new java.awt.Color(109, 113, 249));
 
         lblPleaseWait.setFont(new java.awt.Font("Showcard Gothic", 1, 36)); // NOI18N
         lblPleaseWait.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

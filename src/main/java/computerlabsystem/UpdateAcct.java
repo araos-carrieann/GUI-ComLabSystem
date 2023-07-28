@@ -138,6 +138,7 @@ public class UpdateAcct extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelGradient1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

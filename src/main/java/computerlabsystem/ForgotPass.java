@@ -40,6 +40,7 @@ public class ForgotPass extends javax.swing.JDialog {
         lblWarningMessage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         Panel.setColorPrimary(new java.awt.Color(109, 113, 249));
 

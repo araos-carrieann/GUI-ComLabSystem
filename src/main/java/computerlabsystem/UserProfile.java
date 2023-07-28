@@ -173,7 +173,7 @@ public class UserProfile extends javax.swing.JDialog {
             }
         });
         headerPanel.add(jLabel1);
-        jLabel1.setBounds(420, 10, 50, 20);
+        jLabel1.setBounds(400, 0, 50, 20);
 
         panelGradient1.add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
@@ -238,7 +238,7 @@ public class UserProfile extends javax.swing.JDialog {
         panelBorder1.add(jLabel2);
         jLabel2.setBounds(20, 10, 70, 80);
 
-        userInfoPanel.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 430, 260));
+        userInfoPanel.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 410, 260));
 
         cardPanel.add(userInfoPanel, "card2");
 

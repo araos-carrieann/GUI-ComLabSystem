@@ -45,12 +45,13 @@ public class ForgotResetPassword extends javax.swing.JDialog {
         fieldReTypePassword = new javax.swing.JPasswordField();
         btnSave = new javax.swing.JButton();
         lblWarningMessage = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblResetPassword = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -87,7 +88,6 @@ public class ForgotResetPassword extends javax.swing.JDialog {
         btnSave.setBackground(new java.awt.Color(0, 0, 51));
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("SAVE");
-        btnSave.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -102,14 +102,17 @@ public class ForgotResetPassword extends javax.swing.JDialog {
         panelGradient1.add(lblWarningMessage);
         lblWarningMessage.setBounds(50, 360, 290, 20);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("SET PASSWORD");
-        panelGradient1.add(jLabel1);
-        jLabel1.setBounds(90, 20, 220, 16);
+        lblResetPassword.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 30)); // NOI18N
+        lblResetPassword.setForeground(new java.awt.Color(255, 255, 255));
+        lblResetPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblResetPassword.setText("RESET PASSWORD");
+        panelGradient1.add(lblResetPassword);
+        lblResetPassword.setBounds(40, 20, 310, 50);
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Create New Password");
         panelGradient1.add(jLabel2);
-        jLabel2.setBounds(90, 100, 240, 16);
+        jLabel2.setBounds(50, 110, 240, 16);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-check-lock-30.png"))); // NOI18N
@@ -176,10 +179,10 @@ public class ForgotResetPassword extends javax.swing.JDialog {
     private javax.swing.JCheckBox checkboxShowReTypePassword;
     private javax.swing.JPasswordField fieldNewPassword;
     private javax.swing.JPasswordField fieldReTypePassword;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblResetPassword;
     private javax.swing.JLabel lblWarningMessage;
     private computerlabsystem.Design.PanelGradient panelGradient1;
     // End of variables declaration//GEN-END:variables

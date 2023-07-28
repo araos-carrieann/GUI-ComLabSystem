@@ -45,6 +45,7 @@ public class Visitors extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setUndecorated(true);
 
         panelGradient1.setColorPrimary(new java.awt.Color(109, 113, 249));
         panelGradient1.setColorSecondary(new java.awt.Color(199, 188, 161));
@@ -54,6 +55,7 @@ public class Visitors extends javax.swing.JDialog {
         panelGradient1.add(txtName);
         txtName.setBounds(70, 80, 290, 30);
 
+        comboBoxPurpose.setBackground(new java.awt.Color(255, 255, 204));
         comboBoxPurpose.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thesis defense panelist", "Learning Workshop", "Technical Support", "OTHERS" }));
         comboBoxPurpose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +67,7 @@ public class Visitors extends javax.swing.JDialog {
         panelGradient1.add(txtOtherPurpose);
         txtOtherPurpose.setBounds(70, 300, 280, 30);
 
+        comboBoxGender.setBackground(new java.awt.Color(255, 255, 204));
         comboBoxGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DEFAULT", "MALE", "FEMALE", "OTHER" }));
         panelGradient1.add(comboBoxGender);
         comboBoxGender.setBounds(130, 240, 160, 22);
@@ -81,14 +84,14 @@ public class Visitors extends javax.swing.JDialog {
 
         btnLogs.setBackground(new java.awt.Color(0, 0, 0));
         btnLogs.setForeground(new java.awt.Color(255, 255, 255));
-        btnLogs.setText("LOGS");
+        btnLogs.setText("SUBMIT");
         btnLogs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogsActionPerformed(evt);
             }
         });
         panelGradient1.add(btnLogs);
-        btnLogs.setBounds(270, 350, 80, 23);
+        btnLogs.setBounds(260, 350, 90, 23);
 
         btnClear.setBackground(new java.awt.Color(0, 0, 0));
         btnClear.setForeground(new java.awt.Color(255, 255, 255));
@@ -99,7 +102,7 @@ public class Visitors extends javax.swing.JDialog {
             }
         });
         panelGradient1.add(btnClear);
-        btnClear.setBounds(182, 350, 70, 23);
+        btnClear.setBounds(170, 350, 70, 23);
 
         btnBack.setBackground(new java.awt.Color(0, 0, 0));
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
@@ -205,6 +208,9 @@ public class Visitors extends javax.swing.JDialog {
             int id = ComLabMethods.getVisitorID(identity);
             visitorsMethods.VisitorInsertLog(id, fullname);
             lblWarningMessage.setText(msg);
+            VisitorsDashboard visitorDash = new VisitorsDashboard(identity, fullname);
+            visitorDash.setVisible(true);
+            dispose();
         }
 
     }//GEN-LAST:event_btnLogsActionPerformed
