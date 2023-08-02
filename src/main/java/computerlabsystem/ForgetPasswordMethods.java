@@ -171,7 +171,7 @@ public class ForgetPasswordMethods {
                 + "\n"
                 + "If you didn't initiate this request, you can safely ignore this email.\n"
                 + "\n"
-                + "If you are the one requesting the password reset, please copy the verification code and paste it into the password reset page on our website. You will then be prompted to create a new password.\n"
+                + "If you are the one requesting the password reset, please copy the verification code and paste it into the password reset page on our system. You will then be prompted to create a new password.\n"
                 + "\n"
                 + "If you have any questions or need further assistance, feel free to contact our support team at pupschoolpurposes@gmail.com. We're here to help!\n"
                 + "\n"
@@ -235,13 +235,13 @@ public class ForgetPasswordMethods {
                 + "\n"
                 + "However, if you are not familiar with this user or their affiliation, please let us know as soon as possible. Ensuring accurate records is important to us.\n"
                 + "\n"
-                + "Should you have any questions or concerns, please contact us at pupschoolpurposes@gmail.com.\n"
+                + "If you have any questions or concerns, please contact us at pupschoolpurposes@gmail.com.\n"
                 + "\n"
                 + "Thank you for your attention.\n"
                 + "\n"
                 + "Best regards,\n"
                 + "\n"
-                + "PUP Unisan Branchh";
+                + "PUP Unisan Branch";
 
         // Encode as MIME msg
         Properties props = new Properties();

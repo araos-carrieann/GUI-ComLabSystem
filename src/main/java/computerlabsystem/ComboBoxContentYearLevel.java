@@ -27,9 +27,9 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
         DefaultTableModel allYrLvl = (DefaultTableModel) yrLvlTable.getModel();
         allYrLvl.setRowCount(0);
 
-        List<DTOaccount> yearLevelList = ComLabMethods.yearlvlComboContent();
+        List<AccountDTO> yearLevelList = ComLabMethods.yearlvlComboContent();
 
-        for (DTOaccount yearLevel : yearLevelList) {
+        for (AccountDTO yearLevel : yearLevelList) {
             Object[] yearLvlRow = {yearLevel.getYrlvl()};
             allYrLvl.addRow(yearLvlRow);
         }

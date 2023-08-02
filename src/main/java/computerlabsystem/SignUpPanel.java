@@ -34,28 +34,28 @@ public class SignUpPanel extends javax.swing.JPanel {
     }
 
     private void insertContentComboProgram() {
-        List<DTOaccount> programList = ComLabMethods.programComboContent();
+        List<AccountDTO> programList = ComLabMethods.programComboContent();
         comboProgram.removeAllItems(); // Clear existing items
 
-        for (DTOaccount data : programList) {
+        for (AccountDTO data : programList) {
             comboProgram.addItem(data.getProgram());
         }
     }
 
     private void insertContentComboYearLvl() {
-        List<DTOaccount> yrLvlList = ComLabMethods.yearlvlComboContent();
+        List<AccountDTO> yrLvlList = ComLabMethods.yearlvlComboContent();
         comboYrLvl.removeAllItems(); // Clear existing items
 
-        for (DTOaccount data : yrLvlList) {
+        for (AccountDTO data : yrLvlList) {
             comboYrLvl.addItem(data.getYrlvl());
         }
     }
 
     private void insertContentComboDepartment() {
-        List<DTOaccount> departmentList = ComLabMethods.departmentComboContent();
+        List<AccountDTO> departmentList = ComLabMethods.departmentComboContent();
         comboDepartment.removeAllItems(); // Clear existing items
 
-        for (DTOaccount data : departmentList) {
+        for (AccountDTO data : departmentList) {
             comboDepartment.addItem(data.getDepartment());
         }
 
@@ -249,7 +249,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         lblWarningMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-error-24.png"))); // NOI18N
         lblWarningMsg.setText("jLabel1");
-        signUpPanel.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 366, -1));
+        signUpPanel.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 510, 450, -1));
 
         comboDepartment.setBackground(new java.awt.Color(255, 255, 204));
         signUpPanel.add(comboDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 190, -1));
@@ -297,8 +297,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         comboProgram.setVisible(true);
         comboYrLvl.setVisible(true);
         comboDepartment.setVisible(false);
-        comboProgram.setVisible(false);
-        comboYrLvl.setVisible(false);
+
     }//GEN-LAST:event_rbtnStudentActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -310,6 +309,8 @@ public class SignUpPanel extends javax.swing.JPanel {
         fieldConfirmPassword.setText("");
         btnGrp.clearSelection();
         comboDepartment.setVisible(false);
+        comboProgram.setVisible(false);
+        comboYrLvl.setVisible(false);
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void checkboxShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkboxShowPassActionPerformed
@@ -365,8 +366,8 @@ public class SignUpPanel extends javax.swing.JPanel {
             lblWarningMsg.setText("Your password and confirmation password don't match.");
         } else if (pass.length() < 8) {
             lblWarningMsg.setText("Password should be at least 8 characters long.");
-        } else if (!firstName.matches("[A-Za-z0-9\\-.]+") || !lastName.matches("[A-Za-z0-9\\-.]+")) {
-            lblWarningMsg.setText("Name should only consist of letters, numbers, dashes, or dots.");
+        } else if (!firstName.matches("[A-Za-z0-9\\-. ]+") || !lastName.matches("[A-Za-z0-9\\-. ]+")) {
+            lblWarningMsg.setText("Name should only consist of letters, numbers, dashes, dots, or spaces.");
         } else if (!email.matches("[\\w.-]+@[a-zA-Z0-9-]+\\.[a-zA-Z]{2,}")) {
             lblWarningMsg.setText("Invalid email address format.");
         } else {
@@ -377,9 +378,9 @@ public class SignUpPanel extends javax.swing.JPanel {
                 } else {
                     role = rbtnStudent.getText();
                     department = null;
-                    lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
                     String msg = ComLabMethods.registerUser(status, role, studentFacultyID, firstName, lastName, email, hashedPassword, program, yearLevel, department, code);
                     lblWarningMsg.setText(msg);
+                    lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
                     btnSignIn.setEnabled(false);
                     btnClear.setEnabled(false);
                     System.out.println("pogiiiii");
@@ -391,9 +392,9 @@ public class SignUpPanel extends javax.swing.JPanel {
                 } else {
                     program = null;
                     yearLevel = null;
-                    lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
                     String msg = ComLabMethods.registerUser(status, role, studentFacultyID, firstName, lastName, email, hashedPassword, program, yearLevel, department, code);
                     lblWarningMsg.setText(msg);
+                    lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
                     btnSignIn.setEnabled(false);
                     btnClear.setEnabled(false);
                     System.out.println("pogiiiii");

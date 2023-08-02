@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  *
  * @author araos
  */
-public class UserDashboardMethods {
+public class UserDashboardDAO {
 
     public static int getTotalLogsByUser(int userId) {
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) AS totalLogs FROM logs WHERE user_id_users = ?")) {

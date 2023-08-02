@@ -8,7 +8,7 @@ package computerlabsystem;
  *
  * @author araos
  */
-public class DTOvisitors {
+public class VisitorsDTO {
 
     private int logsID;
     private String codeIdentity;
@@ -20,7 +20,7 @@ public class DTOvisitors {
     private String loginTime;
     private String logoutTime;
 
-    public DTOvisitors( String fullname, String email, String mobilenumber, String gender, String purpose, String loginTime, String logoutTime) {
+    public VisitorsDTO( String fullname, String email, String mobilenumber, String gender, String purpose, String loginTime, String logoutTime) {
         this.fullname = fullname;
         this.email = email;
         this.mobilenumber = mobilenumber;

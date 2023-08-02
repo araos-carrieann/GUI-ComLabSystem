@@ -16,18 +16,44 @@ import java.util.List;
  *
  * @author araos
  */
-public class DAOlogs {
+public class LogsDAO {
 
-    public static List<DTOlogs> getUserLogs(int id) {
-        List<DTOlogs> dataList = new ArrayList<>();
+    // Creates a new table named "logs" in the database to store user activity logs
+    public static void createLogs() {
+        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+            // SQL query to create the "logs" table if it doesn't already exist
+            String createTableQuery = "CREATE TABLE IF NOT EXISTS logs (\n"
+                    + "    logID SERIAL PRIMARY KEY,\n"
+                    + "    user_id_users INTEGER REFERENCES users(id),\n"
+                    + "    user_id_visitors INTEGER REFERENCES visitors(id),\n"
+                    + "    fullname VARCHAR(255),\n"
+                    + "    login_time TIMESTAMP DEFAULT (TO_TIMESTAMP(TO_CHAR(CURRENT_TIMESTAMP, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS')),\n"
+                    + "    logout_time TIMESTAMP,\n"
+                    + "    facultyAccountable VARCHAR(255)\n"
+                    + ");";
+
+            try (PreparedStatement statement = conn.prepareStatement(createTableQuery)) {
+                // Execute the query to create the "logs" table
+                statement.execute();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+        }
+    }
+
+    // Retrieves a list of LogsDTO objects representing user logs for a specific user with the given ID
+    public static List<LogsDTO> getUserLogs(int id) {
+        List<LogsDTO> dataList = new ArrayList<>();
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM logs WHERE user_id_users = '" + id + "'"); ResultSet rsltSet = stmt.executeQuery()) {
 
+            // Retrieve user logs from the result set
             while (rsltSet.next()) {
                 String userLogin = rsltSet.getString("login_time");
                 String userLogout = rsltSet.getString("logout_time");
                 String facultyaccountable = rsltSet.getString("facultyaccountable");
 
-                DTOlogs data = new DTOlogs(facultyaccountable, userLogin, userLogout);
+                // Create a new instance of LogsDTO and add it to the dataList
+                LogsDTO data = new LogsDTO(facultyaccountable, userLogin, userLogout);
                 dataList.add(data);
             }
         } catch (SQLException e) {
@@ -37,8 +63,8 @@ public class DAOlogs {
         return dataList;
     }
 
-    public static List<DTOlogs> getAllLogs() {
-        List<DTOlogs> dataList = new ArrayList<>();
+    public static List<LogsDTO> getAllLogs() {
+        List<LogsDTO> dataList = new ArrayList<>();
 
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(
                 "SELECT\n"
@@ -74,20 +100,21 @@ public class DAOlogs {
                 String userLogout = rsltSet.getString("logout_time");
                 String facultyAccountable = rsltSet.getString("facultyAccountable");
 
-                // Create a DTOlogs object and add it to the dataList
-                DTOlogs data = new DTOlogs(userRole, userFullname, userProgram, userYrlvl, userDepartment, userLogin, userLogout, facultyAccountable);
+                // Create a LogsDTO object and add it to the dataList
+                LogsDTO data = new LogsDTO(userRole, userFullname, userProgram, userYrlvl, userDepartment, userLogin, userLogout, facultyAccountable);
                 dataList.add(data);
             }
         } catch (SQLException e) {
             e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
         }
 
-        // Return the list of DTOlogs containing the retrieved data
+        // Return the list of LogsDTO containing the retrieved data
         return dataList;
     }
 
-    public static List<DTOvisitors> getAllVisitorsLogs() {
-        List<DTOvisitors> dataList = new ArrayList<>();
+    // Retrieves a list of VisitorsDTO objects representing logs of all visitors
+    public static List<VisitorsDTO> getAllVisitorsLogs() {
+        List<VisitorsDTO> dataList = new ArrayList<>();
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(
                 "SELECT "
                 + "    logs.login_time,"
@@ -106,6 +133,7 @@ public class DAOlogs {
                 + "ORDER BY "
                 + "    logs.login_time DESC"); ResultSet rsltSet = stmt.executeQuery()) {
 
+            // Retrieve visitors' logs from the result set
             while (rsltSet.next()) {
                 String userFullname = rsltSet.getString("fullname");
                 String mobilenumber = rsltSet.getString("mobilenumber");
@@ -115,7 +143,8 @@ public class DAOlogs {
                 String userLogin = rsltSet.getString("login_time");
                 String userLogout = rsltSet.getString("logout_time");
 
-                DTOvisitors data = new DTOvisitors(userFullname, email, mobilenumber, gender, purpose, userLogin, userLogout);
+                // Create a new instance of VisitorsDTO and add it to the dataList
+                VisitorsDTO data = new VisitorsDTO(userFullname, email, mobilenumber, gender, purpose, userLogin, userLogout);
                 dataList.add(data);
             }
         } catch (SQLException e) {

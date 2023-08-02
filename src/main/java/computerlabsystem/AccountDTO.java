@@ -8,7 +8,7 @@ package computerlabsystem;
  *
  * @author araos
  */
-public class DTOaccount {
+public class AccountDTO {
 
     private int userID;
     private int logsID;
@@ -28,31 +28,31 @@ public class DTOaccount {
     private String userLogin;
     private String userLogout;
 
-    public DTOaccount(String accountablename) {
+    public AccountDTO(String accountablename) {
         this.accountablename = accountablename;
     }
 
-    public DTOaccount(int logsID, String fullname, String userLogin, String userLogout) {
+    public AccountDTO(int logsID, String fullname, String userLogin, String userLogout) {
         this.logsID = logsID;
         this.fullname = fullname;
         this.userLogin = userLogin;
         this.userLogout = userLogout;
     }
 
-    public DTOaccount(String program, String yrlvl, String department) {
+    public AccountDTO(String program, String yrlvl, String department) {
         this.program = program;
         this.yrlvl = yrlvl;
         this.department = department;
     }
 
-    public DTOaccount(String role, String fullname, String logsDuration, String mostLogs) {
+    public AccountDTO(String role, String fullname, String logsDuration, String mostLogs) {
         this.role = role;
         this.fullname = fullname;
         this.logsDuration = logsDuration;
         this.mostLogs = mostLogs;
     }
 
-    public DTOaccount(int userID, String studentfacultyID, String firstName, String lastName, String email) {
+    public AccountDTO(int userID, String studentfacultyID, String firstName, String lastName, String email) {
         this.userID = userID;
         this.studentfacultyID = studentfacultyID;
         this.firstName = firstName;
@@ -60,7 +60,7 @@ public class DTOaccount {
         this.email = email;
     }
 
-    public DTOaccount(int logsID, String studentfacultyID, String role, String firstName, String lastName, String email, String program, String yrlvl, String department, String userTimeIn, String userTimeOut) {
+    public AccountDTO(int logsID, String studentfacultyID, String role, String firstName, String lastName, String email, String program, String yrlvl, String department, String userTimeIn, String userTimeOut) {
         this.logsID = logsID;
         this.studentfacultyID = studentfacultyID;
         this.role = role;
@@ -75,7 +75,7 @@ public class DTOaccount {
     }
 
     //Student account
-    public DTOaccount(String studentfacultyID, String firstName, String lastName, String email, String program, String yrlvl) {
+    public AccountDTO(String studentfacultyID, String firstName, String lastName, String email, String program, String yrlvl) {
         this.studentfacultyID = studentfacultyID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -85,7 +85,7 @@ public class DTOaccount {
     }
 
     //Faculty account
-    public DTOaccount(String studentfacultyID, String department, String firstName, String lastName, String email) {
+    public AccountDTO(String studentfacultyID, String department, String firstName, String lastName, String email) {
         this.studentfacultyID = studentfacultyID;
         this.firstName = firstName;
         this.lastName = lastName;

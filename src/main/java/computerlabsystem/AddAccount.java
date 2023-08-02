@@ -29,28 +29,28 @@ public class AddAccount extends javax.swing.JDialog {
     }
 
     private void insertContentComboProgram() {
-        List<DTOaccount> programList = ComLabMethods.programComboContent();
+        List<AccountDTO> programList = ComLabMethods.programComboContent();
         comboProgram.removeAllItems(); // Clear existing items
 
-        for (DTOaccount data : programList) {
+        for (AccountDTO data : programList) {
             comboProgram.addItem(data.getProgram());
         }
     }
 
     private void insertContentComboYearLvl() {
-        List<DTOaccount> yrLvlList = ComLabMethods.yearlvlComboContent();
+        List<AccountDTO> yrLvlList = ComLabMethods.yearlvlComboContent();
         comboYrLvl.removeAllItems(); // Clear existing items
 
-        for (DTOaccount data : yrLvlList) {
+        for (AccountDTO data : yrLvlList) {
             comboYrLvl.addItem(data.getYrlvl());
         }
     }
 
     private void insertContentComboDepartment() {
-        List<DTOaccount> departmentList = ComLabMethods.departmentComboContent();
+        List<AccountDTO> departmentList = ComLabMethods.departmentComboContent();
         comboDepartment.removeAllItems(); // Clear existing items
 
-        for (DTOaccount data : departmentList) {
+        for (AccountDTO data : departmentList) {
             comboDepartment.addItem(data.getDepartment());
         }
 
@@ -304,8 +304,8 @@ public class AddAccount extends javax.swing.JDialog {
             lblWarningMsg.setText("Your password and confirmation password don't match.");
         } else if (pass.length() < 8) {
             lblWarningMsg.setText("Password should be at least 8 characters long.");
-        } else if (!fname.matches("[A-Za-z0-9\\-.]+") || !lname.matches("[A-Za-z0-9\\-.]+")) {
-            lblWarningMsg.setText("Name should only consist of letters, numbers, dashes, or dots.");
+        } else if (!fname.matches("[A-Za-z0-9\\-. ]+")) {
+            lblWarningMsg.setText("Name should only consist of letters, numbers, dashes, dots, or spaces.");
         } else if (!email.matches("[\\w.-]+@[a-zA-Z0-9-]+\\.[a-zA-Z]{2,}")) {
             lblWarningMsg.setText("Invalid email address format.");
         } else {

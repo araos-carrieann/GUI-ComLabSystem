@@ -4,7 +4,7 @@
  */
 package computerlabsystem;
 
-import static computerlabsystem.UserDashboardMethods.formatDuration;
+import static computerlabsystem.UserDashboardDAO.formatDuration;
 import java.time.Duration;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -35,8 +35,8 @@ public class UsersDashboard extends javax.swing.JFrame {
 
     public void showTimeSpentTotalLogs(String sfID) {
         int id = ComLabMethods.getUserID(sfID);
-        Duration timeSpent = UserDashboardMethods.getTotalTimeSpentByUser(id);
-        int totalLogs = UserDashboardMethods.getTotalLogsByUser(id);
+        Duration timeSpent = UserDashboardDAO.getTotalTimeSpentByUser(id);
+        int totalLogs = UserDashboardDAO.getTotalLogsByUser(id);
 
         lblTimeSpent.setText(formatDuration(timeSpent));
         lblTotalLogs.setText(String.valueOf(totalLogs));
@@ -47,9 +47,9 @@ public class UsersDashboard extends javax.swing.JFrame {
         myLogs.setRowCount(0);
 
         int id = ComLabMethods.getUserID(sfID);
-        List<DTOlogs> logsList = DAOlogs.getUserLogs(id);
+        List<LogsDTO> logsList = LogsDAO.getUserLogs(id);
 
-        for (DTOlogs acct : logsList) {
+        for (LogsDTO acct : logsList) {
             Object[] logsRow = {acct.getLoginTime(), acct.getLogoutTime(), acct.getAccountableName()};
             myLogs.addRow(logsRow);
         }
@@ -233,7 +233,7 @@ public class UsersDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_lblUserNameMouseClicked
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        UserDashboardMethods.userLogout(getSfID());
+        UserDashboardDAO.userLogout(getSfID());
         dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 

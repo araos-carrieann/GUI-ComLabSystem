@@ -10,7 +10,7 @@ package computerlabsystem;
  */
 public class Visitors extends javax.swing.JDialog {
 
-    private VisitorsMethods visitorsMethods;
+    private VisitorsDAO visitorsMethods;
 
     /**
      * Creates new form Visitors
@@ -18,7 +18,7 @@ public class Visitors extends javax.swing.JDialog {
     public Visitors(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        visitorsMethods = new VisitorsMethods(); // Initialize visitorsMethods
+        visitorsMethods = new VisitorsDAO(); // Initialize visitorsMethods
         lblWarningMessage.setVisible(false);
         txtOtherPurpose.setVisible(false);
     }
@@ -201,8 +201,8 @@ public class Visitors extends javax.swing.JDialog {
             } else {
                 purpose = txtOtherPurpose.getText();
             }
-            VisitorsMethods.createVisitorsTable();
-            ComLabMethods.createLogs();
+            VisitorsDAO.createVisitorsTable();
+            LogsDAO.createLogs();
             // All information provided, proceed with logging
             String msg = visitorsMethods.insertVisitorData(identity, fullname, mobileNumber, email, gender, purpose);
             int id = ComLabMethods.getVisitorID(identity);
@@ -211,6 +211,7 @@ public class Visitors extends javax.swing.JDialog {
             VisitorsDashboard visitorDash = new VisitorsDashboard(identity, fullname);
             visitorDash.setVisible(true);
             dispose();
+            System.out.println("haif");
         }
 
     }//GEN-LAST:event_btnLogsActionPerformed

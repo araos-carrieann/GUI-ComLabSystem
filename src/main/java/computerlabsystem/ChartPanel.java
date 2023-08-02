@@ -31,9 +31,8 @@ public class ChartPanel extends javax.swing.JPanel {
     }
 
     private void setData() {
-        List<DTOchart> lists = new ArrayList<>();
-        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(
-                "SELECT\n"
+        List<ChartDTO> lists = new ArrayList<>();
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT\n"
                 + "    TO_CHAR(sub.login_time, 'Month') AS Month,\n"
                 + "    SUM(CASE WHEN sub.role = 'FACULTY' THEN 1 ELSE 0 END) AS facultyLogs,\n"
                 + "    SUM(CASE WHEN sub.role = 'ADMIN' THEN 1 ELSE 0 END) AS adminLogs,\n"
@@ -48,22 +47,22 @@ public class ChartPanel extends javax.swing.JPanel {
                 + "            logs\n"
                 + "        JOIN\n"
                 + "            users ON logs.user_id_users = users.id\n"
+                + "        WHERE\n"
+                + "            login_time >= DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '6 month'\n"
                 + "        ORDER BY\n"
                 + "            login_time DESC\n"
                 + "    ) AS sub\n"
                 + "GROUP BY\n"
-                + "    sub.login_time,\n"
                 + "    TO_CHAR(sub.login_time, 'Month'),\n"
                 + "    sub.month_year\n"
                 + "ORDER BY\n"
-                + "    sub.login_time DESC;"
-        ); ResultSet rsltSet = stmt.executeQuery()) {
+                + "    TO_DATE(sub.month_year, 'MMYYYY') DESC;"); ResultSet rsltSet = stmt.executeQuery()) {
             while (rsltSet.next()) {
                 String month = rsltSet.getString("Month");
                 int studentLogs = rsltSet.getInt("studentLogs");
                 int facultyLogs = rsltSet.getInt("facultyLogs");
                 int adminLogs = rsltSet.getInt("adminLogs");
-                lists.add(new DTOchart(month, studentLogs, facultyLogs, adminLogs));
+                lists.add(new ChartDTO(month, studentLogs, facultyLogs, adminLogs));
             }
             // Close the ResultSet and PreparedStatement
             rsltSet.close();
@@ -72,7 +71,7 @@ public class ChartPanel extends javax.swing.JPanel {
             // Add Data to the chart
             chart.clear(); // Clear the existing data in the chart
             for (int i = lists.size() - 1; i >= 0; i--) { // Reverse order to get the past month data first
-                DTOchart d = lists.get(i);
+                ChartDTO d = lists.get(i);
                 chart.addData(new ModelChart(d.getMonth(), new double[]{d.getStudentLogs(), d.getFacultyLogs(), d.getAdminLogs()}));
             }
 

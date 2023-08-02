@@ -188,8 +188,8 @@ public class LoginPanel extends javax.swing.JPanel {
                 String lname = parts[4];
 
                 String fullName = fname + " " + lname;
-                VisitorsMethods.createVisitorsTable();
-                ComLabMethods.createLogs();
+                VisitorsDAO.createVisitorsTable();
+                LogsDAO.createLogs();
                 if (status.equals("ACTIVE")) {
                     if (userRole.equals("ADMIN")) {
                         ComLabMethods.logUserLogin(sfID, fullName, pass);
@@ -249,6 +249,7 @@ public class LoginPanel extends javax.swing.JPanel {
                 System.exit(0);
             }
         });
+        SwingUtilities.getWindowAncestor((Component) evt.getSource()).dispose();
         dialog.setVisible(true);
     }//GEN-LAST:event_btnVisitorActionPerformed
 

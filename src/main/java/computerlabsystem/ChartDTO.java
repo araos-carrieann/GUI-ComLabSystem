@@ -8,14 +8,14 @@ package computerlabsystem;
  *
  * @author araos
  */
-public class DTOchart {
+public class ChartDTO {
     
     private String Month;
     private double studentLogs;
     private double facultyLogs;
     private double adminLogs;
 
-    public DTOchart(String Month, double studentLogs, double facultyLogs, double adminLogs) {
+    public ChartDTO(String Month, double studentLogs, double facultyLogs, double adminLogs) {
         this.Month = Month;
         this.studentLogs = studentLogs;
         this.facultyLogs = facultyLogs;

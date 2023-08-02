@@ -4,18 +4,17 @@
  */
 package computerlabsystem;
 
-import static computerlabsystem.ComLabMethods.verifyPassword;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 
 /**
  *
  * @author araos
  */
-public class VisitorsMethods {
+public class VisitorsDAO {
 
     public static void createVisitorsTable() {
         try (Connection conn = DatabaseConnector.getConnection()) {
@@ -67,7 +66,7 @@ public class VisitorsMethods {
     }
 
     public static String VisitorInsertLog(int userId, String fullName) {
-        ComLabMethods.createLogs();
+        LogsDAO.createLogs();
         try (Connection conn = DatabaseConnector.getConnection()) {
             String insertQuery = "INSERT INTO logs (user_id_visitors, fullname, login_time) VALUES (?, ?, DEFAULT)";
 
@@ -100,11 +99,25 @@ public class VisitorsMethods {
             return false;
         }
     }
-    
-        public static void visitorsLogout(String codeidentity) {
-        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("UPDATE logs SET logout_time = TO_TIMESTAMP(TO_CHAR(CURRENT_TIMESTAMP, 'YYY-MM-DD HH24:MI:SS'),'YYY-MM-DD HH24:MI:SS') WHERE user_id_visitors = (SELECT id FROM logs WHERE codeidentity = ?) AND logout_time IS NULL")) {
-            stmt.setString(1, codeidentity);
-            stmt.executeUpdate();
+
+    public static void visitorsLogout(String codeidentity) {
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement selectStmt = conn.prepareStatement("SELECT id FROM visitors WHERE codeidentity = ?"); PreparedStatement updateStmt = conn.prepareStatement("UPDATE logs SET logout_time = CURRENT_TIMESTAMP WHERE user_id_visitors = ? AND logout_time IS NULL")) {
+
+            // Set the parameter for the SELECT query
+            selectStmt.setString(1, codeidentity);
+
+            // Execute the SELECT query to get the user_id_visitors
+            try (ResultSet resultSet = selectStmt.executeQuery()) {
+                if (resultSet.next()) {
+                    int userIdVisitors = resultSet.getInt("id");
+
+                    // Set the parameter for the UPDATE query
+                    updateStmt.setInt(1, userIdVisitors);
+
+                    // Execute the UPDATE query to set the logout_time
+                    updateStmt.executeUpdate();
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

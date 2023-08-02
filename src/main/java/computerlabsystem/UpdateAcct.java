@@ -5,7 +5,6 @@
 package computerlabsystem;
 
 import java.util.List;
-import javax.swing.JRadioButton;
 
 /**
  *
@@ -84,28 +83,28 @@ public class UpdateAcct extends javax.swing.JDialog {
     }
 
     private void insertContentComboProgram() {
-        List<DTOaccount> programList = ComLabMethods.programComboContent();
+        List<AccountDTO> programList = ComLabMethods.programComboContent();
         comboProgram.removeAllItems(); // Clear existing items
 
-        for (DTOaccount data : programList) {
+        for (AccountDTO data : programList) {
             comboProgram.addItem(data.getProgram());
         }
     }
 
     private void insertContentComboYearLvl() {
-        List<DTOaccount> yrLvlList = ComLabMethods.yearlvlComboContent();
+        List<AccountDTO> yrLvlList = ComLabMethods.yearlvlComboContent();
         comboYrLvl.removeAllItems(); // Clear existing items
 
-        for (DTOaccount data : yrLvlList) {
+        for (AccountDTO data : yrLvlList) {
             comboYrLvl.addItem(data.getYrlvl());
         }
     }
 
     private void insertContentComboDepartment() {
-        List<DTOaccount> departmentList = ComLabMethods.departmentComboContent();
+        List<AccountDTO> departmentList = ComLabMethods.departmentComboContent();
         comboDepartment.removeAllItems(); // Clear existing items
 
-        for (DTOaccount data : departmentList) {
+        for (AccountDTO data : departmentList) {
             comboDepartment.addItem(data.getDepartment());
         }
     }
@@ -331,7 +330,7 @@ public class UpdateAcct extends javax.swing.JDialog {
                     lblWarningMsg.setText("Please specify your program/year level.");
                 } else {
                     department = "null";
-                    msg = ComLabMethods.updateAccount(id, role, stuFaculID, firstName, lastName, email, program, yearLevel, department);
+                    msg = AccountDAO.updateAccount(id, role, stuFaculID, firstName, lastName, email, program, yearLevel, department);
                     lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
                     lblWarningMsg.setText(msg);
                 }
@@ -344,7 +343,7 @@ public class UpdateAcct extends javax.swing.JDialog {
                     role = rbtnFaculty.getText();
                     program = null;
                     yearLevel = null;
-                    msg = ComLabMethods.updateAccount(id, role, stuFaculID, firstName, lastName, email, program, yearLevel, department);
+                    msg = AccountDAO.updateAccount(id, role, stuFaculID, firstName, lastName, email, program, yearLevel, department);
                     lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
                     lblWarningMsg.setText(msg);
 
@@ -355,7 +354,7 @@ public class UpdateAcct extends javax.swing.JDialog {
                 department = null;
                 program = null;
                 yearLevel = null;
-                msg = ComLabMethods.updateAccount(id, role, stuFaculID, firstName, lastName, email, program, yearLevel, department);
+                msg = AccountDAO.updateAccount(id, role, stuFaculID, firstName, lastName, email, program, yearLevel, department);
                 lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
                 lblWarningMsg.setText(msg);
             }

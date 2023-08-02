@@ -4,7 +4,6 @@
  */
 package computerlabsystem;
 
-import java.awt.Color;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,9 +27,9 @@ public class ComboBoxContentDepartment extends javax.swing.JDialog {
         DefaultTableModel allDepartment = (DefaultTableModel) departmentTable.getModel();
         allDepartment.setRowCount(0);
 
-        List<DTOaccount> departmentList = ComLabMethods.departmentComboContent();
+        List<AccountDTO> departmentList = ComLabMethods.departmentComboContent();
 
-        for (DTOaccount department : departmentList) {
+        for (AccountDTO department : departmentList) {
             Object[] departmentRow = {department.getDepartment()};
             allDepartment.addRow(departmentRow);
         }

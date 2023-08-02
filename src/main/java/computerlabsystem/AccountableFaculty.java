@@ -42,10 +42,10 @@ public class AccountableFaculty extends javax.swing.JDialog {
     }
 
     private void insertContentProfessor() {
-        List<DTOaccount> accountableNameList = ComLabMethods.professorComboContent();
+        List<AccountDTO> accountableNameList = ComLabMethods.professorComboContent();
         accountableCombobox.removeAllItems(); // Clear existing items
 
-        for (DTOaccount data : accountableNameList) {
+        for (AccountDTO data : accountableNameList) {
             accountableCombobox.addItem(data.getAccountablename());
         }
     }

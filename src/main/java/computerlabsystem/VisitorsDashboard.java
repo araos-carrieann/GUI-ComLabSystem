@@ -112,7 +112,7 @@ public class VisitorsDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        VisitorsMethods.visitorsLogout(getCodeIdentity());
+        VisitorsDAO.visitorsLogout(getCodeIdentity());
         dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 

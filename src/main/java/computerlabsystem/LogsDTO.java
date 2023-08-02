@@ -8,7 +8,7 @@ package computerlabsystem;
  *
  * @author araos
  */
-public class DTOlogs {
+public class LogsDTO {
 
     private int userID;
     private int logsID;
@@ -27,13 +27,13 @@ public class DTOlogs {
     private String loginTime;
     private String logoutTime;
 
-    public DTOlogs(String accountableName, String loginTime, String logoutTime) {
+    public LogsDTO(String accountableName, String loginTime, String logoutTime) {
         this.accountableName = accountableName;
         this.loginTime = loginTime;
         this.logoutTime = logoutTime;
     }
 
-    public DTOlogs(String role, String fullname, String program, String yrlvl, String department, String loginTime, String logoutTime, String accountableName) {
+    public LogsDTO(String role, String fullname, String program, String yrlvl, String department, String loginTime, String logoutTime, String accountableName) {
         this.role = role;
         this.fullname = fullname;
         this.program = program;

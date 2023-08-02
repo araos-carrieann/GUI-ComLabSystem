@@ -4,17 +4,12 @@
  */
 package computerlabsystem;
 
-import computerlabsystem.Design.PanelBorder;
 import java.awt.Color;
 import java.util.List;
-import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JScrollBar;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import scroll.ScrollBarCustom;
 
 /**
  *
@@ -37,13 +32,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         this.sfID = sfID;
         initComponents();
         lblAdminName.setText(fname);
-        displayLongestSpent();
-        displayMostLogs();
-        displayLogs();
-        displayVisitorsLogs();
-        displayStudentAccount();
-        displayFacultyAccount();
-        displayAdminAccount();
         ComLabMethods clm = new ComLabMethods();
         clm.Scroll(studentAcctPane);
         clm.Scroll(facultyAcctPane);
@@ -57,6 +45,13 @@ public class AdminDashboard extends javax.swing.JFrame {
         clm.Table(adminAccountTable);
         clm.Table(logsTable);
         clm.Table(visitorsLogsTable);
+        displayLongestSpent();
+        displayMostLogs();
+        displayLogs();
+        displayVisitorsLogs();
+        displayStudentAccount();
+        displayFacultyAccount();
+        displayAdminAccount();
 
     }
 
@@ -64,9 +59,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         DefaultTableModel studentAccount = (DefaultTableModel) studentAcctTable.getModel();
         studentAccount.setRowCount(0);
 
-        List<DTOaccount> acctList = ComLabMethods.getAllStudentDatas();
+        List<AccountDTO> acctList = ComLabMethods.getAllStudentDatas();
 
-        for (DTOaccount acct : acctList) {
+        for (AccountDTO acct : acctList) {
             Object[] row = {acct.getStudentfacultyID(), acct.getFirstName(), acct.getLastName(), acct.getEmail(), acct.getProgram(), acct.getYrlvl()};
             studentAccount.addRow(row);
         }
@@ -94,9 +89,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         DefaultTableModel facultyAccount = (DefaultTableModel) facultyAcctTable.getModel();
         facultyAccount.setRowCount(0);
 
-        List<DTOaccount> acctList = ComLabMethods.getAllFacultiesDatas();
+        List<AccountDTO> acctList = ComLabMethods.getAllFacultiesDatas();
 
-        for (DTOaccount acct : acctList) {
+        for (AccountDTO acct : acctList) {
             Object[] row = {acct.getStudentfacultyID(), acct.getDepartment(), acct.getFirstName(), acct.getLastName(), acct.getEmail()};
             facultyAccount.addRow(row);
         }
@@ -107,9 +102,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         DefaultTableModel adminAccount = (DefaultTableModel) adminAccountTable.getModel();
         adminAccount.setRowCount(0);
 
-        List<DTOaccount> acctList = ComLabMethods.getAllAdminDatas();
+        List<AccountDTO> acctList = ComLabMethods.getAllAdminDatas();
 
-        for (DTOaccount acct : acctList) {
+        for (AccountDTO acct : acctList) {
             Object[] row = {acct.getStudentfacultyID(), acct.getFirstName(), acct.getLastName(), acct.getEmail()};
             adminAccount.addRow(row);
         }
@@ -144,9 +139,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         DefaultTableModel allLogs = (DefaultTableModel) logsTable.getModel();
         allLogs.setRowCount(0);
 
-        List<DTOlogs> acctList = DAOlogs.getAllLogs();
+        List<LogsDTO> acctList = LogsDAO.getAllLogs();
 
-        for (DTOlogs acct : acctList) {
+        for (LogsDTO acct : acctList) {
             Object[] logsRow = {acct.getRole(), acct.getFullname(), acct.getProgram(), acct.getYrlvl(), acct.getDepartment(), acct.getLoginTime(), acct.getLogoutTime(), acct.getAccountableName()};
             allLogs.addRow(logsRow);
         }
@@ -156,9 +151,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         DefaultTableModel visitorsLogs = (DefaultTableModel) visitorsLogsTable.getModel();
         visitorsLogs.setRowCount(0);
 
-        List<DTOvisitors> visitorsList = DAOlogs.getAllVisitorsLogs();
+        List<VisitorsDTO> visitorsList = LogsDAO.getAllVisitorsLogs();
 
-        for (DTOvisitors acct : visitorsList) {
+        for (VisitorsDTO acct : visitorsList) {
             Object[] logsRow = {acct.getFullname(), acct.getEmail(), acct.getMobilenumber(), acct.getGender(), acct.getPurpose(), acct.getLoginTime(), acct.getLogoutTime()};
             visitorsLogs.addRow(logsRow);
         }
@@ -166,27 +161,27 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void insertContentComboProgram() {
         JComboBox<String> comboBox = new JComboBox<>();
-        List<DTOaccount> programList = ComLabMethods.programComboContent();
+        List<AccountDTO> programList = ComLabMethods.programComboContent();
         if (!programList.isEmpty()) {
-            DTOaccount acct = programList.get(0);
+            AccountDTO acct = programList.get(0);
             comboBox.addItem(acct.getProgram());
         }
     }
 
     private void insertContentComboYearLvl() {
         JComboBox<String> comboBox = new JComboBox<>();
-        List<DTOaccount> yrLvlList = ComLabMethods.yearlvlComboContent();
+        List<AccountDTO> yrLvlList = ComLabMethods.yearlvlComboContent();
         if (!yrLvlList.isEmpty()) {
-            DTOaccount acct = yrLvlList.get(1);
+            AccountDTO acct = yrLvlList.get(1);
             comboBox.addItem(acct.getYrlvl());
         }
     }
 
     private void insertContentComboDepartment() {
         JComboBox<String> comboBox = new JComboBox<>();
-        List<DTOaccount> departmentList = ComLabMethods.departmentComboContent();
+        List<AccountDTO> departmentList = ComLabMethods.departmentComboContent();
         if (!departmentList.isEmpty()) {
-            DTOaccount acct = departmentList.get(2);
+            AccountDTO acct = departmentList.get(2);
             comboBox.addItem(acct.getDepartment());
         }
     }
@@ -195,9 +190,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         DefaultTableModel allDepartment = (DefaultTableModel) logsTable.getModel();
         allDepartment.setRowCount(0);
 
-        List<DTOlogs> departmentList = DAOlogs.getAllLogs();
+        List<LogsDTO> departmentList = LogsDAO.getAllLogs();
 
-        for (DTOlogs acct : departmentList) {
+        for (LogsDTO acct : departmentList) {
             Object[] departmentRow = {acct.getDepartment()};
             allDepartment.addRow(departmentRow);
         }
@@ -207,9 +202,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         DefaultTableModel mostLogs = (DefaultTableModel) mostLogsTable.getModel();
         mostLogs.setRowCount(0);
 
-        List<DTOaccount> mostLogsList = ComLabMethods.mostLogs();
+        List<AccountDTO> mostLogsList = ComLabMethods.mostLogs();
 
-        for (DTOaccount acct : mostLogsList) {
+        for (AccountDTO acct : mostLogsList) {
             Object[] mLogs = {acct.getRole(), acct.getFullname(), acct.getMostLogs()};
             mostLogs.addRow(mLogs);
         }
@@ -219,9 +214,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         DefaultTableModel longestSpent = (DefaultTableModel) longestTimeSpentTable.getModel();
         longestSpent.setRowCount(0);
 
-        List<DTOaccount> longestTimeSpent = ComLabMethods.longestTimeSpent();
+        List<AccountDTO> longestTimeSpent = ComLabMethods.longestTimeSpent();
 
-        for (DTOaccount acct : longestTimeSpent) {
+        for (AccountDTO acct : longestTimeSpent) {
             Object[] longestTimeS = {acct.getRole(), acct.getFullname(), acct.getLogsDuration()};
             longestSpent.addRow(longestTimeS);
         }
@@ -551,6 +546,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         longestTimeSpentTable.setEnabled(false);
+        longestTimeSpentTable.setOpaque(false);
         longestTimeSpentTable.setRowHeight(22);
         longestTimeSpentTable.setSelectionBackground(new java.awt.Color(55, 126, 249));
         longestTimeSpentTable.setShowGrid(true);
@@ -685,6 +681,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         btnDeleteStuAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDeleteStuAcct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-delete-20.png"))); // NOI18N
         btnDeleteStuAcct.setText("DELETE");
+        btnDeleteStuAcct.setEnabled(false);
         btnDeleteStuAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteStuAcctActionPerformed(evt);
@@ -750,6 +747,11 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         ));
         studentAcctTable.setShowGrid(true);
+        studentAcctTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                studentAcctTableMouseClicked(evt);
+            }
+        });
         studentAcctPane.setViewportView(studentAcctTable);
 
         studentAccountPanel.add(studentAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 990, 330));
@@ -804,6 +806,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         btnDeleteFacultyAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDeleteFacultyAcct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-delete-20.png"))); // NOI18N
         btnDeleteFacultyAcct.setText("DELETE");
+        btnDeleteFacultyAcct.setEnabled(false);
         btnDeleteFacultyAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteFacultyAcctActionPerformed(evt);
@@ -848,6 +851,11 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         ));
         facultyAcctTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        facultyAcctTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                facultyAcctTableMouseClicked(evt);
+            }
+        });
         facultyAcctPane.setViewportView(facultyAcctTable);
 
         facultyAccountPanel.add(facultyAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 1000, 320));
@@ -888,6 +896,11 @@ public class AdminDashboard extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        adminAccountTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminAccountTableMouseClicked(evt);
+            }
+        });
         adminPane.setViewportView(adminAccountTable);
         if (adminAccountTable.getColumnModel().getColumnCount() > 0) {
             adminAccountTable.getColumnModel().getColumn(0).setResizable(false);
@@ -905,6 +918,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         btnDeleteAdminAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDeleteAdminAcct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-delete-20.png"))); // NOI18N
         btnDeleteAdminAcct.setText("DELETE");
+        btnDeleteAdminAcct.setEnabled(false);
         btnDeleteAdminAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteAdminAcctActionPerformed(evt);
@@ -1134,7 +1148,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         if (selectedRow != 1) {
             String studentID = (String) model.getValueAt(selectedRow, 0);
             model.removeRow(selectedRow);
-            DAOaccount.deleteAcct(studentID);
+            AccountDAO.deleteAcct(studentID);
         }
     }//GEN-LAST:event_btnDeleteStuAcctActionPerformed
 
@@ -1156,7 +1170,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         if (selectedRow != 1) {
             String facultyID = (String) model.getValueAt(selectedRow, 0);
             model.removeRow(selectedRow);
-            DAOaccount.deleteAcct(facultyID);
+            AccountDAO.deleteAcct(facultyID);
         } else {
             // lblWarningMessage.setText("Please Select a row you want to delete before hitting the button");
         }
@@ -1298,7 +1312,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         if (selectedRow != 1) {
             String adminID = (String) model.getValueAt(selectedRow, 0);
             model.removeRow(selectedRow);
-            DAOaccount.deleteAcct(adminID);
+            AccountDAO.deleteAcct(adminID);
             displayStudentAccount();
             displayFacultyAccount();
             displayAdminAccount();
@@ -1371,7 +1385,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
         System.out.println(getSfID());
-        UserDashboardMethods.userLogout(getSfID());
+        UserDashboardDAO.userLogout(getSfID());
         dispose();
     }//GEN-LAST:event_lblLogoutMouseClicked
 
@@ -1382,6 +1396,18 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void lblLogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseExited
         panelLogout.setBackground(new Color(0, 0, 0, 0));
     }//GEN-LAST:event_lblLogoutMouseExited
+
+    private void studentAcctTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentAcctTableMouseClicked
+        btnDeleteStuAcct.setEnabled(true);
+    }//GEN-LAST:event_studentAcctTableMouseClicked
+
+    private void facultyAcctTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_facultyAcctTableMouseClicked
+        btnDeleteFacultyAcct.setEnabled(true);
+    }//GEN-LAST:event_facultyAcctTableMouseClicked
+
+    private void adminAccountTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminAccountTableMouseClicked
+        btnDeleteAdminAcct.setEnabled(true);
+    }//GEN-LAST:event_adminAccountTableMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private computerlabsystem.Design.PanelGradient UsersLogsPanel;
