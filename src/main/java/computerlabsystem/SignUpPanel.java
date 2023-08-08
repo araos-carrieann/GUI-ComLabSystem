@@ -358,18 +358,20 @@ public class SignUpPanel extends javax.swing.JPanel {
             lblWarningMsg.setText("Please specify your name.");
         } else if (email.isEmpty()) {
             lblWarningMsg.setText("Please input your email.");
+        } else if (!pass.equals(confirmPass)) {
+            lblWarningMsg.setText("Your password and confirmation password don't match.");
         } else if (pass.isEmpty()) {
             lblWarningMsg.setText("Please input your password.");
         } else if (confirmPass.isEmpty()) {
             lblWarningMsg.setText("Please input the confirmation password.");
-        } else if (!pass.equals(confirmPass)) {
-            lblWarningMsg.setText("Your password and confirmation password don't match.");
         } else if (pass.length() < 8) {
             lblWarningMsg.setText("Password should be at least 8 characters long.");
         } else if (!firstName.matches("[A-Za-z0-9\\-. ]+") || !lastName.matches("[A-Za-z0-9\\-. ]+")) {
             lblWarningMsg.setText("Name should only consist of letters, numbers, dashes, dots, or spaces.");
         } else if (!email.matches("[\\w.-]+@[a-zA-Z0-9-]+\\.[a-zA-Z]{2,}")) {
             lblWarningMsg.setText("Invalid email address format.");
+        } else if (!rbtnStudent.isSelected() && !rbtnFaculty.isSelected()) {
+            lblWarningMsg.setText("Select your Role");
         } else {
             String hashedPassword = ComLabMethods.hashPassword(pass);
             if (rbtnStudent.isSelected()) {
@@ -378,12 +380,16 @@ public class SignUpPanel extends javax.swing.JPanel {
                 } else {
                     role = rbtnStudent.getText();
                     department = null;
-                    String msg = ComLabMethods.registerUser(status, role, studentFacultyID, firstName, lastName, email, hashedPassword, program, yearLevel, department, code);
-                    lblWarningMsg.setText(msg);
-                    lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
-                    btnSignIn.setEnabled(false);
-                    btnClear.setEnabled(false);
-                    System.out.println("pogiiiii");
+                    boolean success = ComLabMethods.registerUser(status, role, studentFacultyID, firstName, lastName, email, hashedPassword, program, yearLevel, department, code);
+                    if (success) {
+                        lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
+                        lblWarningMsg.setText("User registered successfully.");
+                        btnSignIn.setEnabled(false);
+                        btnClear.setEnabled(false);
+                    } else {
+                        lblWarningMsg.setText("User registration failed. Account already exists.");
+                        System.out.println("failed");
+                    }
                 }
             } else if (rbtnFaculty.isSelected()) {
                 role = rbtnFaculty.getText();
@@ -392,12 +398,16 @@ public class SignUpPanel extends javax.swing.JPanel {
                 } else {
                     program = null;
                     yearLevel = null;
-                    String msg = ComLabMethods.registerUser(status, role, studentFacultyID, firstName, lastName, email, hashedPassword, program, yearLevel, department, code);
-                    lblWarningMsg.setText(msg);
-                    lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
-                    btnSignIn.setEnabled(false);
-                    btnClear.setEnabled(false);
-                    System.out.println("pogiiiii");
+                    boolean success = ComLabMethods.registerUser(status, role, studentFacultyID, firstName, lastName, email, hashedPassword, program, yearLevel, department, code);
+                    if (success) {
+                        lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
+                        lblWarningMsg.setText("User registered successfully.");
+                        btnSignIn.setEnabled(false);
+                        btnClear.setEnabled(false);
+                    } else {
+                        lblWarningMsg.setText("User registration failed. Account already exists.");
+                        System.out.println("failed");
+                    }
                 }
             }
         }

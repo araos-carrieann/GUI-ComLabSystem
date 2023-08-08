@@ -19,7 +19,6 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private String sfID;
 
-    // Other class members and methods
     public String getSfID() {
         return sfID;
     }
@@ -55,7 +54,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     }
 
-    private void displayStudentAccount() {
+    void displayStudentAccount() {
         DefaultTableModel studentAccount = (DefaultTableModel) studentAcctTable.getModel();
         studentAccount.setRowCount(0);
 
@@ -85,7 +84,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     }
 
-    private void displayFacultyAccount() {
+    void displayFacultyAccount() {
         DefaultTableModel facultyAccount = (DefaultTableModel) facultyAcctTable.getModel();
         facultyAccount.setRowCount(0);
 
@@ -98,7 +97,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblTotalNumberUsers.setText(String.valueOf(ComLabMethods.getTotalUserRows()));
     }
 
-    private void displayAdminAccount() {
+    void displayAdminAccount() {
         DefaultTableModel adminAccount = (DefaultTableModel) adminAccountTable.getModel();
         adminAccount.setRowCount(0);
 
@@ -135,7 +134,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     }
 
-    private void displayLogs() {
+    void displayLogs() {
         DefaultTableModel allLogs = (DefaultTableModel) logsTable.getModel();
         allLogs.setRowCount(0);
 
@@ -147,7 +146,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         }
     }
 
-    private void displayVisitorsLogs() {
+    void displayVisitorsLogs() {
         DefaultTableModel visitorsLogs = (DefaultTableModel) visitorsLogsTable.getModel();
         visitorsLogs.setRowCount(0);
 
@@ -198,7 +197,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         }
     }
 
-    private void displayMostLogs() {
+    void displayMostLogs() {
         DefaultTableModel mostLogs = (DefaultTableModel) mostLogsTable.getModel();
         mostLogs.setRowCount(0);
 
@@ -210,7 +209,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         }
     }
 
-    private void displayLongestSpent() {
+    void displayLongestSpent() {
         DefaultTableModel longestSpent = (DefaultTableModel) longestTimeSpentTable.getModel();
         longestSpent.setRowCount(0);
 
@@ -263,6 +262,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         panelBorder9 = new computerlabsystem.Design.PanelBorder();
         lblActiveIcon = new javax.swing.JLabel();
         lblNumberOfActive = new javax.swing.JLabel();
+        btnRefresh2 = new javax.swing.JLabel();
         accountPage = new computerlabsystem.Design.PanelGradient();
         jLabel6 = new javax.swing.JLabel();
         panelBorder10 = new computerlabsystem.Design.PanelBorder();
@@ -289,6 +289,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         btnDeleteAdminAcct = new javax.swing.JButton();
         txtAdminSearchAcct = new javax.swing.JTextField();
         btnUpdateAdminAcct = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JLabel();
         logsPage = new computerlabsystem.Design.PanelGradient();
         panelBorder5 = new computerlabsystem.Design.PanelBorder();
         jTabbedPane3 = new javax.swing.JTabbedPane();
@@ -304,6 +305,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         visitorsLogsTable = new javax.swing.JTable();
         txtVisitorsLogsSearch = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        btnRefresh1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -657,6 +659,15 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         homePage.add(panelBorder9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 220, 80));
 
+        btnRefresh2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnRefresh2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/refresh.png"))); // NOI18N
+        btnRefresh2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRefresh2MouseClicked(evt);
+            }
+        });
+        homePage.add(btnRefresh2, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, 80, 40));
+
         cardPanel.add(homePage, "card6");
 
         accountPage.setColorPrimary(new java.awt.Color(255, 255, 204));
@@ -958,6 +969,15 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         accountPage.add(panelBorder10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 1050, 490));
 
+        btnRefresh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/refresh.png"))); // NOI18N
+        btnRefresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRefreshMouseClicked(evt);
+            }
+        });
+        accountPage.add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, 80, 40));
+
         cardPanel.add(accountPage, "card2");
 
         logsPage.setColorPrimary(new java.awt.Color(255, 255, 204));
@@ -1107,6 +1127,15 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 48)); // NOI18N
         jLabel5.setText("LOGS");
         logsPage.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 170, 40));
+
+        btnRefresh1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnRefresh1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/refresh.png"))); // NOI18N
+        btnRefresh1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRefresh1MouseClicked(evt);
+            }
+        });
+        logsPage.add(btnRefresh1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, 80, 40));
 
         cardPanel.add(logsPage, "card4");
 
@@ -1409,6 +1438,36 @@ public class AdminDashboard extends javax.swing.JFrame {
         btnDeleteAdminAcct.setEnabled(true);
     }//GEN-LAST:event_adminAccountTableMouseClicked
 
+    private void btnRefreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRefreshMouseClicked
+        displayLongestSpent();
+        displayMostLogs();
+        displayLogs();
+        displayVisitorsLogs();
+        displayStudentAccount();
+        displayFacultyAccount();
+        displayAdminAccount();
+    }//GEN-LAST:event_btnRefreshMouseClicked
+
+    private void btnRefresh1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRefresh1MouseClicked
+        displayLongestSpent();
+        displayMostLogs();
+        displayLogs();
+        displayVisitorsLogs();
+        displayStudentAccount();
+        displayFacultyAccount();
+        displayAdminAccount();
+    }//GEN-LAST:event_btnRefresh1MouseClicked
+
+    private void btnRefresh2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRefresh2MouseClicked
+        displayLongestSpent();
+        displayMostLogs();
+        displayLogs();
+        displayVisitorsLogs();
+        displayStudentAccount();
+        displayFacultyAccount();
+        displayAdminAccount();
+    }//GEN-LAST:event_btnRefresh2MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private computerlabsystem.Design.PanelGradient UsersLogsPanel;
     private computerlabsystem.Design.PanelGradient accountPage;
@@ -1422,6 +1481,9 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteStuAcct;
     private javax.swing.JButton btnDepartment;
     private javax.swing.JButton btnProgram;
+    private javax.swing.JLabel btnRefresh;
+    private javax.swing.JLabel btnRefresh1;
+    private javax.swing.JLabel btnRefresh2;
     private javax.swing.JButton btnUpdateAdminAcct;
     private javax.swing.JButton btnUpdateFacultyAcct;
     private javax.swing.JButton btnUpdateStudentAccount;

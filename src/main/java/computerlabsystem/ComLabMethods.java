@@ -50,8 +50,8 @@ public class ComLabMethods {
         return BCrypt.checkpw(password, hashedPassword);
     }
 
-    public static String registerUser(String status, String role, String studentFacultyID, String fname, String lname, String email, String pass, String program, String yrLvl, String department, String code) {
-        String message = null;
+    public static boolean registerUser(String status, String role, String studentFacultyID, String fname, String lname, String email, String pass, String program, String yrLvl, String department, String code) {
+        boolean success = false;
         try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
             // Create the table if it doesn't exist
             String createTableQuery = "CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, status VARCHAR(10) NOT NULL, studentFacultyID VARCHAR(10) NOT NULL, role VARCHAR(10) NOT NULL, firstName VARCHAR(50) NOT NULL, lastName VARCHAR(50) NOT NULL, email VARCHAR(50) NOT NULL, password VARCHAR(60) NOT NULL, program VARCHAR(30), yearLvl VARCHAR(10), department VARCHAR(30), code VARCHAR(30))";
@@ -65,9 +65,9 @@ public class ComLabMethods {
             // Execute the SELECT query
             ResultSet resultSet = selectStmt.executeQuery();
 
-            // If a row is returned, display a message indicating that the input already exists
+            // If a row is returned, set success to false
             if (resultSet.next()) {
-                message = "The Account already exists.";
+                success = false;
             } else {
                 // If no rows are returned, proceed with the insert operation
                 String insertQuery = "INSERT INTO users (status, studentFacultyID, role, firstName, lastName, email, password, program, yearLvl, department, code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -87,13 +87,13 @@ public class ComLabMethods {
                 // Execute the INSERT query
                 insertStmt.executeUpdate();
 
-                message = "User added successfully";
+                success = true;
                 System.out.println("Record inserted successfully.");
             }
         } catch (SQLException exc) {
             exc.printStackTrace();
         }
-        return message;
+        return success;
     }
 
     // Retrieves user information based on the provided student/faculty ID from the database

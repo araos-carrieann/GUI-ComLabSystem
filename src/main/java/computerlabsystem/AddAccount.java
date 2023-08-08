@@ -317,8 +317,14 @@ public class AddAccount extends javax.swing.JDialog {
                 } else {
                     department = null;
                     lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
-                    String msg = ComLabMethods.registerUser(status, role, stuFaculID, fname, lname, email, hashedPassword, program, yearLevel, department, code);
-                    lblWarningMsg.setText(msg);
+                    boolean success = ComLabMethods.registerUser(status, role, stuFaculID, fname, lname, email, hashedPassword, program, yearLevel, department, code);
+                    if (success) {
+                        lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
+                        lblWarningMsg.setText("User registered successfully.");
+                    } else {
+                        lblWarningMsg.setText("User registration failed. Account already exists.");
+                        System.out.println("failed");
+                    }
                 }
             }
             if (rbtnFaculty.isSelected()) {
@@ -329,8 +335,14 @@ public class AddAccount extends javax.swing.JDialog {
                     program = null;
                     yearLevel = null;
                     lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
-                    String msg = ComLabMethods.registerUser(status, role, stuFaculID, fname, lname, email, hashedPassword, program, yearLevel, department, code);
-                    lblWarningMsg.setText(msg);
+                    boolean success = ComLabMethods.registerUser(status, role, stuFaculID, fname, lname, email, hashedPassword, program, yearLevel, department, code);
+                    if (success) {
+                        lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
+                        lblWarningMsg.setText("User registered successfully.");
+                    } else {
+                        lblWarningMsg.setText("User registration failed. Account already exists.");
+                        System.out.println("failed");
+                    }
                 }
             }
 
