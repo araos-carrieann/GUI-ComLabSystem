@@ -233,8 +233,9 @@ public class UsersDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_lblUserNameMouseClicked
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        UserDashboardDAO.userLogout(getSfID());
         dispose();
+        UserDashboardDAO.userLogout(getSfID());
+        
     }//GEN-LAST:event_btnLogoutActionPerformed
 
 /**
